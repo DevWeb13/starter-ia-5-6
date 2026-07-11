@@ -75,7 +75,10 @@ test("un projet est créé, modifié, rechargé, exporté et supprimé", async (
   expect((await json).suggestedFilename()).toMatch(/\.json$/);
   await page.reload();
   await expect(page.getByLabel("Titre")).toHaveValue("Projet associations édité");
-  await page.getByRole("link", { name: "Dashboard" }).click();
+  await page
+    .getByRole("main")
+    .getByRole("link", { name: "Dashboard", exact: true })
+    .click();
   await expect(page.getByText("Projet associations édité")).toBeVisible();
   page.once("dialog", (dialog) => dialog.accept());
   await page.getByRole("button", { name: "Supprimer" }).click();
