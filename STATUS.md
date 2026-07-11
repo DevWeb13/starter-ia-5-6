@@ -1,9 +1,9 @@
 # État du projet
 
 **Dernière mise à jour :** 11 juillet 2026  
-**Phase :** 2 — Cœur produit
-**Branche :** `work/02-product-core`
-**Statut réel :** phase 1 fusionnée dans `main` via la PR nº 2 (`6819f79bf4b52746c956426cabe625c706d53abc`) ; cœur produit local prêt pour revue
+**Phase :** 2 — Cœur produit  
+**Branche :** `work/02-product-core`  
+**Statut réel :** phase 1 fusionnée dans `main` via la PR nº 2 (`6819f79bf4b52746c956426cabe625c706d53abc`) ; cœur produit local implémenté, CI verte et vraie Preview Vercel vérifiée ; PR nº 3 prête à fusionner
 
 ## Résultat implémenté
 
@@ -28,14 +28,14 @@
 - Sauvegarde navigateur isolée derrière `local-project-store`, avec gestion d’indisponibilité, corruption, quota et conflit entre onglets.
 - Les données sont explicitement limitées à cet appareil : sans compte, synchronisation ni IA réelle.
 
-## Contrôles
+## Contrôles de la fondation
 
 | Contrôle | État | Preuve |
 |---|---|---|
 | Installation reproductible | réussi | `npm ci` — sortie 0 |
 | Lint | réussi | `npm run lint` — sortie 0 |
 | TypeScript | réussi | `npm run typecheck` — sortie 0 |
-| Tests unitaires | réussi | 4 tests Vitest — sortie 0 |
+| Tests unitaires | réussi | Vitest — sortie 0 |
 | Build local | réussi | Next.js génère les routes statiques, le sitemap, `robots.txt` et la 404 |
 | Playwright | réussi | 6 scénarios Chromium, dont la 404 `noindex` — sortie 0 |
 | Responsive 320 px | réussi | menu, CTA, cibles 44 px, course de démo et saisie continue de 500 caractères sans débordement |
@@ -45,33 +45,36 @@
 | Build et accès Vercel | réussi | build distant réussi ; <https://starter-ia-5-6.vercel.app> accessible |
 | Routes et runtime Vercel | réussi | `/`, `/demo` et `/fonctionnalites` répondent HTTP 200 ; une route inconnue répond HTTP 404 ; aucune erreur d’exécution critique détectée dans les données accessibles |
 
-## Revue et corrections
+## Revue et corrections de la fondation
 
 - Sous-agents utilisés en lecture seule : architecte technique, UX/UI mobile et accessibilité, QA/tests/risques.
 - Cycle 1 utilisé : incompatibilités TypeScript 7 / ESLint 10 corrigées vers TypeScript 5.9.3 / ESLint 9.39.5 ; transmission de ref du bouton et sélecteurs E2E corrigés.
 - Cycle 2 utilisé : course de démonstration, débordement d’une chaîne longue, hiérarchie de titres, région accessible, page courante, tailles essentielles, contrastes, contrat Node 24, documentation Playwright et hydratation du thème corrigés puis vérifiés.
 - Correction finale : Chromium et les tests E2E sont exécutés par GitHub Actions ; `allowedDevOrigins` autorise `127.0.0.1` pour l’hydratation Playwright avec Next.js 16 ; la cible Vercel, les documents et le SEO correspondent au domaine public de production.
-- Aucun bloquant ou important connu ne reste pour la revue de cette PR.
 
 ## Production Vercel et GitHub
 
-- Branche distante : `work/01-foundation`, pour la PR GitHub nº 2 vers `main`, titre `feat: build the publishable SaaS foundation`.
-- Déploiement public de production créé avant fusion : <https://starter-ia-5-6.vercel.app>.
-- Déploiement : `dpl_51FWd5SVYVLUjeszzcUqfkEso9G7` ; état `READY` ; cible `production` ; framework Next.js.
-- Inspector : <https://vercel.com/devweb13s-projects/starter-ia-5-6/51FWd5SVYVLUjeszzcUqfkEso9G7>.
-- Ce déploiement n’est pas une preview et ne doit pas être redéployé depuis cette correction.
-- La CI distante exécute désormais installation reproductible, lint, TypeScript, Vitest, build et Playwright Chromium à chaque mise à jour de la PR.
+- La PR nº 2 a été fusionnée en squash dans `main`.
+- Déploiement public de production : <https://starter-ia-5-6.vercel.app>.
+- Déploiement historique : `dpl_51FWd5SVYVLUjeszzcUqfkEso9G7` ; état `READY` ; cible `production` ; framework Next.js.
+- Le projet Vercel est désormais relié à `DevWeb13/starter-ia-5-6`.
+- Les branches de travail produisent automatiquement des previews ; les fusions dans `main` produisent les déploiements de production.
 
 ## Contrôles phase 2
 
 | Contrôle | État | Preuve |
 |---|---|---|
-| Suite locale | bloquée dans cet environnement | `npm ci` ne peut pas créer `/root/.npm`, malgré un cache temporaire ; la CI GitHub est la preuve attendue |
-| Preview Vercel | à confirmer après premier push | intégration GitHub annoncée active |
+| Lint | réussi | GitHub Actions, run `29154848755` |
+| TypeScript | réussi | GitHub Actions, run `29154848755` |
+| Tests unitaires | réussi | GitHub Actions, run `29154848755` |
+| Build | réussi | GitHub Actions et build Vercel |
+| Playwright Chromium | réussi | 7 scénarios E2E, GitHub Actions, run `29154848755` |
+| Preview Vercel | réussi | `dpl_9mg9H15ao6gF3nRTUFodqWV6fn8D`, état `READY`, branche `work/02-product-core`, commit `b9f2034`, cible preview |
+| Intégration GitHub → Vercel | réussi | chaque push de la PR nº 3 a créé automatiquement une nouvelle preview |
 
 ## Blocages connus
 
-Le contrôle local est bloqué par les permissions de cache npm de l’environnement, pas par une erreur applicative constatée. La CI GitHub et la preview Vercel doivent confirmer la branche. Le déploiement de production historique ne doit pas être relancé.
+Aucun blocage connu pour la PR nº 3. Le contrôle local de Work était limité par les permissions de son cache npm, mais la CI GitHub complète et la Preview Vercel fournissent les preuves distantes attendues.
 
 ## Prochaine mission prévue
 
@@ -79,10 +82,10 @@ Le contrôle local est bloqué par les permissions de cache npm de l’environne
 
 **Objectif :** intégrer une génération IA véritable, structurée et traçable au-dessus du modèle local stabilisé.
 
-**Prérequis :** PR de fondation revue ; CI verte ; projet Vercel relié à GitHub pour les previews automatiques de pull request ; décisions de structure et de données validées ; aucun bloquant ou important ouvert.
+**Prérequis :** PR nº 3 fusionnée ; CI verte ; preview et production automatiques via l’intégration GitHub/Vercel ; décisions de structure et de données validées ; aucun bloquant ou important ouvert.
 
 **Livrables :** abstraction fournisseur, contrats de sortie, génération explicite et annulable, erreurs transparentes, limites de coût et évaluations.
 
-**Critères de réussite :** un utilisateur crée, ferme, reprend, modifie, exporte et supprime un projet local sans perte silencieuse ; le parcours fonctionne à 320 px, au clavier et dans les deux thèmes ; tous les scripts et la vraie preview de pull request réussissent.
+**Critères de réussite :** une génération IA réelle produit une sortie structurée compatible avec le modèle de projet, sans exposer de secret ni masquer les erreurs ; les coûts et limites sont contrôlés ; les tests, la CI et la preview réussissent.
 
-**Risques connus :** faire passer le stockage local pour une base sécurisée ; figer trop tôt le schéma avant l’IA ; migrations de données locales ; perte ou duplication lors des reprises ; export de contenu non échappé ; élargissement prématuré vers authentification ou paiement.
+**Risques connus :** coût API, sorties invalides, délais et annulation, exposition de secrets, dépendance fournisseur, injection de prompt, confusion entre génération et validation de marché, élargissement prématuré vers authentification ou paiement.
