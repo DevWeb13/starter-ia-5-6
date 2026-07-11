@@ -33,7 +33,7 @@ test("la navigation mène à l’offre future honnête", async ({ page }) => {
   await expect(page.getByText("Prix à confirmer").first()).toBeVisible();
 });
 
-test("la démonstration expose erreur, chargement et succès en six sections", async ({ page }) => {
+test("un projet est créé, modifié, rechargé, exporté et supprimé", async ({ page }) => {
   await page.goto("/demo");
   await expect(
     page
@@ -51,10 +51,9 @@ test("la démonstration expose erreur, chargement et succès en six sections", a
   await page.getByRole("button", { name: "Générer le plan démo" }).click();
   await expect(ideaInput).toBeDisabled();
   await expect(exampleButton).toBeDisabled();
-  await expect(page.getByRole("region", { name: "Résultat de la démonstration" })).toBeVisible();
-  await expect(page.getByText("Génération locale…")).toBeVisible();
-  await expect(page.getByRole("heading", { name: "Plan de démonstration généré" })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "Plan de démonstration généré" })).toBeFocused();
+  await expect(page.getByText("Création et enregistrement local du projet…")).toBeVisible();
+  await expect(page).toHaveURL(/\/dashboard\/.+/);
+  await expect(page.getByText("Stocké uniquement sur cet appareil")).toBeVisible();
 
   for (const title of [
     "Proposition de valeur",
@@ -64,21 +63,36 @@ test("la démonstration expose erreur, chargement et succès en six sections", a
     "Plan marketing",
     "Prochaines actions",
   ]) {
-    await expect(page.getByRole("heading", { name: title, exact: true })).toBeVisible();
+    await expect(page.getByLabel(title)).toBeVisible();
   }
-
-  await expect(page.getByText(/Résultat local, non sauvegardé/i)).toBeVisible();
-
-  await ideaInput.fill("a".repeat(500));
-  await expect(page.getByRole("heading", { name: "Plan de démonstration généré" })).toBeHidden();
-  await page.getByRole("button", { name: "Générer le plan démo" }).click();
-  await expect(page.getByRole("heading", { name: "Plan de démonstration généré" })).toBeVisible();
+  await page.getByLabel("Titre").fill("Projet associations édité");
+  await expect(page.getByText("Enregistré")).toBeVisible();
+  const markdown = page.waitForEvent("download");
+  await page.getByRole("button", { name: "Exporter Markdown" }).click();
+  expect((await markdown).suggestedFilename()).toMatch(/\.md$/);
+  const json = page.waitForEvent("download");
+  await page.getByRole("button", { name: "Exporter JSON" }).click();
+  expect((await json).suggestedFilename()).toMatch(/\.json$/);
+  await page.reload();
+  await expect(page.getByLabel("Titre")).toHaveValue("Projet associations édité");
+  await page.getByRole("link", { name: "Dashboard" }).click();
+  await expect(page.getByText("Projet associations édité")).toBeVisible();
+  page.once("dialog", (dialog) => dialog.accept());
+  await page.getByRole("button", { name: "Supprimer" }).click();
+  await expect(page.getByText("Aucun projet local")).toBeVisible();
   await page.setViewportSize({ width: 320, height: 640 });
   const dimensions = await page.evaluate(() => ({
     scrollWidth: document.documentElement.scrollWidth,
     clientWidth: document.documentElement.clientWidth,
   }));
   expect(dimensions.scrollWidth).toBeLessThanOrEqual(dimensions.clientWidth);
+});
+
+test("les données locales invalides expliquent la récupération", async ({ page }) => {
+  await page.addInitScript(() => localStorage.setItem("ai-project-launcher.projects.v1", "invalide"));
+  await page.goto("/dashboard");
+  await expect(page.getByRole("alert")).toContainText("données locales sont incompatibles ou corrompues");
+  await expect(page.getByRole("button", { name: "Réinitialiser les données locales" })).toBeVisible();
 });
 
 test("l’affichage essentiel reste utilisable à 320 px", async ({ page }) => {
