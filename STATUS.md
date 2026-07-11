@@ -40,7 +40,7 @@
 - Sous-agents utilisés en lecture seule : architecte technique, UX/UI mobile et accessibilité, QA/tests/risques.
 - Cycle 1 utilisé : incompatibilités TypeScript 7 / ESLint 10 corrigées vers TypeScript 5.9.3 / ESLint 9.39.5 ; transmission de ref du bouton et sélecteurs E2E corrigés.
 - Cycle 2 utilisé : course de démonstration, débordement d’une chaîne longue, hiérarchie de titres, région accessible, page courante, tailles essentielles, contrastes, contrat Node 24, documentation Playwright et hydratation du thème corrigés puis vérifiés.
-- Correction finale : Chromium et les tests E2E sont exécutés par GitHub Actions ; la cible Vercel, les documents et le SEO correspondent au domaine public de production.
+- Correction finale : Chromium et les tests E2E sont exécutés par GitHub Actions ; `allowedDevOrigins` autorise `127.0.0.1` pour l’hydratation Playwright avec Next.js 16 ; la cible Vercel, les documents et le SEO correspondent au domaine public de production.
 - Aucun bloquant ou important connu ne reste pour la revue de cette PR.
 
 ## Production Vercel et GitHub

@@ -79,3 +79,9 @@ La PR GitHub nº 1, documentaire, est déjà fusionnée. Cette mission reste la 
 **Date :** 2026-07-11 — **Statut :** acceptée
 
 `metadataBase`, `sitemap.ts` et `robots.ts` utilisent `https://starter-ia-5-6.vercel.app`. Les routes publiques indexables sont déclarées dans le sitemap ; la route spéciale 404 de Next.js génère une directive `noindex`, sans directive globale d’indexation contradictoire.
+
+## D-014 — Origine locale autorisée pour Playwright
+
+**Date :** 2026-07-11 — **Statut :** acceptée
+
+Next.js 16 bloque par défaut le canal HMR de `127.0.0.1` en développement. `allowedDevOrigins` autorise cette unique origine locale afin que Playwright puisse hydrater et tester les composants interactifs dans GitHub Actions. Ce réglage ne modifie pas les origines de production.
