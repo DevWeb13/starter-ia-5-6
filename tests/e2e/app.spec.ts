@@ -66,7 +66,7 @@ test("un projet est créé, modifié, rechargé, exporté et supprimé", async (
     await expect(page.getByLabel(title)).toBeVisible();
   }
   await page.getByLabel("Titre").fill("Projet associations édité");
-  await expect(page.getByText("Enregistré")).toBeVisible();
+  await expect(page.getByRole("status").filter({ hasText: "Enregistré" })).toBeVisible();
   const markdown = page.waitForEvent("download");
   await page.getByRole("button", { name: "Exporter Markdown" }).click();
   expect((await markdown).suggestedFilename()).toMatch(/\.md$/);
@@ -91,7 +91,13 @@ test("un projet est créé, modifié, rechargé, exporté et supprimé", async (
 test("les données locales invalides expliquent la récupération", async ({ page }) => {
   await page.addInitScript(() => localStorage.setItem("ai-project-launcher.projects.v1", "invalide"));
   await page.goto("/dashboard");
-  await expect(page.getByRole("alert")).toContainText("données locales sont incompatibles ou corrompues");
+  await expect(page.getByText("Données locales indisponibles", { exact: true })).toBeVisible();
+  await expect(
+    page.getByText(
+      "Les données locales sont incompatibles ou corrompues. Elles n’ont pas été modifiées.",
+      { exact: true },
+    ),
+  ).toBeVisible();
   await expect(page.getByRole("button", { name: "Réinitialiser les données locales" })).toBeVisible();
 });
 
