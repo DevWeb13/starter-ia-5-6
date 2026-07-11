@@ -1,0 +1,22 @@
+# Dependencies
+/node_modules
+
+# Next.js
+/.next
+/out
+
+# Tests
+/coverage
+/playwright-report
+/test-results
+*.tsbuildinfo
+
+# Local configuration
+.env*
+!.env.example
+.vercel
+
+# Editors and OS
+.DS_Store
+*.pem
+*.log

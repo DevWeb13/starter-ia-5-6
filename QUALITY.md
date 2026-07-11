@@ -13,6 +13,9 @@ Un seul point coché interdit la livraison, la publication ou la fusion.
 - [ ] Une suppression, un paiement, une publication externe ou une action irréversible a été exécuté sans autorisation explicite.
 - [ ] Plusieurs agents ont modifié le même périmètre sans contrôle d’un écrivain unique.
 - [ ] La configuration ou une commande recommandée est invalide et empêche l’usage prévu.
+- [ ] Une page, un parcours principal, un script obligatoire ou le build de production échoue.
+- [ ] La démonstration est présentée comme une véritable IA ou déclenche une requête externe non documentée.
+- [ ] Un secret, fichier `.env` ou configuration locale Vercel est commité.
 - [ ] Un problème important reste après le deuxième cycle de correction.
 
 ## Important
@@ -29,6 +32,9 @@ Tous les points applicables doivent être résolus avant livraison ou fusion.
 - [ ] Les critères de réussite ne sont pas vérifiables.
 - [ ] Une limitation réelle ou un échec d’outil est masqué.
 - [ ] Une interface décrite ne respecte pas les exigences mobile-first et d’accessibilité de [`DESIGN.md`](DESIGN.md).
+- [ ] L’interface déborde à 320 px, le clavier ne permet pas le parcours principal ou le thème masque une information.
+- [ ] Les données fictives, l’offre future ou l’absence de sauvegarde ne sont pas clairement indiquées.
+- [ ] La mémoire officielle ne reflète pas l’architecture, les contrôles, blocages ou prochaine mission réels.
 
 ## Amélioration
 
