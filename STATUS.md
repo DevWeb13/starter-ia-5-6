@@ -3,7 +3,7 @@
 **Dernière mise à jour :** 11 juillet 2026  
 **Phase :** 1 — Fondation publiable  
 **Branche :** `work/01-foundation`  
-**Statut réel :** fondation validée localement ; preview créée mais contrôle Vercel bloqué par l’autorisation du scope ; publication GitHub en cours
+**Statut réel :** fondation validée localement et branche GitHub publiée ; preview créée mais contrôle Vercel bloqué par l’autorisation du scope
 
 ## Résultat implémenté
 
@@ -43,11 +43,12 @@
 
 ## Preview et GitHub
 
-- PR : en attente d’ouverture.
+- Branche distante vérifiée : `work/01-foundation`, en avance d’un commit sur `main` lors de la première publication.
+- Commit applicatif vérifié : `de74fc051845305256f3d652b48512f7c8ec289a`.
+- PR de revue : `work/01-foundation` vers `main`, titre `feat: build the publishable SaaS foundation` ; l’URL et l’état courant sont à consulter sur GitHub.
 - Preview créée, non vérifiable : <https://starter-ia-5-6-gd38cino2-devweb13s-projects.vercel.app>
 - Inspector : <https://vercel.com/devweb13s-projects/starter-ia-5-6/51FWd5SVYVLUjeszzcUqfkEso9G7>
-- Commit de référence : en attente.
-- CI distante : en attente du push.
+- CI distante : configurée pour se déclencher à l’ouverture et à chaque mise à jour de la PR ; son état courant doit être lu sur la PR.
 
 ## Blocages connus
 
