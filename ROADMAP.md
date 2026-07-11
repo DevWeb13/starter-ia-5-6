@@ -5,7 +5,7 @@ Cette feuille de route en cinq phases est la séquence officielle du projet. Une
 ## Phase 1 — Fondation publiable
 
 **Branche :** `work/01-foundation`  
-**Statut :** prête pour revue locale ; contrôle distant Vercel bloqué par l’autorisation du scope
+**Statut :** prête pour revue ; CI complète configurée et déploiement Vercel de production pré-fusion vérifié
 
 Objectif : transformer le dépôt documentaire en une application SaaS de démonstration moderne, accessible, testée et déployable.
 
@@ -14,10 +14,10 @@ Livrables :
 - application Next.js App Router ;
 - landing, fonctionnalités, tarifs, démo locale, dashboard, docs et 404 ;
 - thème clair/sombre et navigation mobile ;
-- Vitest, Playwright, CI GitHub Actions et preview Vercel ;
+- Vitest, Playwright Chromium dans la CI GitHub Actions et déploiement Vercel de production pré-fusion ;
 - mémoire officielle et dossier marketing.
 
-Critère de sortie : tous les scripts réussissent, la preview est contrôlée ou son unique blocage exact est documenté, aucun bloquant ou important n’est masqué.
+Critère de sortie : tous les scripts et la CI complète réussissent, le build et les routes du déploiement de production pré-fusion sont contrôlés, aucun bloquant ou important n’est masqué. Avant la phase 2, Vercel doit être relié à GitHub pour générer une vraie preview de pull request.
 
 ## Phase 2 — Cœur produit
 

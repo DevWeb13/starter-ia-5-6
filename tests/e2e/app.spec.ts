@@ -143,5 +143,11 @@ test("une route inconnue affiche la page 404", async ({ page }) => {
   await expect(page.getByRole("heading", { level: 1 })).toContainText(
     "Cette route ne fait pas partie du plan",
   );
+  const robotsMeta = page.locator('meta[name="robots"]');
+  const robotsContents = await robotsMeta.evaluateAll((elements) =>
+    elements.map((element) => element.getAttribute("content") ?? ""),
+  );
+  expect(robotsContents.length).toBeGreaterThan(0);
+  expect(robotsContents.every((content) => content.includes("noindex"))).toBe(true);
   await expect(page.getByRole("link", { name: "Retour à l’accueil" })).toBeVisible();
 });

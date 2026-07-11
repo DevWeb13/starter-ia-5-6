@@ -7,6 +7,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://starter-ia-5-6.vercel.app"),
   title: {
     default: "AI Project Launcher — De l’idée au plan d’exécution",
     template: "%s — AI Project Launcher",
@@ -20,7 +21,6 @@ export const metadata: Metadata = {
     type: "website",
     locale: "fr_FR",
   },
-  robots: { index: true, follow: true },
 };
 
 export const viewport: Viewport = {

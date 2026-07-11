@@ -56,20 +56,26 @@ La pile native de `DESIGN.md` évite les requêtes de police, améliore le premi
 
 Free et Pro sont marqués « Prévu », avec « Prix à confirmer ». Les CTA renvoient vers la démonstration existante, jamais vers un checkout ou une inscription inexistante.
 
-## D-010 — CI minimale, E2E local et preview
+## D-010 — CI complète avec E2E Chromium
 
 **Date :** 2026-07-11 — **Statut :** acceptée
 
-GitHub Actions exécute `npm ci`, lint, TypeScript, Vitest et build. Six scénarios Playwright couvrent la landing, les tarifs, la démo, une saisie continue de 500 caractères, le mobile 320 px, le thème persistant et la 404. L’ajout d’un job navigateur distant est reporté pour ne pas alourdir la fondation ; la preview doit être contrôlée réellement avant revue.
+GitHub Actions exécute `npm ci`, lint, TypeScript, Vitest, build puis les six scénarios Playwright. Le workflow installe Chromium et ses dépendances avec `npx playwright install --with-deps chromium` et garde un délai maximal de 20 minutes. Les scénarios couvrent la landing, les tarifs, la démo, une saisie continue de 500 caractères, le mobile 320 px, le thème persistant et la 404 `noindex`.
 
 ## D-011 — Déploiement Vercel natif
 
 **Date :** 2026-07-11 — **Statut :** acceptée
 
-Vercel détecte Next.js à la racine. Aucun `vercel.json`, token dans GitHub Actions ou variable d’environnement n’est nécessaire. La Git integration ou le connecteur Vercel crée la preview de branche.
+Vercel détecte Next.js à la racine. Aucun `vercel.json`, token dans GitHub Actions ou variable d’environnement n’est nécessaire. Le déploiement `dpl_51FWd5SVYVLUjeszzcUqfkEso9G7` a été créé avant fusion avec la cible `production` : il ne s’agit pas d’une preview. Le projet doit être relié à GitHub avant la prochaine PR pour générer automatiquement une vraie preview par pull request.
 
 ## D-012 — « PR 1 » désigne la phase, pas le numéro GitHub
 
 **Date :** 2026-07-11 — **Statut :** acceptée
 
 La PR GitHub nº 1, documentaire, est déjà fusionnée. Cette mission reste la phase/PR produit 1 mais la nouvelle pull request reçoit le prochain numéro réel de GitHub. Aucune renumérotation artificielle n’est tentée.
+
+## D-013 — SEO minimal sur le domaine public
+
+**Date :** 2026-07-11 — **Statut :** acceptée
+
+`metadataBase`, `sitemap.ts` et `robots.ts` utilisent `https://starter-ia-5-6.vercel.app`. Les routes publiques indexables sont déclarées dans le sitemap ; la route spéciale 404 de Next.js génère une directive `noindex`, sans directive globale d’indexation contradictoire.

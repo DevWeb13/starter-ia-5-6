@@ -56,10 +56,9 @@ Dans un environnement disposant déjà d’un Chromium compatible, son chemin pe
 
 Le dépôt suit les conventions Next.js détectées automatiquement par Vercel : application à la racine, commande `npm run build`, aucun `vercel.json` et aucune variable secrète.
 
-1. Importer `DevWeb13/starter-ia-5-6` dans Vercel.
-2. Conserver la racine du projet sur `.` et le framework Next.js.
-3. Activer les previews pour les branches et pull requests.
-4. Vérifier l’URL de preview avec la landing, la navigation et la démonstration.
+Le déploiement public actuel est une **production créée avant fusion**, et non une preview : <https://starter-ia-5-6.vercel.app>. Son build distant, son accès, `/`, `/demo`, `/fonctionnalites`, la 404 et l’absence d’erreur d’exécution critique ont été vérifiés.
+
+Pour les branches suivantes, relier le projet Vercel à `DevWeb13/starter-ia-5-6` dans Vercel et activer l’intégration GitHub : chaque pull request produira alors une vraie preview automatique. Ne pas redéployer la production actuelle depuis cette PR de correction.
 
 L’état réel du dernier déploiement et ses éventuels blocages sont consignés dans [`STATUS.md`](STATUS.md).
 
