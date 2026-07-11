@@ -20,7 +20,7 @@ Classez ces besoins :
 
 1. Reformuler un SMS : Chat.
 2. Produire trois documents, les vérifier et les livrer : Work.
-3. Modifier une application, lancer les tests et préparer une PR : Codex dans un environnement compatible.
+3. Modifier une application, lancer les tests et préparer une pull request (PR) : Codex dans un environnement compatible.
 
 ### Point de contrôle
 

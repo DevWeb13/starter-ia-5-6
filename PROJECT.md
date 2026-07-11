@@ -33,6 +33,27 @@ Starter IA 5.6 aide une personne travaillant d’abord sur iPhone à choisir ent
 - Une identité visuelle documentée en Markdown.
 - Une configuration prudente pour une future utilisation de Codex.
 
+## Fichiers obligatoires
+
+```text
+README.md
+START-HERE.md
+PROJECT.md
+WORKFLOW.md
+QUALITY.md
+AGENTS.md
+DESIGN.md
+LICENSE
+prompts/MASTER-WORK.md
+prompts/REVIEW.md
+prompts/AUTOMATION.md
+templates/BRIEF.md
+course/FORMATION-EXPRESS.md
+.codex/config.toml
+.codex/agents/explorer.toml
+.codex/agents/reviewer.toml
+```
+
 ## Hors périmètre
 
 - Fournir un accès à un modèle, un abonnement, un plugin ou un outil.
