@@ -1,95 +1,119 @@
-# Starter IA 5.6
+# Starter IA 5.6 — AI Project Launcher
 
-Starter iPhone-first pour utiliser ChatGPT Work, GPT-5.6 et les agents avec un minimum de friction.
+Starter IA 5.6 est une méthode open source, iPhone-first, pour piloter ChatGPT Work, Codex et des agents avec un brief clair, un seul écrivain et des résultats vérifiés.
 
-Ce dépôt propose une méthode courte : donner un résultat précis à produire, déléguer les contrôles sans multiplier les écrivains, vérifier les faits, puis livrer avec un statut honnête.
+**AI Project Launcher** est son produit exemple : une application web qui transforme une idée de produit en plan technique et commercial prêt à challenger puis à exécuter avec une équipe IA.
 
 > Projet communautaire indépendant, non officiel et non affilié à OpenAI.
 
-## La promesse
+## Aperçu du produit
 
-En moins de dix minutes, depuis l’app ChatGPT sur iPhone, vous pouvez lancer une première mission complète et sûre : un brief, jusqu’à trois analyses en lecture seule, un seul agent qui écrit, une vérification et une livraison claire.
+La première fondation publiable contient :
 
-Prérequis : une app à jour et les fonctions Projet, Work, modèles, outils ou plugins nécessaires visibles sur votre compte. Leur disponibilité peut varier.
+- une landing premium et mobile-first ;
+- les pages fonctionnalités, tarifs envisagés, démonstration, dashboard et documentation ;
+- une navigation accessible, un thème clair/sombre et une page 404 ;
+- une démonstration locale avec états vide, erreur, chargement et succès ;
+- un résultat structuré en proposition de valeur, cible, MVP, plan technique, plan marketing et prochaines actions.
 
-## Démarrer sur iPhone
+L’interface utilise une palette sobre bleu ardoise, une typographie système et des cartes à forte hiérarchie. Aucun visuel, client, témoignage, résultat ou chiffre commercial n’est inventé.
 
-1. Ouvrez [`START-HERE.md`](START-HERE.md).
-2. Créez ou ouvrez un Projet dans l’app ChatGPT.
-3. Copiez les règles courtes proposées dans les instructions du Projet.
-4. Choisissez **Terra** si vous hésitez.
-5. Copiez le brief d’exemple et lancez la mission dans **Work**.
-6. Contrôlez le livrable et le statut final : fait et vérifié, partiel, bloqué ou non tenté.
+La démonstration n’appelle pas de véritable IA. Elle produit un scénario déterministe dans le navigateur, sans compte, base de données, paiement ni sauvegarde.
 
-Le parcours détaillé est conçu pour tenir en moins de dix minutes.
+## Démarrage local
 
-## Chat, Work ou Codex ?
+Prérequis : Node.js 24 et npm.
 
-| Outil | À utiliser pour | Exemple |
-|---|---|---|
-| **Chat** | Comprendre, décider rapidement ou rédiger un brouillon court. | Comparer deux noms ou reformuler un message. |
-| **Work** | Exécuter une mission complète avec plusieurs étapes, fichiers, plugins ou outils. | Transformer un brief en dossier, le faire contrôler et livrer les fichiers. |
-| **Codex** | Travailler sur du code et un dépôt : modifier, tester, revoir et préparer une pull request. | Corriger une application et lancer ses tests. |
+```sh
+npm ci
+npm run dev
+```
 
-Codex est spécialisé dans le développement. Sur iPhone, il n’est pas un environnement local autonome ni un choix direct dans le parcours de ce starter. Un pilotage distant peut être proposé selon l’app, le compte et le déploiement, mais l’exécution repose alors sur un environnement connecté.
+Ouvrir ensuite [http://localhost:3000](http://localhost:3000).
 
-## Sol, Terra ou Luna ?
+Aucune variable d’environnement n’est nécessaire pour cette version.
 
-Ce sont des repères de choix, pas des garanties automatiques de résultat.
+## Scripts
 
-| Choix | Quand l’utiliser |
-|---|---|
-| **Terra** | Par défaut, pour la majorité du travail et les analyses parallèles. |
-| **Sol** | Pour une mission complexe qui exige de coordonner plusieurs dépendances et contrôles. |
-| **Luna** | Pour une tâche simple, répétitive ou volumineuse. |
+```sh
+npm run lint       # ESLint
+npm run typecheck  # TypeScript strict
+npm test           # Vitest
+npm run test:e2e   # Playwright Chromium
+npm run build      # Build Next.js de production
+```
 
-Si vous hésitez, choisissez **Terra**. La qualité dépend surtout du brief, des outils disponibles et des vérifications demandées.
+Avant le premier lancement des tests E2E, installer le navigateur correspondant :
 
-## Le workflow complet
+```sh
+npx playwright install chromium
+# Sur une image Linux minimale ou en CI : npx playwright install --with-deps chromium
+```
+
+Dans un environnement disposant déjà d’un Chromium compatible, son chemin peut être fourni avec `PLAYWRIGHT_EXECUTABLE_PATH=/chemin/vers/chromium`.
+
+## Déploiement Vercel
+
+Le dépôt suit les conventions Next.js détectées automatiquement par Vercel : application à la racine, commande `npm run build`, aucun `vercel.json` et aucune variable secrète.
+
+1. Importer `DevWeb13/starter-ia-5-6` dans Vercel.
+2. Conserver la racine du projet sur `.` et le framework Next.js.
+3. Activer les previews pour les branches et pull requests.
+4. Vérifier l’URL de preview avec la landing, la navigation et la démonstration.
+
+L’état réel du dernier déploiement et ses éventuels blocages sont consignés dans [`STATUS.md`](STATUS.md).
+
+## Architecture
+
+- Next.js App Router et React Server Components par défaut ;
+- TypeScript strict et Tailwind CSS ;
+- composants shadcn/ui possédés par le dépôt ;
+- composants client limités au thème, à la navigation mobile et à la démonstration ;
+- données marketing et dashboard statiques, explicitement fictives ;
+- fonction pure pour la génération locale ;
+- Vitest, Playwright et GitHub Actions.
+
+Voir [`ARCHITECTURE.md`](ARCHITECTURE.md) pour la structure réelle et [`DECISIONS.md`](DECISIONS.md) pour les choix durables.
+
+## Feuille de route
+
+Le projet suit cinq phases : fondation publiable, cœur produit, intégration IA, comptes et données, puis monétisation et maturité. La séquence, les critères et le statut sont dans [`ROADMAP.md`](ROADMAP.md).
+
+## Utiliser ce dépôt avec Work
+
+Le workflow de référence reste :
 
 **Brief → sous-agents en lecture seule → plan → agent écrivain → vérification → revue indépendante → correction → livraison**
 
+- Chat sert aux questions, décisions rapides et brouillons courts.
+- Work exécute les missions complètes avec plusieurs étapes, fichiers et outils.
+- Codex est spécialisé dans le développement et les dépôts.
 - Un seul agent modifie les fichiers ou GitHub.
-- Trois sous-agents maximum, principalement pour lire, analyser et contrôler.
-- Deux cycles de correction maximum.
-- Après le deuxième cycle, tout problème bloquant ou important restant bloque la livraison ou la fusion.
-- Une autorisation humaine explicite est nécessaire avant suppression, paiement, publication externe ou action irréversible.
-- Une réussite n’est jamais annoncée sans preuve de vérification.
+- Trois sous-agents maximum analysent en lecture seule.
+- Deux cycles de correction maximum sont autorisés.
 
-La procédure de référence se trouve dans [`WORKFLOW.md`](WORKFLOW.md). Les critères de décision sont dans [`QUALITY.md`](QUALITY.md).
+Commencer par [`START-HERE.md`](START-HERE.md), puis lire [`WORKFLOW.md`](WORKFLOW.md), [`QUALITY.md`](QUALITY.md) et [`AGENTS.md`](AGENTS.md).
 
-## Exemples concrets
+## Mémoire officielle
 
-### Préparer un dossier
+- État réel : [`STATUS.md`](STATUS.md)
+- Cinq phases : [`ROADMAP.md`](ROADMAP.md)
+- Décisions : [`DECISIONS.md`](DECISIONS.md)
+- Architecture : [`ARCHITECTURE.md`](ARCHITECTURE.md)
+- Identité visuelle : [`DESIGN.md`](DESIGN.md)
+- Historique : [`CHANGELOG.md`](CHANGELOG.md)
+- Positionnement : [`marketing/`](marketing/)
 
-Dans Work, demandez un document à partir de vos notes. Un sous-agent vérifie les oublis, un autre la clarté, puis l’agent écrivain produit et contrôle le fichier final.
+## Limites actuelles
 
-### Auditer un dépôt
-
-Dans un environnement compatible avec Codex, demandez une lecture du dépôt, un plan de correction, une modification sur une seule branche, les tests, puis une pull request. La fusion reste interdite si un défaut bloquant ou important subsiste.
-
-### Automatiser un contrôle utile
-
-Planifiez un audit hebdomadaire de la branche par défaut. Il recherche les problèmes réels et les doublons ouverts avant de créer au maximum une issue consolidée. S’il n’y a rien à corriger, il ne publie rien. Le prompt est dans [`prompts/AUTOMATION.md`](prompts/AUTOMATION.md).
-
-## Parcours du dépôt
-
-- Commencer : [`START-HERE.md`](START-HERE.md)
-- Comprendre le cadre : [`PROJECT.md`](PROJECT.md)
-- Exécuter : [`WORKFLOW.md`](WORKFLOW.md)
-- Contrôler : [`QUALITY.md`](QUALITY.md)
-- Copier un brief : [`templates/BRIEF.md`](templates/BRIEF.md)
-- Se former en 30 minutes : [`course/FORMATION-EXPRESS.md`](course/FORMATION-EXPRESS.md)
-- Préparer une future utilisation de Codex : [`AGENTS.md`](AGENTS.md) et [`.codex/`](.codex/)
-
-## Limites honnêtes
-
-- Work, GPT-5.6, Sol, Terra, Luna, les sous-agents, les plugins et les automatisations peuvent dépendre du compte, de l’app et du déploiement en cours.
-- Une configuration demandant `gpt-5.6` ne donne pas accès au modèle si le compte ou le client Codex ne le propose pas.
+- pas de véritable appel IA ;
+- pas d’authentification ;
+- pas de base de données ni de persistance ;
+- pas de paiement ;
+- pas de collaboration réelle ;
+- les offres Free et Pro sont une direction envisagée, sans prix ni disponibilité annoncés ;
+- Work, GPT-5.6, Sol, Terra, Luna, les plugins et les automatisations dépendent du compte et du déploiement en cours ;
 - Work ne charge pas automatiquement `AGENTS.md` ni `.codex/config.toml`.
-- Un outil externe peut échouer, demander une connexion ou ne pas proposer l’action voulue.
-- « Poursuis jusqu’au bout » n’autorise jamais une action sensible qui n’a pas été explicitement approuvée.
-- Ne collez jamais de mot de passe, token, clé privée ou donnée inutilement sensible dans un brief.
 
 ## Licence
 

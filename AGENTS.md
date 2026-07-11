@@ -5,10 +5,11 @@
 ## Priorités
 
 1. Respecter le brief courant.
-2. Lire [`PROJECT.md`](PROJECT.md), [`WORKFLOW.md`](WORKFLOW.md) et [`QUALITY.md`](QUALITY.md) avant une modification structurante.
+2. Lire [`PROJECT.md`](PROJECT.md), [`WORKFLOW.md`](WORKFLOW.md), [`QUALITY.md`](QUALITY.md), [`STATUS.md`](STATUS.md), [`DECISIONS.md`](DECISIONS.md) et [`ARCHITECTURE.md`](ARCHITECTURE.md) avant une modification structurante.
 3. Utiliser [`DESIGN.md`](DESIGN.md) comme unique référence visuelle.
 4. Préserver tout changement utilisateur hors périmètre.
-5. Ne jamais annoncer une action sans preuve.
+5. Mettre à jour la mémoire officielle après toute décision ou modification importante.
+6. Ne jamais annoncer une action sans preuve.
 
 ## Organisation
 
@@ -45,13 +46,28 @@ git diff --check
 git status --short
 ```
 
-Pour cette documentation, contrôler aussi :
+Pour l’application, contrôler aussi :
+
+```sh
+npm ci
+npm run lint
+npm run typecheck
+npm test
+npm run test:e2e
+npm run build
+```
+
+Contrôler également :
 
 - la présence de tous les fichiers listés dans `PROJECT.md` ;
 - les liens Markdown relatifs ;
 - la validité TOML de `.codex/config.toml` et `.codex/agents/*.toml` ;
 - l’absence de contradictions selon `QUALITY.md` ;
 - le contenu relu depuis GitHub avant et après fusion lorsque GitHub est utilisé.
+- le responsive à 320 px, le clavier, les thèmes et `prefers-reduced-motion` ;
+- la preview et les logs accessibles lorsqu’un déploiement Vercel est dans le périmètre ;
+- l’absence de secret, de `.env` et de `.vercel/` dans le commit ;
+- la cohérence de `ROADMAP.md`, `STATUS.md`, `DECISIONS.md`, `ARCHITECTURE.md` et `CHANGELOG.md`.
 
 ## Rapport final
 

@@ -1,14 +1,21 @@
 # Cadre du projet
 
-## Objectif
+## Identités complémentaires
 
-Starter IA 5.6 aide une personne travaillant d’abord sur iPhone à choisir entre Chat, Work et Codex, écrire un brief exploitable, déléguer des analyses en lecture seule et obtenir un livrable vérifié avec peu de friction.
+**Starter IA 5.6** est la méthode et le dépôt open source. Il aide une personne travaillant d’abord sur iPhone à choisir entre Chat, Work et Codex, écrire un brief exploitable, déléguer des analyses en lecture seule et obtenir un livrable vérifié avec peu de friction.
+
+**AI Project Launcher** est le produit SaaS exemple construit dans ce dépôt. Sa promesse provisoire est :
+
+> Transformer une idée de produit en plan clair, technique et commercial prêt à exécuter avec une équipe IA.
+
+Les deux noms ne sont pas interchangeables : le premier désigne la méthode, le second l’application de démonstration.
 
 ## Public
 
+- Indépendants qui veulent cadrer un produit avant d’investir dans son développement.
+- Petites équipes qui doivent aligner produit, technique et acquisition.
 - Débutants qui veulent une méthode immédiatement copiable.
-- Indépendants et petites équipes qui utilisent ChatGPT pour produire des fichiers ou piloter des outils.
-- Développeurs qui veulent préparer une future utilisation de Codex sans alourdir leur dépôt.
+- Développeurs qui pilotent des agents et veulent des décisions vérifiables dans le dépôt.
 
 ## Principes stables
 
@@ -19,21 +26,34 @@ Starter IA 5.6 aide une personne travaillant d’abord sur iPhone à choisir ent
 - Terra est le choix par défaut pour la majorité du travail et les analyses parallèles.
 - Luna est recommandé pour les tâches simples, répétitives ou volumineuses.
 - Les sous-agents servent surtout à lire, analyser et contrôler.
-- Un seul agent est autorisé à modifier les fichiers ou GitHub.
+- Un seul agent est autorisé à modifier les fichiers, GitHub ou Vercel.
 - La correction est limitée à deux cycles complets.
 - Une réussite doit être vérifiée avant d’être annoncée.
 
-## Périmètre de la version 0.1
+## Historique v0.1
 
-- Un parcours iPhone de moins de dix minutes.
-- Une méthode de travail canonique.
-- Une checklist qualité à trois niveaux.
-- Trois prompts courts et un modèle de brief.
-- Une formation express d’environ trente minutes.
-- Une identité visuelle documentée en Markdown.
-- Une configuration prudente pour une future utilisation de Codex.
+La version 0.1 a livré le parcours iPhone, la méthode, la checklist qualité, trois prompts, un modèle de brief, une formation express, une identité visuelle et une configuration Codex prudente.
 
-## Fichiers obligatoires
+Les fichiers documentaires restent des ressources actives. La restriction historique « pas d’application ni de CI » est levée par la mission `work/01-foundation`, qui fait évoluer le dépôt vers un starter SaaS exécutable.
+
+## Périmètre de la phase 01 — Fondation publiable
+
+- Application Next.js moderne déployable sur Vercel.
+- Landing, fonctionnalités, tarifs, démonstration, dashboard, documentation et 404.
+- Démonstration locale sans IA réelle, compte, base de données ou paiement.
+- Thèmes clair et sombre, responsive 320 px, clavier et réduction des animations.
+- Vitest, Playwright, GitHub Actions et preview Vercel.
+- Mémoire durable et dossier marketing.
+
+## Hors périmètre de cette phase
+
+- Appeler un modèle IA ou promettre la qualité d’une analyse IA.
+- Authentifier un utilisateur ou conserver ses projets.
+- Traiter un paiement ou commercialiser Free/Pro.
+- Inventer clients, résultats, chiffres, avis ou preuves sociales.
+- Garantir la disponibilité de Work, GPT-5.6, Sol, Terra, Luna ou Codex sur tous les comptes.
+
+## Livrables durables obligatoires
 
 ```text
 README.md
@@ -43,32 +63,30 @@ WORKFLOW.md
 QUALITY.md
 AGENTS.md
 DESIGN.md
-LICENSE
-prompts/MASTER-WORK.md
-prompts/REVIEW.md
-prompts/AUTOMATION.md
-templates/BRIEF.md
-course/FORMATION-EXPRESS.md
-.codex/config.toml
-.codex/agents/explorer.toml
-.codex/agents/reviewer.toml
+ROADMAP.md
+STATUS.md
+DECISIONS.md
+ARCHITECTURE.md
+CHANGELOG.md
+marketing/POSITIONING.md
+marketing/PERSONAS.md
+marketing/MESSAGING.md
+marketing/SEO.md
 ```
 
-## Hors périmètre
-
-- Fournir un accès à un modèle, un abonnement, un plugin ou un outil.
-- Garantir la disponibilité de Work, GPT-5.6, Sol, Terra, Luna ou Codex sur tous les comptes.
-- Remplacer une validation humaine pour un paiement, une suppression, une publication externe ou une action irréversible.
-- Installer automatiquement la configuration Codex dans Work.
-- Construire un framework, une application ou une infrastructure CI dans cette version.
+Les ressources historiques `prompts/`, `templates/`, `course/` et `.codex/` sont conservées.
 
 ## Sources de vérité
 
+- État et prochaine mission : [`STATUS.md`](STATUS.md)
+- Phases : [`ROADMAP.md`](ROADMAP.md)
+- Décisions : [`DECISIONS.md`](DECISIONS.md)
+- Architecture : [`ARCHITECTURE.md`](ARCHITECTURE.md)
 - Processus : [`WORKFLOW.md`](WORKFLOW.md)
 - Critères de qualité : [`QUALITY.md`](QUALITY.md)
 - Identité visuelle : [`DESIGN.md`](DESIGN.md)
-- Consignes Codex futures : [`AGENTS.md`](AGENTS.md) et [`.codex/`](.codex/)
+- Consignes agents : [`AGENTS.md`](AGENTS.md) et [`.codex/`](.codex/)
 
 ## Définition de fini
 
-La version peut être livrée lorsque tous les fichiers obligatoires existent, que les liens internes et la configuration sont cohérents, qu’aucun problème bloquant ou important ne reste après au plus deux cycles, et que les actions externes annoncées ont été vérifiées sur leur système cible.
+Une phase peut être proposée en revue lorsque ses livrables existent, que les scripts applicables réussissent, que la cible réelle accessible a été contrôlée, que la mémoire reflète le résultat, qu’aucun secret n’est commité et qu’aucun problème bloquant ou important connu n’est masqué.
