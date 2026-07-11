@@ -5,7 +5,7 @@ Cette feuille de route en cinq phases est la séquence officielle du projet. Une
 ## Phase 1 — Fondation publiable
 
 **Branche :** `work/01-foundation`  
-**Statut :** prête pour revue ; CI complète configurée et déploiement Vercel de production pré-fusion vérifié
+**Statut :** terminée — fusionnée dans `main` par la PR nº 2 (`6819f79`)
 
 Objectif : transformer le dépôt documentaire en une application SaaS de démonstration moderne, accessible, testée et déployable.
 
@@ -22,13 +22,13 @@ Critère de sortie : tous les scripts et la CI complète réussissent, le build 
 ## Phase 2 — Cœur produit
 
 **Branche prévue :** `work/02-product-core`  
-**Statut :** prochaine mission
+**Statut :** en revue
 
 Objectif : remplacer le scénario unique par un parcours produit robuste et testable, toujours sans dépendre prématurément d’un fournisseur IA.
 
-Livrables envisagés : modèle de projet typé, étapes éditables, validation métier, export local, persistance locale provisoire et instrumentation minimale consentie ou explicitement absente.
+Livrables : modèle de projet typé et versionné, six sections éditables, dashboard local, export Markdown/JSON, persistance locale provisoire et résilience sans infrastructure supplémentaire.
 
-Critère de sortie : un utilisateur peut créer, reprendre, modifier et exporter un projet exemple sans incohérence ni perte silencieuse.
+Critère de sortie : un utilisateur peut créer, reprendre, modifier, exporter et supprimer un projet local sans incohérence ni perte silencieuse, et la preview/CI de la PR sont vertes.
 
 ## Phase 3 — Intelligence assistée
 

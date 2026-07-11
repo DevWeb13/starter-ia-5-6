@@ -94,4 +94,6 @@ Les sources shadcn utilisées sont Button, Card, Badge et Textarea. Les autres c
 
 ## Évolutions prévues
 
-La phase 2 ajoute un modèle de projet versionné et une persistance locale provisoire. Les phases suivantes isoleront génération IA, stockage distant, authentification et paiement derrière des frontières dédiées. Aucune de ces capacités n’est simulée comme disponible aujourd’hui.
+La phase 2 ajoute un modèle `Project` au schéma 1, `src/lib/local-project-store.ts` (lecture, validation, écriture, sauvegarde avant effacement) et trois îlots client : création, dashboard et éditeur. L’éditeur autosauvegarde, signale son état et détecte les changements d’un autre onglet. Les projets restent exclusivement dans `localStorage` ; ni compte, ni synchronisation, ni IA véritable n’est disponible.
+
+Les phases suivantes isoleront génération IA, stockage distant, authentification et paiement derrière des frontières dédiées. Aucune de ces capacités n’est simulée comme disponible aujourd’hui.

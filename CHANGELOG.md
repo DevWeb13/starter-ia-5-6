@@ -2,7 +2,22 @@
 
 Les changements notables de Starter IA 5.6 sont documentés ici.
 
-## Non publié — Fondation SaaS
+## Non publié — Cœur produit local
+
+### Ajouté
+
+- Modèle de projet TypeScript versionné avec les six sections, dates, exports Markdown et JSON.
+- Création depuis la démonstration, éditeur local à sauvegarde automatique et dashboard local.
+- Reprise, suppression confirmée, effacement global confirmé et gestion de conflit entre onglets.
+- Couche `localStorage` validée, testable, avec messages pour indisponibilité, quota et données incompatibles/corrompues.
+- Tests Vitest et Playwright du parcours local, de l’export, de la reprise et de la récupération.
+
+### Modifié
+
+- Le dashboard fictif devient l’espace local de projets ; la démonstration crée désormais un projet réel dans le navigateur.
+- Les limites de stockage local, d’absence de compte/synchronisation et d’IA réelle sont explicites.
+
+## Fondation SaaS — 2026-07-11
 
 ### Ajouté
 

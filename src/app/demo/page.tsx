@@ -5,7 +5,7 @@ import { PageIntro } from "@/components/page-intro";
 
 export const metadata: Metadata = {
   title: "Démonstration locale",
-  description: "Testez le parcours local d’AI Project Launcher sans compte, API ni sauvegarde.",
+  description: "Créez un projet local AI Project Launcher sans compte ni API.",
 };
 
 export default function DemoPage() {
@@ -14,8 +14,8 @@ export default function DemoPage() {
       <PageIntro
         eyebrow="Démonstration"
         badge="100 % locale"
-        title="Structurez une idée sans prétendre qu’une IA l’a analysée."
-        description="Saisissez une idée et observez les six sections du futur produit. Le scénario est déterministe, non sauvegardé et conçu uniquement pour tester l’expérience."
+        title="Créez un projet local sans prétendre qu’une IA l’a analysé."
+        description="Saisissez une idée : les six sections déterministes sont créées, puis restent éditables sur cet appareil."
       />
       <section className="page-shell pb-14 sm:pb-20" aria-label="Lanceur de démonstration">
         <h2 className="sr-only">Lanceur de démonstration</h2>

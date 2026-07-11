@@ -9,6 +9,7 @@ import {
   RotateCcw,
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -20,6 +21,9 @@ import {
   type DemoPlan,
   validateIdea,
 } from "@/lib/demo-plan";
+import { saveProject } from "@/lib/local-project-store";
+import { createProject } from "@/lib/project";
+import { LocalProjectNotice } from "./local-project-notice";
 
 type DemoState = "empty" | "error" | "loading" | "success";
 
@@ -36,6 +40,7 @@ const resultSections = [
 ] as const;
 
 export function DemoLauncher() {
+  const router = useRouter();
   const [idea, setIdea] = useState("");
   const [state, setState] = useState<DemoState>("empty");
   const [error, setError] = useState<string | null>(null);
@@ -68,8 +73,16 @@ export function DemoLauncher() {
     setPlan(null);
     setState("loading");
     timerRef.current = setTimeout(() => {
-      setPlan(buildDemoPlan(submittedIdea));
-      setState("success");
+      try {
+        const project = createProject(submittedIdea);
+        saveProject(project);
+        setPlan(buildDemoPlan(submittedIdea));
+        setState("success");
+        router.push(`/dashboard/${project.id}`);
+      } catch (cause) {
+        setError(cause instanceof Error ? cause.message : "Impossible d’enregistrer ce projet localement.");
+        setState("error");
+      }
       timerRef.current = null;
     }, 700);
   }
@@ -181,10 +194,8 @@ export function DemoLauncher() {
               Réinitialiser
             </Button>
           </div>
-          <p className="text-sm text-muted-foreground">
-            La sortie est un scénario prédéfini et déterministe. Elle ne constitue ni une analyse IA,
-            ni une validation de marché.
-          </p>
+          <LocalProjectNotice />
+          <p className="text-sm text-muted-foreground">Le plan est déterministe. Il ne constitue ni une analyse IA, ni une validation de marché.</p>
         </CardContent>
       </Card>
 
@@ -228,7 +239,7 @@ export function DemoLauncher() {
             <CardContent className="min-h-[24rem] p-5 sm:p-6">
               <div role="status" className="mb-6 flex items-center gap-3 font-semibold">
                 <CircleDashed aria-hidden="true" className="size-5 animate-spin text-primary motion-reduce:animate-none" />
-                Préparation des six sections locales…
+                Création et enregistrement local du projet…
               </div>
               <div aria-hidden="true" className="grid gap-4 sm:grid-cols-2">
                 {Array.from({ length: 6 }).map((_, index) => (
@@ -254,7 +265,7 @@ export function DemoLauncher() {
                     Plan de démonstration généré
                   </h3>
                   <p className="text-sm text-muted-foreground">
-                    Résultat local, non sauvegardé. Chaque élément est une hypothèse à valider.
+                    Projet local créé. Ouverture de l’éditeur…
                   </p>
                 </div>
               </div>

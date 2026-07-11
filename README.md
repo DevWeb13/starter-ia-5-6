@@ -13,12 +13,13 @@ La première fondation publiable contient :
 - une landing premium et mobile-first ;
 - les pages fonctionnalités, tarifs envisagés, démonstration, dashboard et documentation ;
 - une navigation accessible, un thème clair/sombre et une page 404 ;
-- une démonstration locale avec états vide, erreur, chargement et succès ;
+- une création locale puis un éditeur de projet avec sauvegarde automatique ;
+- un dashboard local pour reprendre, exporter et supprimer des projets ;
 - un résultat structuré en proposition de valeur, cible, MVP, plan technique, plan marketing et prochaines actions.
 
 L’interface utilise une palette sobre bleu ardoise, une typographie système et des cartes à forte hiérarchie. Aucun visuel, client, témoignage, résultat ou chiffre commercial n’est inventé.
 
-La démonstration n’appelle pas de véritable IA. Elle produit un scénario déterministe dans le navigateur, sans compte, base de données, paiement ni sauvegarde.
+La création n’appelle pas de véritable IA : elle produit un scénario déterministe dans le navigateur. Les projets sont stockés uniquement dans le `localStorage` de l’appareil courant — sans compte, synchronisation, base de données ni paiement. Le navigateur peut vider ou bloquer ce stockage : exportez vos projets importants.
 
 ## Démarrage local
 
@@ -58,7 +59,7 @@ Le dépôt suit les conventions Next.js détectées automatiquement par Vercel :
 
 Le déploiement public actuel est une **production créée avant fusion**, et non une preview : <https://starter-ia-5-6.vercel.app>. Son build distant, son accès, `/`, `/demo`, `/fonctionnalites`, la 404 et l’absence d’erreur d’exécution critique ont été vérifiés.
 
-Pour les branches suivantes, relier le projet Vercel à `DevWeb13/starter-ia-5-6` dans Vercel et activer l’intégration GitHub : chaque pull request produira alors une vraie preview automatique. Ne pas redéployer la production actuelle depuis cette PR de correction.
+Le projet est relié à `DevWeb13/starter-ia-5-6` dans Vercel : chaque pull request doit produire une vraie preview automatique. Ne pas redéployer la production actuelle depuis une branche de travail.
 
 L’état réel du dernier déploiement et ses éventuels blocages sont consignés dans [`STATUS.md`](STATUS.md).
 
@@ -67,9 +68,8 @@ L’état réel du dernier déploiement et ses éventuels blocages sont consign�
 - Next.js App Router et React Server Components par défaut ;
 - TypeScript strict et Tailwind CSS ;
 - composants shadcn/ui possédés par le dépôt ;
-- composants client limités au thème, à la navigation mobile et à la démonstration ;
-- données marketing et dashboard statiques, explicitement fictives ;
-- fonction pure pour la génération locale ;
+- composants client limités au thème, à la navigation mobile et au parcours produit local ;
+- modèle versionné, générateur déterministe et stockage navigateur isolé ;
 - Vitest, Playwright et GitHub Actions.
 
 Voir [`ARCHITECTURE.md`](ARCHITECTURE.md) pour la structure réelle et [`DECISIONS.md`](DECISIONS.md) pour les choix durables.
@@ -107,7 +107,7 @@ Commencer par [`START-HERE.md`](START-HERE.md), puis lire [`WORKFLOW.md`](WORKFL
 
 - pas de véritable appel IA ;
 - pas d’authentification ;
-- pas de base de données ni de persistance ;
+- pas de base de données, de persistance distante ni de synchronisation ;
 - pas de paiement ;
 - pas de collaboration réelle ;
 - les offres Free et Pro sont une direction envisagée, sans prix ni disponibilité annoncés ;

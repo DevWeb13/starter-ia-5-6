@@ -85,3 +85,15 @@ La PR GitHub nº 1, documentaire, est déjà fusionnée. Cette mission reste la 
 **Date :** 2026-07-11 — **Statut :** acceptée
 
 Next.js 16 bloque par défaut le canal HMR de `127.0.0.1` en développement. `allowedDevOrigins` autorise cette unique origine locale afin que Playwright puisse hydrater et tester les composants interactifs dans GitHub Actions. Ce réglage ne modifie pas les origines de production.
+
+## D-015 — Projet local versionné et stockage navigateur isolé
+
+**Date :** 2026-07-11 — **Statut :** acceptée
+
+La phase 2 introduit un type `Project` au schéma 1 et un unique conteneur versionné dans `localStorage`. La couche de stockage valide entièrement les données au chargement, ne modifie pas les données invalides, conserve une copie brute avant toute réinitialisation destructive et remonte les indisponibilités ou erreurs de quota à l’interface.
+
+## D-016 — Persistance locale explicitement limitée
+
+**Date :** 2026-07-11 — **Statut :** acceptée
+
+Les projets ne vivent que dans le navigateur et l’appareil courant. L’interface affiche cette limite près du dashboard et de l’éditeur : aucun compte, aucune synchronisation et aucune IA véritable. L’éditeur détecte un changement du stockage émis par un autre onglet et laisse choisir entre recharger la version enregistrée ou conserver son édition courante.
