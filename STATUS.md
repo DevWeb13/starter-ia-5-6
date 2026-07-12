@@ -3,7 +3,7 @@
 **Dernière mise à jour :** 12 juillet 2026
 **Étape :** 3 — Réalignement du starter
 **Branche :** `work/03-product-realignment`
-**Statut réel :** réalignement documentaire, corrections locales et cycle 1 de revue terminés et vérifiés sans bloquant ni important restant
+**Statut réel :** PR brouillon nº 4 ouverte ; les contradictions textuelles importantes trouvées par la revue indépendante GitHub sont corrigées localement et les contrôles réussissent
 
 ## Direction active
 
@@ -25,6 +25,9 @@ Le projet n’intègre aucun fournisseur IA, appel payant, secret, authentificat
 - détails Remote Control déplacés dans un guide dédié ;
 - corrections locales ciblées de `4885bbf` récupérées manuellement, sans cherry-pick ;
 - aucun fichier de la fondation abandonnée `src/server/ai` récupéré.
+- branche poussée sur `origin/work/03-product-realignment` ; SHA avant la présente correction : `2c71cafb6cceab738c884a3a39eae59208796777` ;
+- PR brouillon nº 4 vers `main` : <https://github.com/DevWeb13/starter-ia-5-6/pull/4> ;
+- correction en cours de `README.md`, `START-HERE.md` et des copies actives du site, sans modification fonctionnelle du cœur local.
 
 ## Contrôles de cette branche
 
@@ -37,12 +40,20 @@ Le projet n’intègre aucun fournisseur IA, appel payant, secret, authentificat
 | `npm run test:e2e` | réussi — 8 scénarios Chromium |
 | `git diff --check` | réussi après correction de revue |
 
-Aucun push, déploiement ou contrôle externe n’a été effectué.
+La branche et la PR existent sur GitHub. Aucun déploiement de production manuel n’a été effectué.
+
+## Vérifications distantes avant correction
+
+- CI GitHub Actions, run `29183674019` : réussie sur `2c71cafb6cceab738c884a3a39eae59208796777`.
+- Preview Vercel automatique `dpl_HARJRedjerefc4Vtf7qvbLRKYA2W` : état `READY`, statut GitHub Vercel `SUCCESS`.
+- Aucun déploiement de production manuel effectué.
 
 ## Blocages connus
 
-Aucun blocage connu. La revue indépendante a signalé deux importants : copies actives encore orientées SaaS/IA et mémoire indiquant une revue en attente. Le cycle 1 les a corrigés ; l’amélioration de copie dans la démonstration est reportée.
+Aucun blocage applicatif connu. La revue indépendante GitHub de la PR nº 4 a signalé des contradictions importantes entre la direction officielle, les portes d’entrée publiques et certaines copies du site ; cette correction ciblée les réaligne sans modifier les parcours techniques.
+
+Problème connu hors périmètre : le profil actuel `.codex/config.toml` utilise `approval_policy = "on-request"`, ce qui provoque des demandes répétitives en Remote Control. Un profil autonome sécurisé doit être conçu et testé séparément avant toute adoption ; `.codex/config.toml` n’est pas modifié dans cette mission.
 
 ## Prochaine mission proposée
 
-Après validation locale, relier les guides aux prompts et templates existants, puis cadrer séparément l’alignement de l’interface. Ne pas ajouter de fonctionnalité distante sans nouvelle décision explicite.
+Après validation humaine de la PR nº 4, concevoir et tester séparément un profil Remote Control autonome et sécurisé avant toute adoption. Ne pas modifier `.codex/config.toml` ni ajouter de fonctionnalité distante sans brief et décision explicites.

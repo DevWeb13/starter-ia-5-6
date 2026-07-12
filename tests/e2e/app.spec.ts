@@ -12,21 +12,21 @@ test("la landing charge avec sa promesse et ses limites", async ({ page }) => {
   await expect(
     page.getByRole("heading", {
       level: 1,
-      name: /De l’idée au plan que votre équipe IA peut exécuter/i,
+      name: /Choisissez le bon workflow pour Chat, Work et Codex/i,
     }),
   ).toBeVisible();
-  await expect(page.getByRole("link", { name: /Essayer la démo locale/i }).first()).toBeVisible();
-  await expect(page.getByText(/n’appelle aucune IA/i)).toBeVisible();
+  await expect(page.getByRole("link", { name: /Choisir une configuration/i }).first()).toBeVisible();
+  await expect(page.getByText(/n’intègre aucun fournisseur/i)).toBeVisible();
   expect(browserErrors).toEqual([]);
 });
 
 test("la navigation mène aux ressources open source honnêtes", async ({ page }) => {
   await page.goto("/");
-  await page.getByRole("link", { name: "Tarifs", exact: true }).first().click();
+  await page.getByRole("link", { name: "Ressources", exact: true }).first().click();
 
   await expect(page).toHaveURL(/\/tarifs$/);
   await expect(page.getByRole("heading", { level: 1 })).toContainText(
-    "sans abonnement ni faux checkout",
+    "sans offre commerciale",
   );
   await expect(page.getByRole("heading", { name: "Starter", exact: true })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Démonstration locale", exact: true })).toBeVisible();
@@ -160,7 +160,7 @@ test("l’affichage essentiel reste utilisable à 320 px", async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 640 });
   await page.goto("/");
 
-  const primaryCta = page.getByRole("link", { name: "Essayer la démo locale" }).first();
+  const primaryCta = page.getByRole("link", { name: "Choisir une configuration" }).first();
   await expect(primaryCta).toBeVisible();
   expect((await primaryCta.boundingBox())?.height).toBeGreaterThanOrEqual(44);
 
@@ -173,7 +173,7 @@ test("l’affichage essentiel reste utilisable à 320 px", async ({ page }) => {
   await expect(menu).toHaveAttribute("aria-expanded", "false");
   await expect(menu).toBeFocused();
   await menu.click();
-  await page.getByRole("navigation", { name: "Navigation mobile" }).getByRole("link", { name: "Tarifs" }).click();
+  await page.getByRole("navigation", { name: "Navigation mobile" }).getByRole("link", { name: "Ressources" }).click();
   await expect(page).toHaveURL(/\/tarifs$/);
 
   const dimensions = await page.evaluate(() => ({

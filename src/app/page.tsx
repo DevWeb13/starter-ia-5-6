@@ -52,7 +52,7 @@ const faqs = [
   {
     question: "Mon idée est-elle enregistrée ?",
     answer:
-      "Non dans cette première version : le résultat vit uniquement dans l’état de la page et disparaît au rechargement. Aucun compte ni base de données n’est configuré.",
+      "Oui, uniquement dans le localStorage de cet appareil afin de reprendre et exporter le projet. Aucun compte, serveur distant ni synchronisation n’est configuré.",
   },
   {
     question: "Starter IA propose-t-il une offre payante ?",
@@ -79,16 +79,16 @@ export default function HomePage() {
             </Badge>
             <div className="space-y-5">
               <h1 className="display-title text-balance">
-                De l’idée au plan que votre équipe IA peut exécuter.
+                Choisissez le bon workflow pour Chat, Work et Codex.
               </h1>
               <p className="max-w-2xl text-lg text-muted-foreground sm:text-xl">
-                AI Project Launcher aide les indépendants et petites équipes à clarifier une idée de
-                produit, cadrer le MVP et ordonner les décisions techniques et commerciales.
+                Starter IA réunit cinq configurations concrètes, des guides et des templates pour
+                réfléchir, exécuter une mission cloud ou modifier un dépôt avec des preuves.
               </p>
             </div>
             <div className="grid gap-3 sm:flex sm:flex-wrap">
-              <Link href="/demo" className={buttonVariants({ size: "lg", className: "w-full sm:w-auto" })}>
-                Essayer la démo locale
+              <Link href="/docs" className={buttonVariants({ size: "lg", className: "w-full sm:w-auto" })}>
+                Choisir une configuration
                 <ArrowRight aria-hidden="true" className="size-5" />
               </Link>
               <a
@@ -100,7 +100,7 @@ export default function HomePage() {
             </div>
             <p className="flex max-w-xl gap-2 text-sm text-muted-foreground">
               <ShieldCheck aria-hidden="true" className="mt-0.5 size-5 shrink-0 text-success" />
-              Cette version n’appelle aucune IA, ne crée aucun compte et ne demande aucun paiement.
+              Le starter n’intègre aucun fournisseur, compte ou paiement. La création de projet reste une démonstration locale historique.
             </p>
           </div>
 
@@ -135,8 +135,8 @@ export default function HomePage() {
       <section className="py-14 sm:py-20" aria-labelledby="benefices-title">
         <div className="page-shell space-y-9">
           <div className="max-w-2xl space-y-3">
-            <p className="eyebrow">Ce que vous obtenez</p>
-            <h2 id="benefices-title" className="section-title text-balance">Un cadrage assez clair pour agir, assez honnête pour évoluer.</h2>
+            <p className="eyebrow">Démonstration historique</p>
+            <h2 id="benefices-title" className="section-title text-balance">Un exemple local conservé pour tester le parcours.</h2>
           </div>
           <div className="grid gap-4 md:grid-cols-3">
             {benefits.map(({ icon: Icon, title, text }) => (

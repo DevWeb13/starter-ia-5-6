@@ -11,6 +11,10 @@ Les changements notables de Starter IA 5.6 sont documentés ici.
 - La mémoire officielle abandonne les phases prévues de fournisseur IA, comptes et monétisation.
 - L’application Next.js et le cœur local sont requalifiés comme support démonstratif historique maintenu.
 - Les pages actives ne promettent plus de fournisseur, de SaaS, de compte ou d’offre Pro future.
+- `README.md` devient la porte d’entrée publique de Starter IA et dirige d’abord vers les cinq configurations.
+- `START-HERE.md` est désormais présenté comme le parcours Work sur iPhone, sans bloquer les autres configurations si Work est absent.
+- Les métadonnées, la navigation, le pied de page et les pages publiques utilisent Starter IA comme identité active ; `/tarifs` conserve sa route sous le libellé « Ressources ».
+- `/docs` reflète la persistance `localStorage`, la phase 2 fusionnée et les limites réelles.
 
 ### Ajouté
 
@@ -20,7 +24,7 @@ Les changements notables de Starter IA 5.6 sont documentés ici.
 
 ### Non inclus
 
-- Aucun fichier `src/server/ai`, fournisseur, SDK, appel payant, secret, authentification, paiement, push ou déploiement.
+- Aucun fichier `src/server/ai`, fournisseur, SDK, appel payant, secret, authentification, paiement ou déploiement manuel.
 
 ## Cœur produit local — 2026-07-11
 

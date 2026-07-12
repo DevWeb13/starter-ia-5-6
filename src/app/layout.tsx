@@ -9,15 +9,15 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://starter-ia-5-6.vercel.app"),
   title: {
-    default: "AI Project Launcher — De l’idée au plan d’exécution",
-    template: "%s — AI Project Launcher",
+    default: "Starter IA 5.6 — Workflows, configurations et templates",
+    template: "%s — Starter IA 5.6",
   },
   description:
-    "Transformez une idée de produit en plan clair, technique et commercial prêt à exécuter avec une équipe IA.",
+    "Choisissez une configuration concrète pour utiliser Chat, Work, Codex local, Codex Remote ou Work + Codex.",
   openGraph: {
-    title: "AI Project Launcher",
+    title: "Starter IA 5.6",
     description:
-      "Une démonstration locale pour structurer une idée en plan produit, technique et commercial.",
+      "Un starter open source de workflows, configurations, guides et templates concrets.",
     type: "website",
     locale: "fr_FR",
   },

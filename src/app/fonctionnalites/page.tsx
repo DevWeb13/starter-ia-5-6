@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Check, Cloud, FileText, Gauge, Laptop, Layers3, MessageSquareText, Smartphone } from "lucide-react";
+import { Check, Cloud, FileText, Gauge, GitMerge, Laptop, Layers3, MessageSquareText, Smartphone } from "lucide-react";
 import Link from "next/link";
 
 import { PageIntro } from "@/components/page-intro";
@@ -22,7 +22,8 @@ const configurations = [
   { icon: MessageSquareText, title: "Chat", text: "Réfléchir, décider et produire des brouillons courts." },
   { icon: Cloud, title: "Work", text: "Exécuter une mission complète dans un environnement cloud." },
   { icon: Laptop, title: "Codex local", text: "Modifier et vérifier un dépôt depuis VS Code." },
-  { icon: Smartphone, title: "Codex Remote et hybride", text: "Piloter la machine depuis iPhone ou organiser le relais Work + Codex." },
+  { icon: Smartphone, title: "Codex Remote", text: "Piloter depuis iPhone une session qui continue sur la machine locale." },
+  { icon: GitMerge, title: "Work + Codex", text: "Préparer dans le cloud, puis implémenter et vérifier dans le dépôt." },
 ];
 
 export default function FeaturesPage() {
@@ -30,15 +31,15 @@ export default function FeaturesPage() {
     <>
       <PageIntro
         eyebrow="Fonctionnalités"
-        badge="Fondation publique"
-        title="Voir clairement ce qui fonctionne déjà et ce qui reste à construire."
-        description="Cette première PR privilégie un parcours complet et honnête. Elle ne maquille pas une démonstration locale en produit IA terminé."
+        badge="Starter open source"
+        title="Cinq configurations, un workflow commun et des limites explicites."
+        description="Starter IA est le produit actif. L’application de création de projet reste un exemple local historique."
       />
 
       <section className="page-shell pb-14 sm:pb-20" aria-labelledby="available-title">
         <div className="mb-7 max-w-2xl space-y-3">
           <p className="eyebrow">Disponible maintenant</p>
-          <h2 id="available-title" className="section-title">Une fondation testable de bout en bout.</h2>
+          <h2 id="available-title" className="section-title">Une démonstration locale testable de bout en bout.</h2>
         </div>
         <div className="grid gap-4 md:grid-cols-3">
           {available.map(({ icon: Icon, title, text }) => (

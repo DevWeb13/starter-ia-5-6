@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Check, Code2, FlaskConical, GitPullRequest, Terminal } from "lucide-react";
+import { Check, Code2, FlaskConical, GitPullRequest, Layers3, Terminal } from "lucide-react";
 import Link from "next/link";
 
 import { PageIntro } from "@/components/page-intro";
@@ -8,7 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export const metadata: Metadata = {
   title: "Démarrage et documentation",
-  description: "Installer, tester et comprendre la fondation AI Project Launcher.",
+  description: "Choisir une configuration Starter IA et comprendre la démonstration locale historique.",
 };
 
 export default function DocsPage() {
@@ -16,9 +16,9 @@ export default function DocsPage() {
     <>
       <PageIntro
         eyebrow="Documentation"
-        badge="Première fondation"
-        title="Lancer le produit, comprendre ses limites, préparer la suite."
-        description="AI Project Launcher est le produit exemple. Starter IA 5.6 reste la méthode open source qui encadre le travail, les agents et la qualité."
+        badge="Starter open source"
+        title="Choisir une configuration et comprendre les ressources disponibles."
+        description="Starter IA 5.6 est le produit actif. L’application Next.js reste une démonstration locale historique issue des phases 1 et 2."
       />
 
       <div className="reading-shell space-y-12 pb-14 sm:pb-20">
@@ -31,14 +31,19 @@ export default function DocsPage() {
         <section aria-labelledby="current-flow" className="space-y-5">
           <div className="space-y-2"><p className="eyebrow"><FlaskConical aria-hidden="true" className="size-4" /> Parcours actuel</p><h2 id="current-flow" className="section-title">Ce qui se passe réellement.</h2></div>
           <ol className="space-y-3">
-            {["L’utilisateur saisit une idée dans le navigateur.", "Une fonction TypeScript pure valide et normalise le texte.", "Après un court état de chargement simulé, six sections prédéfinies s’affichent.", "Le résultat reste en mémoire et disparaît au rechargement."].map((item, index) => <li key={item} className="flex gap-3 rounded-xl border border-border bg-card p-4"><span className="font-mono text-sm font-bold text-primary">0{index + 1}</span><span>{item}</span></li>)}
+            {["L’utilisateur saisit une idée dans le navigateur.", "Une fonction TypeScript pure valide et normalise le texte.", "Six sections déterministes sont créées sans appel externe.", "Le projet est enregistré dans le localStorage de cet appareil et peut être repris, exporté ou supprimé."].map((item, index) => <li key={item} className="flex gap-3 rounded-xl border border-border bg-card p-4"><span className="font-mono text-sm font-bold text-primary">0{index + 1}</span><span>{item}</span></li>)}
           </ol>
         </section>
 
         <section aria-labelledby="architecture" className="space-y-5">
           <div className="space-y-2"><p className="eyebrow"><Code2 aria-hidden="true" className="size-4" /> Architecture</p><h2 id="architecture" className="section-title">Des composants serveur par défaut.</h2></div>
-          <p className="text-muted-foreground">Les pages et le contenu marketing sont rendus côté serveur. Seuls le thème, le menu mobile et le lanceur de démonstration utilisent des composants client. Il n’existe ni route API, ni base de données, ni SDK IA.</p>
-          <Link href="https://github.com/DevWeb13/starter-ia-5-6/blob/work/01-foundation/ARCHITECTURE.md" className={buttonVariants({ variant: "secondary" })}>Lire l’architecture du dépôt</Link>
+          <p className="text-muted-foreground">Les pages restent des composants serveur par défaut. Le thème, le menu, la démonstration, le dashboard et l’éditeur portent les interactions navigateur. Il n’existe ni route API, ni base distante, ni SDK fournisseur.</p>
+          <Link href="https://github.com/DevWeb13/starter-ia-5-6/blob/work/03-product-realignment/ARCHITECTURE.md" className={buttonVariants({ variant: "secondary" })}>Lire l’architecture du dépôt</Link>
+        </section>
+
+        <section aria-labelledby="configurations" className="space-y-5">
+          <div className="space-y-2"><p className="eyebrow"><Layers3 aria-hidden="true" className="size-4" /> Configurations</p><h2 id="configurations" className="section-title">Cinq points de départ complémentaires.</h2></div>
+          <Card><CardContent className="p-5"><ul className="space-y-3 text-muted-foreground">{["Chat pour réfléchir, décider et produire un brouillon court.", "Work pour une mission complète dans le cloud.", "Codex local avec VS Code pour modifier et vérifier un dépôt.", "Codex Remote depuis iPhone pour piloter une session restée sur la machine locale.", "Work + Codex pour séparer préparation cloud et implémentation dans le dépôt."].map((item) => <li key={item} className="flex gap-2"><Check aria-hidden="true" className="mt-1 size-4 shrink-0 text-success" />{item}</li>)}</ul></CardContent></Card>
         </section>
 
         <section aria-labelledby="work" className="space-y-5">
@@ -47,8 +52,8 @@ export default function DocsPage() {
         </section>
 
         <section aria-labelledby="limits" className="space-y-5">
-          <div className="space-y-2"><p className="eyebrow">Limites actuelles</p><h2 id="limits" className="section-title">Pas d’IA, pas de compte, pas de persistance, pas de paiement.</h2></div>
-          <p className="text-muted-foreground">La fondation valide l’interface, le responsive, le discours et la chaîne qualité. La prochaine mission <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-sm">work/02-product-core</code> préparera le cœur produit sans masquer les prérequis encore absents.</p>
+          <div className="space-y-2"><p className="eyebrow">Limites actuelles</p><h2 id="limits" className="section-title">Local, sans fournisseur, compte distant ni paiement.</h2></div>
+          <p className="text-muted-foreground">La phase 2 est fusionnée : les projets sont persistés uniquement dans le localStorage de l’appareil courant. Le dépôt n’intègre aucun fournisseur IA, API payante, secret, authentification, synchronisation distante ou paiement. La disponibilité de Work, Codex Remote, modèles et plugins dépend du compte et de l’environnement.</p>
         </section>
       </div>
     </>

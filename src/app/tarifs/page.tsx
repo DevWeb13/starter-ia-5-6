@@ -29,9 +29,9 @@ export default function PricingPage() {
   return (
     <>
       <PageIntro
-        eyebrow="Tarifs"
+        eyebrow="Ressources"
         badge="Aucune offre payante"
-        title="Des ressources open source, sans abonnement ni faux checkout."
+        title="Des guides et templates open source, sans offre commerciale."
         description="Starter IA n’intègre actuellement ni paiement, ni compte, ni fournisseur IA."
       />
 
