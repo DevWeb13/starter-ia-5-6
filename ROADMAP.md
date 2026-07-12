@@ -38,11 +38,13 @@ La configuration Codex sécurisée a ensuite été livrée via la PR GitHub nº 
 ### Étape 4 — Catalogue et templates
 
 **Branche :** `work/04-catalog-templates`
-**Statut :** en cours.
+**Statut :** terminée le 12 juillet 2026.
 
 Objectif : relier les cinq guides aux prompts, briefs, checklists, formation et configuration réellement disponibles, sans inventer de fonction applicative.
 
 Critère de sortie : chaque configuration possède un chemin de démarrage court, des ressources réutilisables, des limites vérifiables et un passage de relais clair.
+
+La livraison est suivie par la PR GitHub nº 6.
 
 ### Étape 5 — Interface alignée sur les ressources
 

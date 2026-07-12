@@ -3,7 +3,7 @@
 **Dernière mise à jour :** 12 juillet 2026
 **Étape :** 4 — Catalogue et templates
 **Branche :** `work/04-catalog-templates`
-**Statut réel :** catalogue et guides en cours d’alignement sur les ressources disponibles
+**Statut réel :** étape 4 terminée et vérifiée
 
 ## Direction active
 
@@ -29,12 +29,12 @@ Le commit de `main` au début de l’étape 4 est `5f8149da0116b96444efdc2a1428b
 
 La configuration enregistrée reste dans [`.codex/config.toml`](.codex/config.toml). Work ne charge pas automatiquement ce fichier ni `AGENTS.md`.
 
-## Travail actuel
+## Résultat de l’étape 4
 
-- transformer le sélecteur des cinq configurations en catalogue de ressources ;
-- donner à chaque guide un démarrage en trois étapes maximum, des ressources, des limites et un passage de relais ;
-- vérifier l’absence de restes commités issus des essais de permissions ;
-- préserver `WORKFLOW.md` comme source unique du processus.
+- le sélecteur des cinq configurations a été transformé en catalogue de ressources ;
+- chaque guide a reçu un démarrage en trois étapes maximum, des ressources, des limites et un passage de relais ;
+- l’absence de restes commités issus des essais de permissions a été vérifiée ;
+- `WORKFLOW.md` a été préservé comme source unique du processus.
 
 ## Blocages connus
 
@@ -42,4 +42,4 @@ Aucun blocage applicatif connu. Aucune ancienne pull request n’est en attente.
 
 ## Prochaine étape
 
-Terminer et faire revoir l’étape 4, puis cadrer l’étape 5 avant toute modification de l’interface historique.
+Cadrer l’étape 5 avant toute modification de l’interface historique.
