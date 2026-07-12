@@ -12,8 +12,14 @@ export class InvalidLocalProjectDataError extends Error {}
 function isProject(value: unknown): value is Project {
   if (!value || typeof value !== "object") return false;
   const project = value as Record<string, unknown>;
+  const isIsoDate = (candidate: unknown) =>
+    typeof candidate === "string" &&
+    !Number.isNaN(Date.parse(candidate)) &&
+    new Date(candidate).toISOString() === candidate;
   return project.schemaVersion === PROJECT_SCHEMA_VERSION &&
-    ["id", "title", "originalIdea", "valueProposition", "target", "createdAt", "updatedAt"].every((key) => typeof project[key] === "string") &&
+    typeof project.id === "string" && project.id.length > 0 &&
+    ["title", "originalIdea", "valueProposition", "target"].every((key) => typeof project[key] === "string") &&
+    isIsoDate(project.createdAt) && isIsoDate(project.updatedAt) &&
     ["mvp", "technicalPlan", "marketingPlan", "nextActions"].every((key) => Array.isArray(project[key]) && project[key].every((item) => typeof item === "string"));
 }
 
@@ -40,7 +46,8 @@ export function readProjects(storage?: StorageLike): Project[] {
     if (!parsed || typeof parsed !== "object") throw new Error();
     const envelope = parsed as Partial<Envelope>;
     if (envelope.schemaVersion !== PROJECT_SCHEMA_VERSION || !Array.isArray(envelope.projects) || !envelope.projects.every(isProject)) throw new Error();
-    return envelope.projects.sort((a, b) => b.updatedAt.localeCompare(a.updatedAt));
+    if (new Set(envelope.projects.map((project) => project.id)).size !== envelope.projects.length) throw new Error();
+    return [...envelope.projects].sort((a, b) => b.updatedAt.localeCompare(a.updatedAt));
   } catch {
     throw new InvalidLocalProjectDataError("Les données locales sont incompatibles ou corrompues. Elles n’ont pas été modifiées.");
   }

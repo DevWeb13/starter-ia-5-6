@@ -20,17 +20,17 @@ test("la landing charge avec sa promesse et ses limites", async ({ page }) => {
   expect(browserErrors).toEqual([]);
 });
 
-test("la navigation mène à l’offre future honnête", async ({ page }) => {
+test("la navigation mène aux ressources open source honnêtes", async ({ page }) => {
   await page.goto("/");
   await page.getByRole("link", { name: "Tarifs", exact: true }).first().click();
 
   await expect(page).toHaveURL(/\/tarifs$/);
   await expect(page.getByRole("heading", { level: 1 })).toContainText(
-    "sans faux prix ni faux checkout",
+    "sans abonnement ni faux checkout",
   );
-  await expect(page.getByRole("heading", { name: "Free", exact: true })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "Pro", exact: true })).toBeVisible();
-  await expect(page.getByText("Prix à confirmer").first()).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Starter", exact: true })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Démonstration locale", exact: true })).toBeVisible();
+  await expect(page.getByText("Open source").first()).toBeVisible();
 });
 
 test("un projet est créé, modifié, rechargé, exporté et supprimé", async ({ page }) => {
@@ -92,7 +92,23 @@ test("un projet est créé, modifié, rechargé, exporté et supprimé", async (
 });
 
 test("les données locales invalides expliquent la récupération", async ({ page }) => {
-  await page.addInitScript(() => localStorage.setItem("ai-project-launcher.projects.v1", "invalide"));
+  await page.addInitScript(() => localStorage.setItem("ai-project-launcher.projects.v1", JSON.stringify({
+    schemaVersion: 1,
+    projects: [{
+      id: "invalid-date",
+      schemaVersion: 1,
+      title: "Projet corrompu",
+      originalIdea: "Idée",
+      valueProposition: "Valeur",
+      target: "Cible",
+      mvp: [],
+      technicalPlan: [],
+      marketingPlan: [],
+      nextActions: [],
+      createdAt: "2026-07-11T00:00:00.000Z",
+      updatedAt: "date-invalide",
+    }],
+  })));
   await page.goto("/dashboard");
   await expect(page.getByText("Données locales indisponibles", { exact: true })).toBeVisible();
   await expect(
@@ -102,6 +118,42 @@ test("les données locales invalides expliquent la récupération", async ({ pag
     ),
   ).toBeVisible();
   await expect(page.getByRole("button", { name: "Réinitialiser les données locales" })).toBeVisible();
+});
+
+test("l’éditeur arbitre un conflit entre deux onglets sans écrasement silencieux", async ({ page, context }) => {
+  const id = "project-conflict";
+  await page.goto("/");
+  await page.evaluate(({ projectId }) => localStorage.setItem("ai-project-launcher.projects.v1", JSON.stringify({
+    schemaVersion: 1,
+    projects: [{
+      id: projectId,
+      schemaVersion: 1,
+      title: "Version locale B",
+      originalIdea: "Une idée suffisamment détaillée pour le test",
+      valueProposition: "Valeur",
+      target: "Cible",
+      mvp: ["MVP"],
+      technicalPlan: ["Technique"],
+      marketingPlan: ["Marketing"],
+      nextActions: ["Action"],
+      createdAt: "2026-07-11T00:00:00.000Z",
+      updatedAt: "2026-07-11T00:00:00.000Z",
+    }],
+  })), { projectId: id });
+
+  const otherPage = await context.newPage();
+  await Promise.all([page.goto(`/dashboard/${id}`), otherPage.goto(`/dashboard/${id}`)]);
+  await expect(page.getByLabel("Titre")).toHaveValue("Version locale B");
+  await expect(otherPage.getByLabel("Titre")).toHaveValue("Version locale B");
+
+  await page.getByLabel("Titre").fill("Version enregistrée A");
+  const conflictAlert = otherPage.getByRole("alert").filter({ hasText: "Modification détectée" });
+  await expect(conflictAlert).toContainText("Modification détectée");
+  await expect(otherPage.getByLabel("Titre")).toBeDisabled();
+  await expect(conflictAlert).toBeFocused();
+  await otherPage.getByRole("button", { name: "Conserver et enregistrer mon édition" }).click();
+  await otherPage.reload();
+  await expect(otherPage.getByLabel("Titre")).toHaveValue("Version locale B");
 });
 
 test("l’affichage essentiel reste utilisable à 320 px", async ({ page }) => {

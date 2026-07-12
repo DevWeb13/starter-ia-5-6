@@ -3,7 +3,7 @@
 **Dernière mise à jour :** 12 juillet 2026
 **Étape :** 3 — Réalignement du starter
 **Branche :** `work/03-product-realignment`
-**Statut réel :** branche créée depuis `main` au commit `1026f756155a08958ce9ef7322d467b31c30612b` ; réalignement documentaire et récupération ciblée des correctifs locaux en cours
+**Statut réel :** réalignement documentaire, corrections locales et cycle 1 de revue terminés et vérifiés sans bloquant ni important restant
 
 ## Direction active
 
@@ -28,11 +28,20 @@ Le projet n’intègre aucun fournisseur IA, appel payant, secret, authentificat
 
 ## Contrôles de cette branche
 
-Les résultats de lint, TypeScript, Vitest, build, Playwright et `git diff --check` seront consignés ici après leur exécution. Aucun push, déploiement ou contrôle externe n’est prévu dans cette mission.
+| Contrôle | Résultat |
+|---|---|
+| `npm run lint` | réussi |
+| `npm run typecheck` | réussi |
+| `npm test` | réussi — 2 fichiers, 8 tests |
+| `npm run build` | réussi — 10 routes ; relancé hors sandbox après une interdiction locale de liaison de port par Turbopack |
+| `npm run test:e2e` | réussi — 8 scénarios Chromium |
+| `git diff --check` | réussi après correction de revue |
+
+Aucun push, déploiement ou contrôle externe n’a été effectué.
 
 ## Blocages connus
 
-Aucun blocage documentaire connu avant vérification. Les contrôles applicatifs et la revue finale restent à effectuer.
+Aucun blocage connu. La revue indépendante a signalé deux importants : copies actives encore orientées SaaS/IA et mémoire indiquant une revue en attente. Le cycle 1 les a corrigés ; l’amélioration de copie dans la démonstration est reportée.
 
 ## Prochaine mission proposée
 

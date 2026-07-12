@@ -10,6 +10,7 @@ Les changements notables de Starter IA 5.6 sont documentés ici.
 - `AGENTS.md` applique `WORKFLOW.md` et conserve uniquement les règles permanentes du dépôt.
 - La mémoire officielle abandonne les phases prévues de fournisseur IA, comptes et monétisation.
 - L’application Next.js et le cœur local sont requalifiés comme support démonstratif historique maintenu.
+- Les pages actives ne promettent plus de fournisseur, de SaaS, de compte ou d’offre Pro future.
 
 ### Ajouté
 
