@@ -21,4 +21,16 @@ describe("local project store", () => {
     const storage = { getItem: () => { throw new Error("blocked"); }, setItem: () => { throw new Error("blocked"); }, removeItem: () => undefined };
     expect(() => readProjects(storage)).toThrow(LocalStorageUnavailableError);
   });
+  it("rejects semantically invalid dates and duplicate identifiers", () => {
+    const project = createProject("Un outil qui simplifie les devis des artisans", "id", "2026-07-11T00:00:00.000Z");
+    const invalidDate = memoryStorage({
+      [PROJECT_STORAGE_KEY]: JSON.stringify({ schemaVersion: 1, projects: [{ ...project, updatedAt: "not-a-date" }] }),
+    });
+    const duplicateId = memoryStorage({
+      [PROJECT_STORAGE_KEY]: JSON.stringify({ schemaVersion: 1, projects: [project, { ...project, title: "Copie" }] }),
+    });
+
+    expect(() => readProjects(invalidDate)).toThrow(InvalidLocalProjectDataError);
+    expect(() => readProjects(duplicateId)).toThrow(InvalidLocalProjectDataError);
+  });
 });

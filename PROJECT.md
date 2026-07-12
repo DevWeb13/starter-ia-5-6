@@ -1,59 +1,62 @@
 # Cadre du projet
 
-## Identités complémentaires
+## Identité
 
-**Starter IA 5.6** est la méthode et le dépôt open source. Il aide une personne travaillant d’abord sur iPhone à choisir entre Chat, Work et Codex, écrire un brief exploitable, déléguer des analyses en lecture seule et obtenir un livrable vérifié avec peu de friction.
+**Starter IA 5.6** est un starter open source de workflows, configurations, guides et templates concrets pour utiliser ChatGPT, Work, Codex et les agents avec un résultat vérifiable.
 
-**AI Project Launcher** est le produit SaaS exemple construit dans ce dépôt. Sa promesse provisoire est :
-
-> Transformer une idée de produit en plan clair, technique et commercial prêt à exécuter avec une équipe IA.
-
-Les deux noms ne sont pas interchangeables : le premier désigne la méthode, le second l’application de démonstration.
+Le dépôt conserve une application Next.js locale héritée des phases 1 et 2. Elle sert de support démonstratif et de base testée, mais ne définit plus le produit comme un SaaS de génération IA.
 
 ## Public
 
-- Indépendants qui veulent cadrer un produit avant d’investir dans son développement.
-- Petites équipes qui doivent aligner produit, technique et acquisition.
-- Débutants qui veulent une méthode immédiatement copiable.
-- Développeurs qui pilotent des agents et veulent des décisions vérifiables dans le dépôt.
+- personnes qui veulent choisir le bon environnement avant de commencer une mission ;
+- débutants qui cherchent des procédures copiables et leurs limites ;
+- développeurs qui utilisent Codex localement ou à distance ;
+- équipes qui séparent réflexion, exécution cloud et modification du dépôt.
+
+## Les cinq configurations
+
+1. **Chat** pour réfléchir, décider et produire des brouillons courts.
+2. **Work** pour exécuter des missions complètes dans un environnement cloud.
+3. **Codex local avec VS Code** pour inspecter, modifier et vérifier un dépôt sur la machine de développement.
+4. **Codex Remote depuis iPhone** pour piloter une session qui continue de s’exécuter sur la machine locale.
+5. **Work + Codex** pour préparer ou analyser dans Work, puis implémenter et vérifier dans le dépôt avec Codex.
+
+Le point d’entrée commun est [`guides/configurations/README.md`](guides/configurations/README.md). Ubuntu + iPhone + Codex Remote Control est une configuration parmi les autres.
 
 ## Principes stables
 
-- Chat sert aux questions, décisions rapides et brouillons courts.
-- Work sert aux missions complètes avec plusieurs étapes, fichiers, plugins et outils.
-- Codex est spécialisé dans le développement. Il n’est pas un environnement Codex local autonome sur iPhone ; un éventuel pilotage distant dépend du compte et de l’environnement connecté.
-- Sol est recommandé pour l’orchestration complexe.
-- Terra est le choix par défaut pour la majorité du travail et les analyses parallèles.
-- Luna est recommandé pour les tâches simples, répétitives ou volumineuses.
-- Les sous-agents servent surtout à lire, analyser et contrôler.
-- Un seul agent est autorisé à modifier les fichiers, GitHub ou Vercel.
-- La correction est limitée à deux cycles complets.
-- Une réussite doit être vérifiée avant d’être annoncée.
+- choisir l’environnement selon la mission et expliciter les passages de relais ;
+- écrire un brief vérifiable avant une mission complète ;
+- réserver les sous-agents à la lecture, l’analyse et la revue ;
+- conserver un seul écrivain ;
+- limiter la correction à deux cycles complets ;
+- vérifier avant d’annoncer une réussite ;
+- signaler les fonctions dépendantes du compte, du client ou d’un déploiement progressif.
 
-## Historique v0.1
+## Périmètre actuel
 
-La version 0.1 a livré le parcours iPhone, la méthode, la checklist qualité, trois prompts, un modèle de brief, une formation express, une identité visuelle et une configuration Codex prudente.
+- documentation cohérente des cinq configurations ;
+- workflow de référence, critères qualité, prompts, briefs et ressources de formation ;
+- application Next.js et cœur local déjà livrés, maintenus sans infrastructure distante ;
+- exemples déterministes clairement présentés comme locaux.
 
-Les fichiers documentaires restent des ressources actives. La restriction historique « pas d’application ni de CI » est levée par la mission `work/01-foundation`, qui fait évoluer le dépôt vers un starter SaaS exécutable.
+## Hors périmètre
 
-## Périmètre de la phase 01 — Fondation publiable
+- fournisseur ou SDK IA intégré ;
+- API payante ou appel externe de génération ;
+- clé secrète ou variable fournisseur ;
+- authentification, comptes ou synchronisation distante ;
+- paiement, abonnement ou architecture de SaaS de génération IA.
 
-- Application Next.js moderne déployable sur Vercel.
-- Landing, fonctionnalités, tarifs, démonstration, dashboard, documentation et 404.
-- Démonstration locale sans IA réelle, compte, base de données ou paiement.
-- Thèmes clair et sombre, responsive 320 px, clavier et réduction des animations.
-- Vitest, Playwright, GitHub Actions et preview Vercel.
-- Mémoire durable et dossier marketing.
+## Historique livré
 
-## Hors périmètre de cette phase
+- La version 0.1 a livré la méthode iPhone-first, les prompts, le modèle de brief, la formation et une configuration Codex prudente.
+- La phase 1 (`6819f79`) a livré l’application Next.js, le design system, la CI et les contrôles de publication.
+- La phase 2 (`1026f75`) a livré le modèle de projet, le dashboard, l’éditeur, les exports et la persistance locale.
 
-- Appeler un modèle IA ou promettre la qualité d’une analyse IA.
-- Authentifier un utilisateur ou conserver ses projets.
-- Traiter un paiement ou commercialiser Free/Pro.
-- Inventer clients, résultats, chiffres, avis ou preuves sociales.
-- Garantir la disponibilité de Work, GPT-5.6, Sol, Terra, Luna ou Codex sur tous les comptes.
+Ces éléments restent historiques et maintenus. Leur vocabulaire SaaS antérieur ne décrit plus la direction active.
 
-## Livrables durables obligatoires
+## Livrables durables
 
 ```text
 README.md
@@ -68,25 +71,25 @@ STATUS.md
 DECISIONS.md
 ARCHITECTURE.md
 CHANGELOG.md
-marketing/POSITIONING.md
-marketing/PERSONAS.md
-marketing/MESSAGING.md
-marketing/SEO.md
+guides/configurations/
+prompts/
+templates/
+course/
+.codex/
 ```
-
-Les ressources historiques `prompts/`, `templates/`, `course/` et `.codex/` sont conservées.
 
 ## Sources de vérité
 
-- État et prochaine mission : [`STATUS.md`](STATUS.md)
-- Phases : [`ROADMAP.md`](ROADMAP.md)
-- Décisions : [`DECISIONS.md`](DECISIONS.md)
-- Architecture : [`ARCHITECTURE.md`](ARCHITECTURE.md)
-- Processus : [`WORKFLOW.md`](WORKFLOW.md)
-- Critères de qualité : [`QUALITY.md`](QUALITY.md)
-- Identité visuelle : [`DESIGN.md`](DESIGN.md)
-- Consignes agents : [`AGENTS.md`](AGENTS.md) et [`.codex/`](.codex/)
+- direction et périmètre : [`PROJECT.md`](PROJECT.md) ;
+- état : [`STATUS.md`](STATUS.md) ;
+- étapes : [`ROADMAP.md`](ROADMAP.md) ;
+- décisions : [`DECISIONS.md`](DECISIONS.md) ;
+- architecture : [`ARCHITECTURE.md`](ARCHITECTURE.md) ;
+- processus : [`WORKFLOW.md`](WORKFLOW.md) ;
+- qualité : [`QUALITY.md`](QUALITY.md) ;
+- visuel : [`DESIGN.md`](DESIGN.md) ;
+- configurations : [`guides/configurations/README.md`](guides/configurations/README.md).
 
 ## Définition de fini
 
-Une phase peut être proposée en revue lorsque ses livrables existent, que les scripts applicables réussissent, que la cible réelle accessible a été contrôlée, que la mémoire reflète le résultat, qu’aucun secret n’est commité et qu’aucun problème bloquant ou important connu n’est masqué.
+Une étape est terminée lorsque ses livrables existent, que les contrôles applicables réussissent, que les limites sont explicites, que la mémoire reflète le résultat et qu’aucun problème bloquant ou important connu n’est masqué.

@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils";
 
 const navigation = [
   { href: "/fonctionnalites", label: "Fonctionnalités" },
-  { href: "/tarifs", label: "Tarifs" },
+  { href: "/tarifs", label: "Ressources" },
   { href: "/dashboard", label: "Dashboard" },
   { href: "/docs", label: "Démarrage" },
 ];
@@ -44,14 +44,14 @@ export function SiteHeader() {
         <Link
           href="/"
           className="flex min-h-11 min-w-0 items-center gap-2 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-          aria-label="AI Project Launcher, accueil"
+          aria-label="Starter IA 5.6, accueil"
         >
           <span className="grid size-9 shrink-0 place-items-center rounded-[10px] bg-primary font-mono text-sm font-bold text-primary-foreground">
-            AI
+            SIA
           </span>
           <span className="min-w-0 leading-tight">
-            <span className="block truncate text-sm font-bold sm:text-base">AI Project Launcher</span>
-            <span className="hidden text-xs text-muted-foreground sm:block">Démo de Starter IA 5.6</span>
+            <span className="block truncate text-sm font-bold sm:text-base">Starter IA 5.6</span>
+            <span className="hidden text-xs text-muted-foreground sm:block">Configurations et workflows</span>
           </span>
         </Link>
 

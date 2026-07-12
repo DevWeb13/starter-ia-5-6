@@ -47,22 +47,22 @@ const faqs = [
   {
     question: "Cette version utilise-t-elle vraiment une IA ?",
     answer:
-      "Non. La démonstration produit localement un scénario déterministe à partir de votre texte. La connexion à un modèle IA est prévue pour une phase ultérieure.",
+      "Non. La démonstration produit localement un scénario déterministe à partir de votre texte. Aucun fournisseur IA n’est intégré ni prévu dans le périmètre actuel.",
   },
   {
     question: "Mon idée est-elle enregistrée ?",
     answer:
-      "Non dans cette première version : le résultat vit uniquement dans l’état de la page et disparaît au rechargement. Aucun compte ni base de données n’est configuré.",
+      "Oui, uniquement dans le localStorage de cet appareil afin de reprendre et exporter le projet. Aucun compte, serveur distant ni synchronisation n’est configuré.",
   },
   {
-    question: "Les offres Free et Pro sont-elles disponibles ?",
+    question: "Starter IA propose-t-il une offre payante ?",
     answer:
-      "Pas encore. Elles décrivent honnêtement une direction produit envisagée. Il n’existe dans cette PR ni inscription, ni paiement, ni souscription.",
+      "Non. Le starter et ses ressources sont open source. Il n’existe ni inscription, ni paiement, ni souscription dans le périmètre actuel.",
   },
   {
     question: "Quel est le lien avec Starter IA 5.6 ?",
     answer:
-      "Starter IA 5.6 est la méthode et le dépôt open source. AI Project Launcher est le produit exemple qui montre comment cette méthode peut devenir une application SaaS.",
+      "Starter IA 5.6 est le starter open source. Cette application locale est un support démonstratif hérité des premières phases du dépôt.",
   },
 ];
 
@@ -75,20 +75,20 @@ export default function HomePage() {
           <div className="space-y-7">
             <Badge className="w-fit border-primary/40 bg-primary/10 text-foreground">
               <Sparkles aria-hidden="true" className="mr-1 size-3.5 text-primary" />
-              Démonstration SaaS locale
+              Démonstration locale historique
             </Badge>
             <div className="space-y-5">
               <h1 className="display-title text-balance">
-                De l’idée au plan que votre équipe IA peut exécuter.
+                Choisissez le bon workflow pour Chat, Work et Codex.
               </h1>
               <p className="max-w-2xl text-lg text-muted-foreground sm:text-xl">
-                AI Project Launcher aide les indépendants et petites équipes à clarifier une idée de
-                produit, cadrer le MVP et ordonner les décisions techniques et commerciales.
+                Starter IA réunit cinq configurations concrètes, des guides et des templates pour
+                réfléchir, exécuter une mission cloud ou modifier un dépôt avec des preuves.
               </p>
             </div>
             <div className="grid gap-3 sm:flex sm:flex-wrap">
-              <Link href="/demo" className={buttonVariants({ size: "lg", className: "w-full sm:w-auto" })}>
-                Essayer la démo locale
+              <Link href="/docs" className={buttonVariants({ size: "lg", className: "w-full sm:w-auto" })}>
+                Choisir une configuration
                 <ArrowRight aria-hidden="true" className="size-5" />
               </Link>
               <a
@@ -100,7 +100,7 @@ export default function HomePage() {
             </div>
             <p className="flex max-w-xl gap-2 text-sm text-muted-foreground">
               <ShieldCheck aria-hidden="true" className="mt-0.5 size-5 shrink-0 text-success" />
-              Cette version n’appelle aucune IA, ne crée aucun compte et ne demande aucun paiement.
+              Le starter n’intègre aucun fournisseur, compte ou paiement. La création de projet reste une démonstration locale historique.
             </p>
           </div>
 
@@ -135,8 +135,8 @@ export default function HomePage() {
       <section className="py-14 sm:py-20" aria-labelledby="benefices-title">
         <div className="page-shell space-y-9">
           <div className="max-w-2xl space-y-3">
-            <p className="eyebrow">Ce que vous obtenez</p>
-            <h2 id="benefices-title" className="section-title text-balance">Un cadrage assez clair pour agir, assez honnête pour évoluer.</h2>
+            <p className="eyebrow">Démonstration historique</p>
+            <h2 id="benefices-title" className="section-title text-balance">Un exemple local conservé pour tester le parcours.</h2>
           </div>
           <div className="grid gap-4 md:grid-cols-3">
             {benefits.map(({ icon: Icon, title, text }) => (
@@ -159,7 +159,7 @@ export default function HomePage() {
           <div className="max-w-xl space-y-4">
             <p className="eyebrow">Fonctionnement</p>
             <h2 id="fonctionnement-title" className="section-title">Trois étapes, aucune boîte noire dans cette démo.</h2>
-            <p className="text-muted-foreground">Le futur produit ajoutera l’IA là où elle apporte une vraie profondeur. La fondation actuelle rend d’abord le parcours compréhensible et testable.</p>
+            <p className="text-muted-foreground">Le starter documente désormais cinq configurations concrètes. Cette démonstration locale reste disponible comme exemple testable, sans service distant.</p>
           </div>
           <ol className="grid gap-4">
             {steps.map(([number, title, text]) => (
@@ -177,7 +177,7 @@ export default function HomePage() {
           <div className="max-w-3xl space-y-4">
             <p className="eyebrow">Preuve par le produit</p>
             <h2 id="preuve-title" className="section-title text-balance">Testez le parcours maintenant, sans compte et sans fausse promesse IA.</h2>
-            <p className="text-muted-foreground">La sortie ci-dessous est locale et prédéfinie. Elle permet d’évaluer l’ergonomie et la structure avant de connecter un modèle.</p>
+            <p className="text-muted-foreground">La sortie ci-dessous est locale et prédéfinie. Elle permet d’évaluer l’ergonomie et la structure sans appel externe.</p>
           </div>
           <DemoLauncher />
         </div>
@@ -186,27 +186,27 @@ export default function HomePage() {
       <section className="border-y border-border bg-muted/35 py-14 sm:py-20" aria-labelledby="offre-title">
         <div className="page-shell space-y-9">
           <div className="max-w-2xl space-y-3">
-            <p className="eyebrow">Offre envisagée</p>
-            <h2 id="offre-title" className="section-title">Commencer simplement, approfondir quand le besoin est réel.</h2>
-            <p className="text-muted-foreground">Free et Pro décrivent la direction future. Ces formules ne sont pas encore commercialisées et leurs prix restent à confirmer.</p>
+            <p className="eyebrow">Ressources open source</p>
+            <h2 id="offre-title" className="section-title">Choisir une configuration, puis appliquer un workflow vérifiable.</h2>
+            <p className="text-muted-foreground">Les guides et templates aident à passer de Chat à Work ou Codex sans mélanger leurs rôles.</p>
           </div>
           <div className="grid gap-4 md:grid-cols-2">
             {[
-              { name: "Free", icon: Compass, text: "Pour tester une idée et obtenir un premier cadre local.", items: ["Un projet à la fois", "Structure en six sections", "Export prévu ultérieurement"] },
-              { name: "Pro", icon: Blocks, text: "Pour itérer avec une véritable équipe IA et conserver les décisions.", items: ["Projets persistants prévus", "Génération IA prévue", "Collaboration et exports prévus"] },
+              { name: "Configurations", icon: Compass, text: "Pour choisir entre Chat, Work, Codex local, Codex Remote et le mode hybride.", items: ["Cinq guides courts", "Limites explicites", "Passages de relais"] },
+              { name: "Workflow et templates", icon: Blocks, text: "Pour cadrer une mission, garder un seul écrivain et vérifier le résultat.", items: ["Brief réutilisable", "Checklist qualité", "Prompts et formation"] },
             ].map(({ name, icon: Icon, text, items }) => (
-              <Card key={name} className={cn(name === "Pro" && "border-primary/50")}>
+              <Card key={name} className={cn(name === "Workflow et templates" && "border-primary/50")}>
                 <CardHeader>
-                  <div className="flex items-center justify-between gap-3"><Icon aria-hidden="true" className="size-6 text-primary" /><Badge>Prévu</Badge></div>
+                  <div className="flex items-center justify-between gap-3"><Icon aria-hidden="true" className="size-6 text-primary" /><Badge>Open source</Badge></div>
                   <CardTitle className="text-2xl">{name}</CardTitle>
                   <p className="text-muted-foreground">{text}</p>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <p className="font-semibold">Prix à confirmer</p>
+                  <p className="font-semibold">Sans offre payante intégrée</p>
                   <ul className="space-y-2 text-sm text-muted-foreground">
                     {items.map((item) => <li key={item} className="flex gap-2"><Check aria-hidden="true" className="mt-1 size-4 shrink-0 text-success" />{item}</li>)}
                   </ul>
-                  <Link href="/tarifs" className={buttonVariants({ variant: "secondary", className: "w-full" })}>Voir l’offre envisagée</Link>
+                  <Link href="/docs" className={buttonVariants({ variant: "secondary", className: "w-full" })}>Voir la documentation</Link>
                 </CardContent>
               </Card>
             ))}

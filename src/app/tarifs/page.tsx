@@ -8,20 +8,20 @@ import { buttonVariants } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export const metadata: Metadata = {
-  title: "Tarifs envisagés",
-  description: "Direction envisagée pour les futures offres Free et Pro d’AI Project Launcher.",
+  title: "Ressources open source",
+  description: "Starter IA ne propose aucune offre payante intégrée dans son périmètre actuel.",
 };
 
 const plans = [
   {
-    name: "Free",
-    description: "Pour cadrer une idée et tester le format avant de créer un compte.",
-    features: ["Démonstration locale", "Plan en six sections", "Un projet actif envisagé", "Export à venir"],
+    name: "Starter",
+    description: "Pour choisir une configuration et cadrer une mission vérifiable.",
+    features: ["Cinq guides", "Workflow", "Prompts", "Templates"],
   },
   {
-    name: "Pro",
-    description: "Pour approfondir les hypothèses, conserver les décisions et collaborer.",
-    features: ["Génération IA prévue", "Projets persistants prévus", "Historique et exports prévus", "Collaboration prévue"],
+    name: "Démonstration locale",
+    description: "Pour explorer le parcours applicatif hérité sans service distant.",
+    features: ["Projet local", "Six sections", "Exports Markdown et JSON", "Stockage navigateur"],
   },
 ];
 
@@ -29,27 +29,27 @@ export default function PricingPage() {
   return (
     <>
       <PageIntro
-        eyebrow="Tarifs"
-        badge="Offre en préparation"
-        title="Une direction gratuite et Pro, sans faux prix ni faux checkout."
-        description="Les formules ci-dessous servent à cadrer le futur produit. Elles ne sont pas encore disponibles et les prix ne sont pas définis."
+        eyebrow="Ressources"
+        badge="Aucune offre payante"
+        title="Des guides et templates open source, sans offre commerciale."
+        description="Starter IA n’intègre actuellement ni paiement, ni compte, ni fournisseur IA."
       />
 
-      <section className="page-shell pb-14 sm:pb-20" aria-label="Offres envisagées">
-        <h2 className="sr-only">Offres envisagées</h2>
+      <section className="page-shell pb-14 sm:pb-20" aria-label="Ressources disponibles">
+        <h2 className="sr-only">Ressources disponibles</h2>
         <div className="grid gap-4 md:grid-cols-2">
           {plans.map((plan) => (
-            <Card key={plan.name} className={plan.name === "Pro" ? "border-primary/50" : undefined}>
+            <Card key={plan.name} className={plan.name === "Démonstration locale" ? "border-primary/50" : undefined}>
               <CardHeader>
-                <div className="flex items-center justify-between gap-3"><CardTitle className="text-2xl">{plan.name}</CardTitle><Badge>Prévu</Badge></div>
+                <div className="flex items-center justify-between gap-3"><CardTitle className="text-2xl">{plan.name}</CardTitle><Badge>Disponible</Badge></div>
                 <p className="text-muted-foreground">{plan.description}</p>
               </CardHeader>
               <CardContent className="space-y-6">
-                <div><p className="text-3xl font-bold tracking-tight">Prix à confirmer</p><p className="text-sm text-muted-foreground">Aucun abonnement ni paiement dans cette version.</p></div>
+                <div><p className="text-3xl font-bold tracking-tight">Open source</p><p className="text-sm text-muted-foreground">Aucun abonnement ni paiement intégré.</p></div>
                 <ul className="space-y-3">
                   {plan.features.map((feature) => <li key={feature} className="flex gap-2"><Check aria-hidden="true" className="mt-1 size-4 shrink-0 text-success" />{feature}</li>)}
                 </ul>
-                <Link href="/demo" className={buttonVariants({ variant: plan.name === "Pro" ? "default" : "secondary", size: "lg", className: "w-full" })}>Tester ce qui existe déjà</Link>
+                <Link href={plan.name === "Starter" ? "/docs" : "/demo"} className={buttonVariants({ variant: plan.name === "Démonstration locale" ? "default" : "secondary", size: "lg", className: "w-full" })}>Voir ce qui existe déjà</Link>
               </CardContent>
             </Card>
           ))}

@@ -97,3 +97,31 @@ La phase 2 introduit un type `Project` au schéma 1 et un unique conteneur versi
 **Date :** 2026-07-11 — **Statut :** acceptée
 
 Les projets ne vivent que dans le navigateur et l’appareil courant. L’interface affiche cette limite près du dashboard et de l’éditeur : aucun compte, aucune synchronisation et aucune IA véritable. L’éditeur détecte un changement du stockage émis par un autre onglet et laisse choisir entre recharger la version enregistrée ou conserver son édition courante.
+
+## D-017 — Starter de configurations, pas SaaS de génération
+
+**Date :** 2026-07-12 — **Statut :** acceptée — remplace D-001 pour la direction active
+
+Starter IA est l’unique identité produit active. Le dépôt fournit des workflows, configurations, guides et templates pour Chat, Work, Codex local, Codex Remote et les usages hybrides Work + Codex. AI Project Launcher reste le nom historique de l’application livrée pendant les phases 1 et 2, pas une seconde direction produit.
+
+Le périmètre actif exclut fournisseur IA, API payante, secret, authentification, paiement et architecture de SaaS de génération IA.
+
+## D-018 — Cinq configurations complémentaires
+
+**Date :** 2026-07-12 — **Statut :** acceptée
+
+Les cinq configurations ont un point d’entrée commun dans `guides/configurations/`. Chat sert aux échanges courts ; Work aux missions cloud complètes ; Codex local aux modifications du dépôt ; Codex Remote au pilotage d’une session locale depuis iPhone ; le mode hybride organise un passage de relais explicite entre Work et Codex.
+
+Ubuntu + iPhone + Remote Control n’est pas une exigence générale. Ses commandes et limites vivent uniquement dans son guide dédié.
+
+## D-019 — Documentation centrale et application locale héritée
+
+**Date :** 2026-07-12 — **Statut :** acceptée — remplace D-002 pour la direction active
+
+Les ressources documentaires constituent le cœur produit. L’application Next.js et le cœur local des phases 1 et 2 sont préservés et maintenus comme support démonstratif historique. Leur évolution ne doit pas inventer de capacité distante ni imposer un monorepo.
+
+## D-020 — Robustesse du stockage local
+
+**Date :** 2026-07-12 — **Statut :** acceptée — complète D-015 et D-016
+
+La lecture du stockage commence après hydratation. Les dates doivent être des chaînes ISO valides, les identifiants non vides et uniques, et le tri ne doit pas muter le tableau décodé. Lors d’un changement inter-onglets, l’éditeur suspend la saisie et demande un choix accessible avant toute nouvelle écriture.

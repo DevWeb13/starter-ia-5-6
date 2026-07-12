@@ -1,14 +1,16 @@
-# Commencer sur iPhone en moins de dix minutes
+# Parcours Work sur iPhone en moins de dix minutes
 
-Objectif : lancer une première mission sûre dans l’app ChatGPT et obtenir un résultat concret, réellement vérifié.
+Ce guide décrit **la configuration Work sur iPhone**, l’une des cinq configurations Starter IA. Si votre mission relève plutôt d’un échange court, d’un dépôt local, de Remote Control ou d’un passage de relais, commencez par le [sélecteur des configurations](guides/configurations/README.md).
 
-## 0–2 min — Ouvrir le bon espace
+Objectif : lancer une première mission Work sûre dans l’app ChatGPT et obtenir un résultat concret, réellement vérifié.
+
+## 0–2 min — Vérifier Work
 
 1. Ouvrez l’app ChatGPT à jour sur votre iPhone.
 2. Créez un Projet nommé `Starter IA` ou ouvrez un Projet existant.
 3. Vérifiez que **Work** est disponible pour lancer une mission en plusieurs étapes.
 
-Si Work n’apparaît pas, le parcours est bloqué sur ce compte pour le moment. Utilisez Chat pour préparer le brief, sans prétendre avoir exécuté la mission.
+Si Work n’apparaît pas, seule cette configuration est indisponible sur ce compte. Utilisez [Chat](guides/configurations/chat.md) pour réfléchir ou préparer un brief, [Codex local](guides/configurations/codex-local.md) pour agir sur un dépôt, ou [Codex Remote](guides/configurations/codex-remote.md) si une session locale est accessible depuis l’iPhone.
 
 ## 2–4 min — Ajouter les règles du Projet
 
@@ -22,11 +24,11 @@ Ces instructions appartiennent au Projet ChatGPT. Work ne charge pas automatique
 
 ## 4–6 min — Choisir simplement
 
-- Choisissez **Terra** par défaut.
-- Prenez **Sol** si la mission comporte plusieurs dépendances difficiles à coordonner.
-- Prenez **Luna** pour une tâche simple, répétitive ou volumineuse.
+- Choisissez le modèle généraliste disponible par défaut.
+- Utilisez un modèle plus capable si la mission comporte plusieurs dépendances difficiles.
+- Préférez un modèle plus léger pour une tâche simple, répétitive ou volumineuse.
 
-Le modèle ne remplace ni un brief clair ni une vérification.
+Les noms et disponibilités de modèles évoluent selon le compte. Le modèle ne remplace ni un brief clair ni une vérification.
 
 ## 6–9 min — Lancer une première mission
 
@@ -47,21 +49,13 @@ Mes notes :
 
 ## 9–10 min — Vérifier la livraison
 
-La première mission est réussie seulement si :
-
-- le résultat concret demandé existe ;
-- il s’ouvre et contient toutes les parties annoncées ;
-- les informations manquantes ou non vérifiables sont signalées ;
-- aucune publication ou action sensible n’a été exécutée sans autorisation ;
-- le rapport utilise un statut honnête.
-
-Statuts possibles :
+La mission est réussie seulement si le résultat existe, s’ouvre, contient les parties annoncées, signale les informations non vérifiables et n’a déclenché aucune action sensible non autorisée.
 
 - **Fait et vérifié** : tout le résultat demandé existe et les contrôles ont réussi.
-- **Partiel** : une partie utile est prête, mais il manque un élément identifié.
-- **Bloqué** : une dépendance ou une autorisation empêche de continuer.
+- **Partiel** : une partie utile est prête, avec un manque identifié.
+- **Bloqué** : une dépendance propre à cette mission empêche de continuer.
 - **Non tenté** : l’action n’a pas été exécutée.
 
 ## Ensuite
 
-Remplacez l’exemple par votre besoin avec [`templates/BRIEF.md`](templates/BRIEF.md), puis suivez [`WORKFLOW.md`](WORKFLOW.md). Pour apprendre la méthode pas à pas, ouvrez [`course/FORMATION-EXPRESS.md`](course/FORMATION-EXPRESS.md).
+Remplacez l’exemple par votre besoin avec [`templates/BRIEF.md`](templates/BRIEF.md), puis suivez [`WORKFLOW.md`](WORKFLOW.md). Pour un passage de relais vers un dépôt, utilisez le guide [Work + Codex](guides/configurations/hybrid-work-codex.md).

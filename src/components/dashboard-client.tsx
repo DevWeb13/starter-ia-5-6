@@ -2,8 +2,8 @@
 
 import { Download, FolderOpen, Plus, Trash2 } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { deleteProject, readProjects, resetProjects } from "@/lib/local-project-store";
+import { useCallback, useEffect, useState } from "react";
+import { deleteProject, PROJECT_STORAGE_KEY, readProjects, resetProjects } from "@/lib/local-project-store";
 import { projectToMarkdown, type Project } from "@/lib/project";
 import { LocalProjectNotice } from "./local-project-notice";
 import { Button, buttonVariants } from "./ui/button";
@@ -13,12 +13,24 @@ function download(name: string, content: string, type: string) { const url = URL
 function date(value: string) { return new Intl.DateTimeFormat("fr-FR", { dateStyle: "medium", timeStyle: "short" }).format(new Date(value)); }
 
 export function DashboardClient() {
-  const initial = () => { try { return { projects: readProjects(), error: null as string | null }; } catch (cause) { return { projects: [] as Project[], error: cause instanceof Error ? cause.message : "Erreur de stockage local." }; } };
-  const [projects, setProjects] = useState<Project[]>(() => initial().projects); const [error, setError] = useState<string | null>(() => initial().error);
-  const refresh = () => { try { setProjects(readProjects()); setError(null); } catch (cause) { setProjects([]); setError(cause instanceof Error ? cause.message : "Erreur de stockage local."); } };
-  useEffect(() => { const onStorage = (event: StorageEvent) => { if (event.key === "ai-project-launcher.projects.v1") refresh(); }; window.addEventListener("storage", onStorage); return () => window.removeEventListener("storage", onStorage); }, []);
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [error, setError] = useState<string | null>(null);
+  const [ready, setReady] = useState(false);
+  const refresh = useCallback(() => {
+    try { setProjects(readProjects()); setError(null); }
+    catch (cause) { setProjects([]); setError(cause instanceof Error ? cause.message : "Erreur de stockage local."); }
+    finally { setReady(true); }
+  }, []);
+
+  useEffect(() => {
+    queueMicrotask(refresh);
+    const onStorage = (event: StorageEvent) => { if (event.key === PROJECT_STORAGE_KEY) refresh(); };
+    window.addEventListener("storage", onStorage);
+    return () => window.removeEventListener("storage", onStorage);
+  }, [refresh]);
   const remove = (id: string) => { if (!window.confirm("Supprimer définitivement ce projet de cet appareil ?")) return; try { deleteProject(id); refresh(); } catch (cause) { setError(cause instanceof Error ? cause.message : "Suppression impossible."); } };
   const reset = () => { if (!window.confirm("Réinitialiser toutes les données locales ? Une sauvegarde locale brute sera conservée avant l’effacement.")) return; try { resetProjects(); refresh(); } catch (cause) { setError(cause instanceof Error ? cause.message : "Réinitialisation impossible."); } };
+  if (!ready) return <p role="status">Chargement des projets locaux…</p>;
   return <div className="space-y-5">
     <LocalProjectNotice />
     {error ? <Card className="border-destructive"><CardContent className="space-y-3 p-5"><p role="alert" className="font-semibold text-destructive">Données locales indisponibles</p><p>{error}</p><Button variant="destructive" onClick={reset}>Réinitialiser les données locales</Button></CardContent></Card> : null}

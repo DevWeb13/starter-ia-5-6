@@ -1,64 +1,54 @@
 # Feuille de route
 
-Cette feuille de route en cinq phases est la séquence officielle du projet. Une phase n’est terminée que lorsque ses critères sont vérifiés et consignés dans [`STATUS.md`](STATUS.md).
+La feuille de route distingue l’historique livré de la direction active. Les résultats vérifiés sont consignés dans [`STATUS.md`](STATUS.md).
 
-## Phase 1 — Fondation publiable
+## Historique livré
 
-**Branche :** `work/01-foundation`  
-**Statut :** terminée — fusionnée dans `main` par la PR nº 2 (`6819f79`)
+### Version 0.1 — Méthode documentaire
 
-Objectif : transformer le dépôt documentaire en une application SaaS de démonstration moderne, accessible, testée et déployable.
+**Statut :** terminée le 11 juillet 2026.
 
-Livrables :
+Méthode iPhone-first, workflow, prompts, brief, formation, identité visuelle et configuration Codex prudente.
 
-- application Next.js App Router ;
-- landing, fonctionnalités, tarifs, démo locale, dashboard, docs et 404 ;
-- thème clair/sombre et navigation mobile ;
-- Vitest, Playwright Chromium dans la CI GitHub Actions et déploiement Vercel de production pré-fusion ;
-- mémoire officielle et dossier marketing.
+### Phase 1 — Fondation publiable
 
-Critère de sortie : tous les scripts et la CI complète réussissent, le build et les routes du déploiement de production pré-fusion sont contrôlés, aucun bloquant ou important n’est masqué. Avant la phase 2, Vercel doit être relié à GitHub pour générer une vraie preview de pull request.
+**Branche :** `work/01-foundation`
+**Statut :** terminée, fusionnée dans `main` au commit `6819f79`.
 
-## Phase 2 — Cœur produit
+Application Next.js accessible, démonstration locale déterministe, design system, tests, CI et déploiement historique.
 
-**Branche prévue :** `work/02-product-core`  
-**Statut :** en revue
+### Phase 2 — Cœur produit local
 
-Objectif : remplacer le scénario unique par un parcours produit robuste et testable, toujours sans dépendre prématurément d’un fournisseur IA.
+**Branche :** `work/02-product-core`
+**Statut :** terminée, fusionnée dans `main` au commit `1026f75`.
 
-Livrables : modèle de projet typé et versionné, six sections éditables, dashboard local, export Markdown/JSON, persistance locale provisoire et résilience sans infrastructure supplémentaire.
+Modèle de projet versionné, dashboard et éditeur locaux, exports et persistance navigateur sans compte ni service distant.
 
-Critère de sortie : un utilisateur peut créer, reprendre, modifier, exporter et supprimer un projet local sans incohérence ni perte silencieuse, et la preview/CI de la PR sont vertes.
+## Direction active
 
-## Phase 3 — Intelligence assistée
+### Étape 3 — Réalignement du starter
 
-**Branche prévue :** `work/03-ai-integration`  
-**Statut :** planifiée
+**Branche :** `work/03-product-realignment`
+**Statut :** en cours.
 
-Objectif : connecter une véritable génération IA avec sorties structurées, garde-fous, transparence des erreurs et maîtrise des coûts.
+Objectif : faire de Starter IA le point d’entrée cohérent pour cinq configurations complémentaires, sans récupérer la fondation fournisseur abandonnée.
 
-Livrables envisagés : abstraction fournisseur, schémas de sortie, streaming, retries bornés, évaluations, quotas de démonstration et politique de données.
+Livrables : mémoire réalignée, règles Codex permanentes, guides minimaux des cinq configurations et corrections de robustesse du cœur local.
 
-Critère de sortie : les sorties IA sont traçables, validées, interrompables et clairement distinguées des données utilisateur.
+Critère de sortie : documentation cohérente, absence de `src/server/ai`, contrôles locaux réussis et aucun bloquant ou important après revue.
 
-## Phase 4 — Comptes et données
+### Étape 4 — Catalogue et templates
 
-**Branche prévue :** `work/04-accounts-data`  
-**Statut :** planifiée
+**Statut :** planifiée.
 
-Objectif : ajouter authentification, espaces privés, base de données, historique et collaboration avec un modèle d’autorisation vérifié.
+Objectif : relier les guides aux prompts, briefs, checklists et templates réellement disponibles, sans inventer de fonction applicative.
 
-Livrables envisagés : comptes, projets persistants, migrations, contrôle d’accès, suppression/export des données, audit de sécurité et sauvegarde.
+Critère de sortie : chaque configuration possède un chemin de démarrage court, des ressources réutilisables et des limites vérifiables.
 
-Critère de sortie : aucun utilisateur ne peut lire ou modifier les données d’un autre, et les opérations sensibles sont testées de bout en bout.
+### Étape 5 — Interface alignée sur les ressources
 
-## Phase 5 — Monétisation et maturité
+**Statut :** à cadrer.
 
-**Branche prévue :** `work/05-monetization`  
-**Statut :** planifiée
+Objectif : décider quelles pages existantes doivent présenter le catalogue documentaire et lesquelles restent des démonstrations historiques locales.
 
-Objectif : valider puis commercialiser une offre Free/Pro sans compromettre la fiabilité, l’accessibilité ou la transparence.
-
-Livrables envisagés : limites d’offre validées, paiement, gestion d’abonnement, observabilité, budgets de performance, support et documentation légale adaptée.
-
-Critère de sortie : prix et promesses reposent sur des données validées, le paiement est testé, les erreurs sont observables et la valeur Pro est démontrée.
+Critère de sortie : le brief d’interface est validé avant modification, respecte [`DESIGN.md`](DESIGN.md) et n’introduit ni fournisseur, authentification ni paiement.
