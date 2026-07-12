@@ -15,6 +15,7 @@ Un seul point coché interdit la livraison, la publication ou la fusion.
 - [ ] La configuration ou une commande recommandée est invalide et empêche l’usage prévu.
 - [ ] Une page, un parcours principal, un script obligatoire ou le build de production échoue.
 - [ ] La démonstration est présentée comme une véritable IA ou déclenche une requête externe non documentée.
+- [ ] Le produit est présenté comme intégrant un fournisseur IA, une authentification ou un paiement alors que ces capacités sont hors périmètre.
 - [ ] Un secret, fichier `.env` ou configuration locale Vercel est commité.
 - [ ] Un problème important reste après le deuxième cycle de correction.
 
@@ -23,6 +24,7 @@ Un seul point coché interdit la livraison, la publication ou la fusion.
 Tous les points applicables doivent être résolus avant livraison ou fusion.
 
 - [ ] Les termes Chat, Work, Codex, Sol, Terra ou Luna se contredisent entre les documents.
+- [ ] Une des cinq configurations est présentée comme le produit entier ou ses limites dépendent d’une information absente de son guide.
 - [ ] Le parcours iPhone suppose une fonction qui n’est pas signalée comme dépendante du compte.
 - [ ] `AGENTS.md` ou `.codex/` est présenté comme automatiquement chargé par Work.
 - [ ] Une instruction est ambiguë pour un débutant ou dépend d’un jargon non défini.

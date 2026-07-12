@@ -1,6 +1,6 @@
 # Identité visuelle
 
-Ce document est la source de vérité visuelle de Starter IA 5.6 et de son produit exemple AI Project Launcher. L’interface est sobre, premium, moderne, mobile-first et accessible.
+Ce document est la source de vérité visuelle de Starter IA 5.6. L’interface existante est sobre, moderne, mobile-first et accessible ; son vocabulaire doit distinguer les ressources actives des démonstrations historiques locales.
 
 ## Principes
 
@@ -10,7 +10,7 @@ Ce document est la source de vérité visuelle de Starter IA 5.6 et de son produ
 - Aucun effet ne doit ralentir ou masquer le contenu.
 - Interface utilisable au pouce, au clavier, au zoom et avec un lecteur d’écran.
 - Parité fonctionnelle et contraste AA dans les thèmes clair et sombre.
-- AI Project Launcher est le produit ; « Démonstration de Starter IA 5.6 » précise le lien sans confondre les identités.
+- Starter IA est l’unique identité produit active. « Démonstration locale historique » signale les parcours hérités qui ne représentent pas une fonction distante.
 
 ## Couleurs claires
 
