@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     template: "%s — Starter IA 5.6",
   },
   description:
-    "Choisissez une configuration concrète pour utiliser Chat, Work, Codex local, Codex Remote ou Work + Codex.",
+    "Cinq configurations, des guides et des ressources pour choisir le bon environnement entre Chat, Work et Codex.",
   openGraph: {
     title: "Starter IA 5.6",
     description:

@@ -1,60 +1,152 @@
 import type { Metadata } from "next";
-import { Check, Code2, FlaskConical, GitPullRequest, Layers3, Terminal } from "lucide-react";
-import Link from "next/link";
+import { ArrowRight, Check, ExternalLink } from "lucide-react";
 
 import { PageIntro } from "@/components/page-intro";
-import { buttonVariants } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 
 export const metadata: Metadata = {
-  title: "Démarrage et documentation",
-  description: "Choisir une configuration Starter IA et comprendre la démonstration locale historique.",
+  title: "Configurations",
+  description: "Catalogue des cinq configurations Starter IA : Chat, Work, Codex local, Codex Remote et Work + Codex.",
 };
+
+const githubRoot = "https://github.com/DevWeb13/starter-ia-5-6/blob/main";
+
+const configurations = [
+  {
+    name: "Chat",
+    role: "Réfléchir, décider et produire un brouillon court.",
+    choose: "Une question limitée, quelques options à comparer ou un texte court à améliorer.",
+    steps: ["Donner le contexte et le résultat attendu.", "Préciser les contraintes et le format.", "Vérifier les hypothèses et le résultat."],
+    resources: ["templates/BRIEF.md", "course/FORMATION-EXPRESS.md", "QUALITY.md"],
+    limit: "Pas d’environnement de travail complet garanti ; les fonctions dépendent du compte.",
+    handoff: "Passer à Work pour une mission complète ou à Codex local pour intervenir sur un dépôt.",
+    guide: "guides/configurations/chat.md",
+  },
+  {
+    name: "Work",
+    role: "Conduire une mission complète dans un environnement cloud.",
+    choose: "Un brief en plusieurs étapes avec des fichiers, outils ou plugins réellement disponibles.",
+    steps: ["Remplir le brief vérifiable.", "Adapter et lancer le prompt maître Work.", "Relire le livrable réel avec QUALITY.md."],
+    resources: ["WORKFLOW.md", "prompts/MASTER-WORK.md", "prompts/REVIEW.md"],
+    limit: "Les outils varient selon le compte ; Work ne charge pas automatiquement les règles Codex locales.",
+    handoff: "Transmettre brief, sources, décisions et limites à Codex local pour modifier un dépôt.",
+    guide: "guides/configurations/work.md",
+  },
+  {
+    name: "Codex local",
+    role: "Inspecter, modifier et vérifier un dépôt depuis la machine de développement.",
+    choose: "Une mission de code qui exige Git, des fichiers locaux et des contrôles reproductibles.",
+    steps: ["Ouvrir le dépôt et vérifier Git.", "Donner un brief borné.", "Autoriser les contrôles puis relire le diff."],
+    resources: ["AGENTS.md", "WORKFLOW.md", ".codex/config.toml"],
+    limit: "Les actions restent bornées par les permissions de la machine et les autorisations du brief.",
+    handoff: "Piloter la même session avec Codex Remote ou préparer l’analyse avec Work + Codex.",
+    guide: "guides/configurations/codex-local.md",
+  },
+  {
+    name: "Codex Remote",
+    role: "Piloter depuis iPhone une session Codex qui continue sur la machine locale.",
+    choose: "Suivre ou diriger une mission locale lorsque la machine reste active et connectée.",
+    steps: ["Préparer le dépôt, la branche et la session sur la machine.", "Consulter l’aide réellement installée.", "Suivre les instructions d’association affichées."],
+    resources: ["guides/configurations/codex-remote.md", "AGENTS.md", ".codex/config.toml"],
+    limit: "La disponibilité dépend du compte ; l’iPhone n’exécute ni le dépôt, ni Git, ni les processus.",
+    handoff: "Revenir à Codex local si l’association est absente ou interrompue, puis contrôler Git et les processus.",
+    guide: "guides/configurations/codex-remote.md",
+  },
+  {
+    name: "Work + Codex",
+    role: "Préparer ou analyser dans Work, puis implémenter et vérifier dans le dépôt avec Codex.",
+    choose: "Une mission où la réflexion cloud et l’écriture locale doivent rester séparées et traçables.",
+    steps: ["Produire le brief et les décisions dans Work.", "Transmettre un paquet de relais sans secret.", "Vérifier Git et les règles locales avant d’écrire."],
+    resources: ["templates/BRIEF.md", "prompts/MASTER-WORK.md", "prompts/REVIEW.md"],
+    limit: "Le passage de relais n’est pas automatique ; chaque environnement vérifie ses propres résultats.",
+    handoff: "Revenir à Work pour l’analyse ou à Codex local pour poursuivre l’exécution dans le dépôt.",
+    guide: "guides/configurations/hybrid-work-codex.md",
+  },
+];
 
 export default function DocsPage() {
   return (
     <>
       <PageIntro
-        eyebrow="Documentation"
-        badge="Starter open source"
-        title="Choisir une configuration et comprendre les ressources disponibles."
-        description="Starter IA 5.6 est le produit actif. L’application Next.js reste une démonstration locale historique issue des phases 1 et 2."
+        eyebrow="Configurations"
+        badge="Cinq environnements"
+        title="Choisir la configuration la plus simple pour la mission."
+        description="Chaque configuration a un rôle, des ressources et une limite explicite. Le catalogue aide aussi à préparer le passage de relais lorsque la mission change d’environnement."
       />
 
-      <div className="reading-shell space-y-12 pb-14 sm:pb-20">
-        <section aria-labelledby="quick-start" className="space-y-5">
-          <div className="space-y-2"><p className="eyebrow"><Terminal aria-hidden="true" className="size-4" /> Démarrage local</p><h2 id="quick-start" className="section-title">Quatre commandes reproductibles.</h2></div>
-          <div className="overflow-x-auto rounded-2xl border border-border bg-card p-5 font-mono text-sm" tabIndex={0} aria-label="Commandes de démarrage local"><pre><code>{`npm ci\nnpm run dev\nnpm test\nnpm run build`}</code></pre></div>
-          <p className="text-muted-foreground">Ouvrez ensuite <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-sm">http://localhost:3000</code>. Aucune variable d’environnement n’est nécessaire pour cette version.</p>
-        </section>
+      <div className="page-shell space-y-6 pb-14 sm:pb-20">
+        {configurations.map((configuration, index) => (
+          <Card key={configuration.name} className="overflow-hidden">
+            <CardHeader className="border-b border-border bg-muted/35">
+              <p className="font-mono text-sm font-bold text-primary">0{index + 1}</p>
+              <h2 className="text-2xl font-semibold tracking-tight">{configuration.name}</h2>
+              <p className="max-w-3xl text-muted-foreground">{configuration.role}</p>
+            </CardHeader>
+            <CardContent className="grid gap-7 p-5 sm:p-6 lg:grid-cols-2">
+              <div className="space-y-6">
+                <div>
+                  <h3 className="font-semibold">Quand la choisir</h3>
+                  <p className="mt-1 text-muted-foreground">{configuration.choose}</p>
+                </div>
+                <div>
+                  <h3 className="font-semibold">Démarrage</h3>
+                  <ol className="mt-2 space-y-2 text-muted-foreground">
+                    {configuration.steps.map((step, stepIndex) => (
+                      <li key={step} className="flex gap-3">
+                        <span className="font-mono text-sm font-bold text-primary">{stepIndex + 1}.</span>
+                        {step}
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+                <div>
+                  <h3 className="font-semibold">Ressources principales</h3>
+                  <ul className="mt-2 space-y-2 text-muted-foreground">
+                    {configuration.resources.map((resource) => (
+                      <li key={resource} className="flex gap-2">
+                        <Check aria-hidden="true" className="mt-1 size-4 shrink-0 text-success" />
+                        <a href={`${githubRoot}/${resource}`} className="break-words underline underline-offset-4">
+                          {resource}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+              <div className="space-y-6 lg:border-l lg:border-border lg:pl-7">
+                <div>
+                  <h3 className="font-semibold">Limite clé</h3>
+                  <p className="mt-1 text-muted-foreground">{configuration.limit}</p>
+                </div>
+                <div>
+                  <h3 className="font-semibold">Passage de relais</h3>
+                  <p className="mt-1 text-muted-foreground">{configuration.handoff}</p>
+                </div>
+                <a
+                  href={`${githubRoot}/${configuration.guide}`}
+                  className="inline-flex min-h-11 items-center gap-2 font-semibold text-primary underline underline-offset-4"
+                >
+                  Lire le guide complet
+                  <ExternalLink aria-hidden="true" className="size-4" />
+                </a>
+              </div>
+            </CardContent>
+          </Card>
+        ))}
 
-        <section aria-labelledby="current-flow" className="space-y-5">
-          <div className="space-y-2"><p className="eyebrow"><FlaskConical aria-hidden="true" className="size-4" /> Parcours actuel</p><h2 id="current-flow" className="section-title">Ce qui se passe réellement.</h2></div>
-          <ol className="space-y-3">
-            {["L’utilisateur saisit une idée dans le navigateur.", "Une fonction TypeScript pure valide et normalise le texte.", "Six sections déterministes sont créées sans appel externe.", "Le projet est enregistré dans le localStorage de cet appareil et peut être repris, exporté ou supprimé."].map((item, index) => <li key={item} className="flex gap-3 rounded-xl border border-border bg-card p-4"><span className="font-mono text-sm font-bold text-primary">0{index + 1}</span><span>{item}</span></li>)}
-          </ol>
-        </section>
-
-        <section aria-labelledby="architecture" className="space-y-5">
-          <div className="space-y-2"><p className="eyebrow"><Code2 aria-hidden="true" className="size-4" /> Architecture</p><h2 id="architecture" className="section-title">Des composants serveur par défaut.</h2></div>
-          <p className="text-muted-foreground">Les pages restent des composants serveur par défaut. Le thème, le menu, la démonstration, le dashboard et l’éditeur portent les interactions navigateur. Il n’existe ni route API, ni base distante, ni SDK fournisseur.</p>
-          <Link href="https://github.com/DevWeb13/starter-ia-5-6/blob/main/ARCHITECTURE.md" className={buttonVariants({ variant: "secondary" })}>Lire l’architecture du dépôt</Link>
-        </section>
-
-        <section aria-labelledby="configurations" className="space-y-5">
-          <div className="space-y-2"><p className="eyebrow"><Layers3 aria-hidden="true" className="size-4" /> Configurations</p><h2 id="configurations" className="section-title">Cinq points de départ complémentaires.</h2></div>
-          <Card><CardContent className="p-5"><ul className="space-y-3 text-muted-foreground">{["Chat pour réfléchir, décider et produire un brouillon court.", "Work pour une mission complète dans le cloud.", "Codex local avec VS Code pour modifier et vérifier un dépôt.", "Codex Remote depuis iPhone pour piloter une session restée sur la machine locale.", "Work + Codex pour séparer préparation cloud et implémentation dans le dépôt."].map((item) => <li key={item} className="flex gap-2"><Check aria-hidden="true" className="mt-1 size-4 shrink-0 text-success" />{item}</li>)}</ul></CardContent></Card>
-        </section>
-
-        <section aria-labelledby="work" className="space-y-5">
-          <div className="space-y-2"><p className="eyebrow"><GitPullRequest aria-hidden="true" className="size-4" /> Utilisation avec Work</p><h2 id="work" className="section-title">Une mission, un écrivain, des contrôles indépendants.</h2></div>
-          <Card><CardHeader><CardTitle>Workflow recommandé</CardTitle></CardHeader><CardContent><ul className="space-y-3 text-muted-foreground">{["Donner un résultat et des critères observables.", "Utiliser jusqu’à trois sous-agents en lecture seule.", "Laisser un seul agent modifier les fichiers et GitHub.", "Vérifier, revoir, corriger au plus deux fois, puis livrer un statut honnête."].map((item) => <li key={item} className="flex gap-2"><Check aria-hidden="true" className="mt-1 size-4 shrink-0 text-success" />{item}</li>)}</ul></CardContent></Card>
-        </section>
-
-        <section aria-labelledby="limits" className="space-y-5">
-          <div className="space-y-2"><p className="eyebrow">Limites actuelles</p><h2 id="limits" className="section-title">Local, sans fournisseur, compte distant ni paiement.</h2></div>
-          <p className="text-muted-foreground">La phase 2 est fusionnée : les projets sont persistés uniquement dans le localStorage de l’appareil courant. Le dépôt n’intègre aucun fournisseur IA, API payante, secret, authentification, synchronisation distante ou paiement. La disponibilité de Work, Codex Remote, modèles et plugins dépend du compte et de l’environnement.</p>
-        </section>
+        <aside className="rounded-2xl border border-border bg-muted/35 p-5 sm:p-6" aria-labelledby="local-app-title">
+          <h2 id="local-app-title" className="text-xl font-semibold">Démarrage technique de la démonstration locale</h2>
+          <p className="mt-2 text-muted-foreground">
+            L’application Next.js historique reste un support secondaire. Ses prérequis, commandes et limites sont documentés dans le README du dépôt.
+          </p>
+          <a
+            href={`${githubRoot}/README.md`}
+            className="mt-3 inline-flex min-h-11 items-center gap-2 font-semibold text-primary underline underline-offset-4"
+          >
+            Lire le README
+            <ArrowRight aria-hidden="true" className="size-4" />
+          </a>
+        </aside>
       </div>
     </>
   );

@@ -10,10 +10,9 @@ import { Button, buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const navigation = [
-  { href: "/fonctionnalites", label: "Fonctionnalités" },
+  { href: "/docs", label: "Configurations" },
   { href: "/tarifs", label: "Ressources" },
-  { href: "/dashboard", label: "Dashboard" },
-  { href: "/docs", label: "Démarrage" },
+  { href: "/fonctionnalites", label: "Méthode" },
 ];
 
 export function SiteHeader() {
@@ -72,9 +71,9 @@ export function SiteHeader() {
           <Link
             href="/demo"
             aria-current={pathname === "/demo" ? "page" : undefined}
-            className={buttonVariants({ className: cn("ml-2", pathname === "/demo" && "underline underline-offset-4") })}
+            className={buttonVariants({ variant: "secondary", className: cn("ml-2", pathname === "/demo" && "underline underline-offset-4") })}
           >
-            Essayer la démo
+            Démo locale
           </Link>
           <ThemeToggle />
         </nav>
@@ -121,10 +120,10 @@ export function SiteHeader() {
             <Link
               href="/demo"
               aria-current={pathname === "/demo" ? "page" : undefined}
-              className={buttonVariants({ size: "lg", className: cn("mt-2 w-full", pathname === "/demo" && "underline underline-offset-4") })}
+              className={buttonVariants({ variant: "secondary", size: "lg", className: cn("mt-2 w-full", pathname === "/demo" && "underline underline-offset-4") })}
               onClick={() => setOpen(false)}
             >
-              Essayer la démo locale
+              Démo locale
             </Link>
           </div>
         </nav>

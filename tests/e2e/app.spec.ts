@@ -12,25 +12,50 @@ test("la landing charge avec sa promesse et ses limites", async ({ page }) => {
   await expect(
     page.getByRole("heading", {
       level: 1,
-      name: /Choisissez le bon workflow pour Chat, Work et Codex/i,
+      name: /Starter IA pour Chat, Work et Codex/i,
     }),
   ).toBeVisible();
-  await expect(page.getByRole("link", { name: /Choisir une configuration/i }).first()).toBeVisible();
+  const primaryCta = page.getByRole("link", { name: /Choisir une configuration/i }).first();
+  await expect(primaryCta).toBeVisible();
+  await expect(primaryCta).toHaveAttribute("href", "/docs");
   await expect(page.getByText(/n’intègre aucun fournisseur/i)).toBeVisible();
+  await expect(
+    page
+      .getByRole("navigation", { name: "Navigation principale" })
+      .getByRole("link", { name: "Dashboard", exact: true }),
+  ).toHaveCount(0);
   expect(browserErrors).toEqual([]);
 });
 
-test("la navigation mène aux ressources open source honnêtes", async ({ page }) => {
+test("le catalogue distingue les cinq configurations", async ({ page }) => {
+  await page.goto("/docs");
+
+  await expect(page.getByRole("heading", { level: 1 })).toContainText(
+    "Choisir la configuration la plus simple",
+  );
+  for (const configuration of ["Chat", "Work", "Codex local", "Codex Remote", "Work + Codex"]) {
+    await expect(page.getByRole("heading", { name: configuration, exact: true })).toBeVisible();
+  }
+  await expect(page.getByRole("link", { name: "Lire le guide complet" })).toHaveCount(5);
+});
+
+test("la navigation mène à un index de ressources sans vocabulaire commercial", async ({ page }) => {
   await page.goto("/");
   await page.getByRole("link", { name: "Ressources", exact: true }).first().click();
 
   await expect(page).toHaveURL(/\/tarifs$/);
-  await expect(page.getByRole("heading", { level: 1 })).toContainText(
-    "sans offre commerciale",
-  );
-  await expect(page.getByRole("heading", { name: "Starter", exact: true })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "Démonstration locale", exact: true })).toBeVisible();
-  await expect(page.getByText("Open source").first()).toBeVisible();
+  await expect(page.getByRole("heading", { level: 1 })).toContainText("L’index des ressources Starter IA");
+  await expect(page.getByText("WORKFLOW.md", { exact: true })).toBeVisible();
+  await expect(page.getByText("prompts/MASTER-WORK.md", { exact: true })).toBeVisible();
+  await expect(page.locator("main")).not.toContainText(/prix|abonnement|offre|formule/i);
+});
+
+test("la méthode expose le processus commun et ses sources", async ({ page }) => {
+  await page.goto("/fonctionnalites");
+
+  await expect(page.getByRole("heading", { level: 1 })).toContainText("livraison vérifiée");
+  await expect(page.getByRole("heading", { name: "Exécuter avec un seul écrivain" })).toBeVisible();
+  await expect(page.getByRole("link", { name: "Lire WORKFLOW.md" })).toBeVisible();
 });
 
 test("un projet est créé, modifié, rechargé, exporté et supprimé", async ({ page }) => {
@@ -38,8 +63,9 @@ test("un projet est créé, modifié, rechargé, exporté et supprimé", async (
   await expect(
     page
       .getByRole("navigation", { name: "Navigation principale" })
-      .getByRole("link", { name: "Essayer la démo" }),
+      .getByRole("link", { name: "Démo locale" }),
   ).toHaveAttribute("aria-current", "page");
+  await expect(page.getByRole("link", { name: "Voir les projets locaux" })).toHaveAttribute("href", "/dashboard");
   await page.getByRole("button", { name: "Générer le plan démo" }).click();
   await expect(page.locator("#idea-error")).toContainText("Décrivez votre idée");
 
@@ -53,7 +79,7 @@ test("un projet est créé, modifié, rechargé, exporté et supprimé", async (
   await expect(exampleButton).toBeDisabled();
   await expect(page.getByText("Création et enregistrement local du projet…")).toBeVisible();
   await expect(page).toHaveURL(/\/dashboard\/.+/);
-  await expect(page.getByText("Stocké uniquement sur cet appareil")).toBeVisible();
+  await expect(page.getByText("Démonstration locale historique.", { exact: true })).toBeVisible();
 
   for (const title of [
     "Proposition de valeur",

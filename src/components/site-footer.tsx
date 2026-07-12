@@ -12,8 +12,10 @@ export function SiteFooter() {
           </p>
         </div>
         <nav className="flex flex-wrap gap-x-5 gap-y-2 text-sm" aria-label="Pied de page">
-          <Link className="underline underline-offset-4" href="/docs">Documentation</Link>
+          <Link className="underline underline-offset-4" href="/docs">Configurations</Link>
           <Link className="underline underline-offset-4" href="/tarifs">Ressources</Link>
+          <Link className="underline underline-offset-4" href="/fonctionnalites">Méthode</Link>
+          <Link className="text-muted-foreground underline underline-offset-4" href="/demo">Démo locale</Link>
           <a
             className="underline underline-offset-4"
             href="https://github.com/DevWeb13/starter-ia-5-6"

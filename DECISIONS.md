@@ -125,3 +125,11 @@ Les ressources documentaires constituent le cœur produit. L’application Next.
 **Date :** 2026-07-12 — **Statut :** acceptée — complète D-015 et D-016
 
 La lecture du stockage commence après hydratation. Les dates doivent être des chaînes ISO valides, les identifiants non vides et uniques, et le tri ne doit pas muter le tableau décodé. Lors d’un changement inter-onglets, l’éditeur suspend la saisie et demande un choix accessible avant toute nouvelle écriture.
+
+## D-021 — Hiérarchie publique centrée sur les ressources
+
+**Date :** 2026-07-12 — **Statut :** acceptée
+
+L’interface publique utilise les routes existantes sans migration : `/docs` pour les Configurations, `/tarifs` pour les Ressources, `/fonctionnalites` pour la Méthode et `/demo` pour la démonstration locale historique.
+
+L’accueil donne accès au catalogue en une action. Le Dashboard sort de la navigation globale mais reste relié depuis la démonstration et les projets locaux. La démo, le dashboard et l’éditeur conservent leur architecture, leur stockage navigateur et leurs fonctions déterministes ; leurs libellés et priorités SEO les identifient comme support secondaire.
