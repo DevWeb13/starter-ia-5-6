@@ -8,7 +8,7 @@ La feuille de route distingue l’historique livré de la direction active. Les 
 
 **Statut :** terminée le 11 juillet 2026.
 
-Méthode iPhone-first, workflow, prompts, brief, formation, identité visuelle et configuration Codex prudente.
+Méthode iPhone-first, workflow, prompts, brief, formation, identité visuelle et première configuration Codex.
 
 ### Phase 1 — Fondation publiable
 
@@ -29,21 +29,20 @@ Modèle de projet versionné, dashboard et éditeur locaux, exports et persistan
 ### Étape 3 — Réalignement du starter
 
 **Branche :** `work/03-product-realignment`
-**Statut :** en cours.
+**Statut :** terminée, fusionnée via la PR GitHub nº 4 au commit `8ab9507`.
 
-Objectif : faire de Starter IA le point d’entrée cohérent pour cinq configurations complémentaires, sans récupérer la fondation fournisseur abandonnée.
+Résultat : mémoire réalignée autour de cinq configurations complémentaires, règles Codex permanentes, guides initiaux et corrections ciblées du cœur local, sans fondation fournisseur.
 
-Livrables : mémoire réalignée, règles Codex permanentes, guides minimaux des cinq configurations et corrections de robustesse du cœur local.
-
-Critère de sortie : documentation cohérente, absence de `src/server/ai`, contrôles locaux réussis et aucun bloquant ou important après revue.
+La configuration Codex sécurisée a ensuite été livrée via la PR GitHub nº 5 au commit `5f8149d`. Cette correction de workflow est terminée ; elle ne constitue pas une nouvelle phase produit.
 
 ### Étape 4 — Catalogue et templates
 
-**Statut :** planifiée.
+**Branche :** `work/04-catalog-templates`
+**Statut :** en cours.
 
-Objectif : relier les guides aux prompts, briefs, checklists et templates réellement disponibles, sans inventer de fonction applicative.
+Objectif : relier les cinq guides aux prompts, briefs, checklists, formation et configuration réellement disponibles, sans inventer de fonction applicative.
 
-Critère de sortie : chaque configuration possède un chemin de démarrage court, des ressources réutilisables et des limites vérifiables.
+Critère de sortie : chaque configuration possède un chemin de démarrage court, des ressources réutilisables, des limites vérifiables et un passage de relais clair.
 
 ### Étape 5 — Interface alignée sur les ressources
 
@@ -51,4 +50,4 @@ Critère de sortie : chaque configuration possède un chemin de démarrage court
 
 Objectif : décider quelles pages existantes doivent présenter le catalogue documentaire et lesquelles restent des démonstrations historiques locales.
 
-Critère de sortie : le brief d’interface est validé avant modification, respecte [`DESIGN.md`](DESIGN.md) et n’introduit ni fournisseur, authentification ni paiement.
+Critère de sortie : le brief d’interface est validé avant modification, respecte [`DESIGN.md`](DESIGN.md) et n’introduit ni fournisseur, authentification, paiement ni stockage distant.

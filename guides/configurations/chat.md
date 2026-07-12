@@ -1,15 +1,27 @@
 # Chat : réfléchir et décider
 
-## Utiliser Chat pour
+## Utiliser cette configuration pour
 
 - clarifier une question ou comparer quelques options ;
 - prendre une décision courte ;
 - produire ou améliorer un brouillon limité.
 
-## Démarrage
+## Démarrage en trois étapes maximum
 
-Donnez le contexte utile, la décision attendue, les contraintes et le format de réponse. Demandez des hypothèses explicites lorsqu’une information manque.
+1. Donnez le contexte utile et le résultat attendu.
+2. Précisez les contraintes et le format de réponse.
+3. Demandez de signaler les hypothèses et vérifiez le résultat.
 
-## Limites et passage de relais
+## Ressources associées
 
-Chat n’est pas le choix par défaut pour une mission longue avec plusieurs fichiers et vérifications. Formalisez alors un brief et passez à [Work](work.md), [Codex local](codex-local.md) ou au workflow [hybride](hybrid-work-codex.md).
+- [`templates/BRIEF.md`](../../templates/BRIEF.md) si la demande exige des critères précis ;
+- [`course/FORMATION-EXPRESS.md`](../../course/FORMATION-EXPRESS.md) pour apprendre à choisir l’environnement et écrire un brief ;
+- [`QUALITY.md`](../../QUALITY.md) pour contrôler un résultat important.
+
+## Limites
+
+Chat n’est pas le choix par défaut pour une mission longue avec plusieurs fichiers, outils et vérifications. Les fonctions disponibles dépendent du compte et de l’environnement ; ne supposez pas qu’un fichier ou un service externe a été modifié sans preuve.
+
+## Passage de relais
+
+Formalisez une mission complète avec [`templates/BRIEF.md`](../../templates/BRIEF.md), puis passez à [Work](work.md), à [Codex local](codex-local.md) pour un dépôt, ou à [Work + Codex](hybrid-work-codex.md) pour séparer préparation et implémentation.

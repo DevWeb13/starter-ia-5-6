@@ -52,7 +52,7 @@ La pile native de `DESIGN.md` évite les requêtes de police, améliore le premi
 
 ## D-009 — Offre future sans prix inventé
 
-**Date :** 2026-07-11 — **Statut :** acceptée
+**Date :** 2026-07-11 — **Statut :** remplacée par D-017 pour la direction active
 
 Free et Pro sont marqués « Prévu », avec « Prix à confirmer ». Les CTA renvoient vers la démonstration existante, jamais vers un checkout ou une inscription inexistante.
 

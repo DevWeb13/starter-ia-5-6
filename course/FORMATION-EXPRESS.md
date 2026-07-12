@@ -36,7 +36,7 @@ Un Projet regroupe le contexte et les instructions durables d’un même sujet. 
 
 1. Créez un Projet `Starter IA` dans l’app ChatGPT.
 2. Ajoutez les instructions courtes de [`START-HERE.md`](../START-HERE.md).
-3. Choisissez Terra par défaut, Sol pour une orchestration complexe ou Luna pour une tâche simple, répétitive ou volumineuse.
+3. Choisissez le modèle généraliste disponible par défaut ; adaptez seulement si la mission et les options réellement proposées le justifient.
 
 ### Point de contrôle
 
