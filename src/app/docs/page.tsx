@@ -25,7 +25,7 @@ export default function DocsPage() {
         <section aria-labelledby="quick-start" className="space-y-5">
           <div className="space-y-2"><p className="eyebrow"><Terminal aria-hidden="true" className="size-4" /> Démarrage local</p><h2 id="quick-start" className="section-title">Quatre commandes reproductibles.</h2></div>
           <div className="overflow-x-auto rounded-2xl border border-border bg-card p-5 font-mono text-sm" tabIndex={0} aria-label="Commandes de démarrage local"><pre><code>{`npm ci\nnpm run dev\nnpm test\nnpm run build`}</code></pre></div>
-          <p className="text-muted-foreground">Ouvrez ensuite <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-sm">http://localhost:3000</code>. Aucune variable d’environnement n’est nécessaire pour cette PR.</p>
+          <p className="text-muted-foreground">Ouvrez ensuite <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-sm">http://localhost:3000</code>. Aucune variable d’environnement n’est nécessaire pour cette version.</p>
         </section>
 
         <section aria-labelledby="current-flow" className="space-y-5">
@@ -38,7 +38,7 @@ export default function DocsPage() {
         <section aria-labelledby="architecture" className="space-y-5">
           <div className="space-y-2"><p className="eyebrow"><Code2 aria-hidden="true" className="size-4" /> Architecture</p><h2 id="architecture" className="section-title">Des composants serveur par défaut.</h2></div>
           <p className="text-muted-foreground">Les pages restent des composants serveur par défaut. Le thème, le menu, la démonstration, le dashboard et l’éditeur portent les interactions navigateur. Il n’existe ni route API, ni base distante, ni SDK fournisseur.</p>
-          <Link href="https://github.com/DevWeb13/starter-ia-5-6/blob/work/03-product-realignment/ARCHITECTURE.md" className={buttonVariants({ variant: "secondary" })}>Lire l’architecture du dépôt</Link>
+          <Link href="https://github.com/DevWeb13/starter-ia-5-6/blob/main/ARCHITECTURE.md" className={buttonVariants({ variant: "secondary" })}>Lire l’architecture du dépôt</Link>
         </section>
 
         <section aria-labelledby="configurations" className="space-y-5">

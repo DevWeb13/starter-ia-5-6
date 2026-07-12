@@ -3,7 +3,7 @@
 **Dernière mise à jour :** 12 juillet 2026
 **Étape :** 3 — Réalignement du starter
 **Branche :** `work/03-product-realignment`
-**Statut réel :** PR brouillon nº 4 ouverte ; les contradictions textuelles importantes trouvées par la revue indépendante GitHub sont corrigées localement et les contrôles réussissent
+**Statut réel :** correction textuelle terminée, vérifiée et poussée sur la PR brouillon nº 4
 
 ## Direction active
 
@@ -25,9 +25,9 @@ Le projet n’intègre aucun fournisseur IA, appel payant, secret, authentificat
 - détails Remote Control déplacés dans un guide dédié ;
 - corrections locales ciblées de `4885bbf` récupérées manuellement, sans cherry-pick ;
 - aucun fichier de la fondation abandonnée `src/server/ai` récupéré.
-- branche poussée sur `origin/work/03-product-realignment` ; SHA avant la présente correction : `2c71cafb6cceab738c884a3a39eae59208796777` ;
+- branche poussée sur `origin/work/03-product-realignment` ; SHA final avant la présente mise à jour documentaire : `70c740d417119dc8f5f9936b9f3bd728f4fb1738` ;
 - PR brouillon nº 4 vers `main` : <https://github.com/DevWeb13/starter-ia-5-6/pull/4> ;
-- correction en cours de `README.md`, `START-HERE.md` et des copies actives du site, sans modification fonctionnelle du cœur local.
+- `README.md`, `START-HERE.md` et les copies actives du site sont réalignés, sans modification fonctionnelle du cœur local.
 
 ## Contrôles de cette branche
 
@@ -42,15 +42,15 @@ Le projet n’intègre aucun fournisseur IA, appel payant, secret, authentificat
 
 La branche et la PR existent sur GitHub. Aucun déploiement de production manuel n’a été effectué.
 
-## Vérifications distantes avant correction
+## Vérifications distantes finales
 
-- CI GitHub Actions, run `29183674019` : réussie sur `2c71cafb6cceab738c884a3a39eae59208796777`.
-- Preview Vercel automatique `dpl_HARJRedjerefc4Vtf7qvbLRKYA2W` : état `READY`, statut GitHub Vercel `SUCCESS`.
+- CI GitHub Actions, run `29184150954` : réussie sur `70c740d417119dc8f5f9936b9f3bd728f4fb1738`.
+- Preview Vercel automatique `dpl_HnxY341zWSo9w6D72n5Nj8YLmLFN` : état `READY`, statut GitHub Vercel `SUCCESS`.
 - Aucun déploiement de production manuel effectué.
 
 ## Blocages connus
 
-Aucun blocage applicatif connu. La revue indépendante GitHub de la PR nº 4 a signalé des contradictions importantes entre la direction officielle, les portes d’entrée publiques et certaines copies du site ; cette correction ciblée les réaligne sans modifier les parcours techniques.
+Aucun blocage applicatif connu. Les contradictions importantes signalées par la revue indépendante GitHub de la PR nº 4 sont corrigées sans modification des parcours techniques.
 
 Problème connu hors périmètre : le profil actuel `.codex/config.toml` utilise `approval_policy = "on-request"`, ce qui provoque des demandes répétitives en Remote Control. Un profil autonome sécurisé doit être conçu et testé séparément avant toute adoption ; `.codex/config.toml` n’est pas modifié dans cette mission.
 
