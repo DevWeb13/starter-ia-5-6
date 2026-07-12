@@ -1,59 +1,45 @@
 # État du projet
 
 **Dernière mise à jour :** 12 juillet 2026
-**Étape :** 3 — Réalignement du starter
-**Branche :** `work/03-product-realignment`
-**Statut réel :** correction textuelle terminée, vérifiée et poussée sur la PR brouillon nº 4
+**Étape :** 4 — Catalogue et templates
+**Branche :** `work/04-catalog-templates`
+**Statut réel :** étape 4 terminée et vérifiée
 
 ## Direction active
 
-Starter IA est un starter open source pour cinq configurations : Chat, Work, Codex local avec VS Code, Codex Remote depuis iPhone et Work + Codex. Remote Control est une configuration documentée parmi les autres.
+Starter IA est un starter open source pour cinq configurations : Chat, Work, Codex local avec VS Code, Codex Remote depuis iPhone et Work + Codex. Le [catalogue des configurations](guides/configurations/README.md) relie chaque usage aux ressources réellement présentes dans le dépôt.
 
-Le projet n’intègre aucun fournisseur IA, appel payant, secret, authentification, paiement ou architecture de SaaS de génération IA.
+Le projet n’intègre aucun fournisseur IA, appel payant, secret, authentification, paiement ou architecture de SaaS de génération IA. L’application Next.js des phases 1 et 2 reste un support démonstratif historique local.
 
 ## Historique livré
 
-- Version 0.1 : méthode, prompts, brief, formation et configuration Codex.
+- Version 0.1 : méthode, prompts, brief, formation et première configuration Codex.
 - Phase 1, commit `6819f79` : application Next.js, design system, tests, CI et déploiement historique.
 - Phase 2, commit `1026f75` : modèle de projet, démonstration déterministe, dashboard, éditeur, exports et stockage local.
-- La PR GitHub nº 3 a fusionné la phase 2 dans `main` au commit `1026f756155a08958ce9ef7322d467b31c30612b`.
+- Étape 3 terminée et fusionnée via la PR GitHub nº 4 ; commit de réalignement `8ab9507da76d1fae9994371a1dbe197746322ad6`.
+- Configuration Codex sécurisée terminée et fusionnée via la PR GitHub nº 5.
 
-## Travail de la branche
+Le commit de `main` au début de l’étape 4 est `5f8149da0116b96444efdc2a1428be0bcc8fa531`.
 
-- mémoire officielle réalignée autour des cinq configurations ;
-- `AGENTS.md` recentré sur les règles permanentes et l’application de `WORKFLOW.md` ;
-- détails Remote Control déplacés dans un guide dédié ;
-- corrections locales ciblées de `4885bbf` récupérées manuellement, sans cherry-pick ;
-- aucun fichier de la fondation abandonnée `src/server/ai` récupéré.
-- branche poussée sur `origin/work/03-product-realignment` ; SHA final avant la présente mise à jour documentaire : `70c740d417119dc8f5f9936b9f3bd728f4fb1738` ;
-- PR brouillon nº 4 vers `main` : <https://github.com/DevWeb13/starter-ia-5-6/pull/4> ;
-- `README.md`, `START-HERE.md` et les copies actives du site sont réalignés, sans modification fonctionnelle du cœur local.
+## Configuration Codex active
 
-## Contrôles de cette branche
+- sandbox limité au dépôt en mode `workspace-write` ;
+- demandes d’autorisation soumises à `auto_review` ;
+- accès réseau désactivé dans le sandbox.
 
-| Contrôle | Résultat |
-|---|---|
-| `npm run lint` | réussi |
-| `npm run typecheck` | réussi |
-| `npm test` | réussi — 2 fichiers, 8 tests |
-| `npm run build` | réussi — 10 routes ; relancé hors sandbox après une interdiction locale de liaison de port par Turbopack |
-| `npm run test:e2e` | réussi — 8 scénarios Chromium |
-| `git diff --check` | réussi après correction de revue |
+La configuration enregistrée reste dans [`.codex/config.toml`](.codex/config.toml). Work ne charge pas automatiquement ce fichier ni `AGENTS.md`.
 
-La branche et la PR existent sur GitHub. Aucun déploiement de production manuel n’a été effectué.
+## Résultat de l’étape 4
 
-## Vérifications distantes finales
-
-- CI GitHub Actions, run `29184150954` : réussie sur `70c740d417119dc8f5f9936b9f3bd728f4fb1738`.
-- Preview Vercel automatique `dpl_HnxY341zWSo9w6D72n5Nj8YLmLFN` : état `READY`, statut GitHub Vercel `SUCCESS`.
-- Aucun déploiement de production manuel effectué.
+- le sélecteur des cinq configurations a été transformé en catalogue de ressources ;
+- chaque guide a reçu un démarrage en trois étapes maximum, des ressources, des limites et un passage de relais ;
+- l’absence de restes commités issus des essais de permissions a été vérifiée ;
+- `WORKFLOW.md` a été préservé comme source unique du processus.
 
 ## Blocages connus
 
-Aucun blocage applicatif connu. Les contradictions importantes signalées par la revue indépendante GitHub de la PR nº 4 sont corrigées sans modification des parcours techniques.
+Aucun blocage applicatif connu. Aucune ancienne pull request n’est en attente.
 
-Problème connu hors périmètre : le profil actuel `.codex/config.toml` utilise `approval_policy = "on-request"`, ce qui provoque des demandes répétitives en Remote Control. Un profil autonome sécurisé doit être conçu et testé séparément avant toute adoption ; `.codex/config.toml` n’est pas modifié dans cette mission.
+## Prochaine étape
 
-## Prochaine mission proposée
-
-Après validation humaine de la PR nº 4, concevoir et tester séparément un profil Remote Control autonome et sécurisé avant toute adoption. Ne pas modifier `.codex/config.toml` ni ajouter de fonctionnalité distante sans brief et décision explicites.
+Cadrer l’étape 5 avant toute modification de l’interface historique.

@@ -6,7 +6,7 @@ Starter IA 5.6 est un starter open source de workflows, configurations, guides e
 
 ## Choisir sa configuration
 
-Commencez par le [sélecteur des cinq configurations](guides/configurations/README.md) :
+Commencez par le [catalogue des cinq configurations](guides/configurations/README.md) :
 
 1. **Chat** pour réfléchir, décider et produire des brouillons courts ;
 2. **Work** pour exécuter des missions complètes dans un environnement cloud ;

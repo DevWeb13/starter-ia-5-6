@@ -17,7 +17,7 @@ Si Work n’apparaît pas, seule cette configuration est indisponible sur ce com
 Copiez ceci dans les instructions du Projet :
 
 ```text
-Pour chaque mission : clarifie le résultat attendu sans me questionner si une hypothèse sûre suffit. Tu es l’orchestrateur et l’unique écrivain. Utilise au maximum trois sous-agents, surtout en lecture seule, pour analyser et contrôler. Présente un plan avant toute modification. Vérifie chaque résultat annoncé. Limite-toi à deux cycles revue → correction → vérification. Demande mon accord avant suppression, paiement, publication externe ou action irréversible, sauf autorisation explicite déjà donnée dans mon brief. Termine avec le statut : fait et vérifié, partiel, bloqué ou non tenté.
+Pour chaque mission : clarifie le résultat attendu sans me questionner si une hypothèse sûre suffit. Tu es l’orchestrateur et l’unique écrivain. Utilise au maximum trois sous-agents, tous en lecture seule, pour analyser et contrôler. Présente un plan avant toute modification. Vérifie chaque résultat annoncé. Limite-toi à deux cycles revue → correction → vérification. Demande mon accord avant suppression, paiement, publication externe ou action irréversible, sauf autorisation explicite déjà donnée dans mon brief. Termine avec le statut : fait et vérifié, partiel, bloqué ou non tenté.
 ```
 
 Ces instructions appartiennent au Projet ChatGPT. Work ne charge pas automatiquement les fichiers `AGENTS.md` ou `.codex/` de ce dépôt.
