@@ -38,19 +38,21 @@ La configuration Codex sécurisée a ensuite été livrée via la PR GitHub nº 
 ### Étape 4 — Catalogue et templates
 
 **Branche :** `work/04-catalog-templates`
-**Statut :** terminée le 12 juillet 2026.
+**Statut :** terminée, fusionnée via la PR GitHub nº 6 au commit `32e917f`.
 
-Objectif : relier les cinq guides aux prompts, briefs, checklists, formation et configuration réellement disponibles, sans inventer de fonction applicative.
+Résultat : les cinq guides sont reliés aux prompts, briefs, checklists, formation et configuration réellement disponibles, sans fonction applicative inventée.
 
-Critère de sortie : chaque configuration possède un chemin de démarrage court, des ressources réutilisables, des limites vérifiables et un passage de relais clair.
-
-La livraison est suivie par la PR GitHub nº 6.
+Critère de sortie atteint : chaque configuration possède un chemin de démarrage court, des ressources réutilisables, des limites vérifiables et un passage de relais clair.
 
 ### Étape 5 — Interface alignée sur les ressources
 
 **Branche :** `work/05-interface-resources`
-**Statut :** terminée et vérifiée localement le 12 juillet 2026.
+**Statut :** terminée, fusionnée via la PR GitHub nº 7 au commit `54c7b44` et déployée en production le 13 juillet 2026.
 
 Résultat : l’accueil, `/docs`, `/tarifs` et `/fonctionnalites` présentent respectivement la porte d’entrée, les configurations, les ressources et la méthode. La navigation privilégie ces ressources ; la démonstration, le dashboard et l’éditeur locaux restent accessibles comme support historique secondaire.
 
-Critère de sortie atteint : l’interface respecte [`DESIGN.md`](DESIGN.md), les contrôles applicatifs et Playwright réussissent, et aucun fournisseur, authentification, paiement ou stockage distant n’a été introduit.
+Critère de sortie atteint : l’interface respecte [`DESIGN.md`](DESIGN.md), les contrôles applicatifs et Playwright réussissent, la production répond, et aucun fournisseur, authentification, paiement ou stockage distant n’a été introduit.
+
+## Après l’étape 5 — Stabilisation
+
+Aucune nouvelle phase produit n’est engagée. La priorité est de maintenir la qualité, recueillir des retours d’usage et n’ajouter une évolution que lorsqu’un besoin concret et vérifiable le justifie.

@@ -2,7 +2,20 @@
 
 Les changements notables de Starter IA 5.6 sont documentés ici.
 
-## Non publié — Interface alignée sur les ressources
+## Non publié — Clôture post-fusion
+
+### Modifié
+
+- La mémoire officielle reflète la fusion de la PR nº 7, le commit courant de `main` et le déploiement de production vérifié.
+- Le Dashboard et l’éditeur locaux sont exclus de l’indexation publique sans modifier leur fonctionnement.
+- Le sitemap ne publie plus la route locale `/dashboard`.
+- Les tests Playwright vérifient les directives `noindex` et l’absence du Dashboard dans le sitemap.
+
+### Non inclus
+
+- Aucun changement du cœur local, du design, des dépendances ou du périmètre produit.
+
+## Interface alignée sur les ressources — 2026-07-12
 
 ### Modifié
 
