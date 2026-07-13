@@ -1,58 +1,108 @@
 # Architecture
 
-## Vue d’ensemble
+Ce document distingue l’architecture réellement livrée de la cible du prochain MVP. Cette PR ne modifie aucune fonction applicative et n’ajoute aucune intégration distante.
 
-Starter IA combine deux couches sans service distant métier :
+## Architecture actuellement livrée
 
 ```text
 Starter IA
 ├── Ressources open source
-│   ├── guides/configurations/   # choix et procédures des cinq configurations
-│   ├── prompts/                 # instructions réutilisables
-│   ├── templates/               # briefs et livrables de départ
-│   ├── course/                  # formation existante
-│   └── .codex/ + AGENTS.md      # configuration et règles du dépôt
+│   ├── guides/configurations/
+│   ├── prompts/
+│   ├── templates/
+│   ├── course/
+│   └── .codex/ + AGENTS.md
 └── Application Next.js existante
-    ├── accueil, configurations, ressources et méthode rendus côté serveur
+    ├── pages publiques rendues côté serveur
     ├── thème et navigation côté client
     └── démonstration, dashboard et éditeur locaux
         └── localStorage versionné
 ```
 
-La documentation est le cœur produit actif. L’application héritée reste une démonstration locale testée ; elle n’est ni un SaaS de génération IA ni la preuve d’une fonction distante.
+L’application crée un plan déterministe en six sections. Elle permet de modifier, reprendre et exporter un projet local. Elle n’exécute pas encore le cycle cible en six phases et n’appelle aucun fournisseur IA.
 
-## Stack applicative conservée
+### Stack conservée
 
 - Next.js `16.2.10`, App Router ;
 - React / React DOM `19.2.7` ;
 - TypeScript `5.9.3` strict ;
-- Tailwind CSS `4.3.2`, shadcn/ui local et next-themes ;
+- Tailwind CSS `4.3.2`, composants shadcn/ui locaux et next-themes ;
 - Vitest `4.1.10` et Playwright `1.61.1` ;
 - npm avec `package-lock.json`.
 
-## Frontières
+### Frontières actuelles
 
 - Les pages et contenus restent des Server Components par défaut.
-- Les composants client se limitent aux interactions navigateur : navigation, thème, démonstration et stockage local.
-- Le modèle `Project` utilise un schéma versionné. `local-project-store.ts` centralise lecture, validation, écriture, sauvegarde avant réinitialisation et erreurs de stockage.
-- Le dashboard charge les projets après hydratation. L’éditeur détecte les événements `storage` et suspend l’édition jusqu’au choix explicite de la version à conserver.
+- Les composants client couvrent uniquement navigation, thème, démonstration et stockage local.
+- Le type `Project` utilise un schéma versionné.
+- `local-project-store.ts` centralise validation, lecture, écriture, sauvegarde avant réinitialisation et erreurs.
+- Les projets restent dans `localStorage` sur l’appareil courant.
+- Il n’existe aucun compte, synchronisation, base distante, route de génération, SDK fournisseur ou secret serveur.
 
-## Données et réseau
+## Architecture cible du prochain MVP
 
-Les projets restent dans `localStorage` sur l’appareil courant. Il n’existe aucun compte, synchronisation, base distante, route de génération, SDK fournisseur ou secret serveur. La démonstration déterministe est du code local et ne doit jamais être présentée comme une IA véritable.
+```text
+Description du projet
+        ↓
+Profil matériel
+        ↓
+Cycle complet en six phases
+        ↓
+Sélection des spécialistes
+        ↓
+Recommandation ChatGPT / Codex
+        ↓
+Paquets de missions
+        ↓
+Progression et livrables locaux
+        ↓
+Comprendre cette étape
+        ↓
+Preuves et validations humaines
+        ↓
+Pack de lancement marketing
+```
 
-## Structure documentaire
+### Moteur initial
 
-`guides/configurations/README.md` compare les cinq configurations et renvoie vers un guide par configuration. Chaque guide contient uniquement rôle, cas d’usage, démarrage, limites et passage de relais. `WORKFLOW.md` reste la source unique du processus ; les guides y renvoient au lieu de le recopier.
+Le moteur cible reste local et déterministe. Des règles et templates transforment les entrées du projet en phases, étapes, rôles recommandés, missions copiables, livrables, preuves et validations. Le système distingue les spécialistes recommandés des agents réellement utilisés.
 
-L’interface expose ce contenu sans moteur Markdown dynamique : `/docs` résume les cinq guides, `/tarifs` indexe les ressources et `/fonctionnalites` résume la méthode. Les liens GitHub ouvrent les fichiers sources. `/demo`, `/dashboard` et `/dashboard/[id]` restent le parcours local historique, avec une priorité de navigation et de sitemap inférieure.
+Le profil matériel retient seulement les informations utiles : iPhone, ordinateur, système, Codex local, Remote Control, GitHub, Vercel éventuel et capacité de la machine à rester active. Le moteur recommande un parcours compatible au lieu de faire choisir une architecture complexe.
+
+### Modèle cible
+
+Le futur modèle local devra représenter :
+
+- les six phases et leurs étapes ordonnées ;
+- l’objectif, le pourquoi, le rôle, l’outil et la mission de chaque étape ;
+- les livrables, preuves, contrôles et validations humaines ;
+- la progression et les statuts fait et vérifié, partiel, bloqué ou non tenté ;
+- les paquets ChatGPT et Codex ;
+- le plan marketing et le rapport final.
+
+Le schéma précis sera décidé et versionné pendant l’étape 8. Cette PR ne modifie pas le type `Project` actuel ni `localStorage`.
+
+## Comprendre cette étape
+
+Chaque étape cible expose un volet court « Comprendre cette étape ». Il explique pourquoi l’étape existe, le spécialiste mobilisé, le travail de ChatGPT et Codex, la raison de l’écrivain unique, le livrable, la preuve et l’approbation éventuelle.
+
+Le rapport final cible enregistre les rôles et missions réellement exécutés, les livrables produits, les vérifications réussies, les actions non tentées ou bloquées et les validations humaines accordées.
+
+## Sécurité et actions externes
+
+L’orchestrateur prépare les actions. Leur exécution dépend des outils réellement disponibles, des permissions et du brief. Les changements réversibles restent sur une branche. La fusion dans `main`, la production, les suppressions, paiements, secrets, publications et messages exigent l’humain.
+
+Le parcours iPhone + Ubuntu conserve les processus sur Ubuntu. Remote Control ne remplace ni la vérification Git ni la vérification des processus. Sa disponibilité dépend du compte et des versions.
 
 ## Tests et livraison
 
-- Vitest couvre la génération déterministe et le stockage local.
-- Playwright couvre les parcours essentiels, le responsive, le thème, la corruption locale et les conflits inter-onglets.
-- GitHub Actions et Vercel font partie de l’historique livré, mais aucune publication externe n’est implicite dans une mission locale.
+- Vitest couvre actuellement la génération déterministe et le stockage local.
+- Playwright couvre les parcours essentiels, le responsive, le thème et les cas de stockage.
+- GitHub Actions et l’intégration Vercel sont déjà présents.
+- Une Preview de PR doit provenir de l’intégration GitHub automatique ; aucune production n’est implicite.
 
-## Évolutions autorisées
+Les tests du futur modèle, de ses règles et de ses exports seront définis pendant l’étape 8.
 
-Les prochaines évolutions portent sur la qualité des guides, templates et passages de relais, puis sur l’alignement éventuel de l’interface avec ces ressources. Toute intégration de fournisseur IA, authentification, paiement ou stockage distant est hors périmètre tant qu’une nouvelle décision explicite ne remplace pas cette architecture.
+## Évolutions exclues de cette architecture cible
+
+Aucun SDK IA, appel payant, secret, compte, base distante, paiement, collaboration multi-utilisateur ou automatisation de production n’est ajouté. Work reste une référence optionnelle et ne structure pas le moteur.

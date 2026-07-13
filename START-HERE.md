@@ -1,61 +1,60 @@
-# Parcours Work sur iPhone en moins de dix minutes
+# Lancer un projet avec Starter IA
 
-Ce guide décrit **la configuration Work sur iPhone**, l’une des cinq configurations Starter IA. Si votre mission relève plutôt d’un échange court, d’un dépôt local, de Remote Control ou d’un passage de relais, commencez par le [sélecteur des configurations](guides/configurations/README.md).
+La question de départ est simple : **« Quel projet voulez-vous lancer ? »**
 
-Objectif : lancer une première mission Work sûre dans l’app ChatGPT et obtenir un résultat concret, réellement vérifié.
+Décrivez le résultat recherché, les contraintes importantes, votre matériel et les outils réellement disponibles. Starter IA doit ensuite organiser le parcours, pas vous demander de choisir une architecture compliquée.
 
-## 0–2 min — Vérifier Work
+> Projet communautaire indépendant, non officiel et non affilié à OpenAI.
 
-1. Ouvrez l’app ChatGPT à jour sur votre iPhone.
-2. Créez un Projet nommé `Starter IA` ou ouvrez un Projet existant.
-3. Vérifiez que **Work** est disponible pour lancer une mission en plusieurs étapes.
+## Les six phases
 
-Si Work n’apparaît pas, seule cette configuration est indisponible sur ce compte. Utilisez [Chat](guides/configurations/chat.md) pour réfléchir ou préparer un brief, [Codex local](guides/configurations/codex-local.md) pour agir sur un dépôt, ou [Codex Remote](guides/configurations/codex-remote.md) si une session locale est accessible depuis l’iPhone.
+1. **Cadrer** l’idée, l’objectif, les contraintes et les risques.
+2. **Valider** le marché, la cible, le problème et le positionnement avec des critères et des preuves.
+3. **Concevoir** le produit, le MVP, l’expérience, les contenus et l’architecture.
+4. **Construire** les fichiers, le code, le design, les contenus et la documentation.
+5. **Vérifier** les tests, la sécurité, l’accessibilité, la qualité et les preuves réelles.
+6. **Lancer et améliorer** après validation humaine, avec marketing, mesure, retours et maintenance.
 
-## 2–4 min — Ajouter les règles du Projet
+## Qui fait quoi
 
-Copiez ceci dans les instructions du Projet :
+- **ChatGPT** aide à cadrer, rechercher, comparer, décider, rédiger et piloter.
+- **Codex** inspecte, modifie et vérifie les fichiers, Git et les contrôles autorisés.
+- **L’orchestrateur** organise le projet et distribue les missions.
+- **Les spécialistes** analysent un sujet précis en lecture seule.
+- **L’exécutant** est le seul rôle qui écrit.
+- **Le reviewer** contrôle indépendamment le résultat.
+- **L’humain** approuve les actions sensibles ou irréversibles.
 
-```text
-Pour chaque mission : clarifie le résultat attendu sans me questionner si une hypothèse sûre suffit. Tu es l’orchestrateur et l’unique écrivain. Utilise au maximum trois sous-agents, tous en lecture seule, pour analyser et contrôler. Présente un plan avant toute modification. Vérifie chaque résultat annoncé. Limite-toi à deux cycles revue → correction → vérification. Demande mon accord avant suppression, paiement, publication externe ou action irréversible, sauf autorisation explicite déjà donnée dans mon brief. Termine avec le statut : fait et vérifié, partiel, bloqué ou non tenté.
-```
+Le cycle du projet ne remplace pas le workflow interne d’une mission. Ce dernier reste : **Brief → analyses en lecture seule → plan → écrivain unique → vérification → revue → correction → livraison**. Voir [`WORKFLOW.md`](WORKFLOW.md).
 
-Ces instructions appartiennent au Projet ChatGPT. Work ne charge pas automatiquement les fichiers `AGENTS.md` ou `.codex/` de ce dépôt.
+## Comprendre cette étape
 
-## 4–6 min — Choisir simplement
+Le futur MVP affichera pour chaque étape un volet **« Comprendre cette étape »**. En quelques lignes, il expliquera pourquoi l’étape existe, qui intervient, ce que ChatGPT et Codex feront, le livrable attendu, la preuve à obtenir et ce que l’utilisateur devra approuver. Cette fonction enseignera progressivement le workflow sans devenir un cours technique.
 
-- Choisissez le modèle généraliste disponible par défaut.
-- Utilisez un modèle plus capable si la mission comporte plusieurs dépendances difficiles.
-- Préférez un modèle plus léger pour une tâche simple, répétitive ou volumineuse.
+## Parcours recommandé selon le matériel
 
-Les noms et disponibilités de modèles évoluent selon le compte. Le modèle ne remplace ni un brief clair ni une vérification.
+Starter IA recommandera le chemin le plus simple compatible avec l’environnement réel :
 
-## 6–9 min — Lancer une première mission
+- ChatGPT + Codex local sur Ubuntu/Linux ;
+- ChatGPT + Codex sur Windows ;
+- ChatGPT + Codex sur macOS ;
+- ChatGPT sur iPhone + Codex Remote si la fonction est disponible ;
+- parcours local sans Remote Control dans les autres cas.
 
-Copiez ce brief dans Work :
+La disponibilité dépend du compte, du client, du système, des versions et du déploiement progressif.
 
-```text
-Transforme mes notes en un plan d’action d’une page.
+## Workflow phare : iPhone + Ubuntu
 
-Résultat attendu : un document clair avec objectif, priorités, prochaines actions et points à vérifier.
-Méthode : utilise au maximum deux sous-agents en lecture seule, l’un pour les oublis et l’autre pour la clarté. Tu es le seul écrivain.
-Qualité : vérifie que chaque partie demandée existe, corrige les problèmes bloquants ou importants, puis relis le fichier réellement enregistré.
-Limites : ne publie rien, ne supprime rien et n’invente aucune information manquante ; signale-la.
-Livraison : donne le fichier et un rapport de quatre lignes maximum avec le statut réel.
+**ChatGPT sur iPhone → pilotage de la mission → Codex Remote Control → exécution sur Ubuntu → branche GitHub → contrôles → Preview Vercel automatique → validation humaine → squash merge → production.**
 
-Mes notes :
-[COLLEZ VOS NOTES ICI]
-```
+L’iPhone pilote seulement la session. Le dépôt, Git, Codex et les processus restent sur Ubuntu. La machine doit rester active, connectée et non suspendue. Une déconnexion ne prouve pas que les processus sont arrêtés et ne crée ni commit ni push. Vérifiez Git séparément. Ne transmettez jamais de secret, de code d’association ou de fichier `.env`.
 
-## 9–10 min — Vérifier la livraison
+Ce parcours est prioritaire, mais pas obligatoire. Utilisez le guide [Codex Remote](guides/configurations/codex-remote.md) uniquement si la fonction est réellement disponible.
 
-La mission est réussie seulement si le résultat existe, s’ouvre, contient les parties annoncées, signale les informations non vérifiables et n’a déclenché aucune action sensible non autorisée.
+## Limites actuelles
 
-- **Fait et vérifié** : tout le résultat demandé existe et les contrôles ont réussi.
-- **Partiel** : une partie utile est prête, avec un manque identifié.
-- **Bloqué** : une dépendance propre à cette mission empêche de continuer.
-- **Non tenté** : l’action n’a pas été exécutée.
+Le futur orchestrateur n’est pas encore construit. L’application actuelle est une démonstration locale déterministe avec édition, stockage navigateur et exports. Elle n’appelle ni ChatGPT ni Codex automatiquement et ne possède aucun service distant.
 
-## Ensuite
+Les guides [Chat](guides/configurations/chat.md), [Work](guides/configurations/work.md), [Codex local](guides/configurations/codex-local.md), [Codex Remote](guides/configurations/codex-remote.md) et [Work + Codex](guides/configurations/hybrid-work-codex.md) restent disponibles comme références. Work est une option secondaire, pas la porte d’entrée principale.
 
-Remplacez l’exemple par votre besoin avec [`templates/BRIEF.md`](templates/BRIEF.md), puis suivez [`WORKFLOW.md`](WORKFLOW.md). Pour un passage de relais vers un dépôt, utilisez le guide [Work + Codex](guides/configurations/hybrid-work-codex.md).
+Pour le contrat complet du prochain MVP, lisez [`PROJECT.md`](PROJECT.md).

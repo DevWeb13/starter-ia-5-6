@@ -10,7 +10,7 @@ Un seul point coché interdit la livraison, la publication ou la fusion.
 - [ ] Le résultat principal ne répond pas au brief.
 - [ ] Une réussite est annoncée sans vérification sur la cible réelle.
 - [ ] Une donnée secrète, personnelle inutile ou sensible est exposée.
-- [ ] Une suppression, un paiement, une publication externe ou une action irréversible a été exécuté sans autorisation explicite.
+- [ ] Une action sensible a été exécutée sans autorisation humaine explicite : suppression, paiement, utilisation, modification ou transmission d’un secret, publication externe, envoi de message ou d’email, fusion dans `main`, déploiement en production ou autre action irréversible.
 - [ ] Plusieurs agents ont modifié le même périmètre sans contrôle d’un écrivain unique.
 - [ ] La configuration ou une commande recommandée est invalide et empêche l’usage prévu.
 - [ ] Une page, un parcours principal, un script obligatoire ou le build de production échoue.
@@ -23,8 +23,9 @@ Un seul point coché interdit la livraison, la publication ou la fusion.
 
 Tous les points applicables doivent être résolus avant livraison ou fusion.
 
-- [ ] Les termes Chat, Work, Codex, Sol, Terra ou Luna se contredisent entre les documents.
-- [ ] Une des cinq configurations est présentée comme le produit entier ou ses limites dépendent d’une information absente de son guide.
+- [ ] Les rôles de ChatGPT, Work et Codex se contredisent entre les documents ou dépendent d’un nom temporaire de modèle.
+- [ ] Les guides de configuration sont présentés comme des produits indépendants au lieu de références secondaires du parcours complet.
+- [ ] Le cycle global du projet est confondu avec le workflow interne d’une mission.
 - [ ] Le parcours iPhone suppose une fonction qui n’est pas signalée comme dépendante du compte.
 - [ ] `AGENTS.md` ou `.codex/` est présenté comme automatiquement chargé par Work.
 - [ ] Une instruction est ambiguë pour un débutant ou dépend d’un jargon non défini.

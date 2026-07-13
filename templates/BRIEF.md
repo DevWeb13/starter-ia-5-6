@@ -22,7 +22,7 @@ Copiez ce modèle et supprimez les lignes inutiles.
 [Contrôles observables : fichier ouvert, test réussi, URL relue, critères présents.]
 
 ## 7. Actions nécessitant mon accord
-[Suppression, paiement, publication externe, envoi ou action irréversible. Indiquer ce qui est déjà autorisé.]
+[Suppression, paiement, secret, publication externe, envoi, fusion dans main, production ou action irréversible. Indiquer ce qui est déjà autorisé, avec son périmètre.]
 ```
 
 ## Exemple

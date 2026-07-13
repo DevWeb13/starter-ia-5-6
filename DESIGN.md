@@ -12,6 +12,23 @@ Ce document est la source de vérité visuelle de Starter IA 5.6. L’interface 
 - Parité fonctionnelle et contraste AA dans les thèmes clair et sombre.
 - Starter IA est l’unique identité produit active. « Démonstration locale historique » signale les parcours hérités qui ne représentent pas une fonction distante.
 
+## Principes UX du prochain MVP
+
+Ces principes définissent la cible de l’étape 8. Aucun composant correspondant n’est construit dans cette PR.
+
+- Montrer une seule étape principale à la fois.
+- Masquer la complexité spécialisée par défaut, sans cacher les décisions ni les preuves.
+- Afficher une progression claire dans les six phases.
+- Rendre visibles les livrables, preuves et contrôles.
+- Rendre visibles les validations humaines et les actions qui les exigent.
+- Proposer à chaque étape un bouton ou volet **« Comprendre cette étape »**.
+- Expliquer progressivement en quelques lignes, sans transformer le volet en cours technique.
+- Ne jamais employer un jargon sans définition courte.
+
+Chaque étape affiche au minimum : objectif, pourquoi, rôle mobilisé, outil recommandé, mission prête à exécuter, livrable attendu, preuve de réussite et validation humaine éventuelle.
+
+Le volet « Comprendre cette étape » précise pourquoi l’étape existe, quel spécialiste intervient, ce que ChatGPT et Codex feront, pourquoi un seul agent écrit, ce qui sera livré, vérifié et soumis à l’utilisateur.
+
 ## Couleurs claires
 
 | Rôle | Couleur | Usage |
