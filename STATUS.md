@@ -4,8 +4,8 @@
 **Étape :** 8 — MVP local du projet complet
 **Branche active :** `work/08-complete-project-mvp`
 **Base réelle :** `aeb1e9bfaf4f6b9da1d8daadf3726069a82296d3`
-**Pull request :** à créer après la revue finale
-**Statut réel :** implémentation locale vérifiée, deux cycles de revue terminés
+**Pull request :** nº 10 — brouillon
+**Statut réel :** implémentation locale vérifiée, deux cycles de revue terminés, CI et Preview à contrôler
 
 ## Point de départ
 
@@ -66,4 +66,4 @@
 
 ## Prochaine action
 
-Terminer la revue indépendante, corriger tout bloquant ou important, créer la pull request de l’étape 8, puis vérifier la CI et la Preview Vercel automatique sans fusion ni production manuelle.
+Vérifier la CI et la Preview Vercel automatique de la PR nº 10, corriger uniquement un échec réel, puis marquer la PR prête pour révision sans la fusionner ni créer de production manuelle.
