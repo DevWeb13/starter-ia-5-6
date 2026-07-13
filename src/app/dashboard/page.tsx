@@ -5,6 +5,7 @@ import { PageIntro } from "@/components/page-intro";
 export const metadata: Metadata = {
   title: "Projets de la démonstration locale",
   description: "Projets de la démonstration locale historique, stockés uniquement dans ce navigateur et sur cet appareil.",
+  robots: { index: false, follow: false },
 };
 
 export default function DashboardPage() {
