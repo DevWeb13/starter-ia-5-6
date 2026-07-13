@@ -2,7 +2,7 @@
 
 ## Positionnement
 
-**Starter IA transforme une idée en projet lancé avec ChatGPT et Codex, en orchestrant recherche, produit, développement, vérification et marketing selon votre matériel, avec un maximum d’automatisation sans perdre le contrôle.**
+**Starter IA transforme une idée en projet guidé avec ChatGPT et Codex, en organisant recherche, produit, développement, vérification et marketing selon votre matériel, sans retirer les décisions sensibles à l’humain.**
 
 > Projet communautaire indépendant, non officiel et non affilié à OpenAI.
 
@@ -49,7 +49,7 @@ Le workflow principal est **ChatGPT + Codex** :
 - **Starter IA** recommande le parcours, prépare les missions et rassemble les livrables, preuves et validations ;
 - **l’humain** conserve les décisions sensibles.
 
-Le prochain MVP préparera des missions copiables ou exportables. Il ne prétendra pas appeler ChatGPT ou Codex automatiquement s’il ne le fait pas réellement.
+Le MVP local version 2 prépare des missions copiables ou exportables. Il n’appelle jamais ChatGPT ou Codex automatiquement et ne présente pas une mission préparée comme exécutée.
 
 **Work** reste une ressource secondaire lorsque cette fonction est disponible et pertinente. Il n’est ni obligatoire, ni la porte d’entrée, ni une dépendance de l’architecture. Ses guides et son historique sont préservés.
 
@@ -83,27 +83,27 @@ La disponibilité dépend du compte, du client, du système, des versions et du 
 
 ### Workflow phare iPhone + Ubuntu
 
-**ChatGPT sur iPhone → préparation et pilotage → Codex Remote Control → exécution sur Ubuntu → branche GitHub → tests et contrôles → Preview Vercel automatique → validation humaine → squash merge → production.**
+**ChatGPT sur iPhone → préparation et pilotage → Codex Remote Control → exécution sur Ubuntu → branche GitHub → tests et contrôles → Preview Vercel automatique si l’intégration GitHub–Vercel est reliée → validation humaine → squash merge → production.**
 
 L’iPhone pilote la session. Le dépôt, Git, Codex et les processus restent sur Ubuntu. La machine doit rester active, connectée et non suspendue. Une déconnexion ne prouve pas que les processus sont arrêtés et ne crée ni commit ni push. L’état Git se vérifie séparément. Aucun secret, code d’association ou fichier `.env` ne doit être transmis. Ce parcours est prioritaire et différenciant, mais jamais obligatoire.
 
 ## Comprendre cette étape
 
-Chaque étape du futur MVP comportera un bouton ou volet court intitulé **« Comprendre cette étape »**. Il expliquera pourquoi l’étape existe, le spécialiste mobilisé, ce que ChatGPT et Codex feront, pourquoi un seul agent écrit, le livrable attendu, la vérification et l’approbation humaine éventuelle.
+Chaque étape du MVP comporte un volet court intitulé **« Comprendre cette étape »**. Il explique pourquoi l’étape existe, le spécialiste mobilisé, ce que ChatGPT et Codex doivent faire, pourquoi un seul agent écrit, le livrable attendu, la vérification et l’approbation humaine éventuelle.
 
 Chaque étape affichera au minimum : objectif, pourquoi, rôle mobilisé, outil recommandé, mission prête à exécuter, livrable attendu, preuve de réussite et validation humaine éventuelle. L’explication restera progressive et ne deviendra pas un cours technique.
 
-Le rapport final indiquera les rôles, missions, livrables et vérifications réellement exécutés, les actions non tentées ou bloquées et les validations humaines accordées.
+Le rapport local distingue les rôles planifiés, les missions préparées, les statuts déclarés, les preuves consignées et les validations humaines. Il ne déduit aucune exécution réelle d’une mission copiée.
 
 ## Automatisation sûre
 
-La promesse est : **« Le maximum d’automatisation sans autonomie aveugle. »** Les catégories suivantes définissent les frontières du futur produit, pas des fonctions déjà livrées :
+La promesse est : **« Le maximum d’automatisation sans autonomie aveugle. »** Le MVP applique déjà ces frontières dans ses missions, statuts et validations ; il ne réalise toutefois aucune action externe :
 
-- **automatique** : analyses, plans, briefs, missions, brouillons, tests, audits, rapports et préparation marketing ;
-- **automatique mais réversible, dans le périmètre autorisé** : création de fichiers, changements sur une branche, commits, ouverture de PR, Preview, exports et sauvegardes ;
+- **automatique dans le MVP local** : génération du parcours, des missions, des livrables attendus, des critères, des exports et du rapport déclaratif ;
+- **préparé mais non exécuté par Starter IA** : analyses externes, tests, fichiers, changements sur une branche, commits, PR, Preview et contenus marketing ;
 - **autorisation humaine obligatoire** : fusion dans `main`, production, suppression, paiement, secret, publication externe, envoi de message et action irréversible.
 
-Une mission peut autoriser à l’avance une branche, des commits, une PR et sa Preview. La publication marketing, la fusion et la production restent des décisions humaines explicites.
+Une mission copiée peut autoriser à l’avance une branche, des commits, une PR et sa Preview, mais son exécution se déroule hors de Starter IA et doit être vérifiée séparément. La publication marketing, la fusion et la production restent des décisions humaines explicites.
 
 ## Marketing et stratégie économique
 
@@ -119,9 +119,9 @@ La progression économique visée est :
 
 Aucun prix, abonnement acquis ou chiffre de revenus n’est annoncé.
 
-## Contrat du prochain MVP
+## MVP local version 2 livré à l’étape 8
 
-Cette direction n’est pas encore implémentée. Le prochain MVP pourra utiliser un moteur local et déterministe fondé sur des règles et templates.
+Le moteur actuel est local et déterministe. Des règles et templates TypeScript transforment le brief et le matériel déclaré en 16 étapes réparties dans les six phases exactes.
 
 ### Entrée minimale
 
@@ -161,9 +161,11 @@ Cette direction n’est pas encore implémentée. Le prochain MVP pourra utilise
 - fusion automatique dans `main` ou déploiement automatique en production ;
 - prise en charge d’autres fournisseurs d’IA.
 
-## Existant et historique préservés
+## Migration et historique préservés
 
-L’application Next.js livrée pendant les phases 1 et 2 reste une démonstration locale testée. Elle crée un plan déterministe en six **sections**, permet de modifier un projet, le stocker dans le navigateur et l’exporter. Ces six sections ne sont pas les six phases du prochain MVP. Aucun fournisseur IA, compte, paiement ou service distant n’est actuellement intégré.
+L’ancien schéma 1 utilisait six sections et la clé `ai-project-launcher.projects.v1`. Le schéma 2 utilise `starter-ia.projects.v2`, valide les deux formats strictement et migre seulement lorsqu’aucune donnée v2 n’existe. La source v1 et une sauvegarde brute sont conservées. Les anciens champs deviennent un contexte historique ; toutes les nouvelles étapes restent non tentées, sans preuve ni approbation inventée.
+
+Le Dashboard, l’espace projet, les exports et le rapport utilisent désormais le schéma 2. Aucun fournisseur IA, compte, paiement ou service distant n’est intégré.
 
 Les guides Chat, Work, Codex local, Codex Remote et Work + Codex restent disponibles comme références techniques secondaires. Les décisions et livrables historiques sont conservés.
 

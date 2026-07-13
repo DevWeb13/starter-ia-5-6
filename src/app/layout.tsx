@@ -9,7 +9,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://starter-ia-5-6.vercel.app"),
   title: {
-    default: "Starter IA 5.6 — De l’idée au projet lancé",
+    default: "Starter IA 5.6 — De l’idée au projet guidé",
     template: "%s — Starter IA 5.6",
   },
   description:

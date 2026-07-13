@@ -30,7 +30,7 @@ export default function HomePage() {
           <div className="space-y-7">
             <Badge className="w-fit border-primary/40 bg-primary/10 text-foreground">MVP local · six phases</Badge>
             <div className="space-y-5">
-              <h1 className="display-title text-balance">Starter IA transforme une idée en projet lancé avec ChatGPT et Codex.</h1>
+              <h1 className="display-title text-balance">Starter IA transforme une idée en projet guidé avec ChatGPT et Codex.</h1>
               <p className="max-w-3xl text-lg text-muted-foreground sm:text-xl">Décrivez votre projet. Starter IA organise les six phases, les spécialistes, les missions, les livrables et les vérifications selon votre matériel, sans retirer les décisions sensibles à l’humain.</p>
             </div>
             <div className="grid gap-3 sm:flex sm:flex-wrap">

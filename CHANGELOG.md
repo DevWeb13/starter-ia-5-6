@@ -2,6 +2,34 @@
 
 Les changements notables de Starter IA 5.6 sont documentés ici.
 
+## Non publié — MVP local du projet complet
+
+### Ajouté
+
+- Modèle `Project` version 2 avec brief, profil matériel, workflow recommandé, six phases et 16 étapes.
+- Moteur TypeScript déterministe sans appel réseau ou fournisseur IA.
+- Recommandations pour iPhone + Ubuntu + Remote Control, Remote Control alternatif, Codex local et absence de Codex.
+- Missions ChatGPT et Codex contextualisées, livrables, preuves, quatre statuts et validations humaines.
+- Espace projet à une phase principale, volet « Comprendre cette étape » et rapport local déclaratif.
+- Exports JSON validé et Markdown complet, normalisé pour les contenus utilisateurs.
+
+### Modifié
+
+- `/demo` devient le véritable lancement local du projet, sans faux délai.
+- Le Dashboard affiche résultat recherché, workflow, progression, blocages, exports et actions confirmées.
+- L’accueil, le fonctionnement, les ressources, la navigation, le footer et les métadonnées présentent le MVP complet comme produit principal.
+
+### Migration
+
+- La clé active devient `starter-ia.projects.v2`.
+- Les projets `ai-project-launcher.projects.v1` sont validés, sauvegardés et migrés sans supprimer la source ni inventer de progression.
+- Les données v1 ou v2 corrompues restent intactes avec une action de récupération explicite.
+
+### Limites
+
+- Aucun SDK IA, appel ChatGPT ou Codex automatique, compte, synchronisation, base distante, paiement, publication ou production automatique.
+- L’exécution guidée reste prévue pour l’étape 9.
+
 ## Non publié — Réalignement définitif de la direction produit
 
 ### Direction décidée

@@ -72,6 +72,7 @@ export function ProjectStepCard({ step, disabled, onUpdate }: Props) {
             >
               {PROJECT_STEP_STATUSES.map((status) => <option key={status} value={status}>{PROJECT_STEP_STATUS_LABELS[status]}</option>)}
             </select>
+            <p className="text-sm text-muted-foreground">Le statut « fait et vérifié » exige une preuve consignée dans cette étape.</p>
           </div>
           <div className="space-y-2">
             <label htmlFor={`${step.id}-notes`} className="block font-semibold">Notes ou preuves</label>

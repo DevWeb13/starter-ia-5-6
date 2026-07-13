@@ -103,8 +103,10 @@ export function projectToMarkdown(project: Project) {
 
 ${markdownText(step.objective)}
 
-**Rôle planifié :** ${markdownText(step.role)}  
-**Outil recommandé :** ${markdownText(step.recommendedTool)}  
+**Rôle planifié :** ${markdownText(step.role)}
+
+**Outil recommandé :** ${markdownText(step.recommendedTool)}
+
 **Statut déclaré par l’utilisateur :** ${PROJECT_STEP_STATUS_LABELS[step.status]}
 
 **Mission ChatGPT**

@@ -34,6 +34,8 @@ type LegacyProject = {
 export class LocalStorageUnavailableError extends Error {}
 export class InvalidLocalProjectDataError extends Error {}
 
+export type RawProjectData = { key: string; raw: string };
+
 function isStringArray(value: unknown): value is string[] {
   return Array.isArray(value) && value.every((item) => typeof item === "string");
 }
@@ -174,6 +176,14 @@ export function readProjects(storage?: StorageLike, now = new Date().toISOString
     );
   }
   return [...migrated].sort((first, second) => second.updatedAt.localeCompare(first.updatedAt));
+}
+
+export function readRawProjectData(storage?: StorageLike): RawProjectData | null {
+  const target = getStorage(storage);
+  const rawV2 = getItem(target, PROJECT_STORAGE_KEY);
+  if (rawV2 !== null) return { key: PROJECT_STORAGE_KEY, raw: rawV2 };
+  const rawV1 = getItem(target, LEGACY_PROJECT_STORAGE_KEY);
+  return rawV1 === null ? null : { key: LEGACY_PROJECT_STORAGE_KEY, raw: rawV1 };
 }
 
 export function saveProjects(projects: Project[], storage?: StorageLike) {

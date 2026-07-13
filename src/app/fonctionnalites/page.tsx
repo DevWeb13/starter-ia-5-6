@@ -53,7 +53,7 @@ export default function MethodPage() {
       <PageIntro
         eyebrow="Fonctionnement"
         badge="Cycle complet"
-        title="Six phases pour transformer une idée en projet lancé."
+        title="Six phases pour guider une idée jusqu’au lancement."
         description="Le cycle du projet organise le résultat de bout en bout. Chaque étape prépare une mission, des livrables, des preuves et les validations humaines nécessaires."
       />
 

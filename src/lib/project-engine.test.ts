@@ -73,9 +73,20 @@ describe("deterministic project engine", () => {
 
     const approved = updateProjectStep(project, "launch-release", {
       humanApprovalGranted: true,
+      userNotes: "Preview contrôlée et accord de lancement consigné.",
       status: "done-verified",
     }, "2026-07-13T11:00:00.000Z");
     expect(approved.phases[5].steps[1].status).toBe("done-verified");
+  });
+
+  it("requires a recorded proof before any step is done and verified", () => {
+    const project = createProject(input, "project-id", "2026-07-13T10:00:00.000Z");
+    expect(() => updateProjectStep(project, "scope-problem", { status: "done-verified" })).toThrow(/preuve/);
+    const completed = updateProjectStep(project, "scope-problem", {
+      userNotes: "Compte rendu de deux entretiens et décision consignés.",
+      status: "done-verified",
+    });
+    expect(completed.phases[0].steps[0].status).toBe("done-verified");
   });
 });
 
@@ -85,7 +96,8 @@ describe("hardware workflow recommendation", () => {
   });
 
   it("recommends Remote Control on another system only when declared and sustainable", () => {
-    expect(recommendWorkflow({ ...baseHardware, operatingSystem: "macos", remoteControlAvailable: true }).id).toBe("remote-control");
+    expect(recommendWorkflow({ ...baseHardware, operatingSystem: "macos", hasIPhone: true, remoteControlAvailable: true }).id).toBe("remote-control");
+    expect(recommendWorkflow({ ...baseHardware, operatingSystem: "macos", remoteControlAvailable: true }).id).toBe("chatgpt-codex-local");
     expect(recommendWorkflow({ ...baseHardware, operatingSystem: "windows", remoteControlAvailable: true, machineCanStayActive: false }).id).toBe("chatgpt-codex-local");
   });
 

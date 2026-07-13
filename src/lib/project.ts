@@ -170,6 +170,7 @@ function isStep(value: unknown): value is ProjectStep {
     typeof step.requiresHumanApproval === "boolean" &&
     typeof step.humanApprovalGranted === "boolean" &&
     (!step.requiresHumanApproval || (step.humanApprovalReason as string).length > 0) &&
+    !(step.status === "done-verified" && (step.userNotes as string).trim().length === 0) &&
     !(step.status === "done-verified" && step.requiresHumanApproval && !step.humanApprovalGranted);
 }
 
@@ -229,6 +230,9 @@ export function updateProjectStep(
       const next = { ...step, ...update };
       if (next.status === "done-verified" && next.requiresHumanApproval && !next.humanApprovalGranted) {
         throw new Error("Accord humain requis avant de déclarer cette étape faite et vérifiée.");
+      }
+      if (next.status === "done-verified" && !next.userNotes.trim()) {
+        throw new Error("Consignez au moins une preuve avant de déclarer cette étape faite et vérifiée.");
       }
       return next;
     }),

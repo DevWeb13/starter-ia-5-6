@@ -1,55 +1,69 @@
 # État du projet
 
 **Dernière mise à jour :** 13 juillet 2026
-**Étape :** 7 — Réalignement définitif
-**Branche active :** `work/07-definitive-product-realignment`
-**Base réelle :** `06718299fa2cea6a8341d9e2d799305ca897739d`
-**Statut réel :** nouvelle direction en formalisation, aucun nouveau MVP fonctionnel implémenté
+**Étape :** 8 — MVP local du projet complet
+**Branche active :** `work/08-complete-project-mvp`
+**Base réelle :** `aeb1e9bfaf4f6b9da1d8daadf3726069a82296d3`
+**Pull request :** à créer après la revue finale
+**Statut réel :** implémentation locale vérifiée, deux cycles de revue terminés
 
-## Point de départ vérifié
+## Point de départ
 
-- la PR GitHub nº 8 a été fusionnée par squash dans `main` ;
-- son commit est `06718299fa2cea6a8341d9e2d799305ca897739d` (`chore: close step 5 and refine local route indexing (#8)`) ;
-- l’étape 7 part de ce commit sur la branche dédiée ;
+- l’étape 7 a été fusionnée par squash via la PR GitHub nº 9 ;
+- son commit est `aeb1e9bfaf4f6b9da1d8daadf3726069a82296d3` (`docs: define the definitive agentic product direction (#9)`) ;
+- la branche de l’étape 8 part exactement de ce commit ;
 - le dépôt distant est `DevWeb13/starter-ia-5-6`.
 
-## Direction en formalisation
+## MVP réellement implémenté
 
-Starter IA devient un orchestrateur de projet complet. Il doit organiser six phases, les spécialistes, les missions ChatGPT et Codex, les livrables, les preuves, le marketing et les validations humaines selon le matériel de l’utilisateur.
+- modèle `Project` version 2 avec brief, matériel déclaré, workflow, six phases et 16 étapes ;
+- moteur local déterministe, sans fournisseur, SDK, appel réseau métier ou secret ;
+- recommandations iPhone + Ubuntu + Remote Control, Remote Control alternatif, Codex local et absence de Codex ;
+- lancement immédiat depuis `/demo`, sans faux délai ;
+- espace projet à une phase principale avec missions, livrables, preuves, statuts et validations humaines ;
+- « Comprendre cette étape », Dashboard, reprise, conflits inter-onglets, exports JSON/Markdown et rapport local ;
+- interface publique recentrée sur le projet complet ; configurations conservées comme ressources secondaires ;
+- Dashboard et éditeur `noindex` et absents du sitemap.
 
-ChatGPT + Codex devient le workflow principal. Work reste une option secondaire. Le parcours iPhone + Ubuntu avec Remote Control devient un workflow phare lorsque les fonctions nécessaires sont réellement disponibles.
+## Migration version 1
 
-## État réellement livré
+- clé active : `starter-ia.projects.v2` ;
+- source historique : `ai-project-launcher.projects.v1` conservée intacte ;
+- sauvegarde brute avant migration ;
+- validation stricte des enveloppes, dates ISO et identifiants ;
+- anciens champs conservés dans le contexte historique ;
+- aucune progression, preuve ou approbation inventée ;
+- donnée v1 ou v2 illisible laissée intacte avec récupération explicite.
 
-- application Next.js publique et ressources documentaires ;
-- démonstration locale déterministe en six sections ;
-- dashboard et éditeur locaux ;
-- modèle de projet versionné dans `localStorage` ;
-- exports Markdown et JSON ;
-- guides Chat, Work, Codex local, Codex Remote et Work + Codex ;
-- tests, CI GitHub et intégration Vercel hérités des étapes précédentes.
+## Contrôles observés
 
-L’application existante n’est pas le nouveau MVP. Elle ne comporte aucune intégration ChatGPT ou Codex, aucun fournisseur IA, appel payant, compte, base distante, paiement ou automatisation de publication.
-
-## Mission actuelle
-
-- réaligner uniquement les documents et la stratégie ;
-- préserver l’application, ses routes, ses données, ses tests, ses dépendances et ses styles ;
-- définir le contrat de l’étape 8 sans le construire ;
-- ne pas attribuer de numéro à la PR avant sa création réelle.
-
-## Contrôles de cette branche
-
-- revue indépendante : aucun problème bloquant ou important après un cycle de correction ;
-- `git diff --check` : réussi ;
-- liens Markdown relatifs des 17 documents modifiés : vérifiés, aucune cible absente ;
+- `git diff --check` : réussi avant la revue finale ;
 - `npm run lint` : réussi ;
 - `npm run typecheck` : réussi ;
-- `npm test` : 2 fichiers et 8 tests réussis ;
-- `npm run build` : premier essai bloqué par l’interdiction de port du sandbox, relance autorisée hors sandbox réussie ;
-- `npm run test:e2e` : 11 scénarios Playwright réussis ;
-- aucun fichier applicatif, test, dépendance, secret ou fichier `.env` modifié.
+- `npm test` : 4 fichiers et 28 tests réussis ;
+- `npm run build` : réussi hors sandbox après l’échec attendu du port interne Turbopack dans le sandbox ;
+- `npm run test:e2e` : 17 scénarios Playwright réussis ;
+- contrôle Chromium headless : aucun débordement (`scrollWidth = clientWidth = 320`) sur l’accueil et `/demo` ;
+- contrôle Playwright à 320 px : création puis ouverture d’un espace projet avec un résultat continu de 600 caractères, sans débordement global ;
+- liens Markdown : 27 fichiers vérifiés, aucune cible relative absente ;
+- aucun fichier `.env`, appel réseau métier ou dépendance inattendue ;
+- `agent-browser` : non installé ; vérification équivalente effectuée avec Playwright et Chromium headless.
 
-## Étape suivante
+## Revue indépendante
 
-L’étape 8 construira le MVP local du projet complet uniquement après validation et fusion séparée de l’étape 7. Aucun travail d’implémentation de l’étape 8 n’est inclus dans cette branche.
+- cycle 1 : un blocage documentaire et sept défauts importants identifiés ;
+- corrections : mémoire, rôle reviewer, prérequis Remote Control/Preview, récupération brute, preuve obligatoire, responsive, promesse et contrôle des exports ;
+- cycle 2 : compteur et formulations documentaires résiduelles identifiés puis corrigés ;
+- vérification finale du cycle 2 : aucune anomalie de lint, TypeScript, Vitest, build, Playwright ou `git diff --check`.
+
+## Limites
+
+- aucun appel ChatGPT ou Codex automatique ;
+- aucun compte, synchronisation, base distante, paiement ou collaboration ;
+- aucune publication, fusion ou production automatique ;
+- les missions sont préparées et les preuves restent déclaratives ;
+- l’étape 9 d’exécution guidée reste future.
+
+## Prochaine action
+
+Terminer la revue indépendante, corriger tout bloquant ou important, créer la pull request de l’étape 8, puis vérifier la CI et la Preview Vercel automatique sans fusion ni production manuelle.

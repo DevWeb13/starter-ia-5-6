@@ -247,7 +247,7 @@ const phaseTemplates: PhaseTemplate[] = [
         role: "reviewer",
         recommendedTool: "Reviewer en lecture seule",
         chatGpt: true,
-        codex: true,
+        codex: false,
         deliverables: ["Revue priorisée", "Corrections vérifiées", "Décision de livraison"],
         successCriteria: ["Le reviewer n’a rien modifié", "Aucun bloquant ou important ne subsiste", "Deux cycles maximum sont respectés"],
         requiresHumanApproval: false,
@@ -314,7 +314,7 @@ function deliveryPath(hardware: HardwareProfile): string[] {
   const path = ["Préparer les missions dans ChatGPT", "Exécuter les modifications autorisées avec Codex", "Vérifier les résultats réels"];
   if (hardware.githubAvailable) path.push("Travailler sur une branche GitHub et ouvrir une pull request");
   else path.push("Conserver les changements et preuves localement, sans dépendre de GitHub");
-  if (hardware.vercelAvailable && hardware.githubAvailable) path.push("Utiliser uniquement la Preview Vercel automatique de la pull request");
+  if (hardware.vercelAvailable && hardware.githubAvailable) path.push("Si l’intégration GitHub–Vercel est réellement reliée, utiliser uniquement sa Preview automatique ; sinon vérifier localement");
   else if (!hardware.vercelAvailable) path.push("Vérifier localement sans supposer Vercel disponible");
   path.push("Demander un accord humain avant toute action sensible");
   return path;
@@ -337,7 +337,7 @@ export function recommendWorkflow(hardware: HardwareProfile): WorkflowRecommenda
     };
   }
   if (
-    hardware.hasComputer && hardware.operatingSystem !== "none" && hardware.codexLocalAvailable &&
+    hardware.hasComputer && hardware.operatingSystem !== "none" && hardware.hasIPhone && hardware.codexLocalAvailable &&
     hardware.remoteControlAvailable && hardware.machineCanStayActive
   ) {
     return {

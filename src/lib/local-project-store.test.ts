@@ -9,6 +9,7 @@ import {
   PROJECT_BACKUP_KEY,
   PROJECT_STORAGE_KEY,
   readProjects,
+  readRawProjectData,
   resetProjects,
   saveProject,
   saveProjects,
@@ -109,6 +110,12 @@ describe("local project store version 2", () => {
     expect(() => readProjects(storage)).toThrow(/source historique n’a pas été modifiée/);
     expect(storage.values.get(LEGACY_PROJECT_STORAGE_KEY)).toBe("not-json");
     expect(storage.values.has(PROJECT_STORAGE_KEY)).toBe(false);
+  });
+
+  it("exposes corrupt raw data for recovery without changing it", () => {
+    const storage = memoryStorage({ [PROJECT_STORAGE_KEY]: "not-json" });
+    expect(readRawProjectData(storage)).toEqual({ key: PROJECT_STORAGE_KEY, raw: "not-json" });
+    expect(storage.values.get(PROJECT_STORAGE_KEY)).toBe("not-json");
   });
 
   it("rejects corrupt version 2 data without falling back to version 1", () => {

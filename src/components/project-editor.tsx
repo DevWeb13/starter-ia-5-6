@@ -62,7 +62,18 @@ export function ProjectEditor({ id }: { id: string }) {
   useEffect(() => { queueMicrotask(load); }, [load]);
   useEffect(() => {
     const onStorage = (event: StorageEvent) => {
-      if (event.key === PROJECT_STORAGE_KEY) setConflict(true);
+      if (event.key !== PROJECT_STORAGE_KEY || !current.current) return;
+      if (!event.newValue) {
+        setConflict(true);
+        return;
+      }
+      try {
+        const envelope = JSON.parse(event.newValue) as { projects?: Project[] };
+        const incoming = envelope.projects?.find((item) => item.id === current.current?.id);
+        if (!incoming || incoming.updatedAt !== current.current.updatedAt) setConflict(true);
+      } catch {
+        setConflict(true);
+      }
     };
     window.addEventListener("storage", onStorage);
     return () => window.removeEventListener("storage", onStorage);

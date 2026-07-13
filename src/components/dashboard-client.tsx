@@ -7,7 +7,7 @@ import { useCallback, useEffect, useState } from "react";
 import { LocalProjectNotice } from "@/components/local-project-notice";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { deleteProject, PROJECT_STORAGE_KEY, readProjects, resetProjects } from "@/lib/local-project-store";
+import { deleteProject, PROJECT_STORAGE_KEY, readProjects, readRawProjectData, resetProjects } from "@/lib/local-project-store";
 import type { Project } from "@/lib/project";
 import { getProjectProgress, projectToJson, projectToMarkdown } from "@/lib/project-report";
 
@@ -65,6 +65,19 @@ export function DashboardClient() {
     catch (cause) { setError(cause instanceof Error ? cause.message : "Réinitialisation impossible."); }
   }
 
+  function exportRawData() {
+    try {
+      const raw = readRawProjectData();
+      if (!raw) {
+        setError("Aucune donnée locale brute n’est disponible.");
+        return;
+      }
+      download(`sauvegarde-${raw.key}.txt`, raw.raw, "text/plain;charset=utf-8");
+    } catch (cause) {
+      setError(cause instanceof Error ? cause.message : "Export brut impossible.");
+    }
+  }
+
   if (!ready) return <p role="status">Chargement des projets locaux…</p>;
 
   return (
@@ -76,7 +89,10 @@ export function DashboardClient() {
             <p role="alert" className="font-semibold text-destructive">Données locales indisponibles</p>
             <p>{error}</p>
             <p className="text-sm text-muted-foreground">La source illisible reste intacte jusqu’à votre confirmation. La réinitialisation crée d’abord une sauvegarde brute locale.</p>
-            <Button variant="destructive" onClick={reset}>Réinitialiser les données locales</Button>
+            <div className="flex flex-col gap-2 sm:flex-row">
+              <Button variant="outline" onClick={exportRawData}><Download aria-hidden="true" className="size-4" />Télécharger les données brutes</Button>
+              <Button variant="destructive" onClick={reset}>Réinitialiser les données locales</Button>
+            </div>
           </CardContent>
         </Card>
       ) : null}
@@ -99,7 +115,7 @@ export function DashboardClient() {
                 <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
                   <div className="min-w-0 space-y-2">
                     <CardTitle className="break-words text-xl">{project.title}</CardTitle>
-                    <p className="text-muted-foreground">{project.brief.desiredOutcome}</p>
+                    <p className="text-muted-foreground [overflow-wrap:anywhere]">{project.brief.desiredOutcome}</p>
                     <p className="text-sm"><strong>Workflow :</strong> {project.workflow.name}</p>
                     <p className="text-sm text-muted-foreground">Modifié le {date(project.updatedAt)}</p>
                   </div>

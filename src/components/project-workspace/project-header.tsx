@@ -30,7 +30,7 @@ export function ProjectHeader({ project, saveState, disabled, onTitleChange }: P
           </div>
           <div>
             <p className="text-sm font-semibold">Résultat recherché</p>
-            <p className="mt-1 whitespace-pre-wrap text-muted-foreground">{project.brief.desiredOutcome}</p>
+            <p className="mt-1 whitespace-pre-wrap text-muted-foreground [overflow-wrap:anywhere]">{project.brief.desiredOutcome}</p>
           </div>
         </div>
         <div className="min-w-40 space-y-2 rounded-xl border bg-muted/35 p-4">
