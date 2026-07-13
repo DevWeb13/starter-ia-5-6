@@ -10,7 +10,7 @@ Un seul point coché interdit la livraison, la publication ou la fusion.
 - [ ] Le résultat principal ne répond pas au brief.
 - [ ] Une réussite est annoncée sans vérification sur la cible réelle.
 - [ ] Une donnée secrète, personnelle inutile ou sensible est exposée.
-- [ ] Une suppression, un paiement, une publication externe ou une action irréversible a été exécuté sans autorisation explicite.
+- [ ] Une action sensible a été exécutée sans autorisation humaine explicite : suppression, paiement, utilisation, modification ou transmission d’un secret, publication externe, envoi de message ou d’email, fusion dans `main`, déploiement en production ou autre action irréversible.
 - [ ] Plusieurs agents ont modifié le même périmètre sans contrôle d’un écrivain unique.
 - [ ] La configuration ou une commande recommandée est invalide et empêche l’usage prévu.
 - [ ] Une page, un parcours principal, un script obligatoire ou le build de production échoue.
