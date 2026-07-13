@@ -48,8 +48,9 @@ La livraison est suivie par la PR GitHub nº 6.
 
 ### Étape 5 — Interface alignée sur les ressources
 
-**Statut :** à cadrer.
+**Branche :** `work/05-interface-resources`
+**Statut :** terminée et vérifiée localement le 12 juillet 2026.
 
-Objectif : décider quelles pages existantes doivent présenter le catalogue documentaire et lesquelles restent des démonstrations historiques locales.
+Résultat : l’accueil, `/docs`, `/tarifs` et `/fonctionnalites` présentent respectivement la porte d’entrée, les configurations, les ressources et la méthode. La navigation privilégie ces ressources ; la démonstration, le dashboard et l’éditeur locaux restent accessibles comme support historique secondaire.
 
-Critère de sortie : le brief d’interface est validé avant modification, respecte [`DESIGN.md`](DESIGN.md) et n’introduit ni fournisseur, authentification, paiement ni stockage distant.
+Critère de sortie atteint : l’interface respecte [`DESIGN.md`](DESIGN.md), les contrôles applicatifs et Playwright réussissent, et aucun fournisseur, authentification, paiement ou stockage distant n’a été introduit.

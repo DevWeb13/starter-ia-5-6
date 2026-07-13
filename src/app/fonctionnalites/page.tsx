@@ -1,84 +1,121 @@
 import type { Metadata } from "next";
-import { Check, Cloud, FileText, Gauge, GitMerge, Laptop, Layers3, MessageSquareText, Smartphone } from "lucide-react";
-import Link from "next/link";
+import { Check, ExternalLink } from "lucide-react";
 
 import { PageIntro } from "@/components/page-intro";
-import { Badge } from "@/components/ui/badge";
-import { buttonVariants } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 
 export const metadata: Metadata = {
-  title: "Fonctionnalités",
-  description: "Découvrez les ressources et configurations de Starter IA, ainsi que la démonstration locale héritée.",
+  title: "Méthode",
+  description: "Le processus commun de Starter IA : cadrage, écrivain unique, vérification, revue et passage de relais.",
 };
 
-const available = [
-  { icon: Layers3, title: "Plan en six sections", text: "Valeur, cible, MVP, technique, marketing et prochaines actions dans un ordre lisible." },
-  { icon: Gauge, title: "Parcours mobile-first", text: "Une interface rapide, clavier-accessible et utilisable dès 320 px en clair comme en sombre." },
-  { icon: FileText, title: "Données de démonstration", text: "Des exemples réalistes, clairement identifiés, sans client, chiffre ou témoignage inventé." },
+const githubRoot = "https://github.com/DevWeb13/starter-ia-5-6/blob/main";
+
+const steps = [
+  {
+    title: "Choisir la configuration",
+    text: "Partir de la mission : échange court, mission cloud, modification locale, pilotage depuis iPhone ou relais Work + Codex.",
+  },
+  {
+    title: "Cadrer la mission",
+    text: "Écrire le résultat attendu, les livrables, les contraintes, les preuves de réussite et les actions déjà autorisées.",
+  },
+  {
+    title: "Préparer les ressources",
+    text: "Rassembler les sources utiles, le brief, les prompts et les critères qualité sans transmettre de secret.",
+  },
+  {
+    title: "Exécuter avec un seul écrivain",
+    text: "Les sous-agents peuvent analyser ou revoir en lecture seule ; une seule personne ou un seul agent modifie le résultat.",
+  },
+  {
+    title: "Vérifier le résultat",
+    text: "Contrôler la cible réelle : fichiers, commandes, tests, liens et limites. Une relecture seule ne prouve pas le fonctionnement.",
+  },
+  {
+    title: "Organiser le passage de relais",
+    text: "Transmettre le résultat réel, les décisions, les sources, les contrôles et les blocages, puis revérifier dans le nouvel environnement.",
+  },
 ];
 
-const configurations = [
-  { icon: MessageSquareText, title: "Chat", text: "Réfléchir, décider et produire des brouillons courts." },
-  { icon: Cloud, title: "Work", text: "Exécuter une mission complète dans un environnement cloud." },
-  { icon: Laptop, title: "Codex local", text: "Modifier et vérifier un dépôt depuis VS Code." },
-  { icon: Smartphone, title: "Codex Remote", text: "Piloter depuis iPhone une session qui continue sur la machine locale." },
-  { icon: GitMerge, title: "Work + Codex", text: "Préparer dans le cloud, puis implémenter et vérifier dans le dépôt." },
+const principles = [
+  "Un brief vérifiable avant une mission complète.",
+  "Au maximum trois sous-agents, tous en lecture seule.",
+  "Un écrivain unique pour les fichiers, Git et les services externes.",
+  "Deux cycles complets de revue, correction et nouvelle vérification au maximum.",
+  "Aucune réussite annoncée sans contrôle sur la cible réelle.",
+  "Les limites des outils, comptes et fonctions sont toujours explicites.",
 ];
 
-export default function FeaturesPage() {
+export default function MethodPage() {
   return (
     <>
       <PageIntro
-        eyebrow="Fonctionnalités"
-        badge="Starter open source"
-        title="Cinq configurations, un workflow commun et des limites explicites."
-        description="Starter IA est le produit actif. L’application de création de projet reste un exemple local historique."
+        eyebrow="Méthode"
+        badge="Processus commun"
+        title="Passer d’une mission cadrée à une livraison vérifiée."
+        description="La méthode relie les cinq configurations sans recopier leurs procédures. Elle garde les responsabilités, les limites et les preuves visibles à chaque étape."
       />
 
-      <section className="page-shell pb-14 sm:pb-20" aria-labelledby="available-title">
-        <div className="mb-7 max-w-2xl space-y-3">
-          <p className="eyebrow">Disponible maintenant</p>
-          <h2 id="available-title" className="section-title">Une démonstration locale testable de bout en bout.</h2>
+      <section className="page-shell pb-14 sm:pb-20" aria-labelledby="method-steps-title">
+        <h2 id="method-steps-title" className="sr-only">Les six étapes de la méthode</h2>
+        <ol className="grid gap-4 lg:grid-cols-2">
+          {steps.map((step, index) => (
+            <li key={step.title} className="grid gap-3 rounded-2xl border border-border bg-card p-5 sm:grid-cols-[auto_1fr] sm:p-6">
+              <span className="font-mono text-sm font-bold text-primary">{String(index + 1).padStart(2, "0")}</span>
+              <div>
+                <h3 className="text-lg font-semibold">{step.title}</h3>
+                <p className="mt-1 text-muted-foreground">{step.text}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section className="border-y border-border bg-muted/35 py-14 sm:py-20" aria-labelledby="principles-title">
+        <div className="page-shell grid gap-8 lg:grid-cols-[0.7fr_1.3fr]">
+          <div className="max-w-xl space-y-3">
+            <p className="eyebrow">Principes stables</p>
+            <h2 id="principles-title" className="section-title">Des responsabilités simples et vérifiables.</h2>
+            <p className="text-muted-foreground">
+              Ces principes restent valables dans Chat, Work, Codex local, Codex Remote et le mode hybride.
+            </p>
+          </div>
+          <Card>
+            <CardContent className="p-5 sm:p-6">
+              <ul className="space-y-4">
+                {principles.map((principle) => (
+                  <li key={principle} className="flex gap-3">
+                    <Check aria-hidden="true" className="mt-1 size-4 shrink-0 text-success" />
+                    {principle}
+                  </li>
+                ))}
+              </ul>
+            </CardContent>
+          </Card>
         </div>
-        <div className="grid gap-4 md:grid-cols-3">
-          {available.map(({ icon: Icon, title, text }) => (
-            <Card key={title}>
-              <CardHeader><Icon aria-hidden="true" className="size-6 text-primary" /><CardTitle>{title}</CardTitle></CardHeader>
-              <CardContent><p className="text-muted-foreground">{text}</p></CardContent>
-            </Card>
+      </section>
+
+      <section className="reading-shell py-14 sm:py-20" aria-labelledby="sources-title">
+        <h2 id="sources-title" className="section-title">Lire les sources de vérité</h2>
+        <p className="mt-3 text-muted-foreground">
+          WORKFLOW.md décrit le processus complet. QUALITY.md définit les défauts bloquants ou importants et la décision de livraison.
+        </p>
+        <div className="mt-5 flex flex-wrap gap-x-6 gap-y-2">
+          {[
+            ["Lire WORKFLOW.md", "WORKFLOW.md"],
+            ["Lire QUALITY.md", "QUALITY.md"],
+          ].map(([label, path]) => (
+            <a
+              key={path}
+              href={`${githubRoot}/${path}`}
+              className="inline-flex min-h-11 items-center gap-2 font-semibold text-primary underline underline-offset-4"
+            >
+              {label}
+              <ExternalLink aria-hidden="true" className="size-4" />
+            </a>
           ))}
         </div>
-      </section>
-
-      <section className="border-y border-border bg-muted/35 py-14 sm:py-20" aria-labelledby="planned-title">
-        <div className="page-shell">
-          <div className="mb-7 max-w-2xl space-y-3">
-            <p className="eyebrow">Configurations documentées</p>
-            <h2 id="planned-title" className="section-title">Cinq façons complémentaires d’utiliser Starter IA.</h2>
-            <p className="text-muted-foreground">Leur disponibilité peut dépendre du compte, du client et de l’environnement utilisé.</p>
-          </div>
-          <div className="grid gap-4 sm:grid-cols-2">
-            {configurations.map(({ icon: Icon, title, text }) => (
-              <Card key={title}>
-                <CardHeader>
-                  <div className="flex items-center justify-between gap-3"><Icon aria-hidden="true" className="size-6 text-primary" /><Badge>Guide</Badge></div>
-                  <CardTitle>{title}</CardTitle>
-                </CardHeader>
-                <CardContent><p className="text-muted-foreground">{text}</p></CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="page-shell py-14 sm:py-20">
-        <Card className="border-primary/40">
-          <CardContent className="grid gap-6 p-5 sm:p-8 lg:grid-cols-[1fr_auto] lg:items-center">
-            <div className="space-y-2"><h2 className="text-2xl font-semibold tracking-tight">Évaluez la structure avant les promesses.</h2><p className="text-muted-foreground">La démo locale montre exactement le niveau de produit disponible aujourd’hui.</p></div>
-            <Link href="/demo" className={buttonVariants({ size: "lg", className: "w-full lg:w-auto" })}><Check aria-hidden="true" className="size-5" />Essayer la démo</Link>
-          </CardContent>
-        </Card>
       </section>
     </>
   );

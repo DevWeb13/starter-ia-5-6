@@ -1,65 +1,100 @@
 import type { Metadata } from "next";
-import { Check, Minus } from "lucide-react";
-import Link from "next/link";
+import { ExternalLink, FileText } from "lucide-react";
 
 import { PageIntro } from "@/components/page-intro";
-import { Badge } from "@/components/ui/badge";
-import { buttonVariants } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export const metadata: Metadata = {
-  title: "Ressources open source",
-  description: "Starter IA ne propose aucune offre payante intégrée dans son périmètre actuel.",
+  title: "Ressources",
+  description: "Index des guides, workflows, prompts, briefs et critères qualité réellement présents dans Starter IA.",
 };
 
-const plans = [
+const githubRoot = "https://github.com/DevWeb13/starter-ia-5-6/blob/main";
+
+const resources = [
   {
-    name: "Starter",
-    description: "Pour choisir une configuration et cadrer une mission vérifiable.",
-    features: ["Cinq guides", "Workflow", "Prompts", "Templates"],
+    path: "WORKFLOW.md",
+    purpose: "Définit le processus de référence, du brief à la livraison vérifiée.",
+    context: "À suivre pour toute mission structurée, quel que soit l’environnement.",
   },
   {
-    name: "Démonstration locale",
-    description: "Pour explorer le parcours applicatif hérité sans service distant.",
-    features: ["Projet local", "Six sections", "Exports Markdown et JSON", "Stockage navigateur"],
+    path: "QUALITY.md",
+    purpose: "Classe les défauts et fixe la décision de livraison.",
+    context: "À utiliser pendant la vérification, la revue et après chaque correction.",
+  },
+  {
+    path: "templates/BRIEF.md",
+    purpose: "Transforme une demande en résultat, contraintes et critères observables.",
+    context: "À remplir avant une mission complète ou un passage de relais.",
+  },
+  {
+    path: "prompts/MASTER-WORK.md",
+    purpose: "Cadre l’orchestration d’une mission complète dans Work.",
+    context: "À adapter lorsque Work dispose des fichiers et outils requis.",
+  },
+  {
+    path: "prompts/REVIEW.md",
+    purpose: "Demande une revue indépendante, priorisée et strictement en lecture seule.",
+    context: "À lancer après vérification du livrable réel.",
+  },
+  {
+    path: "prompts/AUTOMATION.md",
+    purpose: "Décrit un audit GitHub hebdomadaire prudent et sans bruit.",
+    context: "À utiliser seulement si GitHub et l’automatisation sont réellement disponibles.",
+  },
+  {
+    path: "course/FORMATION-EXPRESS.md",
+    purpose: "Propose un parcours de 30 minutes pour choisir l’environnement et livrer proprement.",
+    context: "À suivre pour découvrir Chat, Work, Codex, les briefs et la boucle qualité.",
+  },
+  {
+    path: "AGENTS.md",
+    purpose: "Fixe les règles permanentes des agents dans ce dépôt.",
+    context: "À lire avec Codex dans le dépôt ; Work ne le charge pas automatiquement.",
+  },
+  {
+    path: ".codex/config.toml",
+    purpose: "Enregistre le modèle, le sandbox et les limites des agents Codex.",
+    context: "À appliquer dans l’environnement local compatible, sans y placer de secret.",
+  },
+  {
+    path: "guides/configurations/README.md",
+    purpose: "Compare Chat, Work, Codex local, Codex Remote et Work + Codex.",
+    context: "À ouvrir en premier pour choisir une configuration et son passage de relais.",
   },
 ];
 
-export default function PricingPage() {
+export default function ResourcesPage() {
   return (
     <>
       <PageIntro
         eyebrow="Ressources"
-        badge="Aucune offre payante"
-        title="Des guides et templates open source, sans offre commerciale."
-        description="Starter IA n’intègre actuellement ni paiement, ni compte, ni fournisseur IA."
+        badge="Fichiers du dépôt"
+        title="L’index des ressources Starter IA."
+        description="Chaque entrée renvoie vers un fichier réellement présent. Utilisez le contexte indiqué pour choisir la bonne ressource sans créer une seconde source de vérité."
       />
 
-      <section className="page-shell pb-14 sm:pb-20" aria-label="Ressources disponibles">
-        <h2 className="sr-only">Ressources disponibles</h2>
-        <div className="grid gap-4 md:grid-cols-2">
-          {plans.map((plan) => (
-            <Card key={plan.name} className={plan.name === "Démonstration locale" ? "border-primary/50" : undefined}>
-              <CardHeader>
-                <div className="flex items-center justify-between gap-3"><CardTitle className="text-2xl">{plan.name}</CardTitle><Badge>Disponible</Badge></div>
-                <p className="text-muted-foreground">{plan.description}</p>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <div><p className="text-3xl font-bold tracking-tight">Open source</p><p className="text-sm text-muted-foreground">Aucun abonnement ni paiement intégré.</p></div>
-                <ul className="space-y-3">
-                  {plan.features.map((feature) => <li key={feature} className="flex gap-2"><Check aria-hidden="true" className="mt-1 size-4 shrink-0 text-success" />{feature}</li>)}
-                </ul>
-                <Link href={plan.name === "Starter" ? "/docs" : "/demo"} className={buttonVariants({ variant: plan.name === "Démonstration locale" ? "default" : "secondary", size: "lg", className: "w-full" })}>Voir ce qui existe déjà</Link>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        <div className="mt-8 overflow-hidden rounded-2xl border border-border bg-card">
-          <div className="border-b border-border p-5 sm:p-6"><h2 className="text-xl font-semibold">Limites actuelles</h2><p className="text-muted-foreground">Ces éléments ne font pas partie de la fondation publiée.</p></div>
-          <ul className="grid gap-px bg-border sm:grid-cols-2">
-            {["Pas de compte", "Pas de véritable IA", "Pas de base de données", "Pas de paiement"].map((item) => (
-              <li key={item} className="flex min-h-14 items-center gap-3 bg-card p-4"><Minus aria-hidden="true" className="size-4 text-warning" /><span>{item}</span></li>
+      <section className="page-shell pb-14 sm:pb-20" aria-labelledby="resources-title">
+        <h2 id="resources-title" className="sr-only">Ressources disponibles</h2>
+        <div className="overflow-hidden rounded-2xl border border-border bg-card">
+          <ul className="divide-y divide-border">
+            {resources.map((resource) => (
+              <li key={resource.path} className="grid gap-4 p-5 sm:p-6 lg:grid-cols-[minmax(12rem,0.65fr)_1.35fr_auto] lg:items-start">
+                <div className="flex min-w-0 gap-3">
+                  <FileText aria-hidden="true" className="mt-0.5 size-5 shrink-0 text-primary" />
+                  <code className="break-all font-mono text-sm font-semibold text-foreground">{resource.path}</code>
+                </div>
+                <div className="space-y-1">
+                  <p>{resource.purpose}</p>
+                  <p className="text-sm text-muted-foreground">Contexte : {resource.context}</p>
+                </div>
+                <a
+                  href={`${githubRoot}/${resource.path}`}
+                  className="inline-flex min-h-11 items-center gap-2 self-center font-semibold text-primary underline underline-offset-4 lg:justify-self-end"
+                >
+                  Ouvrir
+                  <ExternalLink aria-hidden="true" className="size-4" />
+                </a>
+              </li>
             ))}
           </ul>
         </div>

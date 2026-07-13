@@ -2,7 +2,21 @@
 
 Les changements notables de Starter IA 5.6 sont documentés ici.
 
-## Non publié — Catalogue et templates
+## Non publié — Interface alignée sur les ressources
+
+### Modifié
+
+- L’accueil devient la porte d’entrée vers les cinq configurations, le workflow et les ressources documentaires.
+- `/docs`, `/tarifs` et `/fonctionnalites` présentent respectivement les Configurations, les Ressources et la Méthode.
+- La navigation, le pied de page, les métadonnées et le sitemap privilégient le produit documentaire actif.
+- La démonstration, le dashboard et l’éditeur restent un support local historique secondaire, avec leurs fonctions préservées.
+- Les tests Playwright couvrent le CTA principal, les cinq configurations, la navigation sans Dashboard, les Ressources, la Méthode et le responsive à 320 px.
+
+### Non inclus
+
+- Aucun fournisseur, appel externe, compte, paiement, stockage distant, dépendance ou changement de stack.
+
+## Catalogue et templates — 2026-07-12
 
 ### Modifié
 

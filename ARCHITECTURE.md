@@ -13,7 +13,7 @@ Starter IA
 │   ├── course/                  # formation existante
 │   └── .codex/ + AGENTS.md      # configuration et règles du dépôt
 └── Application Next.js existante
-    ├── pages et documentation rendues côté serveur
+    ├── accueil, configurations, ressources et méthode rendus côté serveur
     ├── thème et navigation côté client
     └── démonstration, dashboard et éditeur locaux
         └── localStorage versionné
@@ -44,6 +44,8 @@ Les projets restent dans `localStorage` sur l’appareil courant. Il n’existe 
 ## Structure documentaire
 
 `guides/configurations/README.md` compare les cinq configurations et renvoie vers un guide par configuration. Chaque guide contient uniquement rôle, cas d’usage, démarrage, limites et passage de relais. `WORKFLOW.md` reste la source unique du processus ; les guides y renvoient au lieu de le recopier.
+
+L’interface expose ce contenu sans moteur Markdown dynamique : `/docs` résume les cinq guides, `/tarifs` indexe les ressources et `/fonctionnalites` résume la méthode. Les liens GitHub ouvrent les fichiers sources. `/demo`, `/dashboard` et `/dashboard/[id]` restent le parcours local historique, avec une priorité de navigation et de sitemap inférieure.
 
 ## Tests et livraison
 

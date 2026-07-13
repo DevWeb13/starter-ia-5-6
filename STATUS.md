@@ -1,45 +1,49 @@
 # État du projet
 
 **Dernière mise à jour :** 12 juillet 2026
-**Étape :** 4 — Catalogue et templates
-**Branche :** `work/04-catalog-templates`
-**Statut réel :** étape 4 terminée et vérifiée
+**Étape :** 5 — Interface alignée sur les ressources
+**Branche :** `work/05-interface-resources`
+**Statut réel :** étape 5 terminée et vérifiée localement
 
 ## Direction active
 
-Starter IA est un starter open source pour cinq configurations : Chat, Work, Codex local avec VS Code, Codex Remote depuis iPhone et Work + Codex. Le [catalogue des configurations](guides/configurations/README.md) relie chaque usage aux ressources réellement présentes dans le dépôt.
+Starter IA est un starter open source pour cinq configurations : Chat, Work, Codex local avec VS Code, Codex Remote depuis iPhone et Work + Codex. L’interface publique donne désormais la priorité au catalogue, aux ressources réellement présentes et à la méthode commune.
 
-Le projet n’intègre aucun fournisseur IA, appel payant, secret, authentification, paiement ou architecture de SaaS de génération IA. L’application Next.js des phases 1 et 2 reste un support démonstratif historique local.
+L’application Next.js des phases 1 et 2 reste une démonstration locale historique secondaire. Elle n’intègre aucun fournisseur IA, appel payant, secret, authentification, paiement ou stockage distant.
 
 ## Historique livré
 
 - Version 0.1 : méthode, prompts, brief, formation et première configuration Codex.
 - Phase 1, commit `6819f79` : application Next.js, design system, tests, CI et déploiement historique.
 - Phase 2, commit `1026f75` : modèle de projet, démonstration déterministe, dashboard, éditeur, exports et stockage local.
-- Étape 3 terminée et fusionnée via la PR GitHub nº 4 ; commit de réalignement `8ab9507da76d1fae9994371a1dbe197746322ad6`.
-- Configuration Codex sécurisée terminée et fusionnée via la PR GitHub nº 5.
+- Étape 3 fusionnée via la PR GitHub nº 4 au commit `8ab9507da76d1fae9994371a1dbe197746322ad6`.
+- Configuration Codex sécurisée fusionnée via la PR GitHub nº 5.
+- Étape 4 fusionnée via la PR GitHub nº 6 au commit `32e917fbe789bd52821be694b0d62b0025541051`.
 
-Le commit de `main` au début de l’étape 4 est `5f8149da0116b96444efdc2a1428be0bcc8fa531`.
+## Résultat de l’étape 5
 
-## Configuration Codex active
+- l’accueil présente les cinq configurations, le workflow, les ressources, les limites et la démo historique secondaire ;
+- `/docs` est le catalogue détaillé des cinq configurations et renvoie vers leurs guides GitHub ;
+- `/tarifs` conserve son URL mais porte uniquement l’identité visible « Ressources » ;
+- `/fonctionnalites` conserve son URL mais explique désormais la « Méthode » commune ;
+- la navigation et le pied de page privilégient Configurations, Ressources et Méthode ;
+- le Dashboard reste accessible depuis la démonstration et les projets locaux, pas depuis la navigation globale ;
+- la démo, le dashboard, l’éditeur, le stockage local et leurs tests fonctionnels sont préservés.
 
-- sandbox limité au dépôt en mode `workspace-write` ;
-- demandes d’autorisation soumises à `auto_review` ;
-- accès réseau désactivé dans le sandbox.
+## Contrôles locaux
 
-La configuration enregistrée reste dans [`.codex/config.toml`](.codex/config.toml). Work ne charge pas automatiquement ce fichier ni `AGENTS.md`.
-
-## Résultat de l’étape 4
-
-- le sélecteur des cinq configurations a été transformé en catalogue de ressources ;
-- chaque guide a reçu un démarrage en trois étapes maximum, des ressources, des limites et un passage de relais ;
-- l’absence de restes commités issus des essais de permissions a été vérifiée ;
-- `WORKFLOW.md` a été préservé comme source unique du processus.
+- `git diff --check` ;
+- `npm run lint` ;
+- `npm run typecheck` ;
+- `npm test` : 8 tests réussis ;
+- `npm run build` : 10 routes générées ;
+- `npm run test:e2e` : 10 scénarios Playwright réussis ;
+- inspection Chromium de l’accueil en 1440 px et 320 px.
 
 ## Blocages connus
 
-Aucun blocage applicatif connu. Aucune ancienne pull request n’est en attente.
+Aucun blocage applicatif connu.
 
 ## Prochaine étape
 
-Cadrer l’étape 5 avant toute modification de l’interface historique.
+Faire relire la pull request de l’étape 5 sans la fusionner automatiquement, puis décider séparément de toute évolution ultérieure.
