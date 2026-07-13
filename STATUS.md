@@ -4,8 +4,8 @@
 **Étape :** 8 — MVP local du projet complet
 **Branche active :** `work/08-complete-project-mvp`
 **Base réelle :** `aeb1e9bfaf4f6b9da1d8daadf3726069a82296d3`
-**Pull request :** nº 10 — brouillon
-**Statut réel :** implémentation locale vérifiée, deux cycles de revue terminés, CI et Preview à contrôler
+**Pull request :** nº 10 — prête pour révision
+**Statut réel :** implémentation, revue, CI et Preview automatique vérifiées
 
 ## Point de départ
 
@@ -48,6 +48,8 @@
 - liens Markdown : 27 fichiers vérifiés, aucune cible relative absente ;
 - aucun fichier `.env`, appel réseau métier ou dépendance inattendue ;
 - `agent-browser` : non installé ; vérification équivalente effectuée avec Playwright et Chromium headless.
+- CI GitHub de la PR nº 10 : réussie ;
+- Preview Vercel automatique : prête et vérifiée sur les pages principales, sans déploiement manuel ni production.
 
 ## Revue indépendante
 
@@ -66,4 +68,4 @@
 
 ## Prochaine action
 
-Vérifier la CI et la Preview Vercel automatique de la PR nº 10, corriger uniquement un échec réel, puis marquer la PR prête pour révision sans la fusionner ni créer de production manuelle.
+Revue humaine de la PR nº 10, sans fusion automatique ni création de production manuelle.

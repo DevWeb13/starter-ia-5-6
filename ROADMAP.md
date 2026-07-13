@@ -71,7 +71,7 @@ Résultat : direction unique d’orchestrateur de projet complet, six phases, r�
 
 **Branche :** `work/08-complete-project-mvp`
 **Pull request :** nº 10
-**Statut :** implémentée et vérifiée localement, pull request brouillon en contrôle CI et Preview.
+**Statut :** implémentée, vérifiée et prête pour révision dans la PR nº 10 ; CI et Preview automatique réussies.
 
 - entrée projet et résultat recherché ;
 - profil matériel et outils disponibles ;
