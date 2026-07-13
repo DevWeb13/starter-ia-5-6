@@ -1,6 +1,6 @@
 # Feuille de route
 
-La feuille de route distingue l’historique livré de la direction active. Les résultats vérifiés sont consignés dans [`STATUS.md`](STATUS.md).
+La feuille de route conserve l’historique livré et fixe les prochaines étapes sans ajouter de grande phase au-delà de l’étape 10. Les résultats vérifiés sont consignés dans [`STATUS.md`](STATUS.md).
 
 ## Historique livré
 
@@ -24,8 +24,6 @@ Application Next.js accessible, démonstration locale déterministe, design syst
 
 Modèle de projet versionné, dashboard et éditeur locaux, exports et persistance navigateur sans compte ni service distant.
 
-## Direction active
-
 ### Étape 3 — Réalignement du starter
 
 **Branche :** `work/03-product-realignment`
@@ -33,7 +31,7 @@ Modèle de projet versionné, dashboard et éditeur locaux, exports et persistan
 
 Résultat : mémoire réalignée autour de cinq configurations complémentaires, règles Codex permanentes, guides initiaux et corrections ciblées du cœur local, sans fondation fournisseur.
 
-La configuration Codex sécurisée a ensuite été livrée via la PR GitHub nº 5 au commit `5f8149d`. Cette correction de workflow est terminée ; elle ne constitue pas une nouvelle phase produit.
+La configuration Codex sécurisée a ensuite été livrée via la PR GitHub nº 5 au commit `5f8149d`. Cette correction de workflow est terminée ; elle ne constitue pas une nouvelle phase produit. Cette ancienne direction est recentrée par l’étape 7.
 
 ### Étape 4 — Catalogue et templates
 
@@ -53,6 +51,58 @@ Résultat : l’accueil, `/docs`, `/tarifs` et `/fonctionnalites` présentent re
 
 Critère de sortie atteint : l’interface respecte [`DESIGN.md`](DESIGN.md), les contrôles applicatifs et Playwright réussissent, la production répond, et aucun fournisseur, authentification, paiement ou stockage distant n’a été introduit.
 
-## Après l’étape 5 — Stabilisation
+### Étape 6 — Clôture post-fusion
 
-Aucune nouvelle phase produit n’est engagée. La priorité est de maintenir la qualité, recueillir des retours d’usage et n’ajouter une évolution que lorsqu’un besoin concret et vérifiable le justifie.
+**Branche :** `work/06-post-merge-closure`
+**Statut :** terminée, fusionnée par squash via la PR GitHub nº 8 au commit `06718299fa2cea6a8341d9e2d799305ca897739d`.
+
+La mémoire a été clôturée après l’étape 5. Le Dashboard et l’éditeur locaux ont été retirés de l’indexation publique sans modifier leur fonctionnement.
+
+## Direction active
+
+### Étape 7 — Réalignement définitif
+
+**Branche :** `work/07-definitive-product-realignment`
+**Statut :** en cours.
+
+Fixer une direction unique : orchestrateur de projet complet, six phases, rôles d’agents compréhensibles, ChatGPT + Codex comme workflow principal, recommandation matérielle, sécurité, marketing intégré et contrat du prochain MVP. Cette étape est documentaire et ne construit aucune fonction applicative.
+
+### Étape 8 — MVP du projet complet
+
+**Statut :** prévue après validation et fusion séparée de l’étape 7.
+
+- entrée projet et résultat recherché ;
+- profil matériel et outils disponibles ;
+- cycle en six phases ;
+- création, modification, reprise et progression locale ;
+- stockage local versionné ;
+- exports Markdown et JSON ;
+- génération de missions ChatGPT copiables ;
+- génération de missions Codex copiables ou exportables ;
+- volet « Comprendre cette étape » ;
+- rapport final local.
+
+Le moteur initial peut rester local et déterministe. Il ne doit simuler aucun appel à ChatGPT ou Codex.
+
+### Étape 9 — Exécution guidée
+
+**Statut :** prévue.
+
+- exécution guidée des paquets ChatGPT et Codex générés à l’étape 8 ;
+- suivi de progression, livrables et preuves ;
+- validations humaines ;
+- workflow iPhone + Ubuntu et parcours sans Remote Control.
+
+### Étape 10 — Lancement démontré
+
+**Statut :** prévue.
+
+- premier projet réel construit avec Starter IA ;
+- pack marketing fondé sur les faits ;
+- étude de cas et démonstration publique ;
+- publication stable après validation humaine ;
+- retours utilisateurs et améliorations décidées à partir de preuves.
+
+## Veille future
+
+Une veille hebdomadaire OpenAI pourra être préparée dans une mission distincte. Séparée de l’audit technique du dépôt, elle consultera uniquement les sources officielles OpenAI, suivra les évolutions utiles de ChatGPT et Codex, évaluera leur impact réel et ignorera les annonces sans conséquence produit. Elle préparera un rapport ou une issue, ne modifiera jamais automatiquement le produit et exigera une validation humaine avant toute adaptation. Elle n’existe pas encore.

@@ -1,79 +1,69 @@
 # Messages
 
+Ce document décline le positionnement de [`PROJECT.md`](../PROJECT.md). Il ne décrit aucune fonction non vérifiée.
+
+> Projet communautaire indépendant, non officiel et non affilié à OpenAI.
+
 ## Message maître
 
-**Titre :** De l’idée au plan que votre équipe IA peut exécuter.
+**Titre :** De l’idée au projet lancé avec ChatGPT et Codex.
 
-**Sous-titre :** AI Project Launcher aide les indépendants et petites équipes à clarifier une idée de produit, cadrer le MVP et ordonner les décisions techniques et commerciales.
+**Sous-titre :** Starter IA organise les phases, spécialistes, missions, livrables et vérifications nécessaires selon votre matériel, sans retirer les décisions sensibles à l’humain.
 
-**CTA principal :** Essayer la démo locale.
+**Question d’entrée :** Quel projet voulez-vous lancer ?
 
-**CTA secondaire :** Voir comment ça marche.
+**Preuve disponible aujourd’hui :** un dépôt open source, des ressources documentaires et une démonstration locale déterministe avec édition, stockage navigateur et exports.
 
-**Preuve immédiate :** un résultat visible en six sections dans l’application, avec limites et hypothèses signalées.
+## Message du prochain MVP
 
-## Hiérarchie landing
+Le prochain MVP préparera localement :
 
-1. Cible et résultat dans le hero.
-2. Trois bénéfices : valeur, MVP, prochaines décisions.
-3. Trois étapes de fonctionnement.
-4. Démonstration locale utilisable dans la page.
-5. Direction Free/Pro explicitement future.
-6. FAQ sur IA, sauvegarde, disponibilité et lien avec Starter IA 5.6.
+- le cycle complet en six phases ;
+- les missions ChatGPT et Codex ;
+- les livrables, preuves et validations ;
+- le parcours recommandé selon le matériel ;
+- le marketing et « Comprendre cette étape ».
 
-## Bénéfices formulés
+Il n’est pas encore construit et n’appellera aucun fournisseur automatiquement sans intégration réelle.
 
-- Clarifier la valeur avant d’ajouter des fonctionnalités.
-- Réduire le MVP autour d’un seul parcours testable.
-- Relier décisions produit, techniques et commerciales.
-- Rendre les hypothèses visibles pour une équipe humaine ou IA.
-- Sortir avec des actions concrètes à valider.
+## Bénéfices à démontrer
 
-## Messages par niveau de maturité
-
-### Disponible
-
-- « Démonstration locale »
-- « Résultat structuré en six sections »
-- « Sans compte, API ou sauvegarde »
-- « Dashboard de démonstration avec données d’exemple »
-
-### Prévu
-
-- « Génération IA prévue »
-- « Projets persistants prévus »
-- « Collaboration prévue »
-- « Offre Free et Pro en préparation »
-- « Prix à confirmer »
+- Garder marché, produit, construction, qualité et marketing dans un même projet.
+- Comprendre qui intervient et pourquoi.
+- Préparer des missions directement exploitables.
+- Rendre visibles les preuves, blocages et autorisations.
+- Utiliser le parcours le plus simple compatible avec le matériel.
 
 ## Ton
 
-- Direct et concret.
-- Calme, sans urgence artificielle.
-- Pédagogique sans jargon de startup inutile.
-- Précis sur ce qui est réel, prévu ou inconnu.
-- Tutoiement évité dans les surfaces principales pour rester neutre.
+- Direct, concret et calme.
+- Phrases courtes et jargon défini.
+- Distinction explicite entre disponible, décidé et futur.
+- Aucun résultat commercial présenté sans preuve.
 
-## Claims interdits sans nouvelle preuve
+## Claims interdits sans preuve
 
-- « Propulsé par GPT-5.6 » ou toute capacité IA actuelle.
-- « Gagnez X heures », « validé par X clients », taux ou résultat chiffré.
-- « Sécurisé », « chiffré », « conforme RGPD » sans audit et politique réelle.
-- « Vos données ne quittent jamais l’app » au-delà du flux local précisément contrôlé.
-- « Commencer gratuitement » si aucun compte ou produit Free n’existe.
-- « Recommandations personnalisées » pour un scénario déterministe.
-- Logo, avis, nom de client ou capture d’activité inventée.
+- appel ChatGPT, Codex ou fournisseur IA intégré ;
+- Remote Control disponible pour tous ;
+- marché, client, gain, revenu ou efficacité chiffrée validés ;
+- sécurité absolue, chiffrement ou conformité non audités ;
+- compte, synchronisation, collaboration, paiement ou abonnement disponibles ;
+- fusion, production, publication ou message envoyés automatiquement ;
+- affiliation ou statut officiel OpenAI.
 
-## Réponses courtes aux objections
+## Réponses courtes
 
-**« Un chat IA suffit. »**  
-Un chat produit du texte. Le produit vise un plan versionné, des décisions visibles et un parcours que plusieurs agents pourront exécuter et contrôler.
+**« Est-ce déjà le nouveau MVP ? »**
+Non. L’application actuelle est une démonstration locale en six sections. L’orchestrateur en six phases sera construit dans une étape séparée.
 
-**« Est-ce déjà une vraie IA ? »**  
-Non dans cette fondation. La démo valide d’abord la structure et l’expérience ; l’intégration IA vient ensuite.
+**« Starter IA appelle-t-il ChatGPT ou Codex ? »**
+Non actuellement. Le prochain MVP préparera des missions copiables ou exportables sans simuler une intégration.
 
 **« Puis-je enregistrer mon projet ? »**  
-Pas encore. La phase actuelle ne possède ni compte ni base de données.
+Oui, localement dans le navigateur actuel, avec les limites du `localStorage`. Il n’existe ni compte ni synchronisation distante.
 
-**« Combien coûtera Pro ? »**  
-Le prix n’est pas défini. Il sera décidé après validation des usages et de la valeur.
+**« Work est-il obligatoire ? »**
+Non. ChatGPT + Codex est le workflow principal. Work reste une ressource optionnelle.
+
+**« Un abonnement est-il prévu ? »**
+Aucun prix ni abonnement n’est décidé. Un produit hébergé ne sera envisagé qu’après validation par des usages réels.

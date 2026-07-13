@@ -2,9 +2,29 @@
 
 Ce document est la source de vérité du processus Starter IA 5.6.
 
+## Comprendre qui fait quoi
+
+- **Orchestrateur** : le chef de projet qui comprend l’objectif, organise les étapes et distribue le travail.
+- **Sous-agent ou spécialiste** : un consultant ciblé qui analyse un sujet précis sans modifier le projet.
+- **Écrivain ou exécutant** : le seul rôle autorisé à modifier les fichiers ou agir sur les systèmes.
+- **Reviewer** : le contrôleur indépendant qui recherche les erreurs et vérifie la qualité.
+- **Humain** : l’autorité finale qui approuve les décisions sensibles ou irréversibles.
+
+## Deux niveaux distincts
+
+Le **cycle global du projet** organise le résultat de bout en bout :
+
+**Cadrer → Valider → Concevoir → Construire → Vérifier → Lancer et améliorer**
+
+Le **workflow interne de chaque mission** organise une intervention précise :
+
+**Brief → analyses en lecture seule → plan → écrivain unique → vérification → revue indépendante → correction → livraison**
+
+Une phase du projet peut contenir plusieurs missions. Une mission ne remplace jamais le cycle complet.
+
 ## La séquence
 
-**Brief → sous-agents en lecture seule → plan → agent écrivain → vérification → revue indépendante → correction → livraison**
+La suite de ce document détaille le workflow interne d’une mission.
 
 ## 1. Brief
 
@@ -80,7 +100,7 @@ Ce plafond évite une boucle sans fin. Il n’autorise pas à livrer avec un dé
 
 ### Approbation humaine
 
-Une approbation explicite est requise avant une suppression, un paiement, une publication externe ou une action irréversible. Une autorisation claire déjà contenue dans le brief courant suffit pour l’action et le périmètre nommés. Toute extension exige un nouvel accord.
+Une approbation explicite est requise avant une suppression, un paiement, un secret, une publication externe, un envoi, une fusion dans `main`, une production ou une action irréversible. Une autorisation claire déjà contenue dans le brief courant suffit pour les actions réversibles et le périmètre nommés, par exemple une branche, des commits, une PR et sa Preview automatique. Toute extension exige un nouvel accord.
 
 ### Aucune réussite non vérifiée
 

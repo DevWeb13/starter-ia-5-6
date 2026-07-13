@@ -1,62 +1,51 @@
 # Positionnement
 
+Ce document applique la direction définie dans [`PROJECT.md`](../PROJECT.md). Il ne constitue pas une seconde source de vérité.
+
+> Projet communautaire indépendant, non officiel et non affilié à OpenAI.
+
 ## Catégorie
 
-AI Project Launcher est un outil de cadrage produit assisté par IA en préparation. La fondation actuelle est une démonstration locale de son expérience, sans véritable génération IA.
+Starter IA est un orchestrateur open source de projet numérique. Il vise à organiser avec ChatGPT et Codex les étapes, spécialistes, missions, livrables et vérifications nécessaires, de l’idée au lancement, selon le matériel disponible.
 
-## Cible prioritaire
+Le futur orchestrateur n’est pas encore construit. L’application actuelle reste une démonstration locale déterministe en six sections, sans appel IA.
 
-Indépendants et petites équipes qui ont une idée de produit ou de service numérique, utilisent déjà des outils IA, mais manquent d’un plan partagé reliant valeur, MVP, technique et acquisition.
+## Cible initiale
+
+Développeurs, freelances, indépendants, créateurs de produits numériques et petites équipes utilisant déjà ChatGPT ou Codex, mais sans workflow fiable de bout en bout.
 
 ## Problème
 
-Une idée arrive souvent sous forme de liste de fonctionnalités. Les décisions produit, techniques et commerciales sont prises séparément, les hypothèses deviennent invisibles et l’équipe construit avant de savoir ce qu’elle cherche à valider.
+Les analyses marché, décisions produit, tâches techniques, contrôles et actions marketing sont souvent conduits séparément. Les utilisateurs perdent alors l’ordre des étapes, les responsabilités, les preuves et les validations humaines.
 
-## Promesse
+## Positionnement actif
 
-> Transformer une idée de produit en plan clair, technique et commercial prêt à exécuter avec une équipe IA.
+> Starter IA transforme une idée en projet lancé avec ChatGPT et Codex, en orchestrant recherche, produit, développement, vérification et marketing selon votre matériel, avec un maximum d’automatisation sans perdre le contrôle.
 
-Dans la phase 1, la promesse démontrée est plus précise : rendre ce plan visible en six sections dans une interface rapide, mobile et accessible.
+## Différenciation à démontrer
 
-## Résultat attendu
+- couvrir un projet complet dans six phases compréhensibles ;
+- préparer des missions ChatGPT et Codex sans prétendre les exécuter automatiquement ;
+- recommander un parcours simple selon le matériel ;
+- rendre visibles les rôles, preuves et autorisations ;
+- enseigner progressivement avec « Comprendre cette étape » ;
+- intégrer le marketing au projet au lieu de l’ajouter après coup.
 
-- une proposition de valeur reformulée ;
-- une cible initiale à interviewer ;
-- un MVP centré sur un seul parcours ;
-- un plan technique progressif ;
-- un plan marketing fondé sur des validations ;
-- les prochaines actions ordonnées.
-
-Chaque sortie reste une hypothèse à challenger, jamais une vérité automatique.
-
-## Différenciation envisagée
-
-- Lier produit, technique et commercial dans un même plan.
-- Montrer les hypothèses et limites au lieu de présenter une réponse IA comme certaine.
-- Préparer un plan exploitable par des agents spécialisés, avec un écrivain et des contrôles clairs.
-- Rester utile sur mobile sans réduire la qualité de la structure.
-
-Ces différences sont une direction produit ; elles ne constituent pas encore des résultats de marché prouvés.
-
-## Alternatives
-
-- document vierge ou template générique ;
-- conversation IA non structurée ;
-- outil de gestion de projet utilisé trop tôt ;
-- atelier manuel avec consultant ;
-- construction directe d’un prototype sans validation du problème.
+Ces différences sont une direction à vérifier par des projets réels. Elles ne constituent pas encore des résultats de marché prouvés.
 
 ## Preuves autorisées aujourd’hui
 
-- application publique réellement navigable ;
-- démo locale réellement interactive ;
-- six sections réellement visibles ;
-- tests, CI et preview lorsqu’ils sont verts ;
-- code et décisions ouverts dans GitHub.
+- dépôt et ressources open source réellement accessibles ;
+- application locale réellement navigable ;
+- création, modification, stockage navigateur et exports réellement disponibles ;
+- contrôles locaux, CI, PR ou Preview uniquement lorsqu’ils ont été vérifiés ;
+- historique GitHub et décisions réellement enregistrés.
 
 ## Frontières honnêtes
 
-- aucun appel IA dans la phase 1 ;
-- aucune sauvegarde, authentification, collaboration ou facturation ;
-- aucun client, avis, chiffre, gain ou résultat commercial revendiqué ;
-- projet communautaire indépendant et non affilié à OpenAI.
+- aucun appel ChatGPT, Codex ou fournisseur IA intégré ;
+- aucun compte, synchronisation, paiement ou collaboration distante ;
+- aucune publication marketing, fusion ou production automatique ;
+- aucun client, avis, prix, gain ou revenu revendiqué sans preuve.
+
+La progression économique visée est open source utile → usage personnel → cas réels publics → services payants → éventuel produit hébergé après validation. Aucun prix ni abonnement n’est décidé.

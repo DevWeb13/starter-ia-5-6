@@ -23,8 +23,9 @@ Un seul point coché interdit la livraison, la publication ou la fusion.
 
 Tous les points applicables doivent être résolus avant livraison ou fusion.
 
-- [ ] Les termes Chat, Work, Codex, Sol, Terra ou Luna se contredisent entre les documents.
-- [ ] Une des cinq configurations est présentée comme le produit entier ou ses limites dépendent d’une information absente de son guide.
+- [ ] Les rôles de ChatGPT, Work et Codex se contredisent entre les documents ou dépendent d’un nom temporaire de modèle.
+- [ ] Les guides de configuration sont présentés comme des produits indépendants au lieu de références secondaires du parcours complet.
+- [ ] Le cycle global du projet est confondu avec le workflow interne d’une mission.
 - [ ] Le parcours iPhone suppose une fonction qui n’est pas signalée comme dépendante du compte.
 - [ ] `AGENTS.md` ou `.codex/` est présenté comme automatiquement chargé par Work.
 - [ ] Une instruction est ambiguë pour un débutant ou dépend d’un jargon non défini.

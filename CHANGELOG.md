@@ -2,6 +2,24 @@
 
 Les changements notables de Starter IA 5.6 sont documentés ici.
 
+## Non publié — Réalignement définitif de la direction produit
+
+### Direction décidée
+
+- Starter IA devient un orchestrateur de projet complet en six phases, de l’idée au lancement et à l’amélioration.
+- ChatGPT + Codex devient le workflow principal ; Work reste une option secondaire.
+- Les rôles d’orchestrateur, spécialiste, exécutant, reviewer et humain sont explicités.
+- Le futur parcours sera recommandé selon le matériel, avec iPhone + Ubuntu comme workflow phare lorsqu’il est disponible.
+- Le marketing appartient au cycle complet et la stratégie économique progresse de l’open source aux services, puis à un éventuel produit hébergé après validation.
+- Le contrat du prochain MVP inclut missions copiables, preuves, validations, exports, rapport final et « Comprendre cette étape ».
+- Les frontières d’automatisation distinguent préparation automatique, actions réversibles autorisées et décisions humaines obligatoires.
+
+### Pas encore construit
+
+- Aucun nouveau modèle de données, composant, route ou stockage n’est ajouté.
+- Aucun appel ChatGPT ou Codex, SDK IA, compte, base distante, paiement ou automatisation de publication n’est introduit.
+- Le cycle en six phases, la recommandation matérielle et « Comprendre cette étape » restent la cible de l’étape 8.
+
 ## Non publié — Clôture post-fusion
 
 ### Modifié

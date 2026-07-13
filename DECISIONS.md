@@ -4,7 +4,7 @@ Les décisions sont append-only : une décision remplacée reste visible avec so
 
 ## D-001 — Deux identités complémentaires
 
-**Date :** 2026-07-11 — **Statut :** acceptée
+**Date :** 2026-07-11 — **Statut :** remplacée par D-017, puis D-022 pour la direction active
 
 Starter IA 5.6 désigne la méthode et le dépôt. AI Project Launcher désigne le produit SaaS exemple. L’application porte le second nom et précise discrètement son lien avec le premier.
 
@@ -100,7 +100,7 @@ Les projets ne vivent que dans le navigateur et l’appareil courant. L’interf
 
 ## D-017 — Starter de configurations, pas SaaS de génération
 
-**Date :** 2026-07-12 — **Statut :** acceptée — remplace D-001 pour la direction active
+**Date :** 2026-07-12 — **Statut :** remplacée par D-022 pour la direction active — remplaçait D-001
 
 Starter IA est l’unique identité produit active. Le dépôt fournit des workflows, configurations, guides et templates pour Chat, Work, Codex local, Codex Remote et les usages hybrides Work + Codex. AI Project Launcher reste le nom historique de l’application livrée pendant les phases 1 et 2, pas une seconde direction produit.
 
@@ -108,7 +108,7 @@ Le périmètre actif exclut fournisseur IA, API payante, secret, authentificatio
 
 ## D-018 — Cinq configurations complémentaires
 
-**Date :** 2026-07-12 — **Statut :** acceptée
+**Date :** 2026-07-12 — **Statut :** remplacée par D-023 pour la direction active
 
 Les cinq configurations ont un point d’entrée commun dans `guides/configurations/`. Chat sert aux échanges courts ; Work aux missions cloud complètes ; Codex local aux modifications du dépôt ; Codex Remote au pilotage d’une session locale depuis iPhone ; le mode hybride organise un passage de relais explicite entre Work et Codex.
 
@@ -116,7 +116,7 @@ Ubuntu + iPhone + Remote Control n’est pas une exigence générale. Ses comman
 
 ## D-019 — Documentation centrale et application locale héritée
 
-**Date :** 2026-07-12 — **Statut :** acceptée — remplace D-002 pour la direction active
+**Date :** 2026-07-12 — **Statut :** recentrée par D-024 — remplaçait D-002 pour la direction active
 
 Les ressources documentaires constituent le cœur produit. L’application Next.js et le cœur local des phases 1 et 2 sont préservés et maintenus comme support démonstratif historique. Leur évolution ne doit pas inventer de capacité distante ni imposer un monorepo.
 
@@ -128,8 +128,48 @@ La lecture du stockage commence après hydratation. Les dates doivent être des 
 
 ## D-021 — Hiérarchie publique centrée sur les ressources
 
-**Date :** 2026-07-12 — **Statut :** acceptée
+**Date :** 2026-07-12 — **Statut :** recentrée par D-022 et D-024 pour la direction active
 
 L’interface publique utilise les routes existantes sans migration : `/docs` pour les Configurations, `/tarifs` pour les Ressources, `/fonctionnalites` pour la Méthode et `/demo` pour la démonstration locale historique.
 
 L’accueil donne accès au catalogue en une action. Le Dashboard sort de la navigation globale mais reste relié depuis la démonstration et les projets locaux. La démo, le dashboard et l’éditeur conservent leur architecture, leur stockage navigateur et leurs fonctions déterministes ; leurs libellés et priorités SEO les identifient comme support secondaire.
+
+## D-022 — Orchestrateur de projet complet
+
+**Date :** 2026-07-13 — **Statut :** acceptée — remplace D-017 et recentre D-021
+
+Starter IA devient un orchestrateur simple et prudent qui transforme une idée en projet numérique lancé après validation humaine. Il organise un cycle unique en six phases : Cadrer, Valider, Concevoir, Construire, Vérifier, Lancer et améliorer. Les activités marché, produit, développement, qualité et marketing appartiennent au même projet.
+
+L’application et la hiérarchie publique déjà livrées restent préservées. Elles ne constituent pas encore ce produit complet.
+
+## D-023 — ChatGPT + Codex, Work secondaire et matériel
+
+**Date :** 2026-07-13 — **Statut :** acceptée — remplace D-018
+
+ChatGPT + Codex est le workflow principal. ChatGPT aide à cadrer, rechercher, décider, rédiger et piloter ; Codex agit sur les fichiers, Git et les vérifications autorisées. Work reste une ressource optionnelle et ses guides sont conservés.
+
+Starter IA recommandera le parcours le plus simple selon le matériel et les fonctions réellement disponibles. Le workflow iPhone + Ubuntu avec Remote Control est prioritaire mais non obligatoire. Aucune disponibilité universelle n’est promise.
+
+## D-024 — MVP local de cycle et de paquets d’exécution
+
+**Date :** 2026-07-13 — **Statut :** acceptée — recentre D-019
+
+Le prochain MVP utilisera d’abord un moteur local et déterministe. Il produira le cycle en six phases, des missions ChatGPT et Codex copiables ou exportables, des livrables, preuves, validations et un rapport final. Il n’appellera aucun fournisseur s’il ne l’intègre pas réellement.
+
+Chaque étape comportera « Comprendre cette étape » : une explication courte du but, des rôles, des outils, du livrable, de la preuve et de l’autorisation humaine éventuelle. L’application locale existante reste historique jusqu’à une implémentation séparée.
+
+## D-025 — Automatisation réversible et autorité humaine
+
+**Date :** 2026-07-13 — **Statut :** acceptée
+
+La cible est le maximum d’automatisation sans autonomie aveugle. Analyses, plans, missions, brouillons, tests et rapports peuvent être préparés automatiquement. Les fichiers, branches, commits, PR, Preview, exports et sauvegardes sont réversibles lorsqu’ils appartiennent au périmètre autorisé.
+
+Fusion dans `main`, production, suppression, paiement, secret, publication externe, envoi de message et action irréversible exigent une autorisation humaine. Ces frontières ne décrivent pas des automatismes déjà implémentés.
+
+## D-026 — Marketing intégré et progression économique
+
+**Date :** 2026-07-13 — **Statut :** acceptée
+
+Le marketing appartient au cycle : marché, cible et positionnement dans Valider ; pack factuel, démonstration, mesure et contenu dans Lancer et améliorer. Toute publication externe reste soumise à l’humain.
+
+La progression économique est : cœur open source utile, usage personnel, cas réels publics, services payants, puis éventuel produit hébergé seulement après validation. Aucun prix, abonnement acquis ou revenu n’est inventé.
