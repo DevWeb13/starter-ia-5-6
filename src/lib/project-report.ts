@@ -25,11 +25,11 @@ export type ProjectReport = ProjectProgress & {
   executionNotice: string;
 };
 
-function allSteps(project: Project): ProjectStep[] {
+function allSteps(project: Pick<Project, "phases">): ProjectStep[] {
   return project.phases.flatMap((phase) => phase.steps);
 }
 
-export function getProjectProgress(project: Project): ProjectProgress {
+export function getProjectProgress(project: Pick<Project, "phases">): ProjectProgress {
   const steps = allSteps(project);
   const count = (status: ProjectStepStatus) => steps.filter((step) => step.status === status).length;
   const completed = count("done-verified");
