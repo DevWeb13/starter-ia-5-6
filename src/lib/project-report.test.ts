@@ -34,7 +34,7 @@ describe("project exports and report", () => {
     const report = createProjectReport(updated);
     expect(report.partial).toBe(1);
     expect(report.evidenceCount).toBe(1);
-    expect(report.executionNotice).toContain("exécution non vérifiée");
+    expect(report.executionNotice).toContain("réellement exécuté et vérifié");
     expect(report.approvalsMissing).toBeGreaterThan(0);
   });
 
@@ -50,6 +50,9 @@ describe("project exports and report", () => {
     expect(markdown).toContain("## Phase 1 — Cadrer");
     expect(markdown).toContain("Mission ChatGPT");
     expect(markdown).toContain("Mission Codex");
+    expect(markdown).toContain("**Où en êtes-vous ?** Pas commencé");
+    expect(markdown).toContain("**Ce que vous devez obtenir**");
+    expect(markdown).toContain("**Comment savoir que c’est bon**");
     expect(markdown).toContain("Rapport de progression");
     expect(markdown).toContain("Remote Control déclaré disponible : oui");
     expect(markdown).toContain("Une mission copiée n’est jamais considérée comme exécutée");

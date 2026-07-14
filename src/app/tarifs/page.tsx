@@ -89,9 +89,12 @@ export default function ResourcesPage() {
                 </div>
                 <a
                   href={`${githubRoot}/${resource.path}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex min-h-11 items-center gap-2 self-center font-semibold text-primary underline underline-offset-4 lg:justify-self-end"
                 >
                   Ouvrir
+                  <span className="sr-only"> (ouvre un nouvel onglet)</span>
                   <ExternalLink aria-hidden="true" className="size-4" />
                 </a>
               </li>

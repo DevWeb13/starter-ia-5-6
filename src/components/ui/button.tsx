@@ -4,18 +4,18 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex min-h-11 items-center justify-center gap-2 rounded-[10px] px-4 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-55 motion-reduce:transition-none",
+  "inline-flex min-h-11 cursor-pointer items-center justify-center gap-2 rounded-[10px] px-4 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-55 motion-reduce:transition-none",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary-active active:bg-primary-active",
+        default: "bg-primary text-primary-foreground hover:bg-primary-active active:bg-primary-active disabled:hover:bg-primary",
         secondary:
-          "border border-border bg-card text-card-foreground hover:bg-muted",
-        ghost: "text-foreground hover:bg-muted",
+          "border border-border bg-card text-card-foreground hover:bg-muted disabled:hover:bg-card",
+        ghost: "text-foreground hover:bg-muted disabled:hover:bg-transparent",
         outline:
-          "border border-border bg-transparent text-foreground hover:bg-muted",
+          "border border-border bg-transparent text-foreground hover:bg-muted disabled:hover:bg-transparent",
         destructive:
-          "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+          "bg-destructive text-destructive-foreground hover:bg-destructive/90 disabled:hover:bg-destructive",
       },
       size: {
         default: "h-11",

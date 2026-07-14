@@ -19,12 +19,12 @@ export function PhaseNavigation({ phases, activePhaseId, onSelect }: Props) {
               <button
                 type="button"
                 aria-current={active ? "step" : undefined}
-                className={`min-h-14 w-full rounded-xl border px-4 py-3 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${active ? "border-primary bg-primary/10 font-semibold ring-1 ring-primary" : "bg-card hover:bg-muted"}`}
+                className={`min-h-14 w-full cursor-pointer rounded-xl border px-4 py-3 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${active ? "border-primary bg-primary/10 font-semibold ring-1 ring-primary" : "bg-card hover:bg-muted"}`}
                 onClick={() => onSelect(phase.id)}
               >
                 <span className="block text-sm">Phase {phase.order}</span>
                 <span className="block">{phase.name}</span>
-                <span className="block text-xs font-normal text-muted-foreground">{progress.completed}/{progress.total} fait et vérifié</span>
+                <span className="block text-xs font-normal text-muted-foreground">{progress.completed}/{progress.total} terminé et vérifié</span>
               </button>
             </li>
           );

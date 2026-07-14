@@ -125,7 +125,7 @@ export function DashboardClient() {
               <CardContent className="space-y-4">
                 <div className="grid gap-3 sm:grid-cols-3">
                   <div className="rounded-xl border bg-muted/25 p-3"><p className="text-sm text-muted-foreground">Progression</p><p className="text-xl font-bold">{progress.percentage} %</p></div>
-                  <div className="rounded-xl border bg-muted/25 p-3"><p className="text-sm text-muted-foreground">Fait et vérifié</p><p className="text-xl font-bold">{progress.completed}/{progress.total}</p></div>
+                  <div className="rounded-xl border bg-muted/25 p-3"><p className="text-sm text-muted-foreground">Terminé et vérifié</p><p className="text-xl font-bold">{progress.completed}/{progress.total}</p></div>
                   <div className="rounded-xl border bg-muted/25 p-3"><p className="text-sm text-muted-foreground">Bloqué</p><p className="text-xl font-bold">{progress.blocked}</p></div>
                 </div>
                 <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap">

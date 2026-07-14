@@ -2,6 +2,20 @@
 
 Les changements notables de Starter IA 5.6 sont documentés ici.
 
+## Non publié — Expérience du MVP en français courant
+
+### Modifié
+
+- Les six phases et les 16 étapes utilisent des titres courts, des objectifs directs et des résultats faciles à vérifier.
+- Une carte montre d’abord l’étape, son état et une seule action principale ; les explications et la mission complémentaire restent repliées.
+- Le formulaire, les statuts, le Dashboard, le rapport et l’export Markdown partagent des libellés plus simples.
+- Les boutons actifs et désactivés affichent les curseurs attendus, et les liens externes ouvrent un nouvel onglet avec une indication accessible.
+
+### Conservé
+
+- Le moteur n’est pas reconstruit : schéma 2, données existantes, stockage, migration, conflits, progression, règles de preuve et d’accord, missions et exports JSON restent compatibles.
+- L’étape 9 reste future et aucune intégration distante, dépendance, exécution IA, base ou production manuelle n’est ajoutée.
+
 ## Non publié — MVP local du projet complet
 
 ### Ajouté

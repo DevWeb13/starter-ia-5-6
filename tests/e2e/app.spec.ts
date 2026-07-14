@@ -11,7 +11,7 @@ async function launchProject(page: Page, options: { flagship?: boolean } = {}) {
   await page.goto("/demo");
   await page.getByLabel("Description du projet").fill("Une application qui aide les associations à organiser leurs bénévoles.");
   await page.getByLabel("Résultat recherché").fill("Réduire le temps nécessaire pour trouver un bénévole disponible.");
-  await page.getByLabel(/Contraintes ou contexte existant/).fill("Budget limité, usage mobile et données personnelles minimales.");
+  await page.getByLabel(/Contraintes/).fill("Budget limité, usage mobile et données personnelles minimales.");
   await page.getByLabel("Système de l’ordinateur").selectOption("ubuntu-linux");
   await page.getByLabel("Codex local est disponible sur mon ordinateur").check();
   if (options.flagship) {
@@ -21,6 +21,10 @@ async function launchProject(page: Page, options: { flagship?: boolean } = {}) {
   }
   await page.getByRole("button", { name: "Lancer mon projet" }).click();
   await expect(page).toHaveURL(/\/dashboard\/.+/);
+}
+
+async function showRecommendedWorkflow(page: Page) {
+  await page.getByText("Voir la méthode conseillée", { exact: true }).click();
 }
 
 test("la landing présente le MVP complet et ses actions principales", async ({ page }) => {
@@ -40,11 +44,51 @@ test("la landing présente le MVP complet et ses actions principales", async ({ 
   expect(browserErrors).toEqual([]);
 });
 
+test("les boutons actifs, désactivés et au clavier gardent un retour clair", async ({ page }) => {
+  await page.goto("/demo");
+  const launch = page.getByRole("button", { name: "Lancer mon projet" });
+  await expect(launch).toHaveCSS("cursor", "pointer");
+
+  const backgroundBeforeHover = await launch.evaluate((element) => getComputedStyle(element).backgroundColor);
+  await launch.hover();
+  await expect.poll(() => launch.evaluate((element) => getComputedStyle(element).backgroundColor)).not.toBe(backgroundBeforeHover);
+
+  await launch.focus();
+  await expect(launch).toBeFocused();
+  await page.keyboard.press("Space");
+  await expect(page.getByRole("region", { name: "Création d’un projet local" }).getByRole("alert")).toContainText("Le projet n’a pas encore été créé");
+
+  await launch.evaluate((element: HTMLButtonElement) => { element.disabled = true; });
+  await expect(launch).toBeDisabled();
+  await expect(launch).toHaveCSS("cursor", "not-allowed");
+  await page.mouse.move(0, 0);
+  await page.waitForTimeout(250);
+  const disabledBackground = await launch.evaluate((element) => getComputedStyle(element).backgroundColor);
+  await launch.hover();
+  await page.waitForTimeout(250);
+  await expect(launch).toHaveCSS("background-color", disabledBackground);
+});
+
+test("les liens externes ouvrent un nouvel onglet et les liens internes restent sur place", async ({ page }) => {
+  for (const path of ["/fonctionnalites", "/docs", "/tarifs", "/"]) {
+    await page.goto(path);
+    const externalLinks = page.locator('a[href^="http"]');
+    expect(await externalLinks.count()).toBeGreaterThan(0);
+    for (const link of await externalLinks.all()) {
+      await expect(link).toHaveAttribute("target", "_blank");
+      await expect(link).toHaveAttribute("rel", "noopener noreferrer");
+      await expect(link).toContainText("ouvre un nouvel onglet");
+    }
+    const internalLinks = page.locator('a[href^="/"]');
+    for (const link of await internalLinks.all()) await expect(link).not.toHaveAttribute("target", "_blank");
+  }
+});
+
 test("la création conserve la saisie et relie les erreurs aux champs", async ({ page }) => {
   await page.goto("/demo");
   const system = page.getByLabel("Système de l’ordinateur");
   await expect(system).toHaveValue("");
-  const capabilities = page.getByRole("group", { name: "Capacités disponibles" }).locator('input[type="checkbox"]');
+  const capabilities = page.getByRole("group", { name: "Outils disponibles" }).locator('input[type="checkbox"]');
   await expect(capabilities).toHaveCount(6);
   for (const capability of await capabilities.all()) await expect(capability).not.toBeChecked();
   await page.getByRole("button", { name: "Lancer mon projet" }).click();
@@ -86,6 +130,7 @@ test("le choix explicite aucun ordinateur désactive et efface les capacités lo
   }
   await page.getByRole("button", { name: "Lancer mon projet" }).click();
   await expect(page).toHaveURL(/\/dashboard\/.+/);
+  await showRecommendedWorkflow(page);
   await expect(page.getByText("Préparation ChatGPT, Codex à installer ou activer", { exact: true })).toBeVisible();
 });
 
@@ -96,16 +141,19 @@ test("Ubuntu déclaré sans Codex prépare son installation ou activation", asyn
   await page.getByLabel("Système de l’ordinateur").selectOption("ubuntu-linux");
   await page.getByRole("button", { name: "Lancer mon projet" }).click();
 
+  await showRecommendedWorkflow(page);
   await expect(page.getByText("Préparation ChatGPT, Codex à installer ou activer", { exact: true })).toBeVisible();
 });
 
 test("Ubuntu et Codex explicitement déclarés recommandent le parcours local", async ({ page }) => {
   await launchProject(page);
+  await showRecommendedWorkflow(page);
   await expect(page.getByText("ChatGPT + Codex local, sans Remote Control", { exact: true })).toBeVisible();
 });
 
 test("le profil Ubuntu, iPhone et Remote Control recommande le workflow phare", async ({ page }) => {
   await launchProject(page, { flagship: true });
+  await showRecommendedWorkflow(page);
   await expect(page.getByText("iPhone + Codex Remote + Ubuntu", { exact: true })).toBeVisible();
   await expect(page.getByText(/L’iPhone ne contient ni le dépôt ni les processus/)).toBeVisible();
 });
@@ -125,60 +173,70 @@ test("l’espace projet affiche six phases et une seule phase principale", async
   await expect(page.locator('[data-step-id="scope-problem"]')).toHaveCount(0);
 });
 
-test("Comprendre cette étape reste fermé puis explique les responsabilités", async ({ page }) => {
+test("la carte montre une action principale et garde les explications fermées", async ({ page }) => {
   await launchProject(page);
-  const details = page.locator("details").first();
+  const firstStep = page.locator('[data-step-id="scope-problem"]');
+  await expect(firstStep.getByRole("heading", { name: "Prochaine action" })).toBeVisible();
+  await expect(firstStep.getByRole("button", { name: "Préparer avec ChatGPT" })).toBeVisible();
+  await expect(firstStep.locator("button.bg-primary")).toHaveCount(1);
+  const details = firstStep.locator("details");
   await expect(details).not.toHaveAttribute("open", "");
   await details.getByText("Comprendre cette étape", { exact: true }).click();
   await expect(details).toHaveAttribute("open", "");
-  await expect(details).toContainText("Écrivain unique");
-  await expect(details).toContainText("Votre approbation");
+  await expect(details).toContainText("Pourquoi cette étape ?");
+  await expect(details).toContainText("Qui peut aider");
+  await expect(details).toContainText("Comment savoir que c’est bon");
 });
 
 test("une mission peut être copiée sans être considérée comme exécutée", async ({ page, context }) => {
   await context.grantPermissions(["clipboard-read", "clipboard-write"]);
   await launchProject(page);
   const firstStep = page.locator('[data-step-id="scope-problem"]');
-  await firstStep.getByRole("button", { name: "Copier la mission ChatGPT" }).click();
-  await expect(firstStep.getByRole("status")).toContainText("Mission ChatGPT copiée. Exécution non vérifiée.");
+  await firstStep.getByRole("button", { name: "Préparer avec ChatGPT" }).click();
+  await expect(firstStep.getByRole("status")).toContainText("Mission copiée. Collez-la dans ChatGPT.");
   expect(await page.evaluate(() => navigator.clipboard.readText())).toContain("Une application qui aide les associations");
 });
 
 test("statut, preuve et reprise après rechargement utilisent l’état enregistré", async ({ page }) => {
   await launchProject(page);
   const firstStep = page.locator('[data-step-id="scope-problem"]');
-  await firstStep.getByLabel("Statut déclaré par l’utilisateur").selectOption("partial");
-  await firstStep.getByLabel("Notes ou preuves").fill("Deux entretiens réalisés ; liens consignés dans le dossier de recherche.");
+  await firstStep.getByLabel("Où en êtes-vous ?").selectOption("partial");
+  await firstStep.getByText("Comprendre cette étape", { exact: true }).click();
+  await firstStep.getByLabel("Notes et résultats").fill("Deux entretiens réalisés ; liens consignés dans le dossier de recherche.");
   await expect(page.getByRole("status").filter({ hasText: "Enregistré sur cet appareil" })).toBeVisible();
 
   await page.reload();
   const reloaded = page.locator('[data-step-id="scope-problem"]');
-  await expect(reloaded.getByLabel("Statut déclaré par l’utilisateur")).toHaveValue("partial");
-  await expect(reloaded.getByLabel("Notes ou preuves")).toHaveValue(/Deux entretiens réalisés/);
-  await expect(page.getByText("Preuves consignées").locator("..").getByText("1", { exact: true })).toBeVisible();
+  await expect(reloaded.getByLabel("Où en êtes-vous ?")).toHaveValue("partial");
+  await reloaded.getByText("Comprendre cette étape", { exact: true }).click();
+  await expect(reloaded.getByLabel("Notes et résultats")).toHaveValue(/Deux entretiens réalisés/);
+  await expect(page.getByText("Notes et résultats").last().locator("..").getByText("1", { exact: true })).toBeVisible();
 });
 
 test("une étape sensible ne peut pas être terminée sans accord humain", async ({ page }) => {
   await launchProject(page);
   await page.getByRole("navigation", { name: "Phases du projet" }).getByRole("button", { name: /Lancer et améliorer/ }).click();
   const release = page.locator('[data-step-id="launch-release"]');
-  const status = release.getByLabel("Statut déclaré par l’utilisateur");
-  await release.getByLabel("Notes ou preuves").fill("Preview vérifiée ; action de lancement préparée mais non exécutée.");
+  await release.getByRole("button", { name: "Vérifier avant d’autoriser" }).click();
+  await expect(release.getByLabel("J’ai vérifié et j’autorise cette action")).toBeFocused();
+  const status = release.getByLabel("Où en êtes-vous ?");
+  await release.getByLabel("Notes et résultats").fill("Preview vérifiée ; action de lancement préparée mais non exécutée.");
   await status.selectOption("done-verified");
   await expect(status).toHaveValue("not-started");
-  await expect(release.getByRole("status")).toContainText("Accord humain requis");
+  await expect(release.getByRole("status")).toContainText("Votre accord est nécessaire");
 
-  await release.getByLabel("J’accorde cette validation humaine").check();
+  await release.getByLabel("J’ai vérifié et j’autorise cette action").check();
   await status.selectOption("done-verified");
   await expect(status).toHaveValue("done-verified");
-  await expect(release).toContainText("fait et vérifié");
+  await expect(release).toContainText("Terminé et vérifié");
 });
 
 test("le dashboard calcule la progression et produit les deux exports", async ({ page }) => {
   await launchProject(page);
   const firstStep = page.locator('[data-step-id="scope-problem"]');
-  await firstStep.getByLabel("Notes ou preuves").fill("Brief relu et résultat attendu validé par l’utilisateur.");
-  await firstStep.getByLabel("Statut déclaré par l’utilisateur").selectOption("done-verified");
+  await firstStep.getByText("Comprendre cette étape", { exact: true }).click();
+  await firstStep.getByLabel("Notes et résultats").fill("Brief relu et résultat attendu validé par l’utilisateur.");
+  await firstStep.getByLabel("Où en êtes-vous ?").selectOption("done-verified");
   const markdownDownload = page.waitForEvent("download");
   await page.getByRole("button", { name: "Exporter Markdown" }).click();
   const markdown = await markdownDownload;
@@ -194,7 +252,7 @@ test("le dashboard calcule la progression et produit les deux exports", async ({
 
   await page.getByRole("link", { name: "Mes projets", exact: true }).first().click();
   await expect(page).toHaveURL(/\/dashboard$/);
-  await expect(page.getByText("Fait et vérifié").locator("..").getByText("1/16", { exact: true })).toBeVisible();
+  await expect(page.getByText("Terminé et vérifié").locator("..").getByText("1/16", { exact: true })).toBeVisible();
   await expect(page.getByText("Bloqué").locator("..").getByText("0", { exact: true })).toBeVisible();
   await expect(page.getByRole("link", { name: "Reprendre" })).toBeVisible();
 

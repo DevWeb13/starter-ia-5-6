@@ -6,7 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 
 export const metadata: Metadata = {
   title: "Fonctionnement",
-  description: "Le cycle complet Starter IA en six phases et le workflow interne de chaque mission.",
+  description: "Les six phases de Starter IA et la façon simple de préparer, réaliser puis vérifier chaque action.",
 };
 
 const githubRoot = "https://github.com/DevWeb13/starter-ia-5-6/blob/main";
@@ -14,37 +14,37 @@ const githubRoot = "https://github.com/DevWeb13/starter-ia-5-6/blob/main";
 const steps = [
   {
     title: "Cadrer",
-    text: "Clarifier le problème, le résultat recherché, les contraintes, les risques et les informations manquantes.",
+    text: "Décrire le problème, le résultat souhaité, les limites et les informations manquantes.",
   },
   {
     title: "Valider",
-    text: "Confronter les hypothèses au marché, aux alternatives et à des critères qui permettent aussi de corriger ou d’arrêter.",
+    text: "Vérifier le besoin auprès des personnes concernées et regarder les solutions qu’elles utilisent déjà.",
   },
   {
     title: "Concevoir",
-    text: "Définir le plus petit parcours utile, ses contenus, son architecture et son plan de vérification.",
+    text: "Choisir une première version simple, ses textes et la façon de la construire.",
   },
   {
     title: "Construire",
-    text: "Produire le résultat sur une branche avec un seul écrivain, des limites visibles et des checkpoints vérifiables.",
+    text: "Construire le résultat sur une branche séparée. Un seul agent modifie les fichiers.",
   },
   {
     title: "Vérifier",
-    text: "Contrôler les tests, l’accessibilité, la sécurité, les preuves réelles et la revue indépendante.",
+    text: "Tester le résultat, l’accessibilité et la sécurité, puis demander une relecture indépendante.",
   },
   {
     title: "Lancer et améliorer",
-    text: "Préparer un marketing factuel, obtenir les accords humains, publier seulement si autorisé et apprendre des retours.",
+    text: "Préparer le lancement avec des faits, demander les accords nécessaires et apprendre des retours.",
   },
 ];
 
 const principles = [
-  "Brief → analyses en lecture seule → plan → écrivain unique.",
-  "Vérification sur la cible réelle → revue indépendante → correction → livraison.",
-  "Les missions ChatGPT et Codex intègrent le contexte saisi et les frontières de sécurité.",
-  "Une mission copiée n’est jamais considérée comme exécutée.",
-  "Les preuves et statuts sont déclarés par l’utilisateur.",
-  "Les actions sensibles exigent toujours une validation humaine explicite.",
+  "Décrire le besoin → préparer l’action → la réaliser.",
+  "Vérifier le résultat réel → faire relire → corriger.",
+  "Les missions ChatGPT et Codex reprennent les informations de votre projet et ses limites.",
+  "Copier une mission ne l’exécute pas.",
+  "Vous indiquez l’avancement et les résultats observés.",
+  "Les actions importantes exigent toujours votre accord clair.",
 ];
 
 export default function MethodPage() {
@@ -54,7 +54,7 @@ export default function MethodPage() {
         eyebrow="Fonctionnement"
         badge="Cycle complet"
         title="Six phases pour guider une idée jusqu’au lancement."
-        description="Le cycle du projet organise le résultat de bout en bout. Chaque étape prépare une mission, des livrables, des preuves et les validations humaines nécessaires."
+        description="Chaque étape vous indique quoi faire, ce que vous devez obtenir et comment vérifier le résultat."
       />
 
       <section className="page-shell pb-14 sm:pb-20" aria-labelledby="method-steps-title">
@@ -75,10 +75,10 @@ export default function MethodPage() {
       <section className="border-y border-border bg-muted/35 py-14 sm:py-20" aria-labelledby="principles-title">
         <div className="page-shell grid gap-8 lg:grid-cols-[0.7fr_1.3fr]">
           <div className="max-w-xl space-y-3">
-            <p className="eyebrow">Workflow interne</p>
+            <p className="eyebrow">Pour chaque action</p>
             <h2 id="principles-title" className="section-title">Une mission préparée, exécutée puis vérifiée.</h2>
             <p className="text-muted-foreground">
-              Ce workflow s’applique à chaque intervention sans être confondu avec les six phases du projet.
+              Cette méthode simple s’applique à chaque action des six phases.
             </p>
           </div>
           <Card>
@@ -109,9 +109,12 @@ export default function MethodPage() {
             <a
               key={path}
               href={`${githubRoot}/${path}`}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex min-h-11 items-center gap-2 font-semibold text-primary underline underline-offset-4"
             >
               {label}
+              <span className="sr-only"> (ouvre un nouvel onglet)</span>
               <ExternalLink aria-hidden="true" className="size-4" />
             </a>
           ))}

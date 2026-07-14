@@ -19,8 +19,11 @@ export function SiteFooter() {
           <a
             className="underline underline-offset-4"
             href="https://github.com/DevWeb13/starter-ia-5-6"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             GitHub
+            <span className="sr-only"> (ouvre un nouvel onglet)</span>
           </a>
         </nav>
       </div>

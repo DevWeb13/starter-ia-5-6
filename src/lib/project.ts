@@ -17,10 +17,10 @@ export const PROJECT_STEP_STATUSES = [
 ] as const;
 
 export const PROJECT_STEP_STATUS_LABELS: Record<ProjectStepStatus, string> = {
-  "not-started": "non tenté",
-  partial: "partiel",
-  blocked: "bloqué",
-  "done-verified": "fait et vérifié",
+  "not-started": "Pas commencé",
+  partial: "En cours",
+  blocked: "Bloqué",
+  "done-verified": "Terminé et vérifié",
 };
 
 export type ProjectPhaseId = (typeof PROJECT_PHASE_IDS)[number];
@@ -239,10 +239,10 @@ export function updateProjectStep(
       found = true;
       const next = { ...step, ...update };
       if (next.status === "done-verified" && next.requiresHumanApproval && !next.humanApprovalGranted) {
-        throw new Error("Accord humain requis avant de déclarer cette étape faite et vérifiée.");
+        throw new Error("Votre accord est nécessaire avant de choisir « Terminé et vérifié ».");
       }
       if (next.status === "done-verified" && !next.userNotes.trim()) {
-        throw new Error("Consignez au moins une preuve avant de déclarer cette étape faite et vérifiée.");
+        throw new Error("Ajoutez une note ou un résultat avant de choisir « Terminé et vérifié ».");
       }
       return next;
     }),
