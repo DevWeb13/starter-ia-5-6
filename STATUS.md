@@ -20,7 +20,7 @@
 - prompts dans `prompts/`, modèle de brief et formation express ;
 - kit statique minimal dans `templates/starter-kit/`, consultable et copiable fichier par fichier ;
 - route `/ressources` pour le kit, les options, les prompts, les modèles, les guides et la formation ;
-- route `/accompagnement` pour décrire l’offre pilote et orienter vers le site public LaReponseDev ;
+- route `/accompagnement` comme source détaillée de l’offre pilote : problème traité, intervention, publics, prérequis, déroulement, livrables, exclusions, passage de relais, FAQ et CTA externe vers LaReponseDev ;
 - redirection permanente de l’ancienne route `/tarifs` vers `/ressources`.
 
 ### Démonstration locale historique
