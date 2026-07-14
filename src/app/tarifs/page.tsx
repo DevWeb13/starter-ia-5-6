@@ -5,7 +5,7 @@ import { PageIntro } from "@/components/page-intro";
 
 export const metadata: Metadata = {
   title: "Ressources",
-  description: "Index des guides, workflows, prompts, briefs et critères qualité réellement présents dans Starter IA.",
+  description: "Guides, workflows, prompts, briefs et critères qualité complémentaires au MVP local Starter IA.",
 };
 
 const githubRoot = "https://github.com/DevWeb13/starter-ia-5-6/blob/main";
@@ -69,8 +69,8 @@ export default function ResourcesPage() {
       <PageIntro
         eyebrow="Ressources"
         badge="Fichiers du dépôt"
-        title="L’index des ressources Starter IA."
-        description="Chaque entrée renvoie vers un fichier réellement présent. Utilisez le contexte indiqué pour choisir la bonne ressource sans créer une seconde source de vérité."
+        title="Les ressources techniques de Starter IA."
+        description="Le MVP local est la porte d’entrée produit. Ces fichiers complètent son parcours avec les règles, guides, prompts et critères réellement présents dans le dépôt."
       />
 
       <section className="page-shell pb-14 sm:pb-20" aria-labelledby="resources-title">

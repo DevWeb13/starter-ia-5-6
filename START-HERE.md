@@ -1,60 +1,60 @@
 # Lancer un projet avec Starter IA
 
-La question de départ est simple : **« Quel projet voulez-vous lancer ? »**
+La question de départ est : **« Quel projet voulez-vous lancer ? »**
 
-Décrivez le résultat recherché, les contraintes importantes, votre matériel et les outils réellement disponibles. Starter IA doit ensuite organiser le parcours, pas vous demander de choisir une architecture compliquée.
+1. Ouvrez `/demo`.
+2. Décrivez le projet et le résultat recherché.
+3. Ajoutez facultativement les contraintes ou le contexte existant.
+4. Déclarez uniquement le matériel et les fonctions réellement disponibles.
+5. Choisissez **Lancer mon projet**.
 
-> Projet communautaire indépendant, non officiel et non affilié à OpenAI.
+Le traitement est local, immédiat et déterministe. Aucun fournisseur IA n’est contacté.
 
 ## Les six phases
 
-1. **Cadrer** l’idée, l’objectif, les contraintes et les risques.
-2. **Valider** le marché, la cible, le problème et le positionnement avec des critères et des preuves.
-3. **Concevoir** le produit, le MVP, l’expérience, les contenus et l’architecture.
-4. **Construire** les fichiers, le code, le design, les contenus et la documentation.
-5. **Vérifier** les tests, la sécurité, l’accessibilité, la qualité et les preuves réelles.
-6. **Lancer et améliorer** après validation humaine, avec marketing, mesure, retours et maintenance.
+1. **Cadrer** le problème, le résultat, les contraintes et les risques.
+2. **Valider** les hypothèses de marché, de cible et de positionnement avec des preuves.
+3. **Concevoir** le MVP, le parcours, les contenus et l’architecture.
+4. **Construire** avec un écrivain unique, des checkpoints et des garde-fous.
+5. **Vérifier** les tests, la sécurité, l’accessibilité, la qualité et la revue.
+6. **Lancer et améliorer** après accord humain, avec marketing factuel, mesure et retours.
+
+Le moteur génère 16 étapes. Elles commencent toutes au statut **non tenté**.
+
+## Avancer dans l’espace projet
+
+- ouvrez une seule phase principale à la fois ;
+- copiez une mission ChatGPT ou Codex lorsqu’elle existe ;
+- consignez une note, un lien ou une preuve ;
+- choisissez entre non tenté, partiel, bloqué et fait et vérifié ;
+- accordez explicitement une validation humaine lorsqu’elle est obligatoire ;
+- ouvrez **« Comprendre cette étape »** pour voir le pourquoi, les rôles, le livrable et la vérification.
+
+Copier une mission ne l’exécute pas. « Fait et vérifié » est toujours une déclaration de l’utilisateur. Une étape sensible ne peut pas recevoir ce statut sans son accord humain.
+
+## Workflow recommandé
+
+Starter IA recommande le chemin le plus simple compatible avec les déclarations :
+
+- iPhone + Codex Remote + Ubuntu si toutes les conditions sont réunies ;
+- iPhone + Remote Control sur un autre système si la fonction et une machine active sont déclarées ;
+- ChatGPT + Codex local sans Remote Control ;
+- ChatGPT + Codex local si le pilotage distant n’est pas fiable ;
+- préparation ChatGPT avec installation ou activation de Codex encore nécessaire.
+
+GitHub et Vercel enrichissent la livraison mais ne sont pas obligatoires pour créer un projet.
+
+## Stockage et migration
+
+Les projets restent dans `starter-ia.projects.v2` sur cet appareil. Aucun compte ni synchronisation n’existe. Les anciens projets `ai-project-launcher.projects.v1` sont validés puis migrés sans supprimer la source ; aucune progression ou preuve n’est inventée.
+
+Le Dashboard permet de reprendre, exporter, supprimer ou réinitialiser après confirmation. La réinitialisation sauvegarde d’abord la donnée v2 brute.
 
 ## Qui fait quoi
 
-- **ChatGPT** aide à cadrer, rechercher, comparer, décider, rédiger et piloter.
-- **Codex** inspecte, modifie et vérifie les fichiers, Git et les contrôles autorisés.
-- **L’orchestrateur** organise le projet et distribue les missions.
-- **Les spécialistes** analysent un sujet précis en lecture seule.
-- **L’exécutant** est le seul rôle qui écrit.
-- **Le reviewer** contrôle indépendamment le résultat.
-- **L’humain** approuve les actions sensibles ou irréversibles.
+- **ChatGPT** aide à analyser, comparer et rédiger à partir de la mission copiée.
+- **Codex** intervient sur les fichiers et contrôles lorsque l’utilisateur lance réellement la mission.
+- **Starter IA** prépare localement le parcours et enregistre l’état déclaré.
+- **L’humain** approuve fusion, production, suppression, paiement, secret, publication, message et action irréversible.
 
-Le cycle du projet ne remplace pas le workflow interne d’une mission. Ce dernier reste : **Brief → analyses en lecture seule → plan → écrivain unique → vérification → revue → correction → livraison**. Voir [`WORKFLOW.md`](WORKFLOW.md).
-
-## Comprendre cette étape
-
-Le futur MVP affichera pour chaque étape un volet **« Comprendre cette étape »**. En quelques lignes, il expliquera pourquoi l’étape existe, qui intervient, ce que ChatGPT et Codex feront, le livrable attendu, la preuve à obtenir et ce que l’utilisateur devra approuver. Cette fonction enseignera progressivement le workflow sans devenir un cours technique.
-
-## Parcours recommandé selon le matériel
-
-Starter IA recommandera le chemin le plus simple compatible avec l’environnement réel :
-
-- ChatGPT + Codex local sur Ubuntu/Linux ;
-- ChatGPT + Codex sur Windows ;
-- ChatGPT + Codex sur macOS ;
-- ChatGPT sur iPhone + Codex Remote si la fonction est disponible ;
-- parcours local sans Remote Control dans les autres cas.
-
-La disponibilité dépend du compte, du client, du système, des versions et du déploiement progressif.
-
-## Workflow phare : iPhone + Ubuntu
-
-**ChatGPT sur iPhone → pilotage de la mission → Codex Remote Control → exécution sur Ubuntu → branche GitHub → contrôles → Preview Vercel automatique → validation humaine → squash merge → production.**
-
-L’iPhone pilote seulement la session. Le dépôt, Git, Codex et les processus restent sur Ubuntu. La machine doit rester active, connectée et non suspendue. Une déconnexion ne prouve pas que les processus sont arrêtés et ne crée ni commit ni push. Vérifiez Git séparément. Ne transmettez jamais de secret, de code d’association ou de fichier `.env`.
-
-Ce parcours est prioritaire, mais pas obligatoire. Utilisez le guide [Codex Remote](guides/configurations/codex-remote.md) uniquement si la fonction est réellement disponible.
-
-## Limites actuelles
-
-Le futur orchestrateur n’est pas encore construit. L’application actuelle est une démonstration locale déterministe avec édition, stockage navigateur et exports. Elle n’appelle ni ChatGPT ni Codex automatiquement et ne possède aucun service distant.
-
-Les guides [Chat](guides/configurations/chat.md), [Work](guides/configurations/work.md), [Codex local](guides/configurations/codex-local.md), [Codex Remote](guides/configurations/codex-remote.md) et [Work + Codex](guides/configurations/hybrid-work-codex.md) restent disponibles comme références. Work est une option secondaire, pas la porte d’entrée principale.
-
-Pour le contrat complet du prochain MVP, lisez [`PROJECT.md`](PROJECT.md).
+Les guides [Chat](guides/configurations/chat.md), [Work](guides/configurations/work.md), [Codex local](guides/configurations/codex-local.md), [Codex Remote](guides/configurations/codex-remote.md) et [Work + Codex](guides/configurations/hybrid-work-codex.md) restent des ressources techniques secondaires.

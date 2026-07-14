@@ -5,8 +5,8 @@ import { PageIntro } from "@/components/page-intro";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 
 export const metadata: Metadata = {
-  title: "Configurations",
-  description: "Catalogue des cinq configurations Starter IA : Chat, Work, Codex local, Codex Remote et Work + Codex.",
+  title: "Configurations techniques",
+  description: "Ressources secondaires pour configurer ChatGPT, Work, Codex local, Codex Remote et les passages de relais.",
 };
 
 const githubRoot = "https://github.com/DevWeb13/starter-ia-5-6/blob/main";
@@ -68,10 +68,10 @@ export default function DocsPage() {
   return (
     <>
       <PageIntro
-        eyebrow="Configurations"
-        badge="Cinq environnements"
-        title="Choisir la configuration la plus simple pour la mission."
-        description="Chaque configuration a un rôle, des ressources et une limite explicite. Le catalogue aide aussi à préparer le passage de relais lorsque la mission change d’environnement."
+        eyebrow="Ressources techniques"
+        badge="Configurations secondaires"
+        title="Configurer l’environnement recommandé pour votre projet."
+        description="Le produit commence par le projet et son matériel. Ces guides détaillent ensuite les environnements disponibles, leurs limites et leurs passages de relais."
       />
 
       <div className="page-shell space-y-6 pb-14 sm:pb-20">
@@ -135,9 +135,9 @@ export default function DocsPage() {
         ))}
 
         <aside className="rounded-2xl border border-border bg-muted/35 p-5 sm:p-6" aria-labelledby="local-app-title">
-          <h2 id="local-app-title" className="text-xl font-semibold">Démarrage technique de la démonstration locale</h2>
+          <h2 id="local-app-title" className="text-xl font-semibold">Démarrage technique du MVP local</h2>
           <p className="mt-2 text-muted-foreground">
-            L’application Next.js historique reste un support secondaire. Ses prérequis, commandes et limites sont documentés dans le README du dépôt.
+            L’application Next.js exécute uniquement le moteur déterministe et le stockage navigateur. Ses prérequis, commandes et limites sont documentés dans le README du dépôt.
           </p>
           <a
             href={`${githubRoot}/README.md`}

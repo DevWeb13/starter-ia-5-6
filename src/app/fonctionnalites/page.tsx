@@ -5,60 +5,60 @@ import { PageIntro } from "@/components/page-intro";
 import { Card, CardContent } from "@/components/ui/card";
 
 export const metadata: Metadata = {
-  title: "Méthode",
-  description: "Le processus commun de Starter IA : cadrage, écrivain unique, vérification, revue et passage de relais.",
+  title: "Fonctionnement",
+  description: "Le cycle complet Starter IA en six phases et le workflow interne de chaque mission.",
 };
 
 const githubRoot = "https://github.com/DevWeb13/starter-ia-5-6/blob/main";
 
 const steps = [
   {
-    title: "Choisir la configuration",
-    text: "Partir de la mission : échange court, mission cloud, modification locale, pilotage depuis iPhone ou relais Work + Codex.",
+    title: "Cadrer",
+    text: "Clarifier le problème, le résultat recherché, les contraintes, les risques et les informations manquantes.",
   },
   {
-    title: "Cadrer la mission",
-    text: "Écrire le résultat attendu, les livrables, les contraintes, les preuves de réussite et les actions déjà autorisées.",
+    title: "Valider",
+    text: "Confronter les hypothèses au marché, aux alternatives et à des critères qui permettent aussi de corriger ou d’arrêter.",
   },
   {
-    title: "Préparer les ressources",
-    text: "Rassembler les sources utiles, le brief, les prompts et les critères qualité sans transmettre de secret.",
+    title: "Concevoir",
+    text: "Définir le plus petit parcours utile, ses contenus, son architecture et son plan de vérification.",
   },
   {
-    title: "Exécuter avec un seul écrivain",
-    text: "Les sous-agents peuvent analyser ou revoir en lecture seule ; une seule personne ou un seul agent modifie le résultat.",
+    title: "Construire",
+    text: "Produire le résultat sur une branche avec un seul écrivain, des limites visibles et des checkpoints vérifiables.",
   },
   {
-    title: "Vérifier le résultat",
-    text: "Contrôler la cible réelle : fichiers, commandes, tests, liens et limites. Une relecture seule ne prouve pas le fonctionnement.",
+    title: "Vérifier",
+    text: "Contrôler les tests, l’accessibilité, la sécurité, les preuves réelles et la revue indépendante.",
   },
   {
-    title: "Organiser le passage de relais",
-    text: "Transmettre le résultat réel, les décisions, les sources, les contrôles et les blocages, puis revérifier dans le nouvel environnement.",
+    title: "Lancer et améliorer",
+    text: "Préparer un marketing factuel, obtenir les accords humains, publier seulement si autorisé et apprendre des retours.",
   },
 ];
 
 const principles = [
-  "Un brief vérifiable avant une mission complète.",
-  "Au maximum trois sous-agents, tous en lecture seule.",
-  "Un écrivain unique pour les fichiers, Git et les services externes.",
-  "Deux cycles complets de revue, correction et nouvelle vérification au maximum.",
-  "Aucune réussite annoncée sans contrôle sur la cible réelle.",
-  "Les limites des outils, comptes et fonctions sont toujours explicites.",
+  "Brief → analyses en lecture seule → plan → écrivain unique.",
+  "Vérification sur la cible réelle → revue indépendante → correction → livraison.",
+  "Les missions ChatGPT et Codex intègrent le contexte saisi et les frontières de sécurité.",
+  "Une mission copiée n’est jamais considérée comme exécutée.",
+  "Les preuves et statuts sont déclarés par l’utilisateur.",
+  "Les actions sensibles exigent toujours une validation humaine explicite.",
 ];
 
 export default function MethodPage() {
   return (
     <>
       <PageIntro
-        eyebrow="Méthode"
-        badge="Processus commun"
-        title="Passer d’une mission cadrée à une livraison vérifiée."
-        description="La méthode relie les cinq configurations sans recopier leurs procédures. Elle garde les responsabilités, les limites et les preuves visibles à chaque étape."
+        eyebrow="Fonctionnement"
+        badge="Cycle complet"
+        title="Six phases pour guider une idée jusqu’au lancement."
+        description="Le cycle du projet organise le résultat de bout en bout. Chaque étape prépare une mission, des livrables, des preuves et les validations humaines nécessaires."
       />
 
       <section className="page-shell pb-14 sm:pb-20" aria-labelledby="method-steps-title">
-        <h2 id="method-steps-title" className="sr-only">Les six étapes de la méthode</h2>
+        <h2 id="method-steps-title" className="sr-only">Les six phases du projet</h2>
         <ol className="grid gap-4 lg:grid-cols-2">
           {steps.map((step, index) => (
             <li key={step.title} className="grid gap-3 rounded-2xl border border-border bg-card p-5 sm:grid-cols-[auto_1fr] sm:p-6">
@@ -75,10 +75,10 @@ export default function MethodPage() {
       <section className="border-y border-border bg-muted/35 py-14 sm:py-20" aria-labelledby="principles-title">
         <div className="page-shell grid gap-8 lg:grid-cols-[0.7fr_1.3fr]">
           <div className="max-w-xl space-y-3">
-            <p className="eyebrow">Principes stables</p>
-            <h2 id="principles-title" className="section-title">Des responsabilités simples et vérifiables.</h2>
+            <p className="eyebrow">Workflow interne</p>
+            <h2 id="principles-title" className="section-title">Une mission préparée, exécutée puis vérifiée.</h2>
             <p className="text-muted-foreground">
-              Ces principes restent valables dans Chat, Work, Codex local, Codex Remote et le mode hybride.
+              Ce workflow s’applique à chaque intervention sans être confondu avec les six phases du projet.
             </p>
           </div>
           <Card>

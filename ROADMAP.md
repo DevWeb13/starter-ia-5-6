@@ -63,13 +63,15 @@ La mémoire a été clôturée après l’étape 5. Le Dashboard et l’éditeur
 ### Étape 7 — Réalignement définitif
 
 **Branche :** `work/07-definitive-product-realignment`
-**Statut :** en cours.
+**Statut :** terminée, fusionnée par squash via la PR GitHub nº 9 au commit `aeb1e9bfaf4f6b9da1d8daadf3726069a82296d3`.
 
-Fixer une direction unique : orchestrateur de projet complet, six phases, rôles d’agents compréhensibles, ChatGPT + Codex comme workflow principal, recommandation matérielle, sécurité, marketing intégré et contrat du prochain MVP. Cette étape est documentaire et ne construit aucune fonction applicative.
+Résultat : direction unique d’orchestrateur de projet complet, six phases, rôles compréhensibles, ChatGPT + Codex comme workflow principal, recommandation matérielle, sécurité, marketing intégré et contrat du MVP.
 
 ### Étape 8 — MVP du projet complet
 
-**Statut :** prévue après validation et fusion séparée de l’étape 7.
+**Branche :** `work/08-complete-project-mvp`
+**Pull request :** nº 10
+**Statut :** implémentée, vérifiée et prête pour révision dans la PR nº 10 ; CI et Preview automatique réussies.
 
 - entrée projet et résultat recherché ;
 - profil matériel et outils disponibles ;
@@ -82,7 +84,7 @@ Fixer une direction unique : orchestrateur de projet complet, six phases, rôles
 - volet « Comprendre cette étape » ;
 - rapport final local.
 
-Le moteur initial peut rester local et déterministe. Il ne doit simuler aucun appel à ChatGPT ou Codex.
+Résultat de la branche : modèle local version 2, migration non destructive du schéma 1, moteur déterministe de 16 étapes, recommandations matérielles, espace guidé, Dashboard, exports, rapport et interface publique alignée. Aucun appel ChatGPT, Codex ou fournisseur IA n’est exécuté automatiquement.
 
 ### Étape 9 — Exécution guidée
 

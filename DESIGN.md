@@ -1,6 +1,6 @@
 # Identité visuelle
 
-Ce document est la source de vérité visuelle de Starter IA 5.6. L’interface existante est sobre, moderne, mobile-first et accessible ; son vocabulaire doit distinguer les ressources actives des démonstrations historiques locales.
+Ce document est la source de vérité visuelle de Starter IA 5.6. L’interface est sobre, moderne, mobile-first et accessible ; le MVP local en six phases est la porte d’entrée, tandis que les configurations restent des ressources secondaires.
 
 ## Principes
 
@@ -10,11 +10,11 @@ Ce document est la source de vérité visuelle de Starter IA 5.6. L’interface 
 - Aucun effet ne doit ralentir ou masquer le contenu.
 - Interface utilisable au pouce, au clavier, au zoom et avec un lecteur d’écran.
 - Parité fonctionnelle et contraste AA dans les thèmes clair et sombre.
-- Starter IA est l’unique identité produit active. « Démonstration locale historique » signale les parcours hérités qui ne représentent pas une fonction distante.
+- Starter IA est l’unique identité produit active. Les mentions locales signalent le stockage navigateur, l’absence de synchronisation et l’absence d’appel IA automatique.
 
-## Principes UX du prochain MVP
+## Principes UX du MVP local
 
-Ces principes définissent la cible de l’étape 8. Aucun composant correspondant n’est construit dans cette PR.
+Ces principes sont appliqués au lancement, au Dashboard et à l’espace projet de l’étape 8.
 
 - Montrer une seule étape principale à la fois.
 - Masquer la complexité spécialisée par défaut, sans cacher les décisions ni les preuves.
@@ -115,13 +115,12 @@ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, A
 - Échap ferme le menu et rend le focus au déclencheur.
 - Page courante signalée avec `aria-current` et un soulignement, pas uniquement par couleur.
 
-### Démonstration
+### Lancement local
 
-- Mention « Démonstration locale » près du formulaire et du résultat.
-- États vide, erreur, chargement et succès.
-- Chargement avec texte ; skeletons décoratifs masqués aux lecteurs d’écran.
-- Succès annoncé brièvement, puis focus déplacé vers le titre du résultat.
-- Résultat en six sections et hypothèses explicitement à valider.
+- Mention du moteur déterministe, du stockage local et de l’absence d’appel IA près du formulaire.
+- Validation accessible de la description et du résultat recherché, avec saisie conservée.
+- Aucun faux délai ; un état de traitement n’existe que pendant l’enregistrement et la navigation réels.
+- Création immédiate du projet version 2 puis ouverture de son espace guidé en six phases.
 
 ### Statuts et erreurs
 

@@ -173,3 +173,27 @@ Fusion dans `main`, production, suppression, paiement, secret, publication exter
 Le marketing appartient au cycle : marché, cible et positionnement dans Valider ; pack factuel, démonstration, mesure et contenu dans Lancer et améliorer. Toute publication externe reste soumise à l’humain.
 
 La progression économique est : cœur open source utile, usage personnel, cas réels publics, services payants, puis éventuel produit hébergé seulement après validation. Aucun prix, abonnement acquis ou revenu n’est inventé.
+
+## D-027 — Modèle local version 2 et migration conservatrice
+
+**Date :** 2026-07-13 — **Statut :** acceptée — complète D-015, D-016 et D-020
+
+Le modèle `Project` version 2 représente le brief, le matériel déclaré, le workflow recommandé, six phases et 16 étapes actionnables. La clé active devient `starter-ia.projects.v2`.
+
+Si aucune donnée v2 n’existe, la source `ai-project-launcher.projects.v1` est validée strictement, conservée intacte et copiée avant migration. Les anciens champs deviennent un contexte historique ; aucune progression, preuve ou approbation n’est déduite. Une donnée illisible n’est jamais écrasée automatiquement.
+
+## D-028 — Moteur déterministe sans fournisseur
+
+**Date :** 2026-07-13 — **Statut :** acceptée — implémente D-024
+
+Le premier moteur complet reste une fonction TypeScript pure fondée sur des règles et templates. Il produit les phases, étapes, rôles, missions, livrables, preuves, validations et recommandations matérielles sans appel réseau, ChatGPT, Codex, OpenAI ou autre fournisseur.
+
+GitHub et Vercel enrichissent le chemin de livraison sans être obligatoires. Remote Control n’est recommandé que lorsqu’il est explicitement déclaré et que ses conditions matérielles sont réunies.
+
+## D-029 — Espace guidé et preuves déclaratives
+
+**Date :** 2026-07-13 — **Statut :** acceptée
+
+L’espace projet n’affiche qu’une phase principale à la fois. Chaque étape propose ses missions disponibles, « Comprendre cette étape », quatre statuts, des notes ou preuves et une validation humaine éventuelle. Une copie ne vaut jamais exécution et le rapport distingue rôles planifiés, missions préparées et déclarations de l’utilisateur.
+
+Une étape sensible ne peut pas être marquée « fait et vérifié » sans accord humain. Le Dashboard et l’éditeur restent locaux, `noindex` et absents du sitemap.

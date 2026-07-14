@@ -7,15 +7,15 @@ export function SiteFooter() {
         <div className="max-w-xl space-y-2">
           <p className="font-semibold">Starter IA 5.6</p>
           <p className="text-sm text-muted-foreground">
-            Starter open source avec une démonstration locale historique. Projet communautaire indépendant,
-            non officiel et non affilié à OpenAI.
+            MVP local déterministe pour organiser un projet en six phases avec des missions ChatGPT et Codex. Projet communautaire indépendant, non officiel et non affilié à OpenAI.
           </p>
         </div>
         <nav className="flex flex-wrap gap-x-5 gap-y-2 text-sm" aria-label="Pied de page">
-          <Link className="underline underline-offset-4" href="/docs">Configurations</Link>
+          <Link className="underline underline-offset-4" href="/demo">Lancer un projet</Link>
+          <Link className="underline underline-offset-4" href="/dashboard">Mes projets</Link>
+          <Link className="underline underline-offset-4" href="/fonctionnalites">Fonctionnement</Link>
           <Link className="underline underline-offset-4" href="/tarifs">Ressources</Link>
-          <Link className="underline underline-offset-4" href="/fonctionnalites">Méthode</Link>
-          <Link className="text-muted-foreground underline underline-offset-4" href="/demo">Démo locale</Link>
+          <Link className="text-muted-foreground underline underline-offset-4" href="/docs">Configurations</Link>
           <a
             className="underline underline-offset-4"
             href="https://github.com/DevWeb13/starter-ia-5-6"

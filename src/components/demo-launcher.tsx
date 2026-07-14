@@ -1,306 +1,232 @@
 "use client";
 
-import {
-  AlertCircle,
-  ArrowRight,
-  Check,
-  CircleDashed,
-  FlaskConical,
-  RotateCcw,
-} from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { AlertCircle, ArrowRight, Laptop, ShieldCheck } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
-import { Badge } from "@/components/ui/badge";
+import { LocalProjectNotice } from "@/components/local-project-notice";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
-import {
-  buildDemoPlan,
-  MAX_IDEA_LENGTH,
-  type DemoPlan,
-  validateIdea,
-} from "@/lib/demo-plan";
 import { saveProject } from "@/lib/local-project-store";
-import { createProject } from "@/lib/project";
-import { LocalProjectNotice } from "./local-project-notice";
+import { createProject } from "@/lib/project-engine";
+import type { HardwareProfile, OperatingSystem } from "@/lib/project";
 
-type DemoState = "empty" | "error" | "loading" | "success";
+const DESCRIPTION_MAX = 1_200;
+const OUTCOME_MAX = 600;
+const CONTEXT_MAX = 1_200;
 
-const exampleIdea =
-  "Un service qui aide les artisans à transformer leurs notes de chantier en devis clairs.";
+type FormErrors = Partial<Record<"description" | "desiredOutcome" | "operatingSystem" | "storage", string>>;
 
-const resultSections = [
-  { key: "valueProposition", title: "Proposition de valeur", type: "text" },
-  { key: "target", title: "Cible initiale", type: "text" },
-  { key: "mvp", title: "MVP", type: "list" },
-  { key: "technicalPlan", title: "Plan technique", type: "list" },
-  { key: "marketingPlan", title: "Plan marketing", type: "list" },
-  { key: "nextActions", title: "Prochaines actions", type: "list" },
-] as const;
+const initialHardware: HardwareProfile = {
+  hasComputer: false,
+  operatingSystem: "none",
+  hasIPhone: false,
+  codexLocalAvailable: false,
+  remoteControlAvailable: false,
+  githubAvailable: false,
+  vercelAvailable: false,
+  machineCanStayActive: false,
+};
+
+const environmentOptions: { key: keyof HardwareProfile; label: string; help?: string }[] = [
+  { key: "hasIPhone", label: "J’ai un iPhone" },
+  { key: "codexLocalAvailable", label: "Codex local est disponible sur mon ordinateur" },
+  {
+    key: "remoteControlAvailable",
+    label: "Remote Control est réellement disponible sur mon compte",
+    help: "Cochez seulement si vous avez vérifié cette fonction dans votre compte. Starter IA ne la déduit jamais.",
+  },
+  { key: "githubAvailable", label: "GitHub est disponible" },
+  { key: "vercelAvailable", label: "Vercel est disponible" },
+  { key: "machineCanStayActive", label: "La machine peut rester active, connectée et non suspendue" },
+];
 
 export function DemoLauncher() {
   const router = useRouter();
-  const [idea, setIdea] = useState("");
-  const [state, setState] = useState<DemoState>("empty");
-  const [error, setError] = useState<string | null>(null);
-  const [plan, setPlan] = useState<DemoPlan | null>(null);
-  const resultTitleRef = useRef<HTMLHeadingElement>(null);
-  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [description, setDescription] = useState("");
+  const [desiredOutcome, setDesiredOutcome] = useState("");
+  const [constraints, setConstraints] = useState("");
+  const [hardware, setHardware] = useState(initialHardware);
+  const [selectedOperatingSystem, setSelectedOperatingSystem] = useState<OperatingSystem | "">("");
+  const [errors, setErrors] = useState<FormErrors>({});
+  const [submitting, setSubmitting] = useState(false);
 
-  useEffect(() => {
-    if (state === "success") resultTitleRef.current?.focus();
-  }, [state]);
-
-  useEffect(
-    () => () => {
-      if (timerRef.current) clearTimeout(timerRef.current);
-    },
-    [],
-  );
-
-  function runDemo() {
-    const validationError = validateIdea(idea);
-
-    if (validationError) {
-      setError(validationError);
-      setState("error");
-      return;
-    }
-
-    const submittedIdea = idea;
-    setError(null);
-    setPlan(null);
-    setState("loading");
-    timerRef.current = setTimeout(() => {
-      try {
-        const project = createProject(submittedIdea);
-        saveProject(project);
-        setPlan(buildDemoPlan(submittedIdea));
-        setState("success");
-        router.push(`/dashboard/${project.id}`);
-      } catch (cause) {
-        setError(cause instanceof Error ? cause.message : "Impossible d’enregistrer ce projet localement.");
-        setState("error");
-      }
-      timerRef.current = null;
-    }, 700);
+  function updateSystem(operatingSystem: OperatingSystem) {
+    const hasComputer = operatingSystem !== "none";
+    setSelectedOperatingSystem(operatingSystem);
+    setErrors((current) => ({ ...current, operatingSystem: undefined, storage: undefined }));
+    setHardware((current) => ({
+      ...current,
+      operatingSystem,
+      hasComputer,
+      ...(!hasComputer ? {
+        codexLocalAvailable: false,
+        remoteControlAvailable: false,
+        machineCanStayActive: false,
+      } : {}),
+    }));
   }
 
-  function resetDemo() {
-    if (timerRef.current) clearTimeout(timerRef.current);
-    timerRef.current = null;
-    setIdea("");
-    setError(null);
-    setPlan(null);
-    setState("empty");
+  function validate() {
+    const next: FormErrors = {};
+    if (!description.trim()) next.description = "Décrivez le projet que vous voulez lancer.";
+    else if (description.trim().length < 20) next.description = "Ajoutez quelques précisions : 20 caractères minimum.";
+    if (!desiredOutcome.trim()) next.desiredOutcome = "Indiquez le résultat concret que vous recherchez.";
+    else if (desiredOutcome.trim().length < 10) next.desiredOutcome = "Précisez le résultat recherché en au moins 10 caractères.";
+    if (!selectedOperatingSystem) next.operatingSystem = "Choisissez votre système ou indiquez qu’aucun ordinateur n’est disponible.";
+    setErrors(next);
+    return Object.keys(next).length === 0;
+  }
+
+  function launchProject() {
+    if (!validate()) return;
+    setSubmitting(true);
+    setErrors({});
+    try {
+      const project = createProject({
+        brief: {
+          description: description.trim(),
+          desiredOutcome: desiredOutcome.trim(),
+          constraints: constraints.trim(),
+          existingContext: "",
+        },
+        hardware,
+      });
+      saveProject(project);
+      router.push(`/dashboard/${project.id}`);
+    } catch (cause) {
+      setErrors({ storage: cause instanceof Error ? cause.message : "Impossible d’enregistrer ce projet localement." });
+      setSubmitting(false);
+    }
   }
 
   return (
-    <div className="grid gap-5 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
-      <Card className="lg:sticky lg:top-24">
+    <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
+      <Card>
         <CardHeader>
-          <div className="flex flex-wrap items-center justify-between gap-3">
-            <CardTitle>Décrivez votre idée</CardTitle>
-            <Badge className="border-primary/40 bg-primary/10 text-foreground">
-              <FlaskConical aria-hidden="true" className="mr-1 size-3.5" />
-              Démonstration locale
-            </Badge>
-          </div>
-          <p id="idea-help" className="text-sm text-muted-foreground">
-            Donnez le problème, la cible ou le résultat attendu. Rien n’est envoyé à une API.
-          </p>
+          <h2 className="text-2xl font-semibold tracking-tight">Votre projet</h2>
+          <p className="text-muted-foreground">Trois questions suffisent pour préparer le parcours initial.</p>
         </CardHeader>
-        <CardContent className="space-y-4">
+        <CardContent className="space-y-5">
           <div className="space-y-2">
-            <label htmlFor="product-idea" className="block font-semibold">
-              Idée de produit
-            </label>
+            <label htmlFor="project-description" className="block font-semibold">Description du projet</label>
+            <p id="project-description-help" className="text-sm text-muted-foreground">Expliquez ce que vous voulez créer et pour qui.</p>
             <Textarea
-              id="product-idea"
-              name="product-idea"
-              value={idea}
-              maxLength={MAX_IDEA_LENGTH}
-              disabled={state === "loading"}
-              aria-invalid={state === "error"}
-              aria-describedby={state === "error" ? "idea-help idea-error" : "idea-help"}
-              placeholder="Ex. Un service qui aide…"
-              onChange={(event) => {
-                setIdea(event.target.value);
-                setError(null);
-                setPlan(null);
-                setState("empty");
-              }}
+              id="project-description"
+              value={description}
+              maxLength={DESCRIPTION_MAX}
+              aria-invalid={Boolean(errors.description)}
+              aria-describedby={`project-description-help${errors.description ? " project-description-error" : ""}`}
+              onChange={(event) => { setDescription(event.target.value); setErrors((current) => ({ ...current, description: undefined, storage: undefined })); }}
             />
-            <div className="flex flex-wrap items-center justify-between gap-2 text-sm text-muted-foreground">
-              <span>{idea.length}/{MAX_IDEA_LENGTH} caractères</span>
-              <button
-                type="button"
-                disabled={state === "loading"}
-                className="min-h-11 rounded-lg px-2 font-semibold text-foreground underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-55"
-                onClick={() => {
-                  setIdea(exampleIdea);
-                  setError(null);
-                  setPlan(null);
-                  setState("empty");
-                }}
-              >
-                Utiliser l’exemple
-              </button>
-            </div>
+            <p className="flex justify-between gap-3 text-sm text-muted-foreground"><span>{description.length}/{DESCRIPTION_MAX}</span></p>
+            {errors.description ? <p id="project-description-error" className="text-sm font-semibold text-destructive">{errors.description}</p> : null}
           </div>
 
-          {state === "error" ? (
-            <div
-              id="idea-error"
-              role="alert"
-              className="flex gap-3 rounded-xl border border-destructive bg-destructive-surface p-3 text-foreground"
-            >
+          <div className="space-y-2">
+            <label htmlFor="desired-outcome" className="block font-semibold">Résultat recherché</label>
+            <p id="desired-outcome-help" className="text-sm text-muted-foreground">Décrivez ce qui devra être observable si le projet avance.</p>
+            <Textarea
+              id="desired-outcome"
+              className="min-h-24"
+              value={desiredOutcome}
+              maxLength={OUTCOME_MAX}
+              aria-invalid={Boolean(errors.desiredOutcome)}
+              aria-describedby={`desired-outcome-help${errors.desiredOutcome ? " desired-outcome-error" : ""}`}
+              onChange={(event) => { setDesiredOutcome(event.target.value); setErrors((current) => ({ ...current, desiredOutcome: undefined, storage: undefined })); }}
+            />
+            <p className="text-sm text-muted-foreground">{desiredOutcome.length}/{OUTCOME_MAX}</p>
+            {errors.desiredOutcome ? <p id="desired-outcome-error" className="text-sm font-semibold text-destructive">{errors.desiredOutcome}</p> : null}
+          </div>
+
+          <div className="space-y-2">
+            <label htmlFor="project-constraints" className="block font-semibold">Contraintes ou contexte existant <span className="font-normal text-muted-foreground">(facultatif)</span></label>
+            <p id="project-constraints-help" className="text-sm text-muted-foreground">Budget, délai, outils, liens, données ou limites déjà connues.</p>
+            <Textarea
+              id="project-constraints"
+              className="min-h-24"
+              value={constraints}
+              maxLength={CONTEXT_MAX}
+              aria-describedby="project-constraints-help"
+              onChange={(event) => { setConstraints(event.target.value); setErrors((current) => ({ ...current, storage: undefined })); }}
+            />
+            <p className="text-sm text-muted-foreground">{constraints.length}/{CONTEXT_MAX}</p>
+          </div>
+
+          {Object.values(errors).some(Boolean) ? (
+            <div role="alert" className="flex gap-3 rounded-xl border border-destructive bg-destructive-surface p-4">
               <AlertCircle aria-hidden="true" className="mt-0.5 size-5 shrink-0 text-destructive" />
-              <div>
-                <p className="font-semibold">L’idée manque encore de contexte.</p>
-                <p>{error}</p>
-              </div>
+              <div><p className="font-semibold">Le projet n’a pas encore été créé.</p><p className="text-sm">Corrigez les champs signalés. Votre saisie est conservée.</p>{errors.storage ? <p className="mt-1 text-sm">{errors.storage}</p> : null}</div>
             </div>
           ) : null}
-
-          <div className="grid gap-2 sm:grid-cols-[1fr_auto]">
-            <Button
-              type="button"
-              size="lg"
-              disabled={state === "loading"}
-              onClick={runDemo}
-            >
-              {state === "loading" ? (
-                <>
-                  <CircleDashed aria-hidden="true" className="size-5 animate-spin motion-reduce:animate-none" />
-                  Génération locale…
-                </>
-              ) : (
-                <>
-                  Générer le plan démo
-                  <ArrowRight aria-hidden="true" className="size-5" />
-                </>
-              )}
-            </Button>
-            <Button
-              type="button"
-              variant="outline"
-              size="lg"
-              disabled={state === "loading" || (!idea && state === "empty")}
-              onClick={resetDemo}
-            >
-              <RotateCcw aria-hidden="true" className="size-4" />
-              Réinitialiser
-            </Button>
-          </div>
-          <LocalProjectNotice />
-          <p className="text-sm text-muted-foreground">Le plan est déterministe. Il ne constitue ni une analyse IA, ni une validation de marché.</p>
         </CardContent>
       </Card>
 
-      <section
-        aria-label="Résultat de la démonstration"
-        aria-busy={state === "loading"}
-        data-demo-state={state}
-        className="min-w-0"
-      >
-        <p className="sr-only" aria-live="polite">
-          {state === "loading"
-            ? "Génération locale en cours."
-            : state === "success"
-              ? "Plan de démonstration généré, six sections disponibles."
-              : state === "error"
-                ? "Le formulaire contient une erreur à corriger."
-                : "Démonstration prête."}
-        </p>
-
-        {state === "empty" || state === "error" ? (
-          <Card className="border-dashed">
-            <CardContent className="grid min-h-[24rem] place-items-center p-5 text-center sm:p-8">
-              <div className="max-w-md space-y-4">
-                <span className="mx-auto grid size-12 place-items-center rounded-2xl bg-muted">
-                  <FlaskConical aria-hidden="true" className="size-6 text-primary" />
-                </span>
-                <h3 id="demo-result-title" className="text-xl font-semibold">
-                  Votre plan de démonstration apparaîtra ici
-                </h3>
-                <p className="text-muted-foreground">
-                  Il contiendra une proposition de valeur, une cible, un MVP, deux plans et les
-                  prochaines actions. Les hypothèses resteront clairement signalées.
-                </p>
-              </div>
-            </CardContent>
-          </Card>
-        ) : null}
-
-        {state === "loading" ? (
-          <Card>
-            <CardContent className="min-h-[24rem] p-5 sm:p-6">
-              <div role="status" className="mb-6 flex items-center gap-3 font-semibold">
-                <CircleDashed aria-hidden="true" className="size-5 animate-spin text-primary motion-reduce:animate-none" />
-                Création et enregistrement local du projet…
-              </div>
-              <div aria-hidden="true" className="grid gap-4 sm:grid-cols-2">
-                {Array.from({ length: 6 }).map((_, index) => (
-                  <div key={index} className="h-32 animate-pulse rounded-xl bg-muted motion-reduce:animate-none" />
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-        ) : null}
-
-        {state === "success" && plan ? (
-          <div className="space-y-4">
-            <div className="rounded-2xl border border-success bg-success-surface p-4">
-              <div className="flex gap-3">
-                <Check aria-hidden="true" className="mt-0.5 size-5 shrink-0 text-success" />
-                <div>
-                  <h3
-                    id="demo-result-title"
-                    ref={resultTitleRef}
-                    tabIndex={-1}
-                    className="font-semibold outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                  >
-                    Plan de démonstration généré
-                  </h3>
-                  <p className="text-sm text-muted-foreground">
-                    Projet local créé. Ouverture de l’éditeur…
-                  </p>
-                </div>
-              </div>
+      <div className="space-y-5 lg:sticky lg:top-24">
+        <Card>
+          <CardHeader>
+            <div className="flex items-center gap-3"><Laptop aria-hidden="true" className="size-5 text-primary" /><h2 className="text-xl font-semibold">Mon environnement</h2></div>
+            <p className="text-sm text-muted-foreground">Ces réponses servent uniquement à recommander un chemin compatible.</p>
+          </CardHeader>
+          <CardContent className="space-y-5">
+            <div className="space-y-2">
+              <label htmlFor="operating-system" className="block font-semibold">Système de l’ordinateur</label>
+              <select
+                id="operating-system"
+                value={selectedOperatingSystem}
+                className="min-h-11 w-full rounded-xl border bg-background px-3 text-base"
+                aria-invalid={Boolean(errors.operatingSystem)}
+                aria-describedby={`operating-system-help${errors.operatingSystem ? " operating-system-error" : ""}`}
+                onChange={(event) => updateSystem(event.target.value as OperatingSystem)}
+              >
+                <option value="" disabled>Choisir un système</option>
+                <option value="ubuntu-linux">Ubuntu / Linux</option>
+                <option value="windows">Windows</option>
+                <option value="macos">macOS</option>
+                <option value="none">Aucun ordinateur disponible</option>
+              </select>
+              <p id="operating-system-help" className="text-sm text-muted-foreground">Choisissez explicitement l’environnement réellement disponible.</p>
+              {errors.operatingSystem ? <p id="operating-system-error" className="text-sm font-semibold text-destructive">{errors.operatingSystem}</p> : null}
             </div>
 
-            <div className="grid gap-4 sm:grid-cols-2">
-              {resultSections.map((section, index) => {
-                const value = plan[section.key];
+            <fieldset className="space-y-3">
+              <legend className="font-semibold">Capacités disponibles</legend>
+              {environmentOptions.map((option) => {
+                const disabled = !hardware.hasComputer && ["codexLocalAvailable", "remoteControlAvailable", "machineCanStayActive"].includes(option.key);
                 return (
-                  <Card key={section.key} className="min-w-0">
-                    <CardHeader className="pb-3">
-                      <p className="font-mono text-xs font-bold text-primary">0{index + 1}</p>
-                      <CardTitle>{section.title}</CardTitle>
-                    </CardHeader>
-                    <CardContent className="min-w-0 [overflow-wrap:anywhere]">
-                      {section.type === "list" && Array.isArray(value) ? (
-                        <ul className="space-y-3 text-muted-foreground">
-                          {value.map((item) => (
-                            <li key={item} className="flex gap-2">
-                              <Check aria-hidden="true" className="mt-1 size-4 shrink-0 text-success" />
-                              <span>{item}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      ) : (
-                        <p className="text-muted-foreground">{value}</p>
-                      )}
-                    </CardContent>
-                  </Card>
+                  <div key={option.key}>
+                    <label className="flex min-h-11 cursor-pointer items-start gap-3 rounded-xl border p-3 has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-ring has-[:disabled]:cursor-not-allowed has-[:disabled]:opacity-55">
+                      <input
+                        type="checkbox"
+                        className="mt-1 size-5 shrink-0 accent-primary"
+                        checked={Boolean(hardware[option.key])}
+                        disabled={disabled}
+                        onChange={(event) => setHardware((current) => ({ ...current, [option.key]: event.target.checked }))}
+                      />
+                      <span>{option.label}</span>
+                    </label>
+                    {option.help ? <p className="mt-1 pl-1 text-sm text-muted-foreground">{option.help}</p> : null}
+                  </div>
                 );
               })}
-            </div>
-          </div>
-        ) : null}
-      </section>
+            </fieldset>
+
+            {!hardware.codexLocalAvailable ? (
+              <div className="rounded-xl border border-warning bg-warning-surface p-3 text-sm">
+                <strong className="text-warning">Exécution Codex non disponible.</strong> Starter IA préparera les missions, mais recommandera d’installer ou d’activer Codex avant de modifier des fichiers.
+              </div>
+            ) : null}
+          </CardContent>
+        </Card>
+
+        <LocalProjectNotice />
+        <Button type="button" size="lg" className="w-full" disabled={submitting} onClick={launchProject}>
+          {submitting ? "Enregistrement local…" : "Lancer mon projet"}
+          {!submitting ? <ArrowRight aria-hidden="true" className="size-5" /> : null}
+        </Button>
+        <p className="flex gap-2 text-sm text-muted-foreground"><ShieldCheck aria-hidden="true" className="mt-0.5 size-4 shrink-0" />Le moteur est local et déterministe. Il ne contacte aucun fournisseur IA.</p>
+      </div>
     </div>
   );
 }

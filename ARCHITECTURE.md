@@ -1,108 +1,82 @@
 # Architecture
 
-Ce document distingue l’architecture réellement livrée de la cible du prochain MVP. Cette PR ne modifie aucune fonction applicative et n’ajoute aucune intégration distante.
+Ce document décrit l’architecture réellement livrée sur la branche de l’étape 8.
 
-## Architecture actuellement livrée
+## Vue d’ensemble
 
 ```text
-Starter IA
-├── Ressources open source
-│   ├── guides/configurations/
-│   ├── prompts/
-│   ├── templates/
-│   ├── course/
-│   └── .codex/ + AGENTS.md
-└── Application Next.js existante
-    ├── pages publiques rendues côté serveur
-    ├── thème et navigation côté client
-    └── démonstration, dashboard et éditeur locaux
-        └── localStorage versionné
+Brief + profil matériel déclarés
+        ↓
+project-engine.ts (pur et déterministe)
+        ↓
+Project schéma 2 : workflow + 6 phases + 16 étapes
+        ↓
+local-project-store.ts
+        ↓
+starter-ia.projects.v2 dans localStorage
+        ↓
+Dashboard ↔ espace projet ↔ exports ↔ rapport local
 ```
 
-L’application crée un plan déterministe en six sections. Elle permet de modifier, reprendre et exporter un projet local. Elle n’exécute pas encore le cycle cible en six phases et n’appelle aucun fournisseur IA.
+Les pages et contenus restent des Server Components par défaut. Les limites client couvrent la navigation, le thème, le formulaire, le Dashboard et l’espace projet, qui ont besoin du navigateur et de `localStorage`.
 
-### Stack conservée
+## Stack
 
 - Next.js `16.2.10`, App Router ;
 - React / React DOM `19.2.7` ;
 - TypeScript `5.9.3` strict ;
-- Tailwind CSS `4.3.2`, composants shadcn/ui locaux et next-themes ;
+- Tailwind CSS `4.3.2`, composants UI locaux et next-themes ;
 - Vitest `4.1.10` et Playwright `1.61.1` ;
-- npm avec `package-lock.json`.
+- aucune nouvelle dépendance pour le MVP.
 
-### Frontières actuelles
+## Modèle version 2
 
-- Les pages et contenus restent des Server Components par défaut.
-- Les composants client couvrent uniquement navigation, thème, démonstration et stockage local.
-- Le type `Project` utilise un schéma versionné.
-- `local-project-store.ts` centralise validation, lecture, écriture, sauvegarde avant réinitialisation et erreurs.
-- Les projets restent dans `localStorage` sur l’appareil courant.
-- Il n’existe aucun compte, synchronisation, base distante, route de génération, SDK fournisseur ou secret serveur.
+`src/lib/project.ts` définit l’identité, le brief, le profil matériel, le workflow recommandé, les six phases et les étapes. Chaque étape possède un identifiant stable, un ordre, un objectif, une raison, un rôle, un outil, des missions facultatives, des livrables, des preuves, un statut, des notes et une validation humaine éventuelle.
 
-## Architecture cible du prochain MVP
+Les statuts internes sont `not-started`, `partial`, `blocked` et `done-verified`. L’interface affiche les libellés français officiels. Le validateur interdit un projet dont une étape sensible serait « fait et vérifié » sans accord humain.
 
-```text
-Description du projet
-        ↓
-Profil matériel
-        ↓
-Cycle complet en six phases
-        ↓
-Sélection des spécialistes
-        ↓
-Recommandation ChatGPT / Codex
-        ↓
-Paquets de missions
-        ↓
-Progression et livrables locaux
-        ↓
-Comprendre cette étape
-        ↓
-Preuves et validations humaines
-        ↓
-Pack de lancement marketing
-```
+## Moteur déterministe
 
-### Moteur initial
+`src/lib/project-engine.ts` contient les templates des six phases et recommande un workflow uniquement à partir des déclarations de l’utilisateur :
 
-Le moteur cible reste local et déterministe. Des règles et templates transforment les entrées du projet en phases, étapes, rôles recommandés, missions copiables, livrables, preuves et validations. Le système distingue les spécialistes recommandés des agents réellement utilisés.
+- iPhone + Codex Remote + Ubuntu ;
+- iPhone + Remote Control sur un autre système ;
+- ChatGPT + Codex local ;
+- parcours local sans Remote Control ;
+- préparation ChatGPT avec Codex à installer ou activer.
 
-Le profil matériel retient seulement les informations utiles : iPhone, ordinateur, système, Codex local, Remote Control, GitHub, Vercel éventuel et capacité de la machine à rester active. Le moteur recommande un parcours compatible au lieu de faire choisir une architecture complexe.
+GitHub et Vercel enrichissent le chemin de livraison sans conditionner la création locale. Une Preview n’est recommandée que sous la forme conditionnelle « si l’intégration GitHub–Vercel est réellement reliée ». Le moteur n’effectue aucun appel réseau, fournisseur, ChatGPT, Codex ou OpenAI. Les missions intègrent le brief, l’étape, les livrables, les preuves, les frontières de sécurité et les actions soumises à l’humain.
 
-### Modèle cible
+## Migration version 1
 
-Le futur modèle local devra représenter :
+La lecture suit cet ordre :
 
-- les six phases et leurs étapes ordonnées ;
-- l’objectif, le pourquoi, le rôle, l’outil et la mission de chaque étape ;
-- les livrables, preuves, contrôles et validations humaines ;
-- la progression et les statuts fait et vérifié, partiel, bloqué ou non tenté ;
-- les paquets ChatGPT et Codex ;
-- le plan marketing et le rapport final.
+1. lire et valider `starter-ia.projects.v2` ;
+2. si la clé est absente et qu’aucune migration n’est marquée, lire `ai-project-launcher.projects.v1` ;
+3. valider strictement le conteneur, les projets, les dates ISO et les identifiants ;
+4. conserver la source et une copie brute dans `starter-ia.projects.v1.migration-backup` ;
+5. transformer les anciens champs en brief et contexte historique ;
+6. générer les six phases avec tous les statuts non tentés ;
+7. écrire le conteneur v2 puis marquer la migration.
 
-Le schéma précis sera décidé et versionné pendant l’étape 8. Cette PR ne modifie pas le type `Project` actuel ni `localStorage`.
+Une donnée v1 ou v2 illisible n’est jamais écrasée automatiquement. La réinitialisation v2 sauvegarde d’abord la donnée brute. Le listener `storage` écoute uniquement la clé active v2 et suspend l’éditeur jusqu’au choix explicite de l’utilisateur.
 
-## Comprendre cette étape
+## Interface
 
-Chaque étape cible expose un volet court « Comprendre cette étape ». Il explique pourquoi l’étape existe, le spécialiste mobilisé, le travail de ChatGPT et Codex, la raison de l’écrivain unique, le livrable, la preuve et l’approbation éventuelle.
+- `/demo` crée immédiatement un projet à partir de trois questions et du profil matériel ;
+- `/dashboard` liste les projets, leur workflow, leur progression et leurs exports ;
+- `/dashboard/[id]` affiche une seule phase principale, ses étapes, « Comprendre cette étape », les statuts, preuves, copies et validations ;
+- le rapport local est dérivé de l’état enregistré ;
+- le Dashboard et l’éditeur sont `noindex` et absents du sitemap.
 
-Le rapport final cible enregistre les rôles et missions réellement exécutés, les livrables produits, les vérifications réussies, les actions non tentées ou bloquées et les validations humaines accordées.
+## Exports et rapport
 
-## Sécurité et actions externes
+`src/lib/project-report.ts` centralise la progression, le rapport, l’export JSON validé et l’export Markdown. Le Markdown normalise les contenus utilisateurs afin de préserver sa structure. Le rapport distingue rôles planifiés, statuts déclarés, preuves consignées et validations ; il ne prétend jamais qu’une mission préparée a été exécutée.
 
-L’orchestrateur prépare les actions. Leur exécution dépend des outils réellement disponibles, des permissions et du brief. Les changements réversibles restent sur une branche. La fusion dans `main`, la production, les suppressions, paiements, secrets, publications et messages exigent l’humain.
+## Sécurité et limites
 
-Le parcours iPhone + Ubuntu conserve les processus sur Ubuntu. Remote Control ne remplace ni la vérification Git ni la vérification des processus. Sa disponibilité dépend du compte et des versions.
+Aucun SDK IA, appel payant, secret, fichier `.env`, compte, base distante, paiement, collaboration multi-utilisateur, publication automatique ou production automatique n’est ajouté. Les contenus utilisateurs sont rendus comme texte React. Fusion, production, suppression, paiement, secret, publication, message et action irréversible restent sous validation humaine.
 
-## Tests et livraison
+## Livraison
 
-- Vitest couvre actuellement la génération déterministe et le stockage local.
-- Playwright couvre les parcours essentiels, le responsive, le thème et les cas de stockage.
-- GitHub Actions et l’intégration Vercel sont déjà présents.
-- Une Preview de PR doit provenir de l’intégration GitHub automatique ; aucune production n’est implicite.
-
-Les tests du futur modèle, de ses règles et de ses exports seront définis pendant l’étape 8.
-
-## Évolutions exclues de cette architecture cible
-
-Aucun SDK IA, appel payant, secret, compte, base distante, paiement, collaboration multi-utilisateur ou automatisation de production n’est ajouté. Work reste une référence optionnelle et ne structure pas le moteur.
+GitHub Actions et l’intégration Vercel restent les seules voies de CI et de Preview distante. La Preview d’une PR doit provenir de l’intégration GitHub ; aucun déploiement manuel n’est nécessaire. L’étape 9 d’exécution guidée reste future.

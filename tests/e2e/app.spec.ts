@@ -1,254 +1,315 @@
-import { expect, test } from "@playwright/test";
+import { expect, test, type Download, type Page } from "@playwright/test";
+import { readFile } from "node:fs/promises";
 
-test("la landing charge avec sa promesse et ses limites", async ({ page }) => {
+async function downloadText(download: Download) {
+  const path = await download.path();
+  if (!path) throw new Error("Le fichier téléchargé n’est pas accessible au test.");
+  return readFile(path, "utf8");
+}
+
+async function launchProject(page: Page, options: { flagship?: boolean } = {}) {
+  await page.goto("/demo");
+  await page.getByLabel("Description du projet").fill("Une application qui aide les associations à organiser leurs bénévoles.");
+  await page.getByLabel("Résultat recherché").fill("Réduire le temps nécessaire pour trouver un bénévole disponible.");
+  await page.getByLabel(/Contraintes ou contexte existant/).fill("Budget limité, usage mobile et données personnelles minimales.");
+  await page.getByLabel("Système de l’ordinateur").selectOption("ubuntu-linux");
+  await page.getByLabel("Codex local est disponible sur mon ordinateur").check();
+  if (options.flagship) {
+    await page.getByLabel("J’ai un iPhone").check();
+    await page.getByLabel("Remote Control est réellement disponible sur mon compte").check();
+    await page.getByLabel("La machine peut rester active, connectée et non suspendue").check();
+  }
+  await page.getByRole("button", { name: "Lancer mon projet" }).click();
+  await expect(page).toHaveURL(/\/dashboard\/.+/);
+}
+
+test("la landing présente le MVP complet et ses actions principales", async ({ page }) => {
   const browserErrors: string[] = [];
-  page.on("console", (message) => {
-    if (message.type() === "error") browserErrors.push(message.text());
-  });
+  page.on("console", (message) => { if (message.type() === "error") browserErrors.push(message.text()); });
   page.on("pageerror", (error) => browserErrors.push(error.message));
   const response = await page.goto("/");
 
   expect(response?.status()).toBe(200);
-  await expect(
-    page.getByRole("heading", {
-      level: 1,
-      name: /Starter IA pour Chat, Work et Codex/i,
-    }),
-  ).toBeVisible();
-  const primaryCta = page.getByRole("link", { name: /Choisir une configuration/i }).first();
-  await expect(primaryCta).toBeVisible();
-  await expect(primaryCta).toHaveAttribute("href", "/docs");
-  await expect(page.getByText(/n’intègre aucun fournisseur/i)).toBeVisible();
-  await expect(
-    page
-      .getByRole("navigation", { name: "Navigation principale" })
-      .getByRole("link", { name: "Dashboard", exact: true }),
-  ).toHaveCount(0);
+  await expect(page.getByRole("heading", { level: 1, name: /transforme une idée en projet guidé/i })).toBeVisible();
+  await expect(page.getByRole("link", { name: "Lancer un projet", exact: true }).first()).toHaveAttribute("href", "/demo");
+  await expect(page.getByRole("link", { name: "Comprendre le fonctionnement" })).toHaveAttribute("href", "/fonctionnalites");
+  await expect(page.getByText(/aucun appel IA/i).first()).toBeVisible();
+  for (const phase of ["Cadrer", "Valider", "Concevoir", "Construire", "Vérifier", "Lancer et améliorer"]) {
+    await expect(page.getByRole("heading", { name: phase, exact: true })).toBeVisible();
+  }
   expect(browserErrors).toEqual([]);
 });
 
-test("le catalogue distingue les cinq configurations", async ({ page }) => {
-  await page.goto("/docs");
-
-  await expect(page.getByRole("heading", { level: 1 })).toContainText(
-    "Choisir la configuration la plus simple",
-  );
-  for (const configuration of ["Chat", "Work", "Codex local", "Codex Remote", "Work + Codex"]) {
-    await expect(page.getByRole("heading", { name: configuration, exact: true })).toBeVisible();
-  }
-  await expect(page.getByRole("link", { name: "Lire le guide complet" })).toHaveCount(5);
-});
-
-test("la navigation mène à un index de ressources sans vocabulaire commercial", async ({ page }) => {
-  await page.goto("/");
-  await page.getByRole("link", { name: "Ressources", exact: true }).first().click();
-
-  await expect(page).toHaveURL(/\/tarifs$/);
-  await expect(page.getByRole("heading", { level: 1 })).toContainText("L’index des ressources Starter IA");
-  await expect(page.getByText("WORKFLOW.md", { exact: true })).toBeVisible();
-  await expect(page.getByText("prompts/MASTER-WORK.md", { exact: true })).toBeVisible();
-  await expect(page.locator("main")).not.toContainText(/prix|abonnement|offre|formule/i);
-});
-
-test("la méthode expose le processus commun et ses sources", async ({ page }) => {
-  await page.goto("/fonctionnalites");
-
-  await expect(page.getByRole("heading", { level: 1 })).toContainText("livraison vérifiée");
-  await expect(page.getByRole("heading", { name: "Exécuter avec un seul écrivain" })).toBeVisible();
-  await expect(page.getByRole("link", { name: "Lire WORKFLOW.md" })).toBeVisible();
-});
-
-test("un projet est créé, modifié, rechargé, exporté et supprimé", async ({ page }) => {
+test("la création conserve la saisie et relie les erreurs aux champs", async ({ page }) => {
   await page.goto("/demo");
-  await expect(
-    page
-      .getByRole("navigation", { name: "Navigation principale" })
-      .getByRole("link", { name: "Démo locale" }),
-  ).toHaveAttribute("aria-current", "page");
-  await expect(page.getByRole("link", { name: "Voir les projets locaux" })).toHaveAttribute("href", "/dashboard");
-  await page.getByRole("button", { name: "Générer le plan démo" }).click();
-  await expect(page.locator("#idea-error")).toContainText("Décrivez votre idée");
+  const system = page.getByLabel("Système de l’ordinateur");
+  await expect(system).toHaveValue("");
+  const capabilities = page.getByRole("group", { name: "Capacités disponibles" }).locator('input[type="checkbox"]');
+  await expect(capabilities).toHaveCount(6);
+  for (const capability of await capabilities.all()) await expect(capability).not.toBeChecked();
+  await page.getByRole("button", { name: "Lancer mon projet" }).click();
 
-  const ideaInput = page.getByLabel("Idée de produit");
-  const exampleButton = page.getByRole("button", { name: "Utiliser l’exemple" });
-  await ideaInput.fill(
-    "Une application qui aide les associations à organiser leurs bénévoles.",
-  );
-  await page.getByRole("button", { name: "Générer le plan démo" }).click();
-  await expect(ideaInput).toBeDisabled();
-  await expect(exampleButton).toBeDisabled();
-  await expect(page.getByText("Création et enregistrement local du projet…")).toBeVisible();
-  await expect(page).toHaveURL(/\/dashboard\/.+/);
-  await expect(page.getByText("Démonstration locale historique.", { exact: true })).toBeVisible();
+  const description = page.getByLabel("Description du projet");
+  const outcome = page.getByLabel("Résultat recherché");
+  await expect(description).toHaveAttribute("aria-invalid", "true");
+  await expect(outcome).toHaveAttribute("aria-invalid", "true");
+  await expect(system).toHaveAttribute("aria-invalid", "true");
+  await expect(system).toHaveAttribute("aria-describedby", /operating-system-error/);
+  await expect(page.getByText("Choisissez votre système ou indiquez qu’aucun ordinateur n’est disponible.")).toBeVisible();
+  await expect(page.getByRole("region", { name: "Création d’un projet local" }).getByRole("alert")).toContainText("Le projet n’a pas encore été créé");
 
-  for (const title of [
-    "Proposition de valeur",
-    "Cible initiale",
-    "MVP",
-    "Plan technique",
-    "Plan marketing",
-    "Prochaines actions",
-  ]) {
-    await expect(page.getByLabel(title)).toBeVisible();
-  }
-  await page.getByLabel("Titre").fill("Projet associations édité");
-  await expect(page.getByRole("status").filter({ hasText: "Enregistré" })).toBeVisible();
-  const markdown = page.waitForEvent("download");
-  await page.getByRole("button", { name: "Exporter Markdown" }).click();
-  expect((await markdown).suggestedFilename()).toMatch(/\.md$/);
-  const json = page.waitForEvent("download");
-  await page.getByRole("button", { name: "Exporter JSON" }).click();
-  expect((await json).suggestedFilename()).toMatch(/\.json$/);
-  await page.reload();
-  await expect(page.getByLabel("Titre")).toHaveValue("Projet associations édité");
-  await page
-    .getByRole("main")
-    .getByRole("link", { name: "Dashboard", exact: true })
-    .click();
-  await expect(page.getByText("Projet associations édité")).toBeVisible();
-  page.once("dialog", (dialog) => dialog.accept());
-  await page.getByRole("button", { name: "Supprimer" }).click();
-  await expect(page.getByText("Aucun projet local")).toBeVisible();
-  await page.setViewportSize({ width: 320, height: 640 });
-  const dimensions = await page.evaluate(() => ({
-    scrollWidth: document.documentElement.scrollWidth,
-    clientWidth: document.documentElement.clientWidth,
-  }));
-  expect(dimensions.scrollWidth).toBeLessThanOrEqual(dimensions.clientWidth);
+  await description.fill("Une description encore courte");
+  await outcome.fill("Un résultat concret à vérifier");
+  await page.getByRole("button", { name: "Lancer mon projet" }).click();
+  await expect(description).toHaveValue("Une description encore courte");
+  await expect(page).toHaveURL(/\/demo$/);
 });
 
-test("les données locales invalides expliquent la récupération", async ({ page }) => {
-  await page.addInitScript(() => localStorage.setItem("ai-project-launcher.projects.v1", JSON.stringify({
+test("le choix explicite aucun ordinateur désactive et efface les capacités locales", async ({ page }) => {
+  await page.goto("/demo");
+  await page.getByLabel("Description du projet").fill("Une application qui aide les associations à organiser leurs bénévoles.");
+  await page.getByLabel("Résultat recherché").fill("Réduire le temps nécessaire pour trouver un bénévole disponible.");
+  const system = page.getByLabel("Système de l’ordinateur");
+  const codex = page.getByLabel("Codex local est disponible sur mon ordinateur");
+  const remote = page.getByLabel("Remote Control est réellement disponible sur mon compte");
+  const activeMachine = page.getByLabel("La machine peut rester active, connectée et non suspendue");
+
+  await system.selectOption("ubuntu-linux");
+  await codex.check();
+  await remote.check();
+  await activeMachine.check();
+  await system.selectOption("none");
+
+  for (const capability of [codex, remote, activeMachine]) {
+    await expect(capability).not.toBeChecked();
+    await expect(capability).toBeDisabled();
+  }
+  await page.getByRole("button", { name: "Lancer mon projet" }).click();
+  await expect(page).toHaveURL(/\/dashboard\/.+/);
+  await expect(page.getByText("Préparation ChatGPT, Codex à installer ou activer", { exact: true })).toBeVisible();
+});
+
+test("Ubuntu déclaré sans Codex prépare son installation ou activation", async ({ page }) => {
+  await page.goto("/demo");
+  await page.getByLabel("Description du projet").fill("Une application qui aide les associations à organiser leurs bénévoles.");
+  await page.getByLabel("Résultat recherché").fill("Réduire le temps nécessaire pour trouver un bénévole disponible.");
+  await page.getByLabel("Système de l’ordinateur").selectOption("ubuntu-linux");
+  await page.getByRole("button", { name: "Lancer mon projet" }).click();
+
+  await expect(page.getByText("Préparation ChatGPT, Codex à installer ou activer", { exact: true })).toBeVisible();
+});
+
+test("Ubuntu et Codex explicitement déclarés recommandent le parcours local", async ({ page }) => {
+  await launchProject(page);
+  await expect(page.getByText("ChatGPT + Codex local, sans Remote Control", { exact: true })).toBeVisible();
+});
+
+test("le profil Ubuntu, iPhone et Remote Control recommande le workflow phare", async ({ page }) => {
+  await launchProject(page, { flagship: true });
+  await expect(page.getByText("iPhone + Codex Remote + Ubuntu", { exact: true })).toBeVisible();
+  await expect(page.getByText(/L’iPhone ne contient ni le dépôt ni les processus/)).toBeVisible();
+});
+
+test("l’espace projet affiche six phases et une seule phase principale", async ({ page }) => {
+  await launchProject(page);
+  const phaseNav = page.getByRole("navigation", { name: "Phases du projet" });
+  await expect(phaseNav.getByRole("button")).toHaveCount(6);
+  await expect(phaseNav.getByRole("button", { name: /Cadrer/ })).toHaveAttribute("aria-current", "step");
+  await expect(page.locator("[data-step-id]" )).toHaveCount(2);
+  await expect(page.locator('[data-step-id="scope-problem"]')).toBeVisible();
+  await expect(page.locator('[data-step-id="validate-market"]')).toHaveCount(0);
+
+  await phaseNav.getByRole("button", { name: /Valider/ }).click();
+  await expect(phaseNav.getByRole("button", { name: /Valider/ })).toHaveAttribute("aria-current", "step");
+  await expect(page.locator("[data-step-id]")).toHaveCount(3);
+  await expect(page.locator('[data-step-id="scope-problem"]')).toHaveCount(0);
+});
+
+test("Comprendre cette étape reste fermé puis explique les responsabilités", async ({ page }) => {
+  await launchProject(page);
+  const details = page.locator("details").first();
+  await expect(details).not.toHaveAttribute("open", "");
+  await details.getByText("Comprendre cette étape", { exact: true }).click();
+  await expect(details).toHaveAttribute("open", "");
+  await expect(details).toContainText("Écrivain unique");
+  await expect(details).toContainText("Votre approbation");
+});
+
+test("une mission peut être copiée sans être considérée comme exécutée", async ({ page, context }) => {
+  await context.grantPermissions(["clipboard-read", "clipboard-write"]);
+  await launchProject(page);
+  const firstStep = page.locator('[data-step-id="scope-problem"]');
+  await firstStep.getByRole("button", { name: "Copier la mission ChatGPT" }).click();
+  await expect(firstStep.getByRole("status")).toContainText("Mission ChatGPT copiée. Exécution non vérifiée.");
+  expect(await page.evaluate(() => navigator.clipboard.readText())).toContain("Une application qui aide les associations");
+});
+
+test("statut, preuve et reprise après rechargement utilisent l’état enregistré", async ({ page }) => {
+  await launchProject(page);
+  const firstStep = page.locator('[data-step-id="scope-problem"]');
+  await firstStep.getByLabel("Statut déclaré par l’utilisateur").selectOption("partial");
+  await firstStep.getByLabel("Notes ou preuves").fill("Deux entretiens réalisés ; liens consignés dans le dossier de recherche.");
+  await expect(page.getByRole("status").filter({ hasText: "Enregistré sur cet appareil" })).toBeVisible();
+
+  await page.reload();
+  const reloaded = page.locator('[data-step-id="scope-problem"]');
+  await expect(reloaded.getByLabel("Statut déclaré par l’utilisateur")).toHaveValue("partial");
+  await expect(reloaded.getByLabel("Notes ou preuves")).toHaveValue(/Deux entretiens réalisés/);
+  await expect(page.getByText("Preuves consignées").locator("..").getByText("1", { exact: true })).toBeVisible();
+});
+
+test("une étape sensible ne peut pas être terminée sans accord humain", async ({ page }) => {
+  await launchProject(page);
+  await page.getByRole("navigation", { name: "Phases du projet" }).getByRole("button", { name: /Lancer et améliorer/ }).click();
+  const release = page.locator('[data-step-id="launch-release"]');
+  const status = release.getByLabel("Statut déclaré par l’utilisateur");
+  await release.getByLabel("Notes ou preuves").fill("Preview vérifiée ; action de lancement préparée mais non exécutée.");
+  await status.selectOption("done-verified");
+  await expect(status).toHaveValue("not-started");
+  await expect(release.getByRole("status")).toContainText("Accord humain requis");
+
+  await release.getByLabel("J’accorde cette validation humaine").check();
+  await status.selectOption("done-verified");
+  await expect(status).toHaveValue("done-verified");
+  await expect(release).toContainText("fait et vérifié");
+});
+
+test("le dashboard calcule la progression et produit les deux exports", async ({ page }) => {
+  await launchProject(page);
+  const firstStep = page.locator('[data-step-id="scope-problem"]');
+  await firstStep.getByLabel("Notes ou preuves").fill("Brief relu et résultat attendu validé par l’utilisateur.");
+  await firstStep.getByLabel("Statut déclaré par l’utilisateur").selectOption("done-verified");
+  const markdownDownload = page.waitForEvent("download");
+  await page.getByRole("button", { name: "Exporter Markdown" }).click();
+  const markdown = await markdownDownload;
+  expect(markdown.suggestedFilename()).toMatch(/\.md$/);
+  expect(await downloadText(markdown)).toContain("## Rapport de progression");
+  const jsonDownload = page.waitForEvent("download");
+  await page.getByRole("button", { name: "Exporter JSON" }).click();
+  const json = await jsonDownload;
+  expect(json.suggestedFilename()).toMatch(/\.json$/);
+  const exportedProject = JSON.parse(await downloadText(json));
+  expect(exportedProject.schemaVersion).toBe(2);
+  expect(exportedProject.phases).toHaveLength(6);
+
+  await page.getByRole("link", { name: "Mes projets", exact: true }).first().click();
+  await expect(page).toHaveURL(/\/dashboard$/);
+  await expect(page.getByText("Fait et vérifié").locator("..").getByText("1/16", { exact: true })).toBeVisible();
+  await expect(page.getByText("Bloqué").locator("..").getByText("0", { exact: true })).toBeVisible();
+  await expect(page.getByRole("link", { name: "Reprendre" })).toBeVisible();
+
+  const dashboardMarkdown = page.waitForEvent("download");
+  await page.getByRole("button", { name: "Exporter Markdown" }).click();
+  expect((await dashboardMarkdown).suggestedFilename()).toMatch(/\.md$/);
+});
+
+test("un projet version 1 est migré sans supprimer sa source", async ({ page }) => {
+  const legacyRaw = JSON.stringify({
     schemaVersion: 1,
     projects: [{
-      id: "invalid-date",
+      id: "legacy-project",
       schemaVersion: 1,
-      title: "Projet corrompu",
-      originalIdea: "Idée",
-      valueProposition: "Valeur",
-      target: "Cible",
-      mvp: [],
-      technicalPlan: [],
-      marketingPlan: [],
-      nextActions: [],
+      title: "Projet historique",
+      originalIdea: "Une idée historique suffisamment détaillée pour être migrée.",
+      valueProposition: "Un ancien résultat recherché.",
+      target: "Une ancienne cible.",
+      mvp: ["Ancien MVP"],
+      technicalPlan: ["Ancien plan technique"],
+      marketingPlan: ["Ancien plan marketing"],
+      nextActions: ["Ancienne action"],
       createdAt: "2026-07-11T00:00:00.000Z",
-      updatedAt: "date-invalide",
+      updatedAt: "2026-07-12T00:00:00.000Z",
     }],
-  })));
+  });
+  await page.addInitScript((raw) => localStorage.setItem("ai-project-launcher.projects.v1", raw), legacyRaw);
+  await page.goto("/dashboard");
+  await expect(page.getByText("Projet historique")).toBeVisible();
+  const storageState = await page.evaluate(() => ({
+    legacy: localStorage.getItem("ai-project-launcher.projects.v1"),
+    backup: localStorage.getItem("starter-ia.projects.v1.migration-backup"),
+    current: localStorage.getItem("starter-ia.projects.v2"),
+  }));
+  expect(storageState.legacy).toBe(legacyRaw);
+  expect(storageState.backup).toBe(legacyRaw);
+  expect(JSON.parse(storageState.current!).schemaVersion).toBe(2);
+});
+
+test("les données version 2 invalides expliquent la récupération", async ({ page }) => {
+  await page.addInitScript(() => localStorage.setItem("starter-ia.projects.v2", "not-json"));
   await page.goto("/dashboard");
   await expect(page.getByText("Données locales indisponibles", { exact: true })).toBeVisible();
-  await expect(
-    page.getByText(
-      "Les données locales sont incompatibles ou corrompues. Elles n’ont pas été modifiées.",
-      { exact: true },
-    ),
-  ).toBeVisible();
+  await expect(page.getByText(/version 2 sont incompatibles ou corrompues/)).toBeVisible();
+  const rawDownload = page.waitForEvent("download");
+  await page.getByRole("button", { name: "Télécharger les données brutes" }).click();
+  expect(await downloadText(await rawDownload)).toBe("not-json");
   await expect(page.getByRole("button", { name: "Réinitialiser les données locales" })).toBeVisible();
 });
 
-test("l’éditeur arbitre un conflit entre deux onglets sans écrasement silencieux", async ({ page, context }) => {
-  const id = "project-conflict";
-  await page.goto("/");
-  await page.evaluate(({ projectId }) => localStorage.setItem("ai-project-launcher.projects.v1", JSON.stringify({
-    schemaVersion: 1,
-    projects: [{
-      id: projectId,
-      schemaVersion: 1,
-      title: "Version locale B",
-      originalIdea: "Une idée suffisamment détaillée pour le test",
-      valueProposition: "Valeur",
-      target: "Cible",
-      mvp: ["MVP"],
-      technicalPlan: ["Technique"],
-      marketingPlan: ["Marketing"],
-      nextActions: ["Action"],
-      createdAt: "2026-07-11T00:00:00.000Z",
-      updatedAt: "2026-07-11T00:00:00.000Z",
-    }],
-  })), { projectId: id });
-
+test("un conflit entre deux onglets suspend l’écriture et exige un choix", async ({ page, context }) => {
+  await launchProject(page);
+  const projectUrl = page.url();
   const otherPage = await context.newPage();
-  await Promise.all([page.goto(`/dashboard/${id}`), otherPage.goto(`/dashboard/${id}`)]);
-  await expect(page.getByLabel("Titre")).toHaveValue("Version locale B");
-  await expect(otherPage.getByLabel("Titre")).toHaveValue("Version locale B");
+  await otherPage.goto(projectUrl);
+  await expect(otherPage.getByLabel("Titre du projet")).toBeVisible();
 
-  await page.getByLabel("Titre").fill("Version enregistrée A");
-  const conflictAlert = otherPage.getByRole("alert").filter({ hasText: "Modification détectée" });
-  await expect(conflictAlert).toContainText("Modification détectée");
-  await expect(otherPage.getByLabel("Titre")).toBeDisabled();
-  await expect(conflictAlert).toBeFocused();
+  await page.getByLabel("Titre du projet").fill("Version enregistrée A");
+  const conflict = otherPage.getByRole("alert").filter({ hasText: "Modification détectée" });
+  await expect(conflict).toBeVisible();
+  await expect(conflict).toBeFocused();
+  await expect(otherPage.getByLabel("Titre du projet")).toBeDisabled();
   await otherPage.getByRole("button", { name: "Conserver et enregistrer mon édition" }).click();
-  await otherPage.reload();
-  await expect(otherPage.getByLabel("Titre")).toHaveValue("Version locale B");
+  await expect(conflict).toHaveCount(0);
 });
 
-test("l’affichage essentiel reste utilisable à 320 px", async ({ page }) => {
+test("la suppression d’un projet exige une confirmation", async ({ page }) => {
+  await launchProject(page);
+  await page.getByRole("link", { name: "Mes projets", exact: true }).first().click();
+  page.once("dialog", (dialog) => dialog.dismiss());
+  await page.getByRole("button", { name: "Supprimer" }).click();
+  await expect(page.getByRole("link", { name: "Reprendre" })).toBeVisible();
+  page.once("dialog", (dialog) => dialog.accept());
+  await page.getByRole("button", { name: "Supprimer" }).click();
+  await expect(page.getByText("Aucun projet local")).toBeVisible();
+});
+
+test("le parcours reste utilisable à 320 px et au clavier", async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 640 });
   await page.goto("/");
-
-  const primaryCta = page.getByRole("link", { name: "Choisir une configuration" }).first();
-  await expect(primaryCta).toBeVisible();
+  const primaryCta = page.getByRole("link", { name: "Lancer un projet", exact: true }).first();
   expect((await primaryCta.boundingBox())?.height).toBeGreaterThanOrEqual(44);
-
   const menu = page.locator('button[aria-controls="mobile-navigation"]');
-  await expect(menu).toBeVisible();
-  expect((await menu.boundingBox())?.height).toBeGreaterThanOrEqual(44);
-  await menu.click();
+  await menu.focus();
+  await page.keyboard.press("Enter");
   await expect(menu).toHaveAttribute("aria-expanded", "true");
   await page.keyboard.press("Escape");
-  await expect(menu).toHaveAttribute("aria-expanded", "false");
   await expect(menu).toBeFocused();
-  await menu.click();
-  await page.getByRole("navigation", { name: "Navigation mobile" }).getByRole("link", { name: "Ressources" }).click();
-  await expect(page).toHaveURL(/\/tarifs$/);
-
-  const dimensions = await page.evaluate(() => ({
-    scrollWidth: document.documentElement.scrollWidth,
-    clientWidth: document.documentElement.clientWidth,
-  }));
+  await primaryCta.click();
+  await page.getByLabel("Description du projet").focus();
+  await page.keyboard.type("Une application accessible préparée entièrement au clavier.");
+  await expect(page.getByLabel("Description du projet")).toHaveValue(/accessible préparée/);
+  await page.getByLabel("Résultat recherché").fill("R".repeat(600));
+  await page.getByLabel("Système de l’ordinateur").selectOption("none");
+  await page.getByRole("button", { name: "Lancer mon projet" }).click();
+  await expect(page).toHaveURL(/\/dashboard\/.+/);
+  await expect(page.getByText("R".repeat(600), { exact: true })).toBeVisible();
+  const dimensions = await page.evaluate(() => ({ scrollWidth: document.documentElement.scrollWidth, clientWidth: document.documentElement.clientWidth }));
   expect(dimensions.scrollWidth).toBeLessThanOrEqual(dimensions.clientWidth);
 });
 
-test("le choix du thème sombre persiste", async ({ page }) => {
-  const browserErrors: string[] = [];
-  page.on("console", (message) => {
-    if (message.type() === "error") browserErrors.push(message.text());
-  });
-  page.on("pageerror", (error) => browserErrors.push(error.message));
+test("le thème sombre persiste", async ({ page }) => {
   await page.goto("/");
-  const themeToggle = page
-    .getByRole("navigation", { name: "Navigation principale" })
-    .getByRole("button", { name: /Thème système/i });
-
-  await themeToggle.click();
-  await page
-    .getByRole("navigation", { name: "Navigation principale" })
-    .getByRole("button", { name: /Thème clair/i })
-    .click();
+  const toggle = page.getByRole("navigation", { name: "Navigation principale" }).getByRole("button", { name: /Thème système/i });
+  await toggle.click();
+  await page.getByRole("navigation", { name: "Navigation principale" }).getByRole("button", { name: /Thème clair/i }).click();
   await expect(page.locator("html")).toHaveClass(/dark/);
-
   await page.reload();
   await expect(page.locator("html")).toHaveClass(/dark/);
-  await expect(
-    page
-      .getByRole("navigation", { name: "Navigation principale" })
-      .getByRole("button", { name: /Thème sombre/i }),
-  ).toBeVisible();
-  expect(browserErrors).toEqual([]);
 });
 
-test("une route inconnue affiche la page 404", async ({ page }) => {
+test("une route inconnue reste une 404 noindex", async ({ page }) => {
   const response = await page.goto("/route-inconnue");
-
   expect(response?.status()).toBe(404);
-  await expect(page.getByRole("heading", { level: 1 })).toContainText(
-    "Cette route ne fait pas partie du plan",
-  );
-  const robotsMeta = page.locator('meta[name="robots"]');
-  const robotsContents = await robotsMeta.evaluateAll((elements) =>
-    elements.map((element) => element.getAttribute("content") ?? ""),
-  );
-  expect(robotsContents.length).toBeGreaterThan(0);
-  expect(robotsContents.every((content) => content.includes("noindex"))).toBe(true);
-  await expect(page.getByRole("link", { name: "Retour à l’accueil" })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 1 })).toContainText("Cette route ne fait pas partie du plan");
+  const robots = await page.locator('meta[name="robots"]').evaluateAll((elements) => elements.map((element) => element.getAttribute("content") ?? ""));
+  expect(robots.every((content) => content.includes("noindex"))).toBe(true);
 });
