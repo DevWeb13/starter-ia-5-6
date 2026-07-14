@@ -10,6 +10,8 @@
 
 **Dernière PR fusionnée :** nº 11
 
+**Pull request active :** nº 12 — brouillon, CI réussie
+
 **Statut réel :** documentation en cours de réalignement ; aucune modification fonctionnelle
 
 ## Point de départ vérifié
@@ -57,7 +59,7 @@ Le générateur, le ZIP et le nouveau parcours ne sont pas implémentés. Le noy
 - `npm test` : 4 fichiers et 31 tests réussis ;
 - `npm run build` : réussi hors sandbox après la limite de port interne Turbopack observée dans le sandbox ;
 - deux cycles de revue indépendante : aucun problème bloquant ou important restant ;
-- CI GitHub et tests E2E : à vérifier sur la pull request ;
+- CI GitHub run 36 : job `quality` réussi, y compris les tests E2E ;
 - aucun fichier fonctionnel modifié.
 
 ## Prochaine action
