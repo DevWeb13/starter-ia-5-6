@@ -1,28 +1,33 @@
 # Starter IA 5.6
 
-**Décrivez le projet que vous voulez lancer. Starter IA organise localement six phases, les missions ChatGPT et Codex, les livrables, les preuves et les validations humaines selon votre matériel.**
+**Starter IA prépare un environnement de travail prêt pour Codex à partir d’un projet, de l’environnement réel de l’utilisateur et des modules utiles.**
 
 > Projet communautaire indépendant, non officiel et non affilié à OpenAI.
 
-## MVP local version 2
+## Nouvelle direction
 
-Le parcours actif est : **Cadrer → Valider → Concevoir → Construire → Vérifier → Lancer et améliorer**.
+La cible est un générateur local et déterministe de starters Codex. Le résultat futur sera un dossier téléchargeable et versionnable contenant le contexte, les règles de travail, la configuration Codex, les agents utiles, les critères qualité et une première mission directement exploitable.
 
-- `/demo` recueille la description, le résultat recherché, les contraintes et l’environnement déclaré ;
-- un moteur TypeScript pur produit 16 étapes déterministes dans les six phases ;
-- le workflow recommandé distingue Codex local, Remote Control, le parcours phare iPhone + Ubuntu et l’absence de Codex ;
-- chaque étape expose les rôles, outils, missions copiables, livrables, preuves, statut et éventuelle validation humaine ;
-- « Comprendre cette étape » explique progressivement les responsabilités ;
-- le Dashboard permet de reprendre, exporter, supprimer ou réinitialiser après confirmation et sauvegarde ;
-- l’export JSON contient le projet version 2 complet ; l’export Markdown ajoute le rapport déclaratif lisible.
+Ce générateur, son aperçu et son ZIP **ne sont pas encore construits**. Le noyau de fichiers reste une hypothèse à valider par un usage manuel réel.
 
-Aucun fournisseur IA n’est appelé. Une mission copiée n’est jamais considérée comme exécutée. Les projets restent dans `localStorage` sur le navigateur et l’appareil courants, sans compte ni synchronisation.
+## Ce qui fonctionne aujourd’hui
 
-## Migration locale
+Le MVP local version 2 est réellement implémenté et conservé :
 
-Le schéma actif utilise `starter-ia.projects.v2`. Si cette clé est absente, Starter IA valide strictement `ai-project-launcher.projects.v1`, conserve la source et une sauvegarde brute, puis crée des projets v2 dont toutes les étapes restent « non tenté ». Une donnée illisible n’est jamais écrasée automatiquement.
+- moteur TypeScript déterministe de six phases et 16 étapes ;
+- recommandations selon l’environnement déclaré ;
+- Dashboard et espace projet ;
+- stockage local versionné et migration conservatrice ;
+- missions copiables, statuts, preuves et validations humaines ;
+- exports Markdown et JSON.
 
-## Démarrage local
+Il n’appelle ni ChatGPT ni Codex automatiquement. Il reste utile comme parcours complet, mais devient secondaire afin que la priorité future soit l’obtention rapide d’un starter Codex.
+
+## Prochaine expérimentation
+
+La Mission B créera manuellement un starter complet pour un vrai projet et l’utilisera avec Codex. Ce test déterminera quels fichiers sont utiles, inutiles ou manquants avant toute spécification ou automatisation.
+
+## Démarrage de l’application actuelle
 
 Prérequis : Node.js 24 et npm.
 
@@ -47,18 +52,18 @@ Playwright utilise Chromium. Avant un premier lancement local, exécutez si néc
 
 ## Ressources
 
-- démarrage : [`START-HERE.md`](START-HERE.md) ;
-- direction : [`PROJECT.md`](PROJECT.md) ;
-- workflow : [`WORKFLOW.md`](WORKFLOW.md) ;
-- configurations secondaires : [`guides/configurations/README.md`](guides/configurations/README.md) ;
+- orientation rapide : [`START-HERE.md`](START-HERE.md) ;
+- direction et contrat cible : [`PROJECT.md`](PROJECT.md) ;
 - état réel : [`STATUS.md`](STATUS.md) ;
-- architecture : [`ARCHITECTURE.md`](ARCHITECTURE.md) ;
+- feuille de route : [`ROADMAP.md`](ROADMAP.md) ;
+- workflow interne : [`WORKFLOW.md`](WORKFLOW.md) ;
+- architectures actuelle et cible : [`ARCHITECTURE.md`](ARCHITECTURE.md) ;
 - qualité : [`QUALITY.md`](QUALITY.md) ;
-- historique : [`CHANGELOG.md`](CHANGELOG.md).
+- configurations techniques : [`guides/configurations/README.md`](guides/configurations/README.md).
 
 ## Limites
 
-Aucun SDK IA, secret, fichier `.env`, authentification, base distante, paiement, publication automatique, fusion automatique ou production automatique n’est inclus. L’étape 9 ajoutera plus tard l’exécution guidée ; elle n’est pas livrée ici.
+Aucun générateur de starter, ZIP, SDK IA, secret, fichier `.env`, compte, base distante, paiement, publication automatique, fusion automatique ou production automatique n’est inclus.
 
 ## Licence
 

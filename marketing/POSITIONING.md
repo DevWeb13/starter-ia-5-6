@@ -4,48 +4,47 @@ Ce document applique la direction définie dans [`PROJECT.md`](../PROJECT.md). I
 
 > Projet communautaire indépendant, non officiel et non affilié à OpenAI.
 
-## Catégorie
+## Catégorie cible
 
-Starter IA est un orchestrateur open source de projet numérique. Il vise à organiser avec ChatGPT et Codex les étapes, spécialistes, missions, livrables et vérifications nécessaires, de l’idée au lancement, selon le matériel disponible.
+Starter IA vise à devenir un générateur open source, local et déterministe de starters Codex. Un starter est un dossier de préparation du travail, pas une application déjà développée.
 
-Le futur orchestrateur n’est pas encore construit. L’application actuelle reste une démonstration locale déterministe en six sections, sans appel IA.
+Le générateur n’est pas encore construit. Le MVP local version 2 en six phases et 16 étapes reste réellement disponible, conservé et secondaire.
 
 ## Cible initiale
 
-Développeurs, freelances, indépendants, créateurs de produits numériques et petites équipes utilisant déjà ChatGPT ou Codex, mais sans workflow fiable de bout en bout.
+Développeurs, freelances, indépendants, petites agences et petites équipes qui utilisent ou souhaitent utiliser Codex sur de vrais dépôts.
 
 ## Problème
 
-Les analyses marché, décisions produit, tâches techniques, contrôles et actions marketing sont souvent conduits séparément. Les utilisateurs perdent alors l’ordre des étapes, les responsabilités, les preuves et les validations humaines.
+Avant de travailler efficacement avec Codex, il faut réunir le contexte, le résultat attendu, les limites, les règles, les décisions, les agents, les contrôles et une première mission. Cette préparation est répétitive, lente et souvent trop lourde pour les petits projets.
 
 ## Positionnement actif
 
-> Starter IA transforme une idée en projet lancé avec ChatGPT et Codex, en orchestrant recherche, produit, développement, vérification et marketing selon votre matériel, avec un maximum d’automatisation sans perdre le contrôle.
+> Starter IA prépare un environnement de travail prêt pour Codex à partir du projet, de l’environnement réel et des modules utiles.
 
 ## Différenciation à démontrer
 
-- couvrir un projet complet dans six phases compréhensibles ;
-- préparer des missions ChatGPT et Codex sans prétendre les exécuter automatiquement ;
-- recommander un parcours simple selon le matériel ;
-- rendre visibles les rôles, preuves et autorisations ;
-- enseigner progressivement avec « Comprendre cette étape » ;
-- intégrer le marketing au projet au lieu de l’ajouter après coup.
+- obtenir rapidement un dossier exploitable ;
+- sélectionner seulement les fichiers justifiés par le projet ;
+- adapter la configuration à l’environnement réellement disponible ;
+- rendre le contenu déterministe et versionnable ;
+- fournir une première mission directement copiable.
 
-Ces différences sont une direction à vérifier par des projets réels. Elles ne constituent pas encore des résultats de marché prouvés.
+Ces bénéfices sont des hypothèses. La Mission B doit d’abord les éprouver avec un starter manuel.
 
 ## Preuves autorisées aujourd’hui
 
-- dépôt et ressources open source réellement accessibles ;
-- application locale réellement navigable ;
-- création, modification, stockage navigateur et exports réellement disponibles ;
-- contrôles locaux, CI, PR ou Preview uniquement lorsqu’ils ont été vérifiés ;
-- historique GitHub et décisions réellement enregistrés.
+- dépôt et ressources open source accessibles ;
+- MVP local déterministe en six phases et 16 étapes ;
+- stockage navigateur, Dashboard, éditeur et exports disponibles ;
+- contrôles locaux, CI, PR ou Preview uniquement lorsqu’ils ont été vérifiés.
 
 ## Frontières honnêtes
 
+- aucun générateur, aperçu ou ZIP disponible ;
 - aucun appel ChatGPT, Codex ou fournisseur IA intégré ;
 - aucun compte, synchronisation, paiement ou collaboration distante ;
-- aucune publication marketing, fusion ou production automatique ;
+- aucune publication, fusion ou production automatique ;
 - aucun client, avis, prix, gain ou revenu revendiqué sans preuve.
 
-La progression économique visée est open source utile → usage personnel → cas réels publics → services payants → éventuel produit hébergé après validation. Aucun prix ni abonnement n’est décidé.
+La progression envisagée est : starter open source utile → usage réel → cas concrets → service d’installation et d’adaptation → éventuel produit hébergé après validation.

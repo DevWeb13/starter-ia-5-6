@@ -6,64 +6,54 @@ Ce document décline le positionnement de [`PROJECT.md`](../PROJECT.md). Il ne d
 
 ## Message maître
 
-**Titre :** De l’idée au projet lancé avec ChatGPT et Codex.
+**Titre :** Préparez un projet prêt pour Codex.
 
-**Sous-titre :** Starter IA organise les phases, spécialistes, missions, livrables et vérifications nécessaires selon votre matériel, sans retirer les décisions sensibles à l’humain.
+**Sous-titre :** Starter IA vise à transformer la description d’un projet, l’environnement réel et les besoins utiles en un dossier de travail clair, versionnable et directement exploitable avec Codex.
 
-**Question d’entrée :** Quel projet voulez-vous lancer ?
+**Question d’entrée cible :** Quel projet voulez-vous préparer pour Codex ?
 
-**Preuve disponible aujourd’hui :** un dépôt open source, des ressources documentaires et une démonstration locale déterministe avec édition, stockage navigateur et exports.
+## Preuve disponible aujourd’hui
 
-## Message du prochain MVP
+Le dépôt open source, ses ressources et le MVP local version 2 sont accessibles. Le MVP organise réellement un projet en six phases et 16 étapes, conserve les données dans le navigateur et exporte Markdown/JSON. Il est déterministe, n’appelle aucune IA automatiquement et devient secondaire.
 
-Le prochain MVP préparera localement :
+## Prochaine expérimentation
 
-- le cycle complet en six phases ;
-- les missions ChatGPT et Codex ;
-- les livrables, preuves et validations ;
-- le parcours recommandé selon le matériel ;
-- le marketing et « Comprendre cette étape ».
+La Mission B créera manuellement un starter pour un vrai projet et l’utilisera avec Codex. Elle doit vérifier le noyau, les modules, la clarté des instructions et la première mission avant toute automatisation.
 
-Il n’est pas encore construit et n’appellera aucun fournisseur automatiquement sans intégration réelle.
+## Message de la cible future
+
+Le futur générateur local déterministe préparera un aperçu, un dossier ou ZIP, un manifeste et une première mission fournie sous forme de prompt copiable. Il n’est pas encore construit ; aucun téléchargement de starter ne doit être promis au présent.
 
 ## Bénéfices à démontrer
 
-- Garder marché, produit, construction, qualité et marketing dans un même projet.
-- Comprendre qui intervient et pourquoi.
-- Préparer des missions directement exploitables.
-- Rendre visibles les preuves, blocages et autorisations.
-- Utiliser le parcours le plus simple compatible avec le matériel.
+- réduire le temps de préparation d’un dépôt pour Codex ;
+- fournir le bon contexte sans documentation inutile ;
+- adapter les recommandations à l’environnement réellement disponible ;
+- expliquer pourquoi chaque fichier est présent ;
+- permettre de commencer avec une première mission claire.
 
-## Ton
+## Ton et claims interdits
 
-- Direct, concret et calme.
-- Phrases courtes et jargon défini.
-- Distinction explicite entre disponible, décidé et futur.
-- Aucun résultat commercial présenté sans preuve.
-
-## Claims interdits sans preuve
-
-- appel ChatGPT, Codex ou fournisseur IA intégré ;
-- Remote Control disponible pour tous ;
-- marché, client, gain, revenu ou efficacité chiffrée validés ;
-- sécurité absolue, chiffrement ou conformité non audités ;
-- compte, synchronisation, collaboration, paiement ou abonnement disponibles ;
-- fusion, production, publication ou message envoyés automatiquement ;
-- affiliation ou statut officiel OpenAI.
+- direct, concret et calme ;
+- distinction explicite entre existant, expérimentation et cible future ;
+- aucun jargon sans définition courte ;
+- aucun générateur, ZIP, appel IA, Remote universel, compte, paiement, client, prix, gain ou revenu présenté sans preuve ;
+- aucune affiliation à OpenAI suggérée.
 
 ## Réponses courtes
 
-**« Est-ce déjà le nouveau MVP ? »**
-Non. L’application actuelle est une démonstration locale en six sections. L’orchestrateur en six phases sera construit dans une étape séparée.
+**« Puis-je déjà générer un starter ou un ZIP ? »**
 
-**« Starter IA appelle-t-il ChatGPT ou Codex ? »**
-Non actuellement. Le prochain MVP préparera des missions copiables ou exportables sans simuler une intégration.
+Non. Le générateur est une cible future. La prochaine étape est de valider un starter manuel sur un vrai projet.
 
-**« Puis-je enregistrer mon projet ? »**  
-Oui, localement dans le navigateur actuel, avec les limites du `localStorage`. Il n’existe ni compte ni synchronisation distante.
+**« Que fait l’application actuelle ? »**
+
+Elle fournit un parcours local déterministe en six phases et 16 étapes, avec stockage navigateur et exports. Ce MVP reste utilisable et secondaire.
+
+**« Starter IA appelle-t-il Codex ? »**
+
+Non. Il n’exécute aujourd’hui aucun appel automatique à ChatGPT, Codex ou un fournisseur IA.
 
 **« Work est-il obligatoire ? »**
-Non. ChatGPT + Codex est le workflow principal. Work reste une ressource optionnelle.
 
-**« Un abonnement est-il prévu ? »**
-Aucun prix ni abonnement n’est décidé. Un produit hébergé ne sera envisagé qu’après validation par des usages réels.
+Non. Work reste une ressource facultative lorsque la fonction est disponible.

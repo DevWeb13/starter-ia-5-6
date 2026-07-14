@@ -197,3 +197,17 @@ GitHub et Vercel enrichissent le chemin de livraison sans être obligatoires. Re
 L’espace projet n’affiche qu’une phase principale à la fois. Chaque étape propose ses missions disponibles, « Comprendre cette étape », quatre statuts, des notes ou preuves et une validation humaine éventuelle. Une copie ne vaut jamais exécution et le rapport distingue rôles planifiés, missions préparées et déclarations de l’utilisateur.
 
 Une étape sensible ne peut pas être marquée « fait et vérifié » sans accord humain. Le Dashboard et l’éditeur restent locaux, `noindex` et absents du sitemap.
+
+## D-030 — Générateur de starters Codex validé d’abord manuellement
+
+**Date :** 2026-07-14 — **Statut :** acceptée — remplace D-022 et recentre D-023 et D-024
+
+Starter IA devient prioritairement un générateur local et déterministe de starters Codex. Un starter est un dossier de préparation du travail, téléchargeable et versionnable, qui réunit le contexte, le résultat attendu, les limites, les règles permanentes, les décisions, les agents, les contrôles et une première mission directement exploitable. Ce n’est pas une application déjà développée.
+
+Le parcours cible demande seulement la description du projet, le résultat recherché, l’état nouveau ou existant du dépôt, l’environnement réel, les outils réellement disponibles, les contraintes et les modules facultatifs utiles. La sortie future associera aperçu, dossier ou ZIP, premier prompt, instructions courtes et manifeste justifiant chaque fichier. Ces fonctions ne sont pas encore implémentées.
+
+D-023 est recentrée sur la recommandation de l’environnement Codex réellement disponible ; ChatGPT et Work restent des ressources facultatives et aucune disponibilité universelle de Codex à distance n’est promise. D-024 décrit désormais principalement le principe de génération locale et déterministe, pas le contrat actif des six phases.
+
+D-026 à D-029 décrivent surtout le MVP local actuel ou des règles conservées : progression économique factuelle, modèle version 2, moteur sans fournisseur, espace guidé, preuves déclaratives et autorité humaine. Le MVP en six phases et 16 étapes reste implémenté, testé, utilisable et secondaire ; il n’est ni supprimé ni qualifié d’obsolète.
+
+Avant toute automatisation, la Mission B doit créer manuellement un starter complet pour un vrai projet et l’utiliser avec Codex. Son retour d’usage validera ou corrigera le noyau provisoire et les modules conditionnels ; les choix de schéma, format ZIP, contenus et tests appartiennent seulement à la Mission C.

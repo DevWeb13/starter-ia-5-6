@@ -1,60 +1,28 @@
-# Lancer un projet avec Starter IA
+# Commencer avec Starter IA
 
-La question de départ est : **« Quel projet voulez-vous lancer ? »**
+## État actuel
 
-1. Ouvrez `/demo`.
-2. Décrivez le projet et le résultat recherché.
-3. Ajoutez facultativement les contraintes ou le contexte existant.
-4. Déclarez uniquement le matériel et les fonctions réellement disponibles.
-5. Choisissez **Lancer mon projet**.
+Starter IA possède aujourd’hui un MVP local, déterministe et testé qui organise un projet en six phases et 16 étapes. Il conserve les projets dans le navigateur, prépare des missions copiables et fournit des exports Markdown/JSON. Il n’appelle automatiquement ni ChatGPT ni Codex.
 
-Le traitement est local, immédiat et déterministe. Aucun fournisseur IA n’est contacté.
+Ce MVP reste disponible et utilisable. Il devient secondaire ; il n’est ni supprimé ni modifié pendant la Mission A.
 
-## Les six phases
+## Nouveau résultat recherché
 
-1. **Cadrer** le problème, le résultat, les contraintes et les risques.
-2. **Valider** les hypothèses de marché, de cible et de positionnement avec des preuves.
-3. **Concevoir** le MVP, le parcours, les contenus et l’architecture.
-4. **Construire** avec un écrivain unique, des checkpoints et des garde-fous.
-5. **Vérifier** les tests, la sécurité, l’accessibilité, la qualité et la revue.
-6. **Lancer et améliorer** après accord humain, avec marketing factuel, mesure et retours.
+La direction future est un générateur local et déterministe de starters Codex : un dossier de préparation du travail contenant le contexte du projet, les règles, la configuration Codex, les agents utiles, les critères qualité et une première mission.
 
-Le moteur génère 16 étapes. Elles commencent toutes au statut **non tenté**.
+Le générateur, l’aperçu et le ZIP ne sont pas encore implémentés. Le noyau provisoire et les modules conditionnels doivent d’abord être testés manuellement.
 
-## Avancer dans l’espace projet
+## Lire selon le besoin
 
-- ouvrez une seule phase principale à la fois ;
-- copiez une mission ChatGPT ou Codex lorsqu’elle existe ;
-- consignez une note, un lien ou une preuve ;
-- choisissez entre non tenté, partiel, bloqué et fait et vérifié ;
-- accordez explicitement une validation humaine lorsqu’elle est obligatoire ;
-- ouvrez **« Comprendre cette étape »** pour voir le pourquoi, les rôles, le livrable et la vérification.
+- comprendre la direction, les entrées et la sortie cible : [`PROJECT.md`](PROJECT.md) ;
+- vérifier ce qui existe réellement : [`STATUS.md`](STATUS.md) ;
+- connaître la prochaine mission : [`ROADMAP.md`](ROADMAP.md) ;
+- réaliser une mission avec un écrivain unique : [`WORKFLOW.md`](WORKFLOW.md) ;
+- distinguer l’architecture actuelle de la cible : [`ARCHITECTURE.md`](ARCHITECTURE.md) ;
+- contrôler un livrable : [`QUALITY.md`](QUALITY.md) ;
+- choisir une configuration Codex compatible : [`guides/configurations/README.md`](guides/configurations/README.md) ;
+- lancer l’application actuelle : [`README.md`](README.md).
 
-Copier une mission ne l’exécute pas. « Fait et vérifié » est toujours une déclaration de l’utilisateur. Une étape sensible ne peut pas recevoir ce statut sans son accord humain.
+## Prochaine mission réelle
 
-## Workflow recommandé
-
-Starter IA recommande le chemin le plus simple compatible avec les déclarations :
-
-- iPhone + Codex Remote + Ubuntu si toutes les conditions sont réunies ;
-- iPhone + Remote Control sur un autre système si la fonction et une machine active sont déclarées ;
-- ChatGPT + Codex local sans Remote Control ;
-- ChatGPT + Codex local si le pilotage distant n’est pas fiable ;
-- préparation ChatGPT avec installation ou activation de Codex encore nécessaire.
-
-GitHub et Vercel enrichissent la livraison mais ne sont pas obligatoires pour créer un projet.
-
-## Stockage et migration
-
-Les projets restent dans `starter-ia.projects.v2` sur cet appareil. Aucun compte ni synchronisation n’existe. Les anciens projets `ai-project-launcher.projects.v1` sont validés puis migrés sans supprimer la source ; aucune progression ou preuve n’est inventée.
-
-Le Dashboard permet de reprendre, exporter, supprimer ou réinitialiser après confirmation. La réinitialisation sauvegarde d’abord la donnée v2 brute.
-
-## Qui fait quoi
-
-- **ChatGPT** aide à analyser, comparer et rédiger à partir de la mission copiée.
-- **Codex** intervient sur les fichiers et contrôles lorsque l’utilisateur lance réellement la mission.
-- **Starter IA** prépare localement le parcours et enregistre l’état déclaré.
-- **L’humain** approuve fusion, production, suppression, paiement, secret, publication, message et action irréversible.
-
-Les guides [Chat](guides/configurations/chat.md), [Work](guides/configurations/work.md), [Codex local](guides/configurations/codex-local.md), [Codex Remote](guides/configurations/codex-remote.md) et [Work + Codex](guides/configurations/hybrid-work-codex.md) restent des ressources techniques secondaires.
+**Mission B — Starter manuel de référence :** créer un starter complet pour un vrai projet, l’utiliser avec Codex, puis identifier les fichiers utiles, inutiles ou manquants avant toute automatisation.

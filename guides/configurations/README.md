@@ -1,47 +1,34 @@
 # Configurations techniques Starter IA
 
-Le point de départ de Starter IA n’est plus le choix d’une configuration. L’utilisateur décrit le projet à lancer ; Starter IA organise le cycle complet et recommande ensuite le parcours compatible avec son matériel.
+Ces guides aident à décrire l’environnement réel qui devra influencer un starter Codex. Ils restent des références techniques secondaires, pas cinq produits concurrents ni le parcours principal.
 
 > Projet communautaire indépendant, non officiel et non affilié à OpenAI.
 
-## Parcours principal
+## Rôle dans la nouvelle direction
 
-Le workflow principal est **ChatGPT + Codex** : ChatGPT aide à cadrer, rechercher, décider, rédiger et piloter ; Codex agit sur les fichiers et les contrôles autorisés. Le cycle complet est décrit dans [`PROJECT.md`](../../PROJECT.md) et le processus d’une mission dans [`WORKFLOW.md`](../../WORKFLOW.md).
+Le MVP actuel recommande déjà un parcours selon l’environnement déclaré. Le futur générateur devra réutiliser ce principe pour sélectionner la configuration du starter la plus simple réellement compatible avec le système, l’accès local ou distant à Codex et la disponibilité de GitHub ou Vercel. Cette recommandation intégrée au starter et le générateur ne sont pas encore implémentés.
 
-Starter IA doit recommander le parcours le plus simple parmi :
+La disponibilité de Codex à distance ou de Remote Control dépend du compte, du client, du système, des versions et du déploiement progressif. Elle n’est jamais garantie pour tous les utilisateurs. Work reste facultatif.
 
-- ChatGPT + Codex local sur Ubuntu/Linux ;
-- ChatGPT + Codex sur Windows ;
-- ChatGPT + Codex sur macOS ;
-- ChatGPT sur iPhone + Codex Remote lorsque la fonction est disponible ;
-- parcours local sans Remote Control si la fonction est absente.
+## Guides disponibles
 
-La disponibilité dépend du compte, du client, du système, des versions et du déploiement progressif.
-
-## Workflow phare documenté
-
-Le parcours **ChatGPT sur iPhone + Codex Remote + Ubuntu** est prioritaire et différenciant. L’iPhone pilote ; Ubuntu conserve le dépôt, Git, Codex et les processus. La machine doit rester active, connectée et non suspendue. Une déconnexion ne crée ni commit ni push et ne prouve pas l’arrêt des processus. Voir [Codex Remote depuis iPhone](codex-remote.md).
-
-## Guides secondaires
-
-Ces guides restent des références techniques. Ils ne sont pas cinq produits indépendants.
-
-| Guide | Rôle dans le parcours | Limite clé |
+| Guide | Usage utile | Limite clé |
 |---|---|---|
-| [Chat](chat.md) | cadrer, réfléchir et préparer une mission | ne prouve pas qu’un fichier ou service a été modifié |
-| [Codex local](codex-local.md) | inspecter, modifier et vérifier un dépôt | dépend des permissions et outils locaux |
-| [Codex Remote](codex-remote.md) | piloter une session locale depuis iPhone | disponibilité variable et machine locale active |
-| [Work](work.md) | ressource cloud optionnelle | non obligatoire et fonctions variables selon le compte |
-| [Work + Codex](hybrid-work-codex.md) | passage de relais optionnel | relais non automatique |
+| [Chat](chat.md) | préparer ou clarifier une mission | ne prouve pas qu’un fichier ou service a changé |
+| [Codex local](codex-local.md) | travailler sur un dépôt local | dépend des permissions et outils présents |
+| [Codex Remote](codex-remote.md) | piloter une session locale depuis un autre appareil | disponibilité variable et machine locale active |
+| [Work](work.md) | réaliser une mission cloud lorsque la fonction est disponible | ressource facultative, non chargée automatiquement depuis ce dépôt |
+| [Work + Codex](hybrid-work-codex.md) | organiser un passage de relais explicite | relais non automatique |
 
-Work conserve ses guides et son historique, mais ne définit plus l’architecture du produit ni son démarrage principal.
+Le parcours iPhone + Ubuntu reste documenté lorsqu’il est réellement disponible, mais il n’est ni obligatoire ni universel.
 
 ## Ressources communes
 
 - [`templates/BRIEF.md`](../../templates/BRIEF.md) : brief vérifiable ;
+- [`WORKFLOW.md`](../../WORKFLOW.md) : workflow interne d’une mission ;
 - [`QUALITY.md`](../../QUALITY.md) : niveaux de défaut et décision de livraison ;
 - [`prompts/REVIEW.md`](../../prompts/REVIEW.md) : revue indépendante en lecture seule ;
-- [`prompts/MASTER-WORK.md`](../../prompts/MASTER-WORK.md) : ressource optionnelle pour Work ;
+- [`prompts/MASTER-WORK.md`](../../prompts/MASTER-WORK.md) : ressource facultative pour Work ;
 - [`course/FORMATION-EXPRESS.md`](../../course/FORMATION-EXPRESS.md) : formation existante.
 
 Ces guides ne garantissent ni disponibilité, ni plugin, ni fonction distante. Vérifiez toujours les outils réellement accessibles avant d’agir.
