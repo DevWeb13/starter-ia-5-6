@@ -1,5 +1,6 @@
 import {
   PROJECT_SCHEMA_VERSION,
+  isHardwareProfile,
   type CreateProjectInput,
   type HardwareProfile,
   type Project,
@@ -350,7 +351,10 @@ export function recommendWorkflow(hardware: HardwareProfile): WorkflowRecommenda
       warnings: ["La disponibilité peut dépendre du compte, du client et des versions", "Contrôlez Git et les processus séparément"],
     };
   }
-  if (hardware.codexLocalAvailable && hardware.remoteControlAvailable) {
+  if (
+    hardware.hasComputer && hardware.operatingSystem !== "none" &&
+    hardware.codexLocalAvailable && hardware.remoteControlAvailable
+  ) {
     return {
       ...base,
       id: "chatgpt-codex-local",
@@ -361,7 +365,7 @@ export function recommendWorkflow(hardware: HardwareProfile): WorkflowRecommenda
       warnings: ["Remote Control a été déclaré, mais ses conditions d’usage ne sont pas toutes réunies"],
     };
   }
-  if (hardware.codexLocalAvailable) {
+  if (hardware.hasComputer && hardware.operatingSystem !== "none" && hardware.codexLocalAvailable) {
     return {
       ...base,
       id: "local-without-remote",
@@ -428,6 +432,9 @@ export function createProject(
   id = crypto.randomUUID(),
   now = new Date().toISOString(),
 ): Project {
+  if (!isHardwareProfile(input.hardware)) {
+    throw new Error("Le profil matériel est incohérent et ne peut pas être utilisé.");
+  }
   return {
     id,
     schemaVersion: PROJECT_SCHEMA_VERSION,

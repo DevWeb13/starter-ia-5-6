@@ -92,7 +92,14 @@ describe("deterministic project engine", () => {
 
 describe("hardware workflow recommendation", () => {
   it("recommends the flagship iPhone, Remote Control and Ubuntu workflow only with all declarations", () => {
-    expect(recommendWorkflow({ ...baseHardware, hasIPhone: true, remoteControlAvailable: true }).id).toBe("iphone-remote-ubuntu");
+    const flagshipHardware = { ...baseHardware, hasIPhone: true, remoteControlAvailable: true };
+    expect(recommendWorkflow(flagshipHardware).id).toBe("iphone-remote-ubuntu");
+    expect(recommendWorkflow({ ...flagshipHardware, hasComputer: false, operatingSystem: "none" }).id).not.toBe("iphone-remote-ubuntu");
+    expect(recommendWorkflow({ ...flagshipHardware, operatingSystem: "windows" }).id).not.toBe("iphone-remote-ubuntu");
+    expect(recommendWorkflow({ ...flagshipHardware, hasIPhone: false }).id).not.toBe("iphone-remote-ubuntu");
+    expect(recommendWorkflow({ ...flagshipHardware, codexLocalAvailable: false }).id).not.toBe("iphone-remote-ubuntu");
+    expect(recommendWorkflow({ ...flagshipHardware, remoteControlAvailable: false }).id).not.toBe("iphone-remote-ubuntu");
+    expect(recommendWorkflow({ ...flagshipHardware, machineCanStayActive: false }).id).not.toBe("iphone-remote-ubuntu");
   });
 
   it("recommends Remote Control on another system only when declared and sustainable", () => {
@@ -101,12 +108,17 @@ describe("hardware workflow recommendation", () => {
     expect(recommendWorkflow({ ...baseHardware, operatingSystem: "windows", remoteControlAvailable: true, machineCanStayActive: false }).id).toBe("chatgpt-codex-local");
   });
 
-  it("supports local Codex without Remote Control", () => {
+  it("uses local Codex only when a computer, its system and Codex are explicitly declared", () => {
     expect(recommendWorkflow(baseHardware).id).toBe("local-without-remote");
+    expect(recommendWorkflow({ ...baseHardware, hasComputer: false, operatingSystem: "none" }).id).toBe("chatgpt-prepare-codex");
+    expect(recommendWorkflow({ ...baseHardware, operatingSystem: "none" }).id).toBe("chatgpt-prepare-codex");
+    expect(recommendWorkflow({ ...baseHardware, codexLocalAvailable: false }).id).toBe("chatgpt-prepare-codex");
   });
 
-  it("prepares ChatGPT work when Codex is unavailable", () => {
-    expect(recommendWorkflow({ ...baseHardware, codexLocalAvailable: false }).id).toBe("chatgpt-prepare-codex");
+  it("prepares ChatGPT work when Ubuntu is declared without Codex", () => {
+    const recommendation = recommendWorkflow({ ...baseHardware, codexLocalAvailable: false });
+    expect(recommendation.id).toBe("chatgpt-prepare-codex");
+    expect(recommendation.name).toBe("Préparation ChatGPT, Codex à installer ou activer");
   });
 
   it("keeps GitHub and Vercel optional", () => {

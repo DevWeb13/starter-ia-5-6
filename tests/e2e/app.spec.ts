@@ -12,6 +12,8 @@ async function launchProject(page: Page, options: { flagship?: boolean } = {}) {
   await page.getByLabel("Description du projet").fill("Une application qui aide les associations à organiser leurs bénévoles.");
   await page.getByLabel("Résultat recherché").fill("Réduire le temps nécessaire pour trouver un bénévole disponible.");
   await page.getByLabel(/Contraintes ou contexte existant/).fill("Budget limité, usage mobile et données personnelles minimales.");
+  await page.getByLabel("Système de l’ordinateur").selectOption("ubuntu-linux");
+  await page.getByLabel("Codex local est disponible sur mon ordinateur").check();
   if (options.flagship) {
     await page.getByLabel("J’ai un iPhone").check();
     await page.getByLabel("Remote Control est réellement disponible sur mon compte").check();
@@ -40,18 +42,66 @@ test("la landing présente le MVP complet et ses actions principales", async ({ 
 
 test("la création conserve la saisie et relie les erreurs aux champs", async ({ page }) => {
   await page.goto("/demo");
+  const system = page.getByLabel("Système de l’ordinateur");
+  await expect(system).toHaveValue("");
+  const capabilities = page.getByRole("group", { name: "Capacités disponibles" }).locator('input[type="checkbox"]');
+  await expect(capabilities).toHaveCount(6);
+  for (const capability of await capabilities.all()) await expect(capability).not.toBeChecked();
   await page.getByRole("button", { name: "Lancer mon projet" }).click();
 
   const description = page.getByLabel("Description du projet");
   const outcome = page.getByLabel("Résultat recherché");
   await expect(description).toHaveAttribute("aria-invalid", "true");
   await expect(outcome).toHaveAttribute("aria-invalid", "true");
+  await expect(system).toHaveAttribute("aria-invalid", "true");
+  await expect(system).toHaveAttribute("aria-describedby", /operating-system-error/);
+  await expect(page.getByText("Choisissez votre système ou indiquez qu’aucun ordinateur n’est disponible.")).toBeVisible();
   await expect(page.getByRole("region", { name: "Création d’un projet local" }).getByRole("alert")).toContainText("Le projet n’a pas encore été créé");
 
   await description.fill("Une description encore courte");
   await outcome.fill("Un résultat concret à vérifier");
   await page.getByRole("button", { name: "Lancer mon projet" }).click();
   await expect(description).toHaveValue("Une description encore courte");
+  await expect(page).toHaveURL(/\/demo$/);
+});
+
+test("le choix explicite aucun ordinateur désactive et efface les capacités locales", async ({ page }) => {
+  await page.goto("/demo");
+  await page.getByLabel("Description du projet").fill("Une application qui aide les associations à organiser leurs bénévoles.");
+  await page.getByLabel("Résultat recherché").fill("Réduire le temps nécessaire pour trouver un bénévole disponible.");
+  const system = page.getByLabel("Système de l’ordinateur");
+  const codex = page.getByLabel("Codex local est disponible sur mon ordinateur");
+  const remote = page.getByLabel("Remote Control est réellement disponible sur mon compte");
+  const activeMachine = page.getByLabel("La machine peut rester active, connectée et non suspendue");
+
+  await system.selectOption("ubuntu-linux");
+  await codex.check();
+  await remote.check();
+  await activeMachine.check();
+  await system.selectOption("none");
+
+  for (const capability of [codex, remote, activeMachine]) {
+    await expect(capability).not.toBeChecked();
+    await expect(capability).toBeDisabled();
+  }
+  await page.getByRole("button", { name: "Lancer mon projet" }).click();
+  await expect(page).toHaveURL(/\/dashboard\/.+/);
+  await expect(page.getByText("Préparation ChatGPT, Codex à installer ou activer", { exact: true })).toBeVisible();
+});
+
+test("Ubuntu déclaré sans Codex prépare son installation ou activation", async ({ page }) => {
+  await page.goto("/demo");
+  await page.getByLabel("Description du projet").fill("Une application qui aide les associations à organiser leurs bénévoles.");
+  await page.getByLabel("Résultat recherché").fill("Réduire le temps nécessaire pour trouver un bénévole disponible.");
+  await page.getByLabel("Système de l’ordinateur").selectOption("ubuntu-linux");
+  await page.getByRole("button", { name: "Lancer mon projet" }).click();
+
+  await expect(page.getByText("Préparation ChatGPT, Codex à installer ou activer", { exact: true })).toBeVisible();
+});
+
+test("Ubuntu et Codex explicitement déclarés recommandent le parcours local", async ({ page }) => {
+  await launchProject(page);
+  await expect(page.getByText("ChatGPT + Codex local, sans Remote Control", { exact: true })).toBeVisible();
 });
 
 test("le profil Ubuntu, iPhone et Remote Control recommande le workflow phare", async ({ page }) => {
@@ -238,6 +288,7 @@ test("le parcours reste utilisable à 320 px et au clavier", async ({ page }) =>
   await page.keyboard.type("Une application accessible préparée entièrement au clavier.");
   await expect(page.getByLabel("Description du projet")).toHaveValue(/accessible préparée/);
   await page.getByLabel("Résultat recherché").fill("R".repeat(600));
+  await page.getByLabel("Système de l’ordinateur").selectOption("none");
   await page.getByRole("button", { name: "Lancer mon projet" }).click();
   await expect(page).toHaveURL(/\/dashboard\/.+/);
   await expect(page.getByText("R".repeat(600), { exact: true })).toBeVisible();

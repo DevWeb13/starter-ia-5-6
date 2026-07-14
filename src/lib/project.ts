@@ -125,10 +125,10 @@ function isStringArray(value: unknown): value is string[] {
   return Array.isArray(value) && value.every((item) => typeof item === "string");
 }
 
-function isHardwareProfile(value: unknown): value is HardwareProfile {
+export function isHardwareProfile(value: unknown): value is HardwareProfile {
   if (!value || typeof value !== "object") return false;
   const hardware = value as Record<string, unknown>;
-  return typeof hardware.hasComputer === "boolean" &&
+  const hasValidFields = typeof hardware.hasComputer === "boolean" &&
     ["ubuntu-linux", "windows", "macos", "none"].includes(String(hardware.operatingSystem)) &&
     [
       "hasIPhone",
@@ -138,6 +138,16 @@ function isHardwareProfile(value: unknown): value is HardwareProfile {
       "vercelAvailable",
       "machineCanStayActive",
     ].every((key) => typeof hardware[key] === "boolean");
+  if (!hasValidFields) return false;
+
+  const hasComputer = hardware.hasComputer as boolean;
+  const operatingSystem = hardware.operatingSystem as OperatingSystem;
+  return hasComputer === (operatingSystem !== "none") &&
+    (hasComputer || (
+      hardware.codexLocalAvailable === false &&
+      hardware.remoteControlAvailable === false &&
+      hardware.machineCanStayActive === false
+    ));
 }
 
 function isWorkflow(value: unknown): value is WorkflowRecommendation {

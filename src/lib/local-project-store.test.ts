@@ -137,6 +137,26 @@ describe("local project store version 2", () => {
     expect(() => readProjects(duplicateId)).toThrow(InvalidLocalProjectDataError);
   });
 
+  it("rejects an incoherent stored hardware profile", () => {
+    const valid = project();
+    const storage = memoryStorage({
+      [PROJECT_STORAGE_KEY]: JSON.stringify({
+        schemaVersion: 2,
+        projects: [{
+          ...valid,
+          hardware: {
+            ...valid.hardware,
+            hasComputer: false,
+            operatingSystem: "none",
+            codexLocalAvailable: true,
+          },
+        }],
+      }),
+    });
+
+    expect(() => readProjects(storage)).toThrow(InvalidLocalProjectDataError);
+  });
+
   it("reports unavailable storage", () => {
     const storage = {
       getItem: () => { throw new Error("blocked"); },

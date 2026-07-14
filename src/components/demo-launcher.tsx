@@ -16,13 +16,13 @@ const DESCRIPTION_MAX = 1_200;
 const OUTCOME_MAX = 600;
 const CONTEXT_MAX = 1_200;
 
-type FormErrors = Partial<Record<"description" | "desiredOutcome" | "storage", string>>;
+type FormErrors = Partial<Record<"description" | "desiredOutcome" | "operatingSystem" | "storage", string>>;
 
 const initialHardware: HardwareProfile = {
-  hasComputer: true,
-  operatingSystem: "ubuntu-linux",
+  hasComputer: false,
+  operatingSystem: "none",
   hasIPhone: false,
-  codexLocalAvailable: true,
+  codexLocalAvailable: false,
   remoteControlAvailable: false,
   githubAvailable: false,
   vercelAvailable: false,
@@ -48,11 +48,14 @@ export function DemoLauncher() {
   const [desiredOutcome, setDesiredOutcome] = useState("");
   const [constraints, setConstraints] = useState("");
   const [hardware, setHardware] = useState(initialHardware);
+  const [selectedOperatingSystem, setSelectedOperatingSystem] = useState<OperatingSystem | "">("");
   const [errors, setErrors] = useState<FormErrors>({});
   const [submitting, setSubmitting] = useState(false);
 
   function updateSystem(operatingSystem: OperatingSystem) {
     const hasComputer = operatingSystem !== "none";
+    setSelectedOperatingSystem(operatingSystem);
+    setErrors((current) => ({ ...current, operatingSystem: undefined, storage: undefined }));
     setHardware((current) => ({
       ...current,
       operatingSystem,
@@ -71,6 +74,7 @@ export function DemoLauncher() {
     else if (description.trim().length < 20) next.description = "Ajoutez quelques précisions : 20 caractères minimum.";
     if (!desiredOutcome.trim()) next.desiredOutcome = "Indiquez le résultat concret que vous recherchez.";
     else if (desiredOutcome.trim().length < 10) next.desiredOutcome = "Précisez le résultat recherché en au moins 10 caractères.";
+    if (!selectedOperatingSystem) next.operatingSystem = "Choisissez votre système ou indiquez qu’aucun ordinateur n’est disponible.";
     setErrors(next);
     return Object.keys(next).length === 0;
   }
@@ -170,15 +174,20 @@ export function DemoLauncher() {
               <label htmlFor="operating-system" className="block font-semibold">Système de l’ordinateur</label>
               <select
                 id="operating-system"
-                value={hardware.operatingSystem}
+                value={selectedOperatingSystem}
                 className="min-h-11 w-full rounded-xl border bg-background px-3 text-base"
+                aria-invalid={Boolean(errors.operatingSystem)}
+                aria-describedby={`operating-system-help${errors.operatingSystem ? " operating-system-error" : ""}`}
                 onChange={(event) => updateSystem(event.target.value as OperatingSystem)}
               >
+                <option value="" disabled>Choisir un système</option>
                 <option value="ubuntu-linux">Ubuntu / Linux</option>
                 <option value="windows">Windows</option>
                 <option value="macos">macOS</option>
                 <option value="none">Aucun ordinateur disponible</option>
               </select>
+              <p id="operating-system-help" className="text-sm text-muted-foreground">Choisissez explicitement l’environnement réellement disponible.</p>
+              {errors.operatingSystem ? <p id="operating-system-error" className="text-sm font-semibold text-destructive">{errors.operatingSystem}</p> : null}
             </div>
 
             <fieldset className="space-y-3">
