@@ -146,7 +146,7 @@ export default function DocsPage() {
         <aside className="rounded-2xl border border-border bg-muted/35 p-5 sm:p-6" aria-labelledby="local-app-title">
           <h2 id="local-app-title" className="text-xl font-semibold">Démarrage technique du MVP local</h2>
           <p className="mt-2 text-muted-foreground">
-            L’application Next.js exécute uniquement le moteur déterministe et le stockage navigateur. Ses prérequis, commandes et limites sont documentés dans le README du dépôt.
+            L’application crée votre parcours et l’enregistre uniquement dans ce navigateur. Ses prérequis, commandes et limites sont documentés dans le README du dépôt.
           </p>
           <a
             href={`${githubRoot}/README.md`}

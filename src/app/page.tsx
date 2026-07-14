@@ -37,7 +37,7 @@ export default function HomePage() {
               <Link href="/demo" className={buttonVariants({ size: "lg", className: "w-full sm:w-auto" })}>Lancer un projet<ArrowRight aria-hidden="true" className="size-5" /></Link>
               <Link href="/fonctionnalites" className={buttonVariants({ variant: "secondary", size: "lg", className: "w-full sm:w-auto" })}>Comprendre le fonctionnement</Link>
             </div>
-            <p className="text-sm text-muted-foreground">Moteur local déterministe · aucun appel IA · aucun compte · aucune synchronisation</p>
+            <p className="text-sm text-muted-foreground">Votre parcours est créé sur cet appareil, sans compte ni appel automatique à une IA.</p>
           </div>
 
           <Card className="border-primary/40">
@@ -71,7 +71,7 @@ export default function HomePage() {
       <section className="py-14 sm:py-20" aria-labelledby="remote-title">
         <div className="page-shell grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
           <div className="grid size-16 place-items-center rounded-2xl bg-primary/10 text-primary"><Smartphone aria-hidden="true" className="size-8" /></div>
-          <div className="space-y-3"><p className="eyebrow">Workflow phare, si disponible</p><h2 id="remote-title" className="section-title">iPhone + Codex Remote + Ubuntu.</h2><p className="text-muted-foreground">Starter IA recommande ce parcours uniquement si l’iPhone, Ubuntu, Codex local, Remote Control et une machine pouvant rester active sont tous déclarés disponibles. L’iPhone pilote ; le dépôt, Git et les processus restent sur Ubuntu.</p><Link href="/docs" className="inline-flex min-h-11 items-center font-semibold text-primary underline underline-offset-4">Consulter les configurations techniques</Link></div>
+          <div className="space-y-3"><p className="eyebrow">Méthode conseillée, si votre matériel le permet</p><h2 id="remote-title" className="section-title">iPhone + Codex Remote + Ubuntu.</h2><p className="text-muted-foreground">Starter IA recommande ce parcours uniquement si l’iPhone, Ubuntu, Codex local, Remote Control et une machine pouvant rester active sont tous déclarés disponibles. L’iPhone pilote ; le dépôt, Git et les processus restent sur Ubuntu.</p><Link href="/docs" className="inline-flex min-h-11 items-center font-semibold text-primary underline underline-offset-4">Consulter les configurations techniques</Link></div>
         </div>
       </section>
 

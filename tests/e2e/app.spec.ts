@@ -37,7 +37,9 @@ test("la landing présente le MVP complet et ses actions principales", async ({ 
   await expect(page.getByRole("heading", { level: 1, name: /transforme une idée en projet guidé/i })).toBeVisible();
   await expect(page.getByRole("link", { name: "Lancer un projet", exact: true }).first()).toHaveAttribute("href", "/demo");
   await expect(page.getByRole("link", { name: "Comprendre le fonctionnement" })).toHaveAttribute("href", "/fonctionnalites");
-  await expect(page.getByText(/aucun appel IA/i).first()).toBeVisible();
+  await expect(page.getByText("Votre parcours est créé sur cet appareil, sans compte ni appel automatique à une IA.")).toBeVisible();
+  await expect(page.getByText("Méthode conseillée, si votre matériel le permet")).toBeVisible();
+  await expect(page.getByText(/Outil local pour organiser un projet en six phases/)).toBeVisible();
   for (const phase of ["Cadrer", "Valider", "Concevoir", "Construire", "Vérifier", "Lancer et améliorer"]) {
     await expect(page.getByRole("heading", { name: phase, exact: true })).toBeVisible();
   }
@@ -177,7 +179,7 @@ test("la carte montre une action principale et garde les explications fermées",
   await launchProject(page);
   const firstStep = page.locator('[data-step-id="scope-problem"]');
   await expect(firstStep.getByRole("heading", { name: "Prochaine action" })).toBeVisible();
-  await expect(firstStep.getByRole("button", { name: "Préparer avec ChatGPT" })).toBeVisible();
+  await expect(firstStep.getByRole("button", { name: "Copier pour ChatGPT" })).toBeVisible();
   await expect(firstStep.locator("button.bg-primary")).toHaveCount(1);
   const details = firstStep.locator("details");
   await expect(details).not.toHaveAttribute("open", "");
@@ -192,7 +194,9 @@ test("une mission peut être copiée sans être considérée comme exécutée", 
   await context.grantPermissions(["clipboard-read", "clipboard-write"]);
   await launchProject(page);
   const firstStep = page.locator('[data-step-id="scope-problem"]');
-  await firstStep.getByRole("button", { name: "Préparer avec ChatGPT" }).click();
+  const copyButton = firstStep.getByRole("button", { name: "Copier pour ChatGPT" });
+  await expect(copyButton).not.toContainText(/Exécuter|Préparer/);
+  await copyButton.click();
   await expect(firstStep.getByRole("status")).toContainText("Mission copiée. Collez-la dans ChatGPT.");
   expect(await page.evaluate(() => navigator.clipboard.readText())).toContain("Une application qui aide les associations");
 });
@@ -290,6 +294,55 @@ test("un projet version 1 est migré sans supprimer sa source", async ({ page })
   expect(storageState.legacy).toBe(legacyRaw);
   expect(storageState.backup).toBe(legacyRaw);
   expect(JSON.parse(storageState.current!).schemaVersion).toBe(2);
+});
+
+test("un projet version 2 existant utilise les textes actuels sans réécrire sa lecture", async ({ page }) => {
+  await launchProject(page);
+  await page.evaluate(() => {
+    const key = "starter-ia.projects.v2";
+    const raw = localStorage.getItem(key)!;
+    const envelope = JSON.parse(raw);
+    const project = envelope.projects[0];
+    const phase = project.phases[5];
+    const step = phase.steps[1];
+    phase.name = "Ancienne phase";
+    phase.summary = "Ancien résumé.";
+    step.title = "Ancien titre d’étape";
+    step.objective = "Ancien objectif.";
+    step.reason = "Ancienne raison.";
+    step.role = "Ancien rôle";
+    step.recommendedTool = "Ancien outil";
+    step.codexMission = "Ancienne mission Codex";
+    step.deliverables = ["Ancien résultat attendu"];
+    step.successCriteria = ["Ancien critère"];
+    step.humanApprovalReason = "Ancienne raison d’accord.";
+    step.status = "partial";
+    step.userNotes = "Notes existantes à préserver.";
+    step.humanApprovalGranted = true;
+    project.updatedAt = "2026-07-14T08:30:00.000Z";
+    localStorage.setItem(key, JSON.stringify(envelope));
+  });
+
+  await page.goto("/dashboard");
+  expect(await page.evaluate(() => {
+    const envelope = JSON.parse(localStorage.getItem("starter-ia.projects.v2")!);
+    return envelope.projects[0].phases[5].steps[1].title;
+  })).toBe("Ancien titre d’étape");
+  await page.getByRole("link", { name: "Reprendre" }).click();
+  await page.getByRole("navigation", { name: "Phases du projet" }).getByRole("button", { name: /Lancer et améliorer/ }).click();
+
+  const release = page.locator('[data-step-id="launch-release"]');
+  await expect(release.getByRole("heading", { name: "Autoriser le lancement" })).toBeVisible();
+  await expect(release.getByLabel("Où en êtes-vous ?")).toHaveValue("partial");
+  await release.getByText("Comprendre cette étape", { exact: true }).click();
+  await expect(release.getByLabel("Notes et résultats")).toHaveValue("Notes existantes à préserver.");
+  await expect(release.getByLabel("J’ai vérifié et j’autorise cette action")).toBeChecked();
+
+  const markdownDownload = page.waitForEvent("download");
+  await page.getByRole("button", { name: "Exporter Markdown" }).click();
+  const markdown = await downloadText(await markdownDownload);
+  expect(markdown).toContain("Autoriser le lancement");
+  expect(markdown).not.toContain("Ancien titre d’étape");
 });
 
 test("les données version 2 invalides expliquent la récupération", async ({ page }) => {

@@ -1,4 +1,4 @@
-import { createProject } from "./project-engine";
+import { createProject, refreshProjectGeneratedCopy } from "./project-engine";
 import {
   PROJECT_SCHEMA_VERSION,
   isIsoDate,
@@ -84,7 +84,9 @@ function parseV2(raw: string): Project[] {
       !envelope.projects.every(isProject) ||
       new Set(envelope.projects.map((project) => project.id)).size !== envelope.projects.length
     ) throw new Error();
-    return [...envelope.projects].sort((first, second) => second.updatedAt.localeCompare(first.updatedAt));
+    return envelope.projects
+      .map(refreshProjectGeneratedCopy)
+      .sort((first, second) => second.updatedAt.localeCompare(first.updatedAt));
   } catch {
     throw new InvalidLocalProjectDataError(
       "Les données locales version 2 sont incompatibles ou corrompues. Elles n’ont pas été modifiées. Exportez la sauvegarde brute avant de réinitialiser.",

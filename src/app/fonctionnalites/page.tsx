@@ -97,7 +97,7 @@ export default function MethodPage() {
       </section>
 
       <section className="reading-shell py-14 sm:py-20" aria-labelledby="sources-title">
-        <h2 id="sources-title" className="section-title">Lire les sources de vérité</h2>
+        <h2 id="sources-title" className="section-title">Lire les documents de référence</h2>
         <p className="mt-3 text-muted-foreground">
           WORKFLOW.md décrit le processus complet. QUALITY.md définit les défauts bloquants ou importants et la décision de livraison.
         </p>

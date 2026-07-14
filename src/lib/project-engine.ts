@@ -453,3 +453,43 @@ export function createProject(
     })),
   };
 }
+
+export function refreshProjectGeneratedCopy(project: Project): Project {
+  const generated = createProject({
+    title: project.title,
+    brief: project.brief,
+    hardware: project.hardware,
+  }, project.id, project.createdAt);
+  const generatedPhases = new Map(generated.phases.map((phase) => [phase.id, phase]));
+
+  return {
+    ...project,
+    phases: project.phases.map((phase) => {
+      const generatedPhase = generatedPhases.get(phase.id);
+      if (!generatedPhase) return phase;
+      const generatedSteps = new Map(generatedPhase.steps.map((step) => [step.id, step]));
+      return {
+        ...phase,
+        name: generatedPhase.name,
+        summary: generatedPhase.summary,
+        steps: phase.steps.map((step) => {
+          const generatedStep = generatedSteps.get(step.id);
+          if (!generatedStep) return step;
+          return {
+            ...step,
+            title: generatedStep.title,
+            objective: generatedStep.objective,
+            reason: generatedStep.reason,
+            role: generatedStep.role,
+            recommendedTool: generatedStep.recommendedTool,
+            chatGptMission: generatedStep.chatGptMission,
+            codexMission: generatedStep.codexMission,
+            deliverables: generatedStep.deliverables,
+            successCriteria: generatedStep.successCriteria,
+            humanApprovalReason: generatedStep.humanApprovalReason,
+          };
+        }),
+      };
+    }),
+  };
+}

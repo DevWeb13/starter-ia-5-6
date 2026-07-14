@@ -67,15 +67,6 @@ describe("deterministic project engine", () => {
     expect(project.schemaVersion).toBe(2);
   });
 
-  it("keeps existing schema 2 projects readable when their saved wording is older", () => {
-    const existing = createProject(input, "existing-v2", "2026-07-13T10:00:00.000Z");
-    existing.phases[0].steps[0].title = "Formuler le problème et le résultat";
-    existing.phases[0].steps[0].objective = "Ancien texte enregistré.";
-
-    expect(isProject(existing)).toBe(true);
-    expect(existing.phases[0].steps[0].title).toBe("Formuler le problème et le résultat");
-  });
-
   it("returns the same plan for the same inputs", () => {
     const first = createProject(input, "stable-id", "2026-07-13T10:00:00.000Z");
     const second = createProject(input, "stable-id", "2026-07-13T10:00:00.000Z");

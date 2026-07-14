@@ -71,6 +71,81 @@ describe("local project store version 2", () => {
     expect(readProjects(storage)).toEqual([value]);
   });
 
+  it("refreshes old generated copy without changing user data or rewriting storage", () => {
+    const existing = project("existing-v2", "2026-07-13T10:00:00.000Z");
+    existing.title = "Titre choisi par l’utilisateur";
+    existing.updatedAt = "2026-07-14T08:30:00.000Z";
+    existing.migrationHistory = {
+      fromSchemaVersion: 1,
+      migratedAt: "2026-07-13T09:00:00.000Z",
+      historicalSummary: "Contexte historique conservé.",
+    };
+    const oldPhase = existing.phases.find((phase) => phase.id === "launch-improve")!;
+    const oldStep = oldPhase.steps.find((step) => step.id === "launch-release")!;
+    oldPhase.name = "Ancienne phase";
+    oldPhase.summary = "Ancien résumé de phase.";
+    Object.assign(oldStep, {
+      title: "Ancien titre d’étape",
+      objective: "Ancien objectif.",
+      reason: "Ancienne raison.",
+      role: "Ancien rôle",
+      recommendedTool: "Ancien outil",
+      chatGptMission: "Ancienne mission ChatGPT",
+      codexMission: "Ancienne mission Codex",
+      deliverables: ["Ancien résultat attendu"],
+      successCriteria: ["Ancien critère"],
+      humanApprovalReason: "Ancienne raison d’accord.",
+      status: "partial",
+      userNotes: "Résultat utilisateur à conserver exactement.",
+      humanApprovalGranted: true,
+    });
+    const raw = JSON.stringify({ schemaVersion: 2, projects: [existing] });
+    const storage = memoryStorage({ [PROJECT_STORAGE_KEY]: raw });
+
+    const [refreshed] = readProjects(storage);
+    const current = project("current-copy", existing.createdAt);
+    const currentPhase = current.phases.find((phase) => phase.id === "launch-improve")!;
+    const currentStep = currentPhase.steps.find((step) => step.id === "launch-release")!;
+    const refreshedPhase = refreshed.phases.find((phase) => phase.id === "launch-improve")!;
+    const refreshedStep = refreshedPhase.steps.find((step) => step.id === "launch-release")!;
+
+    expect(refreshedPhase.name).toBe(currentPhase.name);
+    expect(refreshedPhase.summary).toBe(currentPhase.summary);
+    expect(refreshedStep).toMatchObject({
+      title: currentStep.title,
+      objective: currentStep.objective,
+      reason: currentStep.reason,
+      role: currentStep.role,
+      recommendedTool: currentStep.recommendedTool,
+      chatGptMission: currentStep.chatGptMission,
+      codexMission: currentStep.codexMission,
+      deliverables: currentStep.deliverables,
+      successCriteria: currentStep.successCriteria,
+      humanApprovalReason: currentStep.humanApprovalReason,
+      status: "partial",
+      userNotes: "Résultat utilisateur à conserver exactement.",
+      humanApprovalGranted: true,
+    });
+    expect({
+      id: refreshed.id,
+      title: refreshed.title,
+      brief: refreshed.brief,
+      hardware: refreshed.hardware,
+      createdAt: refreshed.createdAt,
+      updatedAt: refreshed.updatedAt,
+      migrationHistory: refreshed.migrationHistory,
+    }).toEqual({
+      id: existing.id,
+      title: existing.title,
+      brief: existing.brief,
+      hardware: existing.hardware,
+      createdAt: existing.createdAt,
+      updatedAt: existing.updatedAt,
+      migrationHistory: existing.migrationHistory,
+    });
+    expect(storage.values.get(PROJECT_STORAGE_KEY)).toBe(raw);
+  });
+
   it("sorts without mutating and rejects duplicate identifiers", () => {
     const older = project("older", "2026-07-13T10:00:00.000Z");
     const newer = project("newer", "2026-07-13T11:00:00.000Z");

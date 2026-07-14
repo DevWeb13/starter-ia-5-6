@@ -103,7 +103,7 @@ export function ProjectStepCard({ step, disabled, onUpdate }: Props) {
           ) : primary ? (
             <Button type="button" className="mt-3 w-full sm:w-auto" disabled={disabled} onClick={() => copyMission(primary)}>
               <Clipboard aria-hidden="true" className="size-4" />
-              {primary.tool === "Codex" ? "Exécuter avec Codex" : "Préparer avec ChatGPT"}
+              {primary.tool === "Codex" ? "Copier pour Codex" : "Copier pour ChatGPT"}
             </Button>
           ) : (
             <p className="mt-3 font-semibold">Réalisez cette étape vous-même, puis notez le résultat.</p>
