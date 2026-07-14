@@ -56,25 +56,36 @@ Résultat vérifié : modèle local version 2, migration conservatrice, moteur d
 
 Les anciennes étapes **9 — Exécution guidée** et **10 — Lancement démontré** ont été remplacées avant implémentation. Elles ne constituent plus la suite active. Les idées encore utiles devront être réévaluées dans la nouvelle direction, sans automatisme.
 
-## Progression active
-
 ### Mission A — Recentrage documentaire
 
 **Branche :** `work/09-codex-starter-realignment`
 
-**Statut :** en cours.
+**Statut :** terminée, fusionnée par squash via la PR nº 12 au commit `2cc1f7ff090b5b7a8dcc76db2eba0349ba260420`.
 
-Aligner direction, contrat du starter, sources de vérité et feuille de route. Aucune modification fonctionnelle.
+Résultat : direction recentrée sur des starters Codex locaux et déterministes, ancien MVP conservé comme mode secondaire, générateur et ZIP explicitement déclarés non implémentés.
+
+## Progression active
 
 ### Mission B — Starter manuel de référence
 
-**Statut :** prochaine mission après fusion de la Mission A.
+**Branche de préparation :** `work/10-social-autopilot-starter`
 
-Créer manuellement un starter complet pour un vrai projet et l’utiliser avec Codex afin d’identifier les fichiers utiles, inutiles ou manquants.
+**Statut :** active.
+
+**Projet pilote :** Social Autopilot.
+
+Créer manuellement un starter complet pour ce projet, puis l’utiliser avec Codex dans un test contrôlé afin d’identifier les fichiers utiles, inutiles ou manquants.
+
+La mission est détaillée dans [`missions/MISSION-B-SOCIAL-AUTOPILOT.md`](missions/MISSION-B-SOCIAL-AUTOPILOT.md).
+
+Le travail est séparé en deux portes :
+
+1. préparation et revue du starter, sans code applicatif ;
+2. première mission Codex minimale, sans réseau réel ni publication sociale.
 
 ### Mission C — Spécification du générateur
 
-**Statut :** future, dépend de la Mission B.
+**Statut :** future, dépend du retour réel de la Mission B.
 
 Définir les champs d’entrée, les règles de sélection, le schéma, le manifeste, les contenus, les erreurs, le format ZIP et les tests. Aucun choix technique détaillé n’est arrêté avant le retour d’usage de la Mission B.
 
@@ -88,7 +99,7 @@ Transformer le parcours principal pour générer, prévisualiser et télécharge
 
 **Statut :** future.
 
-Utiliser le générateur sur un projet réel, mesurer sa valeur et tester un service d’installation personnalisé, sans inventer de résultat commercial.
+Utiliser le générateur sur un projet réel, mesurer sa valeur et tester un service d’installation personnalisé, sans inventer de résultat commercial. Le projet de carrosserie pourra être considéré seulement lorsqu’il sera suffisamment cadré et sans le traiter comme un test jetable.
 
 ## Veille future
 
