@@ -4,12 +4,10 @@
 
 ## État officiel
 
-- **Mission 11 — recentrage sur les guides et templates : en cours.**
-- **Branche :** `work/11-simplify-starter-ia`.
-- **Direction active :** site de ressources pratique et kit de démarrage statique.
-- **Direction abandonnée :** générateur de starters, ZIP, manifeste automatique et pilote Social Autopilot.
-
-L’état instantané de la branche, de la pull request et des contrôles se vérifie dans GitHub. Ce document décrit le produit et la direction réellement enregistrés.
+- Starter IA est recentré sur les guides, configurations, prompts et templates.
+- Le kit de démarrage statique minimal est disponible.
+- Le MVP local en six phases est conservé comme démonstration historique.
+- Le générateur de starters, le ZIP, le manifeste automatique et le pilote Social Autopilot sont abandonnés comme direction active.
 
 ## Disponible aujourd’hui
 
@@ -63,4 +61,4 @@ Le noyau minimal est volontairement limité à :
 
 ## Prochaine action
 
-Terminer l’inventaire et la clarification des ressources, vérifier la cohérence de l’interface et du kit, puis publier un premier guide ou cas d’usage concret avant d’envisager une nouvelle fonction.
+Consolider le kit et les prompts, puis publier un premier guide ou cas d’usage concret avant d’envisager une nouvelle fonction.

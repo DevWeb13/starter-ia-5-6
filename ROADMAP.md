@@ -15,19 +15,19 @@ Le MVP local et ses tests sont conservés comme démonstration historique. Ils n
 
 ### 1. Inventorier et clarifier les ressources
 
-**Statut :** en cours.
+**Statut :** terminé.
 
 Aligner les documents de référence, distinguer le noyau minimal des fichiers facultatifs et retirer les promesses de générateur.
 
 ### 2. Simplifier la navigation et les textes
 
-**Statut :** en cours.
+**Statut :** terminé.
 
 Faire comprendre dès l’accueil le rôle de Starter IA, les différences entre ChatGPT, Work et Codex, et les points d’entrée vers configurations, guides, kit et prompts.
 
 ### 3. Consolider le kit et les prompts
 
-**Statut :** prochaine étape.
+**Statut :** prochaine étape active.
 
 Tester les quatre fichiers du noyau minimal sur un projet réel, améliorer les exemples et ne conserver les options qui apportent une valeur observée.
 
