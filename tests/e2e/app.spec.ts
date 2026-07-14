@@ -70,14 +70,31 @@ test("les ressources, l’accompagnement et l’ancienne route tarifs restent ac
 
   const supportResponse = await page.goto("/accompagnement");
   expect(supportResponse?.status()).toBe(200);
-  await expect(page.getByRole("heading", { level: 1, name: /installer un workflow ChatGPT \+ Codex/i })).toBeVisible();
-  await expect(page.getByRole("heading", { level: 2, name: "390 € TTC" })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 1, name: /installer un cadre durable/i })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 2, name: "Offre pilote : 390 € TTC" })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 2, name: /utiliser les bons outils ne suffit pas/i })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 2, name: /un parcours simple/i })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 2, name: /comprendre l’offre avant de prendre contact/i })).toBeVisible();
+  await expect(page.getByText(/pas encore considérée comme validée par une première vente réelle/i)).toBeVisible();
+  await expect(page.getByText(/ne développe pas tout votre produit pour 390 € TTC/i)).toHaveCount(0);
+  await expect(page.getByText(/développement complet de votre produit pour 390 € TTC/i)).toBeVisible();
+  const finalCta = page.getByRole("region", { name: /construire un cadre que vous pourrez continuer/i });
+  await expect(finalCta.getByText(/indépendant, non officiel et non affilié à OpenAI/i)).toBeVisible();
 
-  const supportLink = page.getByRole("link", { name: /Demander l’accompagnement pilote/ });
-  await expect(supportLink).toHaveAttribute("href", "https://www.lareponsedev.fr/");
-  await expect(supportLink).toHaveAttribute("target", "_blank");
-  await expect(supportLink).toHaveAttribute("rel", "noopener noreferrer");
-  expect((await supportLink.boundingBox())?.height).toBeGreaterThanOrEqual(44);
+  const supportLinks = page.getByRole("link", { name: /Demander l’accompagnement Starter IA/ });
+  await expect(supportLinks).toHaveCount(2);
+  for (const supportLink of await supportLinks.all()) {
+    await expect(supportLink).toHaveAttribute("href", "https://www.lareponsedev.fr/?besoin=starter-ia#contact");
+    await expect(supportLink).toHaveAttribute("target", "_blank");
+    await expect(supportLink).toHaveAttribute("rel", "noopener noreferrer");
+    expect((await supportLink.boundingBox())?.height).toBeGreaterThanOrEqual(44);
+  }
+  const questions = page.locator("details > summary");
+  await expect(questions).toHaveCount(7);
+  await questions.first().focus();
+  await expect(questions.first()).toBeFocused();
+  await page.keyboard.press("Enter");
+  await expect(page.getByText(/Starter IA fournit des ressources et un kit de fichiers/)).toBeVisible();
   await expect(page.locator("form")).toHaveCount(0);
   await expect(page.locator('input, textarea, select')).toHaveCount(0);
   await expect(page.locator('a[href*="checkout"], a[href*="stripe"]')).toHaveCount(0);
