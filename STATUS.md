@@ -6,6 +6,7 @@
 
 - Starter IA est recentré sur les guides, configurations, prompts et templates.
 - Le kit de démarrage statique minimal est disponible.
+- Une offre pilote facultative d’installation et d’adaptation humaine est présentée à 390 € TTC.
 - Le MVP local en six phases est conservé comme démonstration historique.
 - Le générateur de starters, le ZIP, le manifeste automatique et le pilote Social Autopilot sont abandonnés comme direction active.
 
@@ -17,7 +18,10 @@
 - comparatif de ChatGPT, Work, Codex local, Codex Remote et Work + Codex ;
 - guides de configuration dans `guides/configurations/` ;
 - prompts dans `prompts/`, modèle de brief et formation express ;
-- kit statique minimal dans `templates/starter-kit/`, consultable et copiable fichier par fichier.
+- kit statique minimal dans `templates/starter-kit/`, consultable et copiable fichier par fichier ;
+- route `/ressources` pour le kit, les options, les prompts, les modèles, les guides et la formation ;
+- route `/accompagnement` pour décrire l’offre pilote et orienter vers le site public LaReponseDev ;
+- redirection permanente de l’ancienne route `/tarifs` vers `/ressources`.
 
 ### Démonstration locale historique
 
@@ -43,6 +47,12 @@ Le noyau minimal est volontairement limité à :
 
 `DECISIONS.md`, `QUALITY.md` et `.codex/config.toml` sont fournis comme options documentées. Aucun ZIP, générateur ou manifeste automatique n’est présent.
 
+Le kit n’est pas encore déclaré validé sur un projet extérieur : aucune observation de ce type n’est enregistrée dans les sources de vérité.
+
+## Expérimentation commerciale
+
+L’offre pilote « Installation et adaptation Starter IA » est affichée à 390 € TTC. Elle reste un service humain ponctuel, sans paiement intégré, compte, formulaire distant ou automatisation de Codex. Aucune vente, aucun revenu et aucun gain de temps ne sont encore revendiqués ; l’offre ne sera considérée comme validée qu’après une première vente réelle.
+
 ## Historique conservé
 
 - les décisions et commits des phases précédentes ;
@@ -61,4 +71,4 @@ Le noyau minimal est volontairement limité à :
 
 ## Prochaine action
 
-Consolider le kit et les prompts, puis publier un premier guide ou cas d’usage concret avant d’envisager une nouvelle fonction.
+Présenter l’offre pilote à des prospects pertinents avec validation humaine, recueillir les objections et rechercher une première vente réelle, tout en consolidant le kit sans prétendre qu’il a déjà été validé sur un projet extérieur.

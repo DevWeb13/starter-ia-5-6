@@ -12,8 +12,9 @@ export function SiteFooter() {
         </div>
         <nav className="flex flex-wrap gap-x-5 gap-y-2 text-sm" aria-label="Pied de page">
           <Link className="underline underline-offset-4" href="/docs">Configurations</Link>
-          <Link className="underline underline-offset-4" href="/tarifs">Kit et prompts</Link>
+          <Link className="underline underline-offset-4" href="/ressources">Ressources</Link>
           <Link className="underline underline-offset-4" href="/fonctionnalites">Méthode</Link>
+          <Link className="underline underline-offset-4" href="/accompagnement">Accompagnement</Link>
           <Link className="text-muted-foreground underline underline-offset-4" href="/demo">Démo historique</Link>
           <Link className="text-muted-foreground underline underline-offset-4" href="/dashboard">Projets locaux</Link>
           <a

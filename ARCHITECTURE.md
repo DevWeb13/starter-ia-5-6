@@ -25,11 +25,14 @@ Les routes publiques existantes sont réutilisées :
 
 - `/` : orientation et points de départ ;
 - `/docs` : choix entre ChatGPT, Work et les configurations Codex ;
-- `/tarifs` : kit, prompts, templates et guides ;
+- `/ressources` : kit, prompts, templates, guides et formation ;
 - `/fonctionnalites` : méthode ChatGPT → Codex → ChatGPT ;
+- `/accompagnement` : présentation statique du service pilote et CTA externe vers LaReponseDev ;
 - `/demo` : démonstration locale historique.
 
-Les ressources restent des fichiers Markdown ou TOML simples. Le site renvoie vers leur version enregistrée dans GitHub ; il n’existe ni base de données, ni API IA, ni service de génération.
+`/tarifs` reste une route de compatibilité et redirige de façon permanente vers `/ressources`.
+
+Les ressources restent des fichiers Markdown ou TOML simples. Le site renvoie vers leur version enregistrée dans GitHub. L’accompagnement est une page commerciale statique : la prise de contact quitte Starter IA vers le site public LaReponseDev. Il n’existe ni base de données, ni formulaire distant, ni paiement intégré, ni API IA, ni service de génération.
 
 ## Kit statique
 

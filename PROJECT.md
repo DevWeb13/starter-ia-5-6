@@ -6,7 +6,7 @@
 
 > Projet communautaire indépendant, non officiel et non affilié à OpenAI.
 
-Le produit aide à comprendre les rôles, choisir une configuration réaliste, préparer un dépôt pour Codex et copier des modèles ou prompts utiles. Il privilégie des pages lisibles et des fichiers statiques versionnés plutôt qu’un SaaS, un orchestrateur autonome ou un générateur de dossiers.
+Le produit aide à comprendre les rôles, choisir une configuration réaliste, préparer un dépôt pour Codex et copier des modèles ou prompts utiles. Un service humain facultatif peut installer et adapter ce socle dans un dépôt. Starter IA privilégie des pages lisibles et des fichiers statiques versionnés plutôt qu’un SaaS, un orchestrateur autonome ou un générateur de dossiers.
 
 ## À qui il sert
 
@@ -25,7 +25,8 @@ Starter IA doit permettre de :
 3. préparer un projet pour Codex sans multiplier les documents inutiles ;
 4. consulter et copier des guides, prompts et modèles ;
 5. appliquer une méthode simple et vérifiable ;
-6. apprendre grâce à des exemples et retours d’expérience factuels.
+6. apprendre grâce à des exemples et retours d’expérience factuels ;
+7. demander, si nécessaire, une installation humaine bornée sans transformer le site en SaaS.
 
 ## Rôles des outils
 
@@ -64,9 +65,16 @@ prompts/FIRST-MISSION.md
 
 Les fichiers `DECISIONS.md`, `QUALITY.md` et `.codex/config.toml` sont facultatifs. Ils deviennent utiles lorsque les décisions s’accumulent, que plusieurs critères doivent être contrôlés ou qu’une configuration locale prudente doit être partagée. Le kit n’impose pas treize fichiers et n’ajoute aucun manifeste automatique.
 
+## Offre pilote d’accompagnement
+
+L’offre « Installation et adaptation Starter IA » est un service humain facultatif affiché à **390 € TTC** pendant sa phase pilote. Elle couvre l’analyse du projet et du dépôt, le choix d’une configuration réaliste, l’adaptation du kit minimal, la préparation d’une première mission Codex et la définition des contrôles et limites.
+
+Elle ne comprend ni développement complet du produit, ni abonnement tiers, ni gestion de secrets, ni disponibilité illimitée, ni fusion ou mise en production automatique. La demande passe par le site public LaReponseDev ; Starter IA n’ajoute aucun formulaire, paiement intégré, compte ou stockage distant. L’offre reste une hypothèse commerciale tant qu’une première vente réelle n’a pas été observée.
+
 ## Ce qui existe réellement
 
 - une application Next.js publique présentant les ressources ;
+- une page d’accompagnement présentant l’offre pilote et renvoyant vers LaReponseDev ;
 - cinq guides de configuration : ChatGPT, Work, Codex local, Codex Remote et Work + Codex ;
 - des prompts, un modèle de brief, une formation courte et le kit statique ;
 - un MVP local déterministe de six phases et 16 étapes avec stockage navigateur, missions copiables et exports Markdown/JSON.
@@ -90,6 +98,7 @@ Ces idées restent dans l’historique des décisions lorsqu’elles expliquent 
 - réutiliser les pages, composants et ressources existants ;
 - ajouter une fonction seulement après un besoin observé ;
 - préférer un fichier statique copiable à une automatisation prématurée ;
+- fonder la progression économique sur des ventes et retours réels, jamais sur une validation supposée ;
 - distinguer disponible, démonstration historique, abandonné et prochaine étape ;
 - ne jamais exposer de secret ni promettre une capacité non vérifiée.
 

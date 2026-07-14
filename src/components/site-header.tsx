@@ -12,8 +12,9 @@ import { cn } from "@/lib/utils";
 const navigation = [
   { href: "/", label: "Accueil" },
   { href: "/docs", label: "Configurations" },
-  { href: "/tarifs", label: "Kit et prompts" },
+  { href: "/ressources", label: "Ressources" },
   { href: "/fonctionnalites", label: "Méthode" },
+  { href: "/accompagnement", label: "Accompagnement" },
 ];
 
 function isCurrent(pathname: string, href: string) {

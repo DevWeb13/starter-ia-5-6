@@ -6,53 +6,57 @@ Ce document décline le positionnement de [`PROJECT.md`](../PROJECT.md). Il ne d
 
 ## Message maître
 
-**Titre :** Préparez un projet prêt pour Codex.
+**Titre :** Mieux utiliser ChatGPT, Work et Codex, sans complexité inutile.
 
-**Sous-titre :** Starter IA vise à transformer la description d’un projet, l’environnement réel et les besoins utiles en un dossier de travail clair, versionnable et directement exploitable avec Codex.
+**Sous-titre :** Starter IA rassemble des guides gratuits, une méthode simple et un petit kit de fichiers prêts à copier pour préparer des missions Codex claires et vérifiables.
 
-**Question d’entrée cible :** Quel projet voulez-vous préparer pour Codex ?
+**Action gratuite principale :** Choisir une configuration ou consulter les ressources.
+
+## Message de la méthode
+
+**Cadrer dans ChatGPT → exécuter dans Codex → contrôler dans ChatGPT.**
+
+Work peut prendre en charge une mission cloud complète lorsque les fichiers et outils requis sont réellement disponibles. Il reste facultatif.
+
+## Message de l’offre pilote
+
+**Titre :** Installer un workflow ChatGPT + Codex adapté à votre projet.
+
+**Offre :** Installation et adaptation Starter IA — **390 € TTC**.
+
+**Promesse bornée :** une intervention humaine pour analyser le dépôt, choisir une configuration réaliste, adapter le kit minimal, préparer une première mission vérifiable et définir les contrôles et limites.
+
+**CTA :** Demander l’accompagnement pilote.
+
+L’offre ne comprend pas le développement complet du produit, les abonnements tiers, la gestion de secrets, une disponibilité illimitée, une fusion ou une mise en production automatique. Elle n’est pas validée avant une première vente réelle.
 
 ## Preuve disponible aujourd’hui
 
-Le dépôt open source, ses ressources et le MVP local version 2 sont accessibles. Le MVP organise réellement un projet en six phases et 16 étapes, conserve les données dans le navigateur et exporte Markdown/JSON. Il est déterministe, n’appelle aucune IA automatiquement et devient secondaire.
-
-## Prochaine expérimentation
-
-La Mission B créera manuellement un starter pour un vrai projet et l’utilisera avec Codex. Elle doit vérifier le noyau, les modules, la clarté des instructions et la première mission avant toute automatisation.
-
-## Message de la cible future
-
-Le futur générateur local déterministe préparera un aperçu, un dossier ou ZIP, un manifeste et une première mission fournie sous forme de prompt copiable. Il n’est pas encore construit ; aucun téléchargement de starter ne doit être promis au présent.
-
-## Bénéfices à démontrer
-
-- réduire le temps de préparation d’un dépôt pour Codex ;
-- fournir le bon contexte sans documentation inutile ;
-- adapter les recommandations à l’environnement réellement disponible ;
-- expliquer pourquoi chaque fichier est présent ;
-- permettre de commencer avec une première mission claire.
+Le dépôt open source, les guides, les prompts, les modèles et le kit statique sont accessibles. Le MVP local version 2 reste utilisable comme démonstration historique ; il stocke les données dans le navigateur et n’appelle aucune IA automatiquement.
 
 ## Ton et claims interdits
 
 - direct, concret et calme ;
-- distinction explicite entre existant, expérimentation et cible future ;
+- ressources gratuites présentées avant le service facultatif ;
+- distinction explicite entre disponible, pilote non validé et historique ;
 - aucun jargon sans définition courte ;
-- aucun générateur, ZIP, appel IA, Remote universel, compte, paiement, client, prix, gain ou revenu présenté sans preuve ;
+- aucun générateur, ZIP, appel IA, Remote universel, compte ou paiement intégré présenté comme disponible ;
+- aucun client, revenu, gain ou productivité chiffrée inventé ;
 - aucune affiliation à OpenAI suggérée.
 
 ## Réponses courtes
 
-**« Puis-je déjà générer un starter ou un ZIP ? »**
+**« Les ressources deviennent-elles payantes ? »**
 
-Non. Le générateur est une cible future. La prochaine étape est de valider un starter manuel sur un vrai projet.
+Non. Les guides, prompts, modèles et le kit minimal restent gratuits. Le service d’installation est facultatif.
 
-**« Que fait l’application actuelle ? »**
+**« Que couvre le prix de 390 € TTC ? »**
 
-Elle fournit un parcours local déterministe en six phases et 16 étapes, avec stockage navigateur et exports. Ce MVP reste utilisable et secondaire.
+Une installation pilote bornée : analyse, choix de configuration, adaptation du kit, première mission et contrôles. Le développement complet du produit n’est pas inclus.
 
 **« Starter IA appelle-t-il Codex ? »**
 
-Non. Il n’exécute aujourd’hui aucun appel automatique à ChatGPT, Codex ou un fournisseur IA.
+Non. Il n’exécute aucun appel automatique à ChatGPT, Codex ou un fournisseur IA.
 
 **« Work est-il obligatoire ? »**
 

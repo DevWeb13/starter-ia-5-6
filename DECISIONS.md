@@ -223,3 +223,13 @@ Le kit repose sur quatre fichiers minimaux — `PROJECT.md`, `STATUS.md`, `AGENT
 Le générateur complexe de starters, le ZIP comme cœur produit, le manifeste automatique, la Mission B Social Autopilot et les Missions C à E associées sont abandonnés comme direction active. La création ou le pilotage automatique de dépôts, l’exécution automatique de Codex, l’API IA, l’authentification, le paiement et le stockage distant restent hors périmètre.
 
 Le MVP local en six phases, son Dashboard, son stockage navigateur et ses exports sont conservés comme démonstration historique utile. Ils restent accessibles et testés, mais ne sont plus la porte d’entrée ni la prochaine priorité.
+
+## D-032 — Offre pilote humaine sans SaaS
+
+**Date :** 2026-07-14 — **Statut :** acceptée — complète D-031
+
+Les ressources gratuites, le kit statique minimal et la méthode ChatGPT → Codex → contrôle restent le cœur de Starter IA. Le premier modèle économique testé est un service humain facultatif d’installation et d’adaptation du kit dans un dépôt.
+
+Le prix pilote affiché est de **390 € TTC**. La page `/accompagnement` décrit précisément le périmètre et renvoie vers le site public LaReponseDev ; aucun paiement intégré, compte, formulaire avec stockage distant, SaaS ou exécution automatique de Codex n’est ajouté. L’ancienne route `/tarifs` redirige vers la nouvelle route `/ressources`.
+
+Cette offre n’est pas considérée comme validée avant une première vente réelle. Aucun client, revenu, gain de temps ou validation du kit sur un projet extérieur n’est revendiqué sans observation enregistrée.

@@ -25,20 +25,26 @@ Aligner les documents de référence, distinguer le noyau minimal des fichiers f
 
 Faire comprendre dès l’accueil le rôle de Starter IA, les différences entre ChatGPT, Work et Codex, et les points d’entrée vers configurations, guides, kit et prompts.
 
-### 3. Consolider le kit et les prompts
+### 3. Ouvrir le chemin commercial pilote
+
+**Statut :** terminé pour l’implémentation du parcours.
+
+Séparer les ressources gratuites sur `/ressources`, présenter le service humain sur `/accompagnement` au prix pilote de 390 € TTC et conserver un contact externe simple sans paiement intégré.
+
+### 4. Obtenir une première vente réelle
 
 **Statut :** prochaine étape active.
 
-Tester les quatre fichiers du noyau minimal sur un projet réel, améliorer les exemples et ne conserver les options qui apportent une valeur observée.
+Présenter l’offre à des prospects pertinents, recueillir leurs objections et vérifier si une personne paie réellement pour l’installation. Tant que cette vente n’existe pas, l’offre reste une hypothèse non validée.
 
-### 4. Publier un guide ou cas d’usage concret
-
-**Statut :** à faire.
-
-Documenter un passage simple : cadrage dans ChatGPT, exécution dans Codex, contrôle dans ChatGPT, avec limites et preuves.
-
-### 5. Recueillir les retours
+### 5. Consolider le kit par l’usage
 
 **Statut :** à faire.
 
-Observer où les utilisateurs hésitent avant d’ajouter une nouvelle page, un nouveau template ou une fonction. Aucun générateur, compte ou service distant n’est planifié sans validation de ce besoin.
+Utiliser le noyau minimal sur un projet extérieur lorsque l’occasion se présente, documenter les difficultés et améliorer les exemples. Ne pas déclarer cette validation avant observation.
+
+### 6. Publier un guide ou cas d’usage concret
+
+**Statut :** à faire.
+
+Documenter un passage simple : cadrage dans ChatGPT, exécution dans Codex, contrôle dans ChatGPT, avec limites et preuves. Aucun générateur, compte ou service distant n’est planifié sans validation d’un besoin réel.
