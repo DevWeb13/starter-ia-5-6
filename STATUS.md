@@ -4,8 +4,8 @@
 **Étape :** 8 — simplification de l’expérience du MVP local
 **Branche active :** `work/08-human-first-ux`
 **Base réelle :** `5ca3a6fdd510dc7d1a11382d086c0113c78975ee`
-**Pull request :** à ouvrir en brouillon
-**Statut réel :** implémentation, deux cycles de revue et contrôles locaux finaux terminés ; PR, CI et Preview à vérifier
+**Pull request :** nº 11 — prête pour révision
+**Statut réel :** implémentation, deux cycles de revue, contrôles locaux, CI initiale et Preview automatique vérifiés
 
 ## Point de départ
 
@@ -56,7 +56,10 @@ Le moteur n’a pas été reconstruit : le schéma 2, le stockage, la migration,
 - `npm test` : 4 fichiers et 31 tests réussis ;
 - `npm run build` : réussi hors sandbox avec Next.js 16.2.10 ;
 - `npm run test:e2e` : premier passage avec 18 réussites et 4 attentes obsolètes sur la méthode repliée, puis second passage avec 22 scénarios réussis ;
-- CI GitHub et Preview automatique : pas encore observées.
+- CI GitHub de la PR nº 11 sur `44d4069` : quality, GitGuardian, Vercel et Vercel Preview Comments réussis ;
+- Preview Vercel automatique `dpl_9VN5FosBFLK4oYEHBo4DNPJSDKgP` : état `READY`, source Git, branche `work/08-human-first-ux`, PR nº 11 et `target: null` ; aucune production ni commande de déploiement manuel ;
+- logs Vercel : build Next.js, TypeScript, 10 routes et déploiement terminés sans erreur ; l’accès HTTP direct reste protégé par l’authentification Vercel, donc aucune vérification visuelle distante n’est revendiquée ;
+- threads de revue GitHub : aucun lors du contrôle.
 
 ## Revue indépendante
 
@@ -76,4 +79,4 @@ Le moteur n’a pas été reconstruit : le schéma 2, le stockage, la migration,
 
 ## Prochaine action
 
-Créer les commits, ouvrir la PR en brouillon, puis vérifier sa CI et sa Preview automatique sans fusion ni production manuelle.
+Revue humaine de la PR nº 11, sans fusion automatique ni production manuelle.
