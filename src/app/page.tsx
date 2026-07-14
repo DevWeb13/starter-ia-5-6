@@ -34,7 +34,7 @@ const workflow = [
 
 const startingPoints = [
   ["Choisir une configuration", "Comparez ChatGPT, Work, Codex local, Codex Remote et le mode hybride.", "/docs", "Comparer les configurations"],
-  ["Préparer un dépôt", "Copiez quatre fichiers minimaux, puis ajoutez seulement les options utiles.", "/tarifs", "Voir le kit de démarrage"],
+  ["Préparer un dépôt", "Copiez quatre fichiers minimaux, puis ajoutez seulement les options utiles.", "/ressources", "Voir le kit de démarrage"],
   ["Appliquer la méthode", "Suivez un passage de relais simple, sans automatisation ni promesse cachée.", "/fonctionnalites", "Lire la méthode"],
 ];
 
@@ -57,7 +57,7 @@ export default function HomePage() {
                 Choisir ma configuration
                 <ArrowRight aria-hidden="true" className="size-5" />
               </Link>
-              <Link href="/tarifs" className={buttonVariants({ variant: "secondary", size: "lg", className: "w-full sm:w-auto" })}>
+              <Link href="/ressources" className={buttonVariants({ variant: "secondary", size: "lg", className: "w-full sm:w-auto" })}>
                 Voir le kit et les prompts
               </Link>
             </div>
@@ -142,6 +142,22 @@ export default function HomePage() {
               </Card>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="border-y bg-muted/35 py-14 sm:py-20" aria-labelledby="support-title">
+        <div className="page-shell rounded-2xl border bg-card p-5 sm:p-8 lg:flex lg:items-center lg:justify-between lg:gap-8">
+          <div className="max-w-2xl space-y-3">
+            <p className="eyebrow">Besoin d’un accompagnement</p>
+            <h2 id="support-title" className="section-title">Installer le workflow avec votre projet.</h2>
+            <p className="text-muted-foreground">
+              Les guides et le kit restent gratuits. Si vous préférez être accompagné, une installation personnalisée est proposée au prix pilote de 390 € TTC.
+            </p>
+          </div>
+          <Link href="/accompagnement" className={buttonVariants({ variant: "secondary", size: "lg", className: "mt-6 w-full shrink-0 lg:mt-0 lg:w-auto" })}>
+            Découvrir l’accompagnement
+            <ArrowRight aria-hidden="true" className="size-5" />
+          </Link>
         </div>
       </section>
 

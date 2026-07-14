@@ -17,6 +17,9 @@ test("les routes locales restent hors de l’indexation publique", async ({ page
   expect(sitemapResponse.ok()).toBe(true);
 
   const sitemap = await sitemapResponse.text();
+  expect(sitemap).toContain("/ressources");
+  expect(sitemap).toContain("/accompagnement");
   expect(sitemap).toContain("/demo");
+  expect(sitemap).not.toContain("/tarifs");
   expect(sitemap).not.toContain("/dashboard");
 });

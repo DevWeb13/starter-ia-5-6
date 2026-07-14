@@ -4,47 +4,49 @@ Ce document applique la direction définie dans [`PROJECT.md`](../PROJECT.md). I
 
 > Projet communautaire indépendant, non officiel et non affilié à OpenAI.
 
-## Catégorie cible
+## Catégorie active
 
-Starter IA vise à devenir un générateur open source, local et déterministe de starters Codex. Un starter est un dossier de préparation du travail, pas une application déjà développée.
-
-Le générateur n’est pas encore construit. Le MVP local version 2 en six phases et 16 étapes reste réellement disponible, conservé et secondaire.
+Starter IA est un site de ressources gratuites et un kit statique minimal pour mieux utiliser ChatGPT, Work et Codex. Un service humain facultatif permet d’installer et d’adapter ce socle dans un dépôt ; il ne transforme pas Starter IA en SaaS.
 
 ## Cible initiale
 
-Développeurs, freelances, indépendants, petites agences et petites équipes qui utilisent ou souhaitent utiliser Codex sur de vrais dépôts.
+Développeurs indépendants, freelances, petites agences et petites équipes qui commencent avec Codex ou dont le workflow est devenu confus.
 
 ## Problème
 
-Avant de travailler efficacement avec Codex, il faut réunir le contexte, le résultat attendu, les limites, les règles, les décisions, les agents, les contrôles et une première mission. Cette préparation est répétitive, lente et souvent trop lourde pour les petits projets.
+Les rôles de ChatGPT, Work et Codex, les règles du dépôt, le contexte durable et les contrôles sont souvent dispersés. Cette confusion rend la première mission difficile à cadrer et à vérifier, sans justifier pour autant une plateforme complexe.
 
 ## Positionnement actif
 
-> Starter IA prépare un environnement de travail prêt pour Codex à partir du projet, de l’environnement réel et des modules utiles.
+> Starter IA fournit gratuitement une méthode, des guides et un petit kit versionné pour cadrer dans ChatGPT, agir avec Codex et contrôler le résultat. Une installation humaine est disponible pour les personnes qui préfèrent être accompagnées.
 
-## Différenciation à démontrer
+## Cœur gratuit
 
-- obtenir rapidement un dossier exploitable ;
-- sélectionner seulement les fichiers justifiés par le projet ;
-- adapter la configuration à l’environnement réellement disponible ;
-- rendre le contenu déterministe et versionnable ;
-- fournir une première mission directement copiable.
+- cinq configurations documentées selon les outils réellement disponibles ;
+- méthode ChatGPT → Codex → contrôle dans ChatGPT ;
+- quatre fichiers minimaux et trois options clairement séparées ;
+- prompts, modèles, guides et formation consultables publiquement.
 
-Ces bénéfices sont des hypothèses. La Mission B doit d’abord les éprouver avec un starter manuel.
+## Offre pilote facultative
+
+« Installation et adaptation Starter IA » est affichée à **390 € TTC**. Le service analyse le projet et le dépôt, choisit une configuration réaliste, adapte le kit minimal, prépare une première mission vérifiable et définit les contrôles et limites.
+
+Le prix et le périmètre sont publics, mais l’offre reste une hypothèse commerciale tant qu’aucune première vente réelle n’a été observée.
 
 ## Preuves autorisées aujourd’hui
 
-- dépôt et ressources open source accessibles ;
-- MVP local déterministe en six phases et 16 étapes ;
-- stockage navigateur, Dashboard, éditeur et exports disponibles ;
+- dépôt, guides, prompts, modèles et kit open source accessibles ;
+- pages `/ressources` et `/accompagnement` implémentées dans l’application ;
+- MVP local déterministe conservé comme démonstration historique ;
 - contrôles locaux, CI, PR ou Preview uniquement lorsqu’ils ont été vérifiés.
 
 ## Frontières honnêtes
 
-- aucun générateur, aperçu ou ZIP disponible ;
+- aucun générateur, ZIP ou manifeste automatique ;
 - aucun appel ChatGPT, Codex ou fournisseur IA intégré ;
-- aucun compte, synchronisation, paiement ou collaboration distante ;
-- aucune publication, fusion ou production automatique ;
-- aucun client, avis, prix, gain ou revenu revendiqué sans preuve.
+- aucun compte, synchronisation, paiement ou formulaire avec stockage distant ;
+- aucune fusion, publication ou production automatique ;
+- aucun client, revenu, gain de temps ou productivité chiffrée revendiqué sans preuve ;
+- aucune affiliation à OpenAI.
 
-La progression envisagée est : starter open source utile → usage réel → cas concrets → service d’installation et d’adaptation → éventuel produit hébergé après validation.
+La progression économique active est : ressources gratuites utiles → offre pilote humaine → première vente réelle → retours observés → adaptation éventuelle du service. Aucun produit hébergé n’est planifié sans validation d’un besoin distinct.

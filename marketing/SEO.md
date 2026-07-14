@@ -4,27 +4,35 @@ Ce document conserve des principes éditoriaux et techniques. La direction activ
 
 ## Objectif
 
-Rendre Starter IA découvrable comme outil de préparation de projets pour Codex, sans présenter le générateur, le ZIP, une intégration IA ou une automatisation comme disponibles.
+Rendre Starter IA découvrable pour ses ressources gratuites, son kit minimal, sa méthode ChatGPT → Codex → contrôle et son service facultatif d’installation, sans présenter une automatisation ou une validation commerciale comme acquise.
 
 ## Intentions à valider
 
-- préparer un projet pour Codex ;
-- starter Codex pour un dépôt existant ;
-- configurer un environnement de travail Codex ;
-- créer des règles et une première mission pour Codex ;
-- adapter Codex à Ubuntu/Linux, Windows ou macOS ;
-- utiliser Codex à distance lorsque la fonction est disponible.
+### Ressources gratuites
+
+- configurer ChatGPT et Codex pour un projet ;
+- préparer un dépôt pour Codex ;
+- créer des règles et une première mission Codex ;
+- choisir entre ChatGPT, Work, Codex local et Codex Remote ;
+- utiliser une méthode ChatGPT → Codex vérifiable.
+
+### Service d’accompagnement
+
+- accompagnement installation Codex ;
+- configurer un workflow ChatGPT et Codex ;
+- adapter un dépôt existant pour Codex ;
+- aide au démarrage Codex pour freelance ou petite équipe.
 
 Ces intentions sont des hypothèses. Leurs volumes, leur difficulté et leur valeur ne sont pas encore mesurés.
 
 ## Hiérarchie de contenu
 
-- présenter d’abord le résultat futur : un dossier de préparation prêt pour Codex ;
-- indiquer immédiatement que le générateur n’est pas encore construit ;
-- présenter ensuite le MVP local en six phases comme existant conservé et secondaire ;
-- expliquer la Mission B comme prochaine expérimentation ;
-- traiter les guides de configuration comme des références techniques ;
-- publier des cas, démonstrations et preuves uniquement lorsqu’ils existent réellement.
+- présenter d’abord les ressources gratuites et la méthode ;
+- orienter les besoins documentaires vers `/ressources` ;
+- présenter `/accompagnement` comme une option humaine, pilote et bornée ;
+- expliquer clairement le prix de 390 € TTC, ce qui est inclus et ce qui ne l’est pas ;
+- conserver la démonstration locale comme réalisation historique secondaire ;
+- publier des cas, ventes, résultats ou preuves uniquement lorsqu’ils existent réellement.
 
 ## Règles éditoriales
 
@@ -33,25 +41,26 @@ Ces intentions sont des hypothèses. Leurs volumes, leur difficulté et leur val
 - Premiers paragraphes orientés résultat, public et limites réelles.
 - Liens internes descriptifs.
 - Aucun jargon sans définition courte.
-- Aucune confusion entre existant vérifié, prochaine expérimentation et cible future.
-- Aucune promesse de générateur, ZIP, fournisseur intégré, Remote universel, marché validé, client, prix, gain ou revenu.
+- Aucune confusion entre ressources gratuites, offre pilote non validée et démonstration historique.
+- Aucune promesse de générateur, ZIP, fournisseur intégré, Remote universel, marché validé, client, gain ou revenu.
+- Le prix de 390 € TTC est toujours présenté comme celui d’une offre pilote humaine, jamais comme un paiement intégré.
 - Toujours conserver la mention « Projet communautaire indépendant, non officiel et non affilié à OpenAI. » sur les surfaces publiques pertinentes.
 
 ## Technique actuelle
 
 - rendu statique Next.js ;
 - HTML sémantique ;
-- métadonnées App Router ;
-- sitemap et robots existants ;
+- métadonnées App Router propres à `/ressources` et `/accompagnement` ;
+- sitemap contenant les deux routes actives et excluant l’ancienne route redirigée `/tarifs` ;
 - responsive mobile-first ;
-- aucune police ou image distante bloquante.
+- aucun formulaire, script de paiement, police ou image distante bloquante.
 
 ## Mesures futures
 
-- retours qualitatifs sur le starter manuel ;
-- temps nécessaire pour préparer puis commencer une première mission ;
-- fichiers retirés ou ajoutés après usage réel ;
-- compréhension de l’environnement recommandé ;
-- intérêt pour un service d’installation et d’adaptation.
+- compréhension des configurations et du kit ;
+- intérêt et objections concernant l’accompagnement ;
+- demandes qualifiées transmises vers LaReponseDev ;
+- première vente réelle et retours associés ;
+- difficultés observées lors d’une installation sur un projet extérieur.
 
 Aucun objectif chiffré n’est fixé avant une première base de mesure. Toute publication externe demande une validation humaine.

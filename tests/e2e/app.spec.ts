@@ -36,9 +36,18 @@ test("la landing présente les ressources, les rôles et le kit minimal", async 
   expect(response?.status()).toBe(200);
   await expect(page.getByRole("heading", { level: 1, name: /mieux utiliser ChatGPT, Work et Codex/i })).toBeVisible();
   await expect(page.getByRole("link", { name: "Choisir ma configuration" })).toHaveAttribute("href", "/docs");
-  await expect(page.getByRole("link", { name: "Voir le kit et les prompts" })).toHaveAttribute("href", "/tarifs");
+  await expect(page.getByRole("link", { name: "Voir le kit et les prompts" })).toHaveAttribute("href", "/ressources");
+  const desktopNavigation = page.getByRole("navigation", { name: "Navigation principale" });
+  for (const [label, href] of [["Accueil", "/"], ["Configurations", "/docs"], ["Ressources", "/ressources"], ["Méthode", "/fonctionnalites"], ["Accompagnement", "/accompagnement"]]) {
+    const navigationLink = desktopNavigation.getByRole("link", { name: label, exact: true });
+    await expect(navigationLink).toBeVisible();
+    await expect(navigationLink).toHaveAttribute("href", href);
+    expect((await navigationLink.boundingBox())?.height).toBeGreaterThanOrEqual(44);
+  }
   await expect(page.getByText("Aucun compte, service IA, paiement ou stockage distant n’est intégré.")).toBeVisible();
   await expect(page.getByText("Quatre fichiers suffisent pour démarrer.")).toBeVisible();
+  await expect(page.getByText(/prix pilote de 390 € TTC/)).toBeVisible();
+  await expect(page.getByRole("link", { name: "Découvrir l’accompagnement" })).toHaveAttribute("href", "/accompagnement");
   await expect(page.getByText(/Ressources et kit de démarrage pour mieux utiliser/)).toBeVisible();
   for (const role of ["ChatGPT", "Work", "Codex"]) {
     await expect(page.getByRole("heading", { name: role, exact: true })).toBeVisible();
@@ -46,6 +55,42 @@ test("la landing présente les ressources, les rôles et le kit minimal", async 
   await expect(page.getByRole("heading", { name: "Réfléchir, exécuter, contrôler." })).toBeVisible();
   await expect(page.getByRole("link", { name: "Ouvrir la démonstration" })).toHaveAttribute("href", "/demo");
   expect(browserErrors).toEqual([]);
+});
+
+test("les ressources, l’accompagnement et l’ancienne route tarifs restent accessibles", async ({ page, request }) => {
+  await page.setViewportSize({ width: 320, height: 640 });
+  const resourcesResponse = await page.goto("/ressources");
+  expect(resourcesResponse?.status()).toBe(200);
+  await expect(page.getByRole("heading", { level: 1, name: /préparer un projet pour Codex/i })).toBeVisible();
+  const resourcesDimensions = await page.evaluate(() => ({
+    scrollWidth: document.documentElement.scrollWidth,
+    clientWidth: document.documentElement.clientWidth,
+  }));
+  expect(resourcesDimensions.scrollWidth).toBeLessThanOrEqual(resourcesDimensions.clientWidth);
+
+  const supportResponse = await page.goto("/accompagnement");
+  expect(supportResponse?.status()).toBe(200);
+  await expect(page.getByRole("heading", { level: 1, name: /installer un workflow ChatGPT \+ Codex/i })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 2, name: "390 € TTC" })).toBeVisible();
+
+  const supportLink = page.getByRole("link", { name: /Demander l’accompagnement pilote/ });
+  await expect(supportLink).toHaveAttribute("href", "https://www.lareponsedev.fr/");
+  await expect(supportLink).toHaveAttribute("target", "_blank");
+  await expect(supportLink).toHaveAttribute("rel", "noopener noreferrer");
+  expect((await supportLink.boundingBox())?.height).toBeGreaterThanOrEqual(44);
+  await expect(page.locator("form")).toHaveCount(0);
+  await expect(page.locator('input, textarea, select')).toHaveCount(0);
+  await expect(page.locator('a[href*="checkout"], a[href*="stripe"]')).toHaveCount(0);
+  const supportDimensions = await page.evaluate(() => ({
+    scrollWidth: document.documentElement.scrollWidth,
+    clientWidth: document.documentElement.clientWidth,
+  }));
+  expect(supportDimensions.scrollWidth).toBeLessThanOrEqual(supportDimensions.clientWidth);
+
+  const legacyResponse = await request.get("/tarifs", { maxRedirects: 0 });
+  expect(legacyResponse.status()).not.toBe(404);
+  await page.goto("/tarifs");
+  await expect(page).toHaveURL(/\/ressources$/);
 });
 
 test("les boutons actifs, désactivés et au clavier gardent un retour clair", async ({ page }) => {
@@ -74,7 +119,7 @@ test("les boutons actifs, désactivés et au clavier gardent un retour clair", a
 });
 
 test("les liens externes ouvrent un nouvel onglet et les liens internes restent sur place", async ({ page }) => {
-  for (const path of ["/fonctionnalites", "/docs", "/tarifs", "/"]) {
+  for (const path of ["/fonctionnalites", "/docs", "/ressources", "/accompagnement", "/"]) {
     await page.goto(path);
     const externalLinks = page.locator('a[href^="http"]');
     expect(await externalLinks.count()).toBeGreaterThan(0);
@@ -394,6 +439,10 @@ test("le parcours reste utilisable à 320 px et au clavier", async ({ page }) =>
   await menu.focus();
   await page.keyboard.press("Enter");
   await expect(menu).toHaveAttribute("aria-expanded", "true");
+  const mobileNavigation = page.getByRole("navigation", { name: "Navigation mobile" });
+  for (const [label, href] of [["Accueil", "/"], ["Configurations", "/docs"], ["Ressources", "/ressources"], ["Méthode", "/fonctionnalites"], ["Accompagnement", "/accompagnement"]]) {
+    await expect(mobileNavigation.getByRole("link", { name: label, exact: true })).toHaveAttribute("href", href);
+  }
   await page.keyboard.press("Escape");
   await expect(menu).toBeFocused();
   await page.goto("/demo");
