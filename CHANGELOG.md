@@ -2,6 +2,21 @@
 
 Les changements notables de Starter IA 5.6 sont documentés ici.
 
+## Non publié — Recentrage vers les starters Codex
+
+### Direction
+
+- Starter IA se recentre sur la préparation locale et déterministe de dossiers de travail prêts pour Codex.
+- Le futur résultat principal associe contexte, règles, configuration Codex, agents, qualité, manifeste et première mission.
+- Un starter manuel de référence doit valider le noyau et les modules avant toute spécification ou automatisation.
+- Les anciennes étapes 9 et 10 sont remplacées avant implémentation ; l’exécution guidée n’est plus la prochaine étape active.
+
+### Conservé
+
+- Le MVP local en six phases et 16 étapes reste implémenté, testé, utilisable et secondaire.
+- Aucun code, composant, route, test, dépendance, stockage, migration ou comportement n’est modifié.
+- Aucun générateur, aperçu ou ZIP n’est présenté comme disponible.
+
 ## Non publié — Expérience du MVP en français courant
 
 ### Modifié
@@ -14,7 +29,7 @@ Les changements notables de Starter IA 5.6 sont documentés ici.
 ### Conservé
 
 - Le moteur n’est pas reconstruit : schéma 2, données existantes, stockage, migration, conflits, progression, règles de preuve et d’accord, missions et exports JSON restent compatibles.
-- L’étape 9 reste future et aucune intégration distante, dépendance, exécution IA, base ou production manuelle n’est ajoutée.
+- Dans cette livraison historique, l’étape 9 restait future ; elle a depuis été remplacée avant implémentation. Aucune intégration distante, dépendance, exécution IA, base ou production manuelle n’avait été ajoutée.
 
 ## Non publié — MVP local du projet complet
 
@@ -42,11 +57,11 @@ Les changements notables de Starter IA 5.6 sont documentés ici.
 ### Limites
 
 - Aucun SDK IA, appel ChatGPT ou Codex automatique, compte, synchronisation, base distante, paiement, publication ou production automatique.
-- L’exécution guidée reste prévue pour l’étape 9.
+- L’exécution guidée était alors prévue pour l’étape 9 ; cette suite a depuis été remplacée avant implémentation.
 
-## Non publié — Réalignement définitif de la direction produit
+## Historique — Ancienne direction de l’orchestrateur complet
 
-### Direction décidée
+### Direction décidée à l’étape 7, remplacée par D-030
 
 - Starter IA devient un orchestrateur de projet complet en six phases, de l’idée au lancement et à l’amélioration.
 - ChatGPT + Codex devient le workflow principal ; Work reste une option secondaire.

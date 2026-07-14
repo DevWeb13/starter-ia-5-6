@@ -1,186 +1,183 @@
 # Direction produit
 
-## Positionnement
+## Direction active
 
-**Starter IA transforme une idée en projet guidé avec ChatGPT et Codex, en organisant recherche, produit, développement, vérification et marketing selon votre matériel, sans retirer les décisions sensibles à l’humain.**
+**Starter IA prépare un environnement de travail prêt pour Codex à partir de la description d’un projet, de l’environnement réel de l’utilisateur et des modules dont il a besoin.**
 
 > Projet communautaire indépendant, non officiel et non affilié à OpenAI.
 
-Starter IA est un orchestrateur simple et prudent. Il organise les étapes, les spécialistes, les missions, les livrables et les vérifications nécessaires pour conduire un projet numérique de l’idée au lancement. Il ne remplace ni le jugement de l’utilisateur ni les autorisations humaines.
+Le futur cœur produit est un générateur local et déterministe de **starters Codex**. Un starter est un dossier de préparation du travail, téléchargeable et versionnable ; ce n’est ni une application déjà développée, ni une intégration qui exécute Codex.
 
-La question d’entrée est : **« Quel projet voulez-vous lancer ? »**
+Le parcours cible est :
 
-## Problème résolu
+```text
+Décrire le projet
+→ indiquer l’environnement réel
+→ sélectionner les besoins facultatifs
+→ obtenir un starter Codex prêt à utiliser
+→ copier la première mission
+```
 
-Les personnes qui utilisent déjà ChatGPT ou Codex peuvent produire des analyses, du contenu ou du code, mais manquent souvent d’un workflow fiable de bout en bout. Les décisions marché, produit, technique et marketing sont alors séparées. Les preuves, les responsabilités et les validations deviennent difficiles à suivre.
+## Problème prioritaire
 
-Starter IA réunit ces activités dans un même projet. L’utilisateur ne choisit pas entre étudier un marché, définir un produit, développer, tester ou faire du marketing. Starter IA les ordonne selon le besoin réel.
+Préparer correctement un dépôt pour Codex demande de réunir le contexte, le résultat attendu, les limites, les règles permanentes, les décisions, les agents, les contrôles et une première mission exploitable. Cette préparation est lente, répétitive et facile à rendre inutilement complexe.
+
+Starter IA doit réduire ce délai. L’utilisateur ne doit pas suivre un long parcours avant d’obtenir un résultat utilisable.
 
 ## Public initial
 
 - développeurs ;
 - freelances et indépendants ;
-- créateurs de produits numériques ;
-- petites équipes utilisant déjà ChatGPT ou Codex sans workflow fiable de bout en bout.
+- petites agences ;
+- petites équipes qui utilisent ou souhaitent utiliser Codex sur de vrais dépôts.
 
-Starter IA doit rester assez concret pour être utilisé par son propre créateur comme système de production réel.
+Le produit doit rester utile à son propre créateur pour produire des sites et applications clients. Les non-développeurs pourront constituer une direction future, sans imposer de complexité au premier générateur.
 
-## Résultat de bout en bout
+## Contrat cible du générateur
 
-Starter IA aide à passer d’une idée à un projet cadré, confronté au marché, conçu, construit, vérifié, préparé au lancement, puis publié après autorisation humaine. Les preuves peuvent conduire à poursuivre, corriger ou arrêter. Elles ne garantissent jamais un succès commercial.
+Cette section décrit une cible future, pas une fonction disponible.
 
-Le cycle comporte exactement six phases :
+### Entrées nécessaires
 
-1. **Cadrer** : idée, objectif, contraintes, risques et résultat attendu.
-2. **Valider** : marché, concurrents, cible, problème, positionnement, proposition de valeur et critères de validation.
-3. **Concevoir** : produit, MVP, expérience, contenus, architecture et plan de réalisation.
-4. **Construire** : fichiers, code, design, contenus, intégrations autorisées et documentation.
-5. **Vérifier** : tests, audits, sécurité, accessibilité, qualité, corrections et preuves réelles.
-6. **Lancer et améliorer** : publication après validation humaine, marketing, démonstration, mesure, retours, maintenance et améliorations.
+Le générateur demandera uniquement les informations qui influencent réellement le starter, par exemple :
 
-Les sujets spécialisés restent à l’intérieur de ces six phases.
-
-## Workflow principal
-
-Le workflow principal est **ChatGPT + Codex** :
-
-- **ChatGPT** aide à cadrer, rechercher, réfléchir, comparer, décider, rédiger et piloter ;
-- **Codex** inspecte, modifie et vérifie les fichiers, le dépôt, Git, les tests et les déploiements autorisés ;
-- **Starter IA** recommande le parcours, prépare les missions et rassemble les livrables, preuves et validations ;
-- **l’humain** conserve les décisions sensibles.
-
-Le MVP local version 2 prépare des missions copiables ou exportables. Il n’appelle jamais ChatGPT ou Codex automatiquement et ne présente pas une mission préparée comme exécutée.
-
-**Work** reste une ressource secondaire lorsque cette fonction est disponible et pertinente. Il n’est ni obligatoire, ni la porte d’entrée, ni une dépendance de l’architecture. Ses guides et son historique sont préservés.
-
-Starter IA se concentre sur ChatGPT, Codex et les capacités OpenAI directement pertinentes. Les autres fournisseurs sont hors périmètre actuel. L’architecture ne dépend pas d’un nom temporaire de modèle ou d’interface.
-
-## Agents compréhensibles
-
-- **Orchestrateur** : le chef de projet qui comprend l’objectif, organise les étapes et distribue le travail.
-- **Sous-agent ou spécialiste** : un consultant ciblé qui analyse un sujet précis sans modifier le projet.
-- **Écrivain ou exécutant** : le seul rôle autorisé à modifier les fichiers ou agir sur les systèmes.
-- **Reviewer** : le contrôleur indépendant qui recherche les erreurs et vérifie la qualité.
-- **Humain** : l’autorité finale qui approuve les décisions sensibles ou irréversibles.
-
-Le cycle global du projet est **Cadrer → Valider → Concevoir → Construire → Vérifier → Lancer et améliorer**.
-
-Le workflow interne de chaque mission est **Brief → analyses en lecture seule → plan → écrivain unique → vérification → revue indépendante → correction → livraison**. Ces deux niveaux ne doivent pas être confondus. Les règles détaillées vivent dans [`WORKFLOW.md`](WORKFLOW.md).
-
-## Recommandation selon le matériel
-
-Starter IA demande seulement les informations utiles : iPhone et ordinateur disponibles, système Ubuntu/Linux, Windows ou macOS, accès à Codex local, Remote Control, GitHub et éventuellement Vercel, ainsi que la capacité de la machine à rester active, connectée et non suspendue.
-
-Il recommande ensuite le parcours le plus simple réellement compatible :
-
-- ChatGPT + Codex local sur Ubuntu/Linux ;
-- ChatGPT + Codex sur Windows ;
-- ChatGPT + Codex sur macOS ;
-- ChatGPT sur iPhone + Codex Remote lorsque la fonction est disponible ;
-- parcours local sans Remote Control dans tous les autres cas compatibles.
-
-La disponibilité dépend du compte, du client, du système, des versions et du déploiement progressif. Elle n’est jamais garantie pour tous les utilisateurs.
-
-### Workflow phare iPhone + Ubuntu
-
-**ChatGPT sur iPhone → préparation et pilotage → Codex Remote Control → exécution sur Ubuntu → branche GitHub → tests et contrôles → Preview Vercel automatique si l’intégration GitHub–Vercel est reliée → validation humaine → squash merge → production.**
-
-L’iPhone pilote la session. Le dépôt, Git, Codex et les processus restent sur Ubuntu. La machine doit rester active, connectée et non suspendue. Une déconnexion ne prouve pas que les processus sont arrêtés et ne crée ni commit ni push. L’état Git se vérifie séparément. Aucun secret, code d’association ou fichier `.env` ne doit être transmis. Ce parcours est prioritaire et différenciant, mais jamais obligatoire.
-
-## Comprendre cette étape
-
-Chaque étape du MVP comporte un volet court intitulé **« Comprendre cette étape »**. Il explique pourquoi l’étape existe, le spécialiste mobilisé, ce que ChatGPT et Codex doivent faire, pourquoi un seul agent écrit, le livrable attendu, la vérification et l’approbation humaine éventuelle.
-
-Chaque étape affichera au minimum : objectif, pourquoi, rôle mobilisé, outil recommandé, mission prête à exécuter, livrable attendu, preuve de réussite et validation humaine éventuelle. L’explication restera progressive et ne deviendra pas un cours technique.
-
-Le rapport local distingue les rôles planifiés, les missions préparées, les statuts déclarés, les preuves consignées et les validations humaines. Il ne déduit aucune exécution réelle d’une mission copiée.
-
-## Automatisation sûre
-
-La promesse est : **« Le maximum d’automatisation sans autonomie aveugle. »** Le MVP applique déjà ces frontières dans ses missions, statuts et validations ; il ne réalise toutefois aucune action externe :
-
-- **automatique dans le MVP local** : génération du parcours, des missions, des livrables attendus, des critères, des exports et du rapport déclaratif ;
-- **préparé mais non exécuté par Starter IA** : analyses externes, tests, fichiers, changements sur une branche, commits, PR, Preview et contenus marketing ;
-- **autorisation humaine obligatoire** : fusion dans `main`, production, suppression, paiement, secret, publication externe, envoi de message et action irréversible.
-
-Une mission copiée peut autoriser à l’avance une branche, des commits, une PR et sa Preview, mais son exécution se déroule hors de Starter IA et doit être vérifiée séparément. La publication marketing, la fusion et la production restent des décisions humaines explicites.
-
-## Marketing et stratégie économique
-
-Le marketing appartient au cycle complet. La phase **Valider** prépare l’étude du marché, les concurrents, la cible, le problème, le positionnement, la proposition de valeur, les canaux et les critères de validation. La phase **Lancer et améliorer** prépare, uniquement à partir de faits réels, la proposition de valeur, une présentation courte, une landing page, un README, une étude de cas, une publication LinkedIn, une annonce GitHub, des titres et descriptions SEO, un script de démonstration vidéo, les captures et preuves utiles et le plan de contenu après lancement. Toute publication externe exige une validation humaine.
-
-La progression économique visée est :
-
-1. un cœur open source réellement utile ;
-2. une utilisation personnelle pour produire des projets ;
-3. des démonstrations et cas réels publics ;
-4. des services payants à court terme : audit de workflow IA, installation et sécurisation de Codex, workflows personnalisés, automatisation, formation, accompagnement agentique et développement sur mesure ;
-5. un produit hébergé ou un abonnement seulement après validation réelle, pour la synchronisation, les équipes, les workflows privés, les intégrations, l’historique ou des automatisations avancées.
-
-Aucun prix, abonnement acquis ou chiffre de revenus n’est annoncé.
-
-## MVP local version 2 livré à l’étape 8
-
-Le moteur actuel est local et déterministe. Des règles et templates TypeScript transforment le brief et le matériel déclaré en 16 étapes réparties dans les six phases exactes.
-
-### Entrée minimale
-
-- description libre du projet ;
+- nom ou description du projet ;
 - résultat recherché ;
-- contraintes importantes ;
-- profil matériel ;
-- outils réellement disponibles.
+- projet nouveau ou dépôt existant ;
+- système utilisé ;
+- utilisation de Codex dans VS Code, en CLI ou à distance ;
+- disponibilité réelle de GitHub et Vercel ;
+- contraintes principales ;
+- modules facultatifs nécessaires.
 
-### Sortie minimale
+La liste exacte et les règles de sélection seront définies après validation du starter manuel de référence.
 
-- cycle complet en six phases et étapes ordonnées ;
-- spécialistes nécessaires ;
-- missions ChatGPT prêtes à copier ;
-- missions Codex prêtes à exécuter ;
-- livrables, preuves et validations humaines ;
-- workflow recommandé selon le matériel ;
-- plan marketing intégré ;
-- volet « Comprendre cette étape ».
+### Sortie principale
 
-### Fonctions minimales
+La cible future est :
 
-- création, modification, reprise et progression locale du projet ;
-- stockage local versionné ;
-- exports Markdown et JSON ;
-- missions ChatGPT copiables ;
-- missions Codex copiables ou exportables ;
-- statut, preuves, contrôles et validations humaines de chaque étape ;
-- volet « Comprendre cette étape » et rapport final.
+- un aperçu des fichiers retenus ;
+- un dossier ou ZIP téléchargeable et versionnable ;
+- une première mission fournie sous forme de prompt copiable ;
+- des instructions courtes pour démarrer ;
+- un manifeste expliquant pourquoi chaque fichier est présent.
 
-### Hors périmètre
+Le dossier donne à Codex le contexte, le résultat attendu, les limites, les règles permanentes, les décisions, les agents, les contrôles et la première mission fournie sous forme de prompt copiable. Il ne contient pas une application déjà développée.
 
-- SDK ou fournisseur IA, API payante, clé secrète ;
-- authentification, comptes, base ou synchronisation distante ;
-- paiement, abonnement et collaboration multi-utilisateur ;
-- publication automatique sur les réseaux ou envoi automatique d’emails ;
-- fusion automatique dans `main` ou déploiement automatique en production ;
-- prise en charge d’autres fournisseurs d’IA.
+### Noyau provisoire à tester
 
-## Migration et historique préservés
+Le noyau suivant est une hypothèse de départ pour la Mission B, pas un contrat définitif :
 
-L’ancien schéma 1 utilisait six sections et la clé `ai-project-launcher.projects.v1`. Le schéma 2 utilise `starter-ia.projects.v2`, valide les deux formats strictement et migre seulement lorsqu’aucune donnée v2 n’existe. La source v1 et une sauvegarde brute sont conservées. Les anciens champs deviennent un contexte historique ; toutes les nouvelles étapes restent non tentées, sans preuve ni approbation inventée.
+```text
+START-HERE.md
+PROJECT.md
+STATUS.md
+DECISIONS.md
+AGENTS.md
+QUALITY.md
+prompts/FIRST-MISSION.md
+.codex/config.toml
+.codex/agents/explorer.toml
+.codex/agents/reviewer.toml
+```
 
-Le Dashboard, l’espace projet, les exports et le rapport utilisent désormais le schéma 2. Aucun fournisseur IA, compte, paiement ou service distant n’est intégré.
+Il devra être utilisé sur un vrai projet afin d’identifier les fichiers utiles, inutiles ou manquants avant toute automatisation.
 
-Les guides Chat, Work, Codex local, Codex Remote et Work + Codex restent disponibles comme références techniques secondaires. Les décisions et livrables historiques sont conservés.
+### Modules conditionnels
+
+Selon le projet, le starter pourra aussi retenir :
+
+```text
+ARCHITECTURE.md
+DESIGN.md
+ROADMAP.md
+MARKETING.md
+SEO.md
+README.md
+LICENSE
+.github/workflows/ci.yml
+pull_request_template.md
+configuration Vercel
+tests adaptés à la stack
+```
+
+Ces éléments ne sont pas tous obligatoires. Chaque ajout doit répondre à un besoin réel et être justifié dans le manifeste ; un petit projet ne doit pas recevoir une documentation lourde par défaut.
+
+## Trois états à ne pas confondre
+
+### Existant vérifié
+
+Le MVP local version 2 est réellement implémenté, local, déterministe et testé. Il organise un projet en six phases et 16 étapes, recommande un workflow selon l’environnement déclaré, conserve les projets dans `localStorage` et propose Dashboard, éditeur, missions copiables, statuts, preuves, validations et exports Markdown/JSON.
+
+Il n’appelle automatiquement ni ChatGPT ni Codex. Il est conservé comme réalisation utilisable et devient secondaire dans la direction produit. Son modèle, son stockage, ses routes et son interface ne sont pas modifiés pendant la Mission A.
+
+### Prochaine expérimentation
+
+La Mission B créera manuellement un starter complet pour un vrai projet et l’utilisera avec Codex. Son objectif est d’éprouver le noyau, les modules et les instructions avant de spécifier un générateur.
+
+### Cible future
+
+Le générateur local déterministe transformera les entrées utiles en sélection de fichiers, contenu, manifeste, aperçu, dossier téléchargeable et première mission. Cette cible n’est pas encore implémentée.
+
+## Workflow interne des missions
+
+Le parcours produit cible ne doit pas être confondu avec la méthode de réalisation d’une mission :
+
+```text
+Brief
+→ analyses en lecture seule
+→ plan
+→ écrivain unique
+→ vérification
+→ revue indépendante
+→ correction
+→ livraison
+```
+
+Les règles détaillées vivent uniquement dans [`WORKFLOW.md`](WORKFLOW.md).
+
+## Sécurité
+
+- un seul agent écrit ;
+- spécialistes et reviewers restent en lecture seule ;
+- aucune réussite n’est annoncée sans vérification ;
+- aucun secret n’est ajouté au dépôt ou au starter ;
+- fusion, production, suppression, paiement, publication, message et action irréversible exigent une autorisation humaine explicite.
+
+Les recommandations d’environnement doivent refléter les outils réellement disponibles. Work reste facultatif. Codex à distance et Remote Control ne sont jamais présentés comme universellement disponibles.
+
+## Stratégie économique
+
+La progression envisagée est :
+
+1. produire un starter open source réellement utile ;
+2. l’utiliser sur des projets réels ;
+3. publier des cas concrets ;
+4. tester un service d’installation et d’adaptation du workflow ;
+5. envisager un produit hébergé uniquement après validation réelle.
+
+Aucun prix, client, revenu, abonnement ou résultat commercial n’est revendiqué.
+
+## Limites actuelles
+
+- aucun générateur de starter ou de ZIP n’est implémenté ;
+- aucun nouveau formulaire ou schéma du générateur n’est défini ;
+- aucun SDK IA, secret, compte, paiement ou stockage distant n’est ajouté ;
+- aucune publication, fusion ou production automatique n’existe ;
+- les détails techniques du futur générateur dépendront du starter manuel de référence.
 
 ## Sources de vérité
 
-- direction et périmètre : [`PROJECT.md`](PROJECT.md) ;
-- processus : [`WORKFLOW.md`](WORKFLOW.md) ;
-- étapes : [`ROADMAP.md`](ROADMAP.md) ;
+- direction et contrat produit : [`PROJECT.md`](PROJECT.md) ;
+- processus interne : [`WORKFLOW.md`](WORKFLOW.md) ;
+- progression : [`ROADMAP.md`](ROADMAP.md) ;
 - état réel : [`STATUS.md`](STATUS.md) ;
 - décisions : [`DECISIONS.md`](DECISIONS.md) ;
-- architecture : [`ARCHITECTURE.md`](ARCHITECTURE.md) ;
+- architectures actuelle et cible : [`ARCHITECTURE.md`](ARCHITECTURE.md) ;
 - règles UX : [`DESIGN.md`](DESIGN.md) ;
-- qualité : [`QUALITY.md`](QUALITY.md) ;
+- critères de qualité : [`QUALITY.md`](QUALITY.md) ;
 - configurations : [`guides/configurations/README.md`](guides/configurations/README.md).
 
 ## Définition de fini
 
-Une étape est terminée lorsque ses livrables existent, que les contrôles applicables réussissent, que les limites sont explicites, que la mémoire reflète le résultat et qu’aucun problème bloquant ou important connu n’est masqué.
+Une mission est terminée lorsque ses livrables existent, que les contrôles applicables réussissent, que les limites sont explicites, que la mémoire reflète le résultat et qu’aucun problème bloquant ou important connu n’est masqué.

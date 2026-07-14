@@ -17,7 +17,17 @@ Un seul point coché interdit la livraison, la publication ou la fusion.
 - [ ] La démonstration est présentée comme une véritable IA ou déclenche une requête externe non documentée.
 - [ ] Le produit est présenté comme intégrant un fournisseur IA, une authentification ou un paiement alors que ces capacités sont hors périmètre.
 - [ ] Un secret, fichier `.env` ou configuration locale Vercel est commité.
+- [ ] Une fonction future, notamment le générateur ou le ZIP, est présentée comme disponible sans preuve.
 - [ ] Un problème important reste après le deuxième cycle de correction.
+
+### Cible future du générateur
+
+Ces critères deviendront applicables lorsque le générateur sera implémenté :
+
+- [ ] Un fichier obligatoire du starter manque, est vide ou illisible.
+- [ ] Un secret est généré, demandé ou inclus dans le dossier.
+- [ ] Le dossier produit ne peut pas être téléchargé ou lu.
+- [ ] Le MVP local actuel est cassé pendant la transition.
 
 ## Important
 
@@ -38,6 +48,16 @@ Tous les points applicables doivent être résolus avant livraison ou fusion.
 - [ ] L’interface déborde à 320 px, le clavier ne permet pas le parcours principal ou le thème masque une information.
 - [ ] Les données fictives, l’offre future ou l’absence de sauvegarde ne sont pas clairement indiquées.
 - [ ] La mémoire officielle ne reflète pas l’architecture, les contrôles, blocages ou prochaine mission réels.
+
+### Cible future du générateur
+
+Ces critères ne décrivent pas une fonction déjà livrée :
+
+- [ ] Un fichier inutile est ajouté sans justification dans le manifeste.
+- [ ] Le premier prompt ne contient pas le contexte nécessaire pour commencer la mission.
+- [ ] Les mêmes entrées et la même version des règles produisent des résultats différents.
+- [ ] L’interface impose des questions, options ou documents sans utilité démontrée.
+- [ ] Les options avancées empêchent d’atteindre rapidement l’aperçu, le téléchargement ou la première mission.
 
 ## Amélioration
 

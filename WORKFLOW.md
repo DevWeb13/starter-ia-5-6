@@ -10,17 +10,15 @@ Ce document est la source de vérité du processus Starter IA 5.6.
 - **Reviewer** : le contrôleur indépendant qui recherche les erreurs et vérifie la qualité.
 - **Humain** : l’autorité finale qui approuve les décisions sensibles ou irréversibles.
 
-## Deux niveaux distincts
+## Workflow interne d’une mission
 
-Le **cycle global du projet** organise le résultat de bout en bout :
-
-**Cadrer → Valider → Concevoir → Construire → Vérifier → Lancer et améliorer**
-
-Le **workflow interne de chaque mission** organise une intervention précise :
+Le workflow de référence organise toute intervention précise :
 
 **Brief → analyses en lecture seule → plan → écrivain unique → vérification → revue indépendante → correction → livraison**
 
-Une phase du projet peut contenir plusieurs missions. Une mission ne remplace jamais le cycle complet.
+Le MVP local version 2 propose aussi une méthode complète en six phases — Cadrer, Valider, Concevoir, Construire, Vérifier, Lancer et améliorer. Cette méthode reste disponible dans le produit actuel, mais elle n’est pas le parcours obligatoire du futur générateur de starters Codex.
+
+Le contrat du starter et le parcours produit cible vivent dans [`PROJECT.md`](PROJECT.md). Ce document ne les duplique pas.
 
 ## La séquence
 
@@ -108,7 +106,7 @@ Ne jamais utiliser « créé », « publié », « envoyé », « fusionné », 
 
 ## Exemple GitHub
 
-1. Le brief autorise la création du dépôt, la branche, la PR et la fusion.
+1. Le brief autorise la création du dépôt, la branche et la PR ; la fusion reste soumise à l’accord demandé.
 2. Deux sous-agents inspectent en lecture seule la structure et les risques.
 3. L’écrivain crée les fichiers sur une branche dédiée.
 4. Il relit les fichiers depuis GitHub et contrôle le diff.

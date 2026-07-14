@@ -1,6 +1,6 @@
 # Identité visuelle
 
-Ce document est la source de vérité visuelle de Starter IA 5.6. L’interface est sobre, moderne, mobile-first et accessible ; le MVP local en six phases est la porte d’entrée, tandis que les configurations restent des ressources secondaires.
+Ce document est la source de vérité visuelle de Starter IA 5.6. L’interface est sobre, moderne, mobile-first et accessible. Pendant la Mission A, l’interface actuelle du MVP local en six phases reste inchangée ; les principes futurs ci-dessous orientent seulement le générateur de starters Codex non implémenté.
 
 ## Principes
 
@@ -12,22 +12,22 @@ Ce document est la source de vérité visuelle de Starter IA 5.6. L’interface 
 - Parité fonctionnelle et contraste AA dans les thèmes clair et sombre.
 - Starter IA est l’unique identité produit active. Les mentions locales signalent le stockage navigateur, l’absence de synchronisation et l’absence d’appel IA automatique.
 
-## Principes UX du MVP local
+## Principes UX du futur générateur
 
-Ces principes sont appliqués au lancement, au Dashboard et à l’espace projet de l’étape 8.
+Ces principes décrivent une cible future et ne prétendent pas que le générateur existe :
 
-- Montrer une seule étape principale à la fois.
-- Masquer la complexité spécialisée par défaut, sans cacher les décisions ni les preuves.
-- Afficher une progression claire dans les six phases.
-- Rendre visibles les livrables, preuves et contrôles.
-- Rendre visibles les validations humaines et les actions qui les exigent.
-- Proposer à chaque étape un bouton ou volet **« Comprendre cette étape »**.
-- Expliquer progressivement en quelques lignes, sans transformer le volet en cours technique.
-- Ne jamais employer un jargon sans définition courte.
+- rendre le résultat principal rapidement visible ;
+- poser peu de questions et uniquement celles qui changent le starter ;
+- replier les options avancées par défaut ;
+- montrer clairement l’aperçu des fichiers retenus ;
+- expliquer la raison de chaque fichier ;
+- traiter le téléchargement du dossier et la copie du premier prompt comme actions principales ;
+- distinguer explicitement l’existant vérifié, la prochaine expérimentation et la cible future ;
+- ne jamais présenter une fonction future comme disponible.
 
-Chaque étape affiche au minimum : objectif, pourquoi, rôle mobilisé, outil recommandé, mission prête à exécuter, livrable attendu, preuve de réussite et validation humaine éventuelle.
+## Principes conservés du MVP local
 
-Le volet « Comprendre cette étape » précise pourquoi l’étape existe, quel spécialiste intervient, ce que ChatGPT et Codex feront, pourquoi un seul agent écrit, ce qui sera livré, vérifié et soumis à l’utilisateur.
+Le lancement, le Dashboard et l’espace projet actuels continuent d’appliquer leurs règles vérifiées : une phase principale visible, complexité repliée, progression, livrables, preuves, validations humaines, action principale claire et volet « Comprendre cette étape ». Cette réalisation reste secondaire et n’impose pas son parcours au futur générateur.
 
 ## Couleurs claires
 
@@ -120,7 +120,7 @@ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, A
 - Mention du moteur déterministe, du stockage local et de l’absence d’appel IA près du formulaire.
 - Validation accessible de la description et du résultat recherché, avec saisie conservée.
 - Aucun faux délai ; un état de traitement n’existe que pendant l’enregistrement et la navigation réels.
-- Création immédiate du projet version 2 puis ouverture de son espace guidé en six phases.
+- Dans l’interface actuelle conservée, création immédiate du projet version 2 puis ouverture de son espace guidé en six phases.
 
 ### Statuts et erreurs
 
