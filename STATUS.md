@@ -2,66 +2,76 @@
 
 **Dernière mise à jour :** 14 juillet 2026
 
-**Mission :** A — recentrage documentaire
+## État officiel
 
-**Branche active :** `work/09-codex-starter-realignment`
+- **Mission A — recentrage documentaire : terminée.**
+- **PR fusionnée :** nº 12 — `docs: realign Starter IA around Codex-ready starters`.
+- **Commit de fusion :** `2cc1f7ff090b5b7a8dcc76db2eba0349ba260420`.
+- **Mission active :** B — starter manuel de référence.
+- **Projet pilote retenu :** Social Autopilot.
+- **Branche de préparation :** `work/10-social-autopilot-starter`.
 
-**Base réelle de `main` :** `1615b8b95305b6b4b3242040d98e5d438c3802cf`
+L’état instantané des branches, pull requests et contrôles reste vérifié directement dans GitHub. Ce document décrit la direction et la mission active sans chercher à recopier chaque changement d’état temporaire.
 
-**Dernière PR fusionnée :** nº 11
+## Produit actuellement livré
 
-**Pull request active :** nº 12 — brouillon, CI réussie
+L’application Next.js en production reste inchangée :
 
-**Statut réel :** documentation en cours de réalignement ; aucune modification fonctionnelle
+- moteur local déterministe de six phases et 16 étapes ;
+- stockage `localStorage` version 2 et migration conservatrice ;
+- Dashboard et espace projet guidé ;
+- missions copiables, statuts, preuves et validations humaines ;
+- exports Markdown et JSON ;
+- aucun appel automatique à ChatGPT, Codex ou un fournisseur IA.
 
-## Point de départ vérifié
+Ce MVP reste utilisable et devient un mode secondaire. Il n’a pas été supprimé ni transformé pendant la Mission A.
 
-- la PR nº 10 a livré le MVP local version 2 au commit `5ca3a6fdd510dc7d1a11382d086c0113c78975ee` ;
-- la PR nº 11 a simplifié son expérience puis a été fusionnée dans `main` ;
-- le dernier commit vérifié de `main` est `1615b8b95305b6b4b3242040d98e5d438c3802cf` (`fix: simplify the MVP language and workflow (#11)`) ;
-- l’étape 8 est terminée ;
-- aucune branche `work/08-*` n’est encore présentée comme active.
+## Direction produit enregistrée
 
-## Existant vérifié et conservé
+Starter IA doit devenir principalement un générateur local et déterministe de dossiers de préparation prêts pour Codex.
 
-- application Next.js locale ;
-- modèle `Project` version 2, migration conservatrice et stockage `localStorage` ;
-- moteur déterministe de six phases et 16 étapes ;
-- recommandations selon l’environnement déclaré ;
-- Dashboard, éditeur, reprise, conflits inter-onglets, statuts, preuves et validations humaines ;
-- missions copiables, exports JSON/Markdown et rapport local ;
-- aucune exécution automatique de ChatGPT, Codex ou d’un fournisseur IA ;
-- tests et contrôles de l’étape 8 déjà enregistrés dans l’historique.
+Le résultat futur devra pouvoir contenir :
 
-Ce MVP reste réellement utilisable. Il est conservé et devient secondaire dans la nouvelle direction ; son modèle, son stockage, ses routes et son interface ne changent pas pendant la Mission A.
+- le contexte du projet ;
+- les règles de travail ;
+- la configuration Codex ;
+- des agents spécialisés utiles ;
+- les critères qualité et sécurité ;
+- une première mission copiable ;
+- un manifeste et un téléchargement du dossier.
 
-## Direction en cours d’enregistrement
+Le générateur, l’aperçu et le ZIP ne sont pas encore implémentés.
 
-Starter IA se recentre sur un générateur local et déterministe de starters Codex. La cible future préparera un dossier versionnable contenant contexte, règles, configuration Codex, agents utiles, critères qualité et première mission, avec aperçu, manifeste et téléchargement.
+## Mission B — projet pilote Social Autopilot
 
-Le générateur, le ZIP et le nouveau parcours ne sont pas implémentés. Le noyau de fichiers et les modules conditionnels restent des hypothèses à éprouver.
+Social Autopilot est un projet personnel de serveur MCP destiné à tester l’utilisation d’outils sociaux par ChatGPT. Le pilote commence sans connexion réelle à un réseau social et sans publication.
 
-## Limites actuelles
+La Mission B comporte deux portes distinctes :
 
-- aucun générateur de starter ou ZIP disponible ;
-- aucun nouveau formulaire, schéma, route ou composant ;
-- aucun SDK IA, compte, synchronisation, base distante, paiement ou collaboration ;
-- aucune publication, fusion ou production automatique ;
-- les missions du MVP existant restent préparées et les preuves déclaratives.
+1. **Préparation manuelle du starter** : créer et relire les fichiers de contexte, de règles, de sécurité, de qualité, de configuration Codex et de première mission. Aucun code applicatif.
+2. **Premier usage contrôlé** : après validation humaine du starter, demander à Codex une fondation TypeScript minimale avec un seul outil MCP de lecture sur données simulées.
 
-## Contrôles de la Mission A
+Le projet de carrosserie n’est pas utilisé comme cobaye. Il reste un futur projet client à traiter séparément avec ses informations réelles.
 
-- `git diff --check` : réussi ;
-- liens Markdown relatifs des 15 fichiers modifiés : aucune cible absente ;
-- recherches des anciennes formulations contradictoires : aucune anomalie active ;
-- `npm run lint` : réussi ;
-- `npm run typecheck` : réussi ;
-- `npm test` : 4 fichiers et 31 tests réussis ;
-- `npm run build` : réussi hors sandbox après la limite de port interne Turbopack observée dans le sandbox ;
-- deux cycles de revue indépendante : aucun problème bloquant ou important restant ;
-- CI GitHub run 36 : job `quality` réussi, y compris les tests E2E ;
-- aucun fichier fonctionnel modifié.
+## Limites obligatoires de la Mission B
+
+- aucune modification fonctionnelle de l’application Starter IA ;
+- aucun générateur ou ZIP ;
+- aucun dépôt public ;
+- aucune connexion à Bluesky, Threads ou X pendant la préparation ;
+- aucun secret ou jeton commité ;
+- aucun outil de publication ou de réponse réelle dans le premier test ;
+- aucun service payant ;
+- aucune promesse de fonctionnement autonome avant vérification réelle.
+
+## Livrables attendus
+
+- un brief pilote complet ;
+- un starter Codex manuel dans un dépôt privé séparé ;
+- une première mission Codex petite et vérifiable ;
+- une grille d’évaluation des fichiers utiles, inutiles ou manquants ;
+- un retour d’usage permettant de préparer la Mission C.
 
 ## Prochaine action
 
-Après fusion de la Mission A : **Mission B — créer manuellement un starter de référence pour un vrai projet et l’utiliser avec Codex**.
+Finaliser et fusionner le cadrage de la Mission B, puis créer manuellement le starter de Social Autopilot dans un dépôt privé séparé. Aucun développement du générateur Starter IA ne commence avant ce retour d’usage.
