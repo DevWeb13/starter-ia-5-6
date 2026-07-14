@@ -8,8 +8,8 @@
 
 ## Démarrage en trois étapes maximum
 
-1. Ouvrez le dépôt dans VS Code, puis vérifiez la branche et l’arbre Git.
-2. Donnez un brief borné avec [`templates/BRIEF.md`](../../templates/BRIEF.md).
+1. Ouvrez le dépôt dans votre environnement de code, puis vérifiez la branche et l’arbre Git.
+2. Copiez le noyau utile de [`templates/starter-kit/`](../../templates/starter-kit/README.md) et donnez un brief borné.
 3. Autorisez les contrôles nécessaires et relisez le diff enregistré.
 
 ## Ressources associées

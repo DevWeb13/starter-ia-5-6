@@ -9,15 +9,15 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://starter-ia-5-6.vercel.app"),
   title: {
-    default: "Starter IA 5.6 — De l’idée au projet guidé",
+    default: "Starter IA 5.6 — Guides et kit pour ChatGPT, Work et Codex",
     template: "%s — Starter IA 5.6",
   },
   description:
-    "Organisez localement votre projet en six phases avec des missions ChatGPT et Codex et des accords clairs.",
+    "Guides, configurations, templates et prompts pour mieux utiliser ChatGPT, Work et Codex.",
   openGraph: {
     title: "Starter IA 5.6",
     description:
-      "Un outil local pour savoir quoi faire, quoi vérifier et quand donner votre accord.",
+      "Un site de ressources pratique et un kit minimal pour préparer vos projets avec ChatGPT, Work et Codex.",
     type: "website",
     locale: "fr_FR",
   },

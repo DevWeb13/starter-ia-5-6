@@ -1,106 +1,44 @@
 # Feuille de route
 
-La feuille de route conserve l’historique livré et distingue les réalisations, la mission active et les étapes futures non spécifiées. Les résultats vérifiés sont consignés dans [`STATUS.md`](STATUS.md).
+La feuille de route reste volontairement courte. L’historique détaillé vit dans Git et [`DECISIONS.md`](DECISIONS.md) ; l’état vérifié vit dans [`STATUS.md`](STATUS.md).
 
-## Historique livré
+## Historique utile
 
-### Version 0.1 — Méthode documentaire
+- **Fondation publique :** application Next.js, design accessible, tests et déploiement historique.
+- **MVP local :** parcours déterministe en six phases, Dashboard, stockage navigateur et exports.
+- **Ressources :** guides de configuration, prompts, brief, formation et règles de qualité.
+- **Directions abandonnées :** orchestrateur autonome, générateur de starters/ZIP et pilote Social Autopilot comme prochaine étape.
 
-**Statut :** terminée le 11 juillet 2026.
+Le MVP local et ses tests sont conservés comme démonstration historique. Ils ne définissent plus la priorité produit.
 
-Méthode iPhone-first, workflow, prompts, brief, formation, identité visuelle et première configuration Codex.
+## Direction active
 
-### Phase 1 — Fondation publiable
+### 1. Inventorier et clarifier les ressources
 
-**Branche :** `work/01-foundation`
+**Statut :** en cours.
 
-**Statut :** terminée, fusionnée dans `main` au commit `6819f79`.
+Aligner les documents de référence, distinguer le noyau minimal des fichiers facultatifs et retirer les promesses de générateur.
 
-Application Next.js accessible, démonstration locale déterministe, design system, tests, CI et déploiement historique.
+### 2. Simplifier la navigation et les textes
 
-### Phase 2 — Cœur produit local
+**Statut :** en cours.
 
-**Branche :** `work/02-product-core`
+Faire comprendre dès l’accueil le rôle de Starter IA, les différences entre ChatGPT, Work et Codex, et les points d’entrée vers configurations, guides, kit et prompts.
 
-**Statut :** terminée, fusionnée dans `main` au commit `1026f75`.
+### 3. Consolider le kit et les prompts
 
-Modèle de projet versionné, Dashboard et éditeur locaux, exports et persistance navigateur sans compte ni service distant.
+**Statut :** prochaine étape.
 
-### Étapes 3 à 6 — Ressources et consolidation
+Tester les quatre fichiers du noyau minimal sur un projet réel, améliorer les exemples et ne conserver les options qui apportent une valeur observée.
 
-- étape 3, PR nº 4 au commit `8ab9507` : réalignement du starter ;
-- configuration Codex, PR nº 5 au commit `5f8149d` ;
-- étape 4, PR nº 6 au commit `32e917f` : catalogue et templates ;
-- étape 5, PR nº 7 au commit `54c7b44` : interface alignée sur les ressources ;
-- étape 6, PR nº 8 au commit `06718299fa2cea6a8341d9e2d799305ca897739d` : clôture post-fusion.
+### 4. Publier un guide ou cas d’usage concret
 
-Ces orientations historiques sont conservées dans le journal des décisions.
+**Statut :** à faire.
 
-### Étape 7 — Orchestrateur de projet complet
+Documenter un passage simple : cadrage dans ChatGPT, exécution dans Codex, contrôle dans ChatGPT, avec limites et preuves.
 
-**Branche :** `work/07-definitive-product-realignment`
+### 5. Recueillir les retours
 
-**Statut :** terminée, fusionnée par squash via la PR nº 9 au commit `aeb1e9bfaf4f6b9da1d8daadf3726069a82296d3`.
+**Statut :** à faire.
 
-Cette étape a défini le parcours complet en six phases ensuite implémenté à l’étape 8. La Mission A remplace cette direction comme priorité future sans supprimer sa réalisation.
-
-### Étape 8 — MVP local du projet complet
-
-**Branches :** `work/08-complete-project-mvp`, puis `work/08-human-first-ux`
-
-**Statut :** terminée. PR nº 10 fusionnée au commit `5ca3a6fdd510dc7d1a11382d086c0113c78975ee`, puis PR nº 11 fusionnée au commit `1615b8b95305b6b4b3242040d98e5d438c3802cf`.
-
-Résultat vérifié : modèle local version 2, migration conservatrice, moteur déterministe de six phases et 16 étapes, recommandations d’environnement, espace guidé, Dashboard, exports Markdown/JSON, rapport, textes simplifiés et contrôles applicatifs. Aucun appel ChatGPT, Codex ou fournisseur IA n’est exécuté automatiquement.
-
-### Anciennes étapes 9 et 10
-
-Les anciennes étapes **9 — Exécution guidée** et **10 — Lancement démontré** ont été remplacées avant implémentation. Elles ne constituent plus la suite active. Les idées encore utiles devront être réévaluées dans la nouvelle direction, sans automatisme.
-
-### Mission A — Recentrage documentaire
-
-**Branche :** `work/09-codex-starter-realignment`
-
-**Statut :** terminée, fusionnée par squash via la PR nº 12 au commit `2cc1f7ff090b5b7a8dcc76db2eba0349ba260420`.
-
-Résultat : direction recentrée sur des starters Codex locaux et déterministes, ancien MVP conservé comme mode secondaire, générateur et ZIP explicitement déclarés non implémentés.
-
-## Progression active
-
-### Mission B — Starter manuel de référence
-
-**Branche de préparation :** `work/10-social-autopilot-starter`
-
-**Statut :** active.
-
-**Projet pilote :** Social Autopilot.
-
-Créer manuellement un starter complet pour ce projet, puis l’utiliser avec Codex dans un test contrôlé afin d’identifier les fichiers utiles, inutiles ou manquants.
-
-La mission est détaillée dans [`missions/MISSION-B-SOCIAL-AUTOPILOT.md`](missions/MISSION-B-SOCIAL-AUTOPILOT.md).
-
-Le travail est séparé en deux portes :
-
-1. préparation et revue du starter, sans code applicatif ;
-2. première mission Codex minimale, sans réseau réel ni publication sociale.
-
-### Mission C — Spécification du générateur
-
-**Statut :** future, dépend du retour réel de la Mission B.
-
-Définir les champs d’entrée, les règles de sélection, le schéma, le manifeste, les contenus, les erreurs, le format ZIP et les tests. Aucun choix technique détaillé n’est arrêté avant le retour d’usage de la Mission B.
-
-### Mission D — Générateur local minimal
-
-**Statut :** future, dépend des Missions B et C.
-
-Transformer le parcours principal pour générer, prévisualiser et télécharger un starter. Le périmètre d’implémentation sera fixé par la spécification validée.
-
-### Mission E — Validation réelle et commerciale
-
-**Statut :** future.
-
-Utiliser le générateur sur un projet réel, mesurer sa valeur et tester un service d’installation personnalisé, sans inventer de résultat commercial. Le projet de carrosserie pourra être considéré seulement lorsqu’il sera suffisamment cadré et sans le traiter comme un test jetable.
-
-## Veille future
-
-Une veille OpenAI pourra être préparée dans une mission distincte à partir de sources officielles. Elle ne modifiera jamais automatiquement le produit et exigera une validation humaine avant toute adaptation. Elle n’existe pas encore.
+Observer où les utilisateurs hésitent avant d’ajouter une nouvelle page, un nouveau template ou une fonction. Aucun générateur, compte ou service distant n’est planifié sans validation de ce besoin.

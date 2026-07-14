@@ -5,19 +5,19 @@ import { PageIntro } from "@/components/page-intro";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 
 export const metadata: Metadata = {
-  title: "Configurations techniques",
-  description: "Ressources secondaires pour configurer ChatGPT, Work, Codex local, Codex Remote et les passages de relais.",
+  title: "Choisir sa configuration",
+  description: "Comparer ChatGPT, Work, Codex local, Codex Remote et les passages de relais selon son besoin réel.",
 };
 
 const githubRoot = "https://github.com/DevWeb13/starter-ia-5-6/blob/main";
 
 const configurations = [
   {
-    name: "Chat",
+    name: "ChatGPT",
     role: "Réfléchir, décider et produire un brouillon court.",
     choose: "Une question limitée, quelques options à comparer ou un texte court à améliorer.",
     steps: ["Donner le contexte et le résultat attendu.", "Préciser les contraintes et le format.", "Vérifier les hypothèses et le résultat."],
-    resources: ["templates/BRIEF.md", "course/FORMATION-EXPRESS.md", "QUALITY.md"],
+    resources: ["templates/BRIEF.md", "templates/starter-kit/README.md", "course/FORMATION-EXPRESS.md"],
     limit: "Pas d’environnement de travail complet garanti ; les fonctions dépendent du compte.",
     handoff: "Passer à Work pour une mission complète ou à Codex local pour intervenir sur un dépôt.",
     guide: "guides/configurations/chat.md",
@@ -68,10 +68,10 @@ export default function DocsPage() {
   return (
     <>
       <PageIntro
-        eyebrow="Ressources techniques"
-        badge="Configurations secondaires"
-        title="Configurer l’environnement recommandé pour votre projet."
-        description="Le produit commence par le projet et son matériel. Ces guides détaillent ensuite les environnements disponibles, leurs limites et leurs passages de relais."
+        eyebrow="Configurations"
+        badge="Choisir selon le besoin"
+        title="ChatGPT, Work ou Codex : par où commencer ?"
+        description="Comparez le rôle de chaque environnement, son cas d’usage et sa limite principale avant de préparer votre mission."
       />
 
       <div className="page-shell space-y-6 pb-14 sm:pb-20">
@@ -143,18 +143,18 @@ export default function DocsPage() {
           </Card>
         ))}
 
-        <aside className="rounded-2xl border border-border bg-muted/35 p-5 sm:p-6" aria-labelledby="local-app-title">
-          <h2 id="local-app-title" className="text-xl font-semibold">Démarrage technique du MVP local</h2>
+        <aside className="rounded-2xl border border-border bg-muted/35 p-5 sm:p-6" aria-labelledby="starter-kit-title">
+          <h2 id="starter-kit-title" className="text-xl font-semibold">Après avoir choisi : préparez le dépôt</h2>
           <p className="mt-2 text-muted-foreground">
-            L’application crée votre parcours et l’enregistre uniquement dans ce navigateur. Ses prérequis, commandes et limites sont documentés dans le README du dépôt.
+            Le kit minimal fournit le contexte du projet, son état, les règles pour Codex et une première mission vérifiable. Les autres fichiers restent facultatifs.
           </p>
           <a
-            href={`${githubRoot}/README.md`}
+            href={`${githubRoot}/templates/starter-kit/README.md`}
             target="_blank"
             rel="noopener noreferrer"
             className="mt-3 inline-flex min-h-11 items-center gap-2 font-semibold text-primary underline underline-offset-4"
           >
-            Lire le README
+            Consulter le kit minimal
             <span className="sr-only"> (ouvre un nouvel onglet)</span>
             <ArrowRight aria-hidden="true" className="size-4" />
           </a>

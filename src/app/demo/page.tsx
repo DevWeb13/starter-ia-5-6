@@ -6,18 +6,18 @@ import { PageIntro } from "@/components/page-intro";
 import { buttonVariants } from "@/components/ui/button";
 
 export const metadata: Metadata = {
-  title: "Lancer un projet",
-  description: "Décrivez votre projet et obtenez localement un parcours déterministe en six phases, sans appel IA ni compte.",
+  title: "Démonstration historique",
+  description: "Tester l’ancien parcours local déterministe en six phases, conservé sans appel IA ni compte.",
 };
 
 export default function DemoPage() {
   return (
     <>
       <PageIntro
-        eyebrow="Lancer un projet"
-        badge="Moteur local déterministe"
-        title="Quel projet voulez-vous lancer ?"
-        description="Décrivez l’objectif, les contraintes et votre environnement. Starter IA prépare immédiatement six phases, sans appel IA, compte ni synchronisation."
+        eyebrow="Démonstration historique"
+        badge="Moteur local conservé"
+        title="Explorer le parcours local en six phases."
+        description="Cette réalisation historique organise un projet dans ce navigateur. Elle n’appelle ni ChatGPT ni Codex et ne représente plus la direction principale de Starter IA."
       />
       <section className="page-shell pb-14 sm:pb-20" aria-label="Création d’un projet local">
         <div className="mb-5 flex justify-end">

@@ -116,7 +116,7 @@ Ubuntu + iPhone + Remote Control n’est pas une exigence générale. Ses comman
 
 ## D-019 — Documentation centrale et application locale héritée
 
-**Date :** 2026-07-12 — **Statut :** recentrée par D-024 — remplaçait D-002 pour la direction active
+**Date :** 2026-07-12 — **Statut :** recentrée par D-024, puis D-031 — remplaçait D-002 pour la direction active
 
 Les ressources documentaires constituent le cœur produit. L’application Next.js et le cœur local des phases 1 et 2 sont préservés et maintenus comme support démonstratif historique. Leur évolution ne doit pas inventer de capacité distante ni imposer un monorepo.
 
@@ -128,7 +128,7 @@ La lecture du stockage commence après hydratation. Les dates doivent être des 
 
 ## D-021 — Hiérarchie publique centrée sur les ressources
 
-**Date :** 2026-07-12 — **Statut :** recentrée par D-022 et D-024 pour la direction active
+**Date :** 2026-07-12 — **Statut :** recentrée par D-022, D-024, puis D-031 pour la direction active
 
 L’interface publique utilise les routes existantes sans migration : `/docs` pour les Configurations, `/tarifs` pour les Ressources, `/fonctionnalites` pour la Méthode et `/demo` pour la démonstration locale historique.
 
@@ -136,7 +136,7 @@ L’accueil donne accès au catalogue en une action. Le Dashboard sort de la nav
 
 ## D-022 — Orchestrateur de projet complet
 
-**Date :** 2026-07-13 — **Statut :** acceptée — remplace D-017 et recentre D-021
+**Date :** 2026-07-13 — **Statut :** remplacée par D-030, puis D-031 pour la direction active — remplaçait D-017 et recentrait D-021
 
 Starter IA devient un orchestrateur simple et prudent qui transforme une idée en projet numérique lancé après validation humaine. Il organise un cycle unique en six phases : Cadrer, Valider, Concevoir, Construire, Vérifier, Lancer et améliorer. Les activités marché, produit, développement, qualité et marketing appartiennent au même projet.
 
@@ -144,7 +144,7 @@ L’application et la hiérarchie publique déjà livrées restent préservées.
 
 ## D-023 — ChatGPT + Codex, Work secondaire et matériel
 
-**Date :** 2026-07-13 — **Statut :** acceptée — remplace D-018
+**Date :** 2026-07-13 — **Statut :** recentrée par D-030, puis D-031 pour la direction active — remplace D-018
 
 ChatGPT + Codex est le workflow principal. ChatGPT aide à cadrer, rechercher, décider, rédiger et piloter ; Codex agit sur les fichiers, Git et les vérifications autorisées. Work reste une ressource optionnelle et ses guides sont conservés.
 
@@ -152,7 +152,7 @@ Starter IA recommandera le parcours le plus simple selon le matériel et les fon
 
 ## D-024 — MVP local de cycle et de paquets d’exécution
 
-**Date :** 2026-07-13 — **Statut :** acceptée — recentre D-019
+**Date :** 2026-07-13 — **Statut :** recentrée par D-030, puis D-031 pour la direction active — recentrait D-019
 
 Le prochain MVP utilisera d’abord un moteur local et déterministe. Il produira le cycle en six phases, des missions ChatGPT et Codex copiables ou exportables, des livrables, preuves, validations et un rapport final. Il n’appellera aucun fournisseur s’il ne l’intègre pas réellement.
 
@@ -160,7 +160,7 @@ Chaque étape comportera « Comprendre cette étape » : une explication courte 
 
 ## D-025 — Automatisation réversible et autorité humaine
 
-**Date :** 2026-07-13 — **Statut :** acceptée
+**Date :** 2026-07-13 — **Statut :** recentrée par D-031 pour la direction active ; autorité humaine conservée
 
 La cible est le maximum d’automatisation sans autonomie aveugle. Analyses, plans, missions, brouillons, tests et rapports peuvent être préparés automatiquement. Les fichiers, branches, commits, PR, Preview, exports et sauvegardes sont réversibles lorsqu’ils appartiennent au périmètre autorisé.
 
@@ -168,7 +168,7 @@ Fusion dans `main`, production, suppression, paiement, secret, publication exter
 
 ## D-026 — Marketing intégré et progression économique
 
-**Date :** 2026-07-13 — **Statut :** acceptée
+**Date :** 2026-07-13 — **Statut :** historique pour la direction active ; interdiction des résultats inventés conservée
 
 Le marketing appartient au cycle : marché, cible et positionnement dans Valider ; pack factuel, démonstration, mesure et contenu dans Lancer et améliorer. Toute publication externe reste soumise à l’humain.
 
@@ -200,7 +200,7 @@ Une étape sensible ne peut pas être marquée « fait et vérifié » sans acco
 
 ## D-030 — Générateur de starters Codex validé d’abord manuellement
 
-**Date :** 2026-07-14 — **Statut :** acceptée — remplace D-022 et recentre D-023 et D-024
+**Date :** 2026-07-14 — **Statut :** remplacée par D-031 — remplaçait D-022 et recentrait D-023 et D-024
 
 Starter IA devient prioritairement un générateur local et déterministe de starters Codex. Un starter est un dossier de préparation du travail, téléchargeable et versionnable, qui réunit le contexte, le résultat attendu, les limites, les règles permanentes, les décisions, les agents, les contrôles et une première mission directement exploitable. Ce n’est pas une application déjà développée.
 
@@ -211,3 +211,15 @@ D-023 est recentrée sur la recommandation de l’environnement Codex réellemen
 D-026 à D-029 décrivent surtout le MVP local actuel ou des règles conservées : progression économique factuelle, modèle version 2, moteur sans fournisseur, espace guidé, preuves déclaratives et autorité humaine. Le MVP en six phases et 16 étapes reste implémenté, testé, utilisable et secondaire ; il n’est ni supprimé ni qualifié d’obsolète.
 
 Avant toute automatisation, la Mission B doit créer manuellement un starter complet pour un vrai projet et l’utiliser avec Codex. Son retour d’usage validera ou corrigera le noyau provisoire et les modules conditionnels ; les choix de schéma, format ZIP, contenus et tests appartiennent seulement à la Mission C.
+
+## D-031 — Site de ressources et kit statique minimal
+
+**Date :** 2026-07-14 — **Statut :** acceptée — remplace D-030 pour la direction active et recentre D-019, D-021 et D-023
+
+Starter IA redevient un site de ressources et un kit de démarrage pour mieux utiliser ChatGPT, Work et Codex. L’accueil, les configurations, la méthode, les guides, les prompts et les modèles statiques constituent le produit actif. Le workflow conseillé est : cadrer dans ChatGPT, exécuter dans Codex, puis contrôler dans ChatGPT ; Work reste une option pour une mission cloud complète.
+
+Le kit repose sur quatre fichiers minimaux — `PROJECT.md`, `STATUS.md`, `AGENTS.md` et `prompts/FIRST-MISSION.md` — et trois options documentées : `DECISIONS.md`, `QUALITY.md` et `.codex/config.toml`. Aucun fichier supplémentaire n’est obligatoire par principe.
+
+Le générateur complexe de starters, le ZIP comme cœur produit, le manifeste automatique, la Mission B Social Autopilot et les Missions C à E associées sont abandonnés comme direction active. La création ou le pilotage automatique de dépôts, l’exécution automatique de Codex, l’API IA, l’authentification, le paiement et le stockage distant restent hors périmètre.
+
+Le MVP local en six phases, son Dashboard, son stockage navigateur et ses exports sont conservés comme démonstration historique utile. Ils restent accessibles et testés, mais ne sont plus la porte d’entrée ni la prochaine priorité.

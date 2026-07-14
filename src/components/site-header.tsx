@@ -11,10 +11,9 @@ import { cn } from "@/lib/utils";
 
 const navigation = [
   { href: "/", label: "Accueil" },
-  { href: "/demo", label: "Lancer un projet" },
-  { href: "/dashboard", label: "Mes projets" },
-  { href: "/fonctionnalites", label: "Fonctionnement" },
-  { href: "/tarifs", label: "Ressources" },
+  { href: "/docs", label: "Configurations" },
+  { href: "/tarifs", label: "Kit et prompts" },
+  { href: "/fonctionnalites", label: "Méthode" },
 ];
 
 function isCurrent(pathname: string, href: string) {
@@ -58,7 +57,7 @@ export function SiteHeader() {
           </span>
           <span className="min-w-0 leading-tight">
             <span className="block truncate text-sm font-bold sm:text-base">Starter IA 5.6</span>
-            <span className="hidden text-xs text-muted-foreground sm:block">Projet guidé local</span>
+            <span className="hidden text-xs text-muted-foreground sm:block">Guides et kit de démarrage</span>
           </span>
         </Link>
 

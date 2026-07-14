@@ -1,33 +1,29 @@
 # Starter IA 5.6
 
-**Starter IA prépare un environnement de travail prêt pour Codex à partir d’un projet, de l’environnement réel de l’utilisateur et des modules utiles.**
+**Un site de ressources et un kit de démarrage pour mieux utiliser ChatGPT, Work et Codex.**
 
 > Projet communautaire indépendant, non officiel et non affilié à OpenAI.
 
-## Nouvelle direction
+Starter IA explique les rôles des outils, aide à choisir une configuration réaliste et fournit des guides, prompts et modèles faciles à copier. La méthode conseillée est simple : cadrer dans ChatGPT, exécuter dans Codex, puis contrôler le résultat dans ChatGPT. Work reste une option pour les missions cloud compatibles.
 
-La cible est un générateur local et déterministe de starters Codex. Le résultat futur sera un dossier téléchargeable et versionnable contenant le contexte, les règles de travail, la configuration Codex, les agents utiles, les critères qualité et une première mission directement exploitable.
+## Commencer
 
-Ce générateur, son aperçu et son ZIP **ne sont pas encore construits**. Le noyau de fichiers reste une hypothèse à valider par un usage manuel réel.
+- orientation rapide : [`START-HERE.md`](START-HERE.md) ;
+- comparaison des configurations : [`guides/configurations/README.md`](guides/configurations/README.md) ;
+- kit minimal pour un dépôt Codex : [`templates/starter-kit/README.md`](templates/starter-kit/README.md) ;
+- modèle de brief : [`templates/BRIEF.md`](templates/BRIEF.md) ;
+- prompts prêts à adapter : [`prompts/`](prompts/) ;
+- formation courte : [`course/FORMATION-EXPRESS.md`](course/FORMATION-EXPRESS.md).
 
-## Ce qui fonctionne aujourd’hui
+## Kit de démarrage
 
-Le MVP local version 2 est réellement implémenté et conservé :
+Le noyau minimal contient `PROJECT.md`, `STATUS.md`, `AGENTS.md` et `prompts/FIRST-MISSION.md`. `DECISIONS.md`, `QUALITY.md` et `.codex/config.toml` sont facultatifs et documentés. Le kit est statique : aucun générateur, manifeste ou ZIP n’est nécessaire.
 
-- moteur TypeScript déterministe de six phases et 16 étapes ;
-- recommandations selon l’environnement déclaré ;
-- Dashboard et espace projet ;
-- stockage local versionné et migration conservatrice ;
-- missions copiables, statuts, preuves et validations humaines ;
-- exports Markdown et JSON.
+## Démonstration historique
 
-Il n’appelle ni ChatGPT ni Codex automatiquement. Il reste utile comme parcours complet, mais devient secondaire afin que la priorité future soit l’obtention rapide d’un starter Codex.
+Le dépôt conserve un MVP local déterministe de six phases et 16 étapes avec Dashboard, stockage navigateur, missions copiables et exports Markdown/JSON. Il reste utile pour démontrer une méthode guidée, mais n’est plus la porte d’entrée produit. Il n’appelle automatiquement aucun fournisseur IA.
 
-## Prochaine expérimentation
-
-La Mission B créera manuellement un starter complet pour un vrai projet et l’utilisera avec Codex. Ce test déterminera quels fichiers sont utiles, inutiles ou manquants avant toute spécification ou automatisation.
-
-## Démarrage de l’application actuelle
+## Lancer le site
 
 Prérequis : Node.js 24 et npm.
 
@@ -50,20 +46,20 @@ npm run test:e2e
 
 Playwright utilise Chromium. Avant un premier lancement local, exécutez si nécessaire `npx playwright install chromium`.
 
-## Ressources
+## Mémoire du projet
 
-- orientation rapide : [`START-HERE.md`](START-HERE.md) ;
-- direction et contrat cible : [`PROJECT.md`](PROJECT.md) ;
+- direction : [`PROJECT.md`](PROJECT.md) ;
 - état réel : [`STATUS.md`](STATUS.md) ;
 - feuille de route : [`ROADMAP.md`](ROADMAP.md) ;
-- workflow interne : [`WORKFLOW.md`](WORKFLOW.md) ;
-- architectures actuelle et cible : [`ARCHITECTURE.md`](ARCHITECTURE.md) ;
+- décisions : [`DECISIONS.md`](DECISIONS.md) ;
+- architecture : [`ARCHITECTURE.md`](ARCHITECTURE.md) ;
+- design : [`DESIGN.md`](DESIGN.md) ;
 - qualité : [`QUALITY.md`](QUALITY.md) ;
-- configurations techniques : [`guides/configurations/README.md`](guides/configurations/README.md).
+- workflow interne : [`WORKFLOW.md`](WORKFLOW.md).
 
 ## Limites
 
-Aucun générateur de starter, ZIP, SDK IA, secret, fichier `.env`, compte, base distante, paiement, publication automatique, fusion automatique ou production automatique n’est inclus.
+Aucun générateur de starter, ZIP, manifeste automatique, SDK IA, secret, fichier `.env`, compte, base distante, paiement, création de dépôt, exécution automatique, fusion automatique ou production automatique n’est inclus.
 
 ## Licence
 

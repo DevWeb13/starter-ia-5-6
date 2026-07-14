@@ -17,24 +17,22 @@ Un seul point coché interdit la livraison, la publication ou la fusion.
 - [ ] La démonstration est présentée comme une véritable IA ou déclenche une requête externe non documentée.
 - [ ] Le produit est présenté comme intégrant un fournisseur IA, une authentification ou un paiement alors que ces capacités sont hors périmètre.
 - [ ] Un secret, fichier `.env` ou configuration locale Vercel est commité.
-- [ ] Une fonction future, notamment le générateur ou le ZIP, est présentée comme disponible sans preuve.
+- [ ] Une fonction absente, notamment un générateur, un ZIP ou une exécution automatique, est présentée comme disponible.
 - [ ] Un problème important reste après le deuxième cycle de correction.
 
-### Cible future du générateur
+### Kit de démarrage
 
-Ces critères deviendront applicables lorsque le générateur sera implémenté :
-
-- [ ] Un fichier obligatoire du starter manque, est vide ou illisible.
-- [ ] Un secret est généré, demandé ou inclus dans le dossier.
-- [ ] Le dossier produit ne peut pas être téléchargé ou lu.
-- [ ] Le MVP local actuel est cassé pendant la transition.
+- [ ] Un fichier annoncé dans le noyau minimal manque, est vide ou illisible.
+- [ ] Un secret, jeton ou valeur locale est inclus dans un template.
+- [ ] Le kit impose un fichier facultatif sans expliquer son utilité.
+- [ ] La démonstration locale est cassée par le recentrage des pages publiques.
 
 ## Important
 
 Tous les points applicables doivent être résolus avant livraison ou fusion.
 
 - [ ] Les rôles de ChatGPT, Work et Codex se contredisent entre les documents ou dépendent d’un nom temporaire de modèle.
-- [ ] Les guides de configuration sont présentés comme des produits indépendants au lieu de références secondaires du parcours complet.
+- [ ] Les guides de configuration se contredisent ou ne permettent pas de choisir un point de départ.
 - [ ] Le cycle global du projet est confondu avec le workflow interne d’une mission.
 - [ ] Le parcours iPhone suppose une fonction qui n’est pas signalée comme dépendante du compte.
 - [ ] `AGENTS.md` ou `.codex/` est présenté comme automatiquement chargé par Work.
@@ -49,15 +47,12 @@ Tous les points applicables doivent être résolus avant livraison ou fusion.
 - [ ] Les données fictives, l’offre future ou l’absence de sauvegarde ne sont pas clairement indiquées.
 - [ ] La mémoire officielle ne reflète pas l’architecture, les contrôles, blocages ou prochaine mission réels.
 
-### Cible future du générateur
+### Site de ressources et kit
 
-Ces critères ne décrivent pas une fonction déjà livrée :
-
-- [ ] Un fichier inutile est ajouté sans justification dans le manifeste.
 - [ ] Le premier prompt ne contient pas le contexte nécessaire pour commencer la mission.
-- [ ] Les mêmes entrées et la même version des règles produisent des résultats différents.
-- [ ] L’interface impose des questions, options ou documents sans utilité démontrée.
-- [ ] Les options avancées empêchent d’atteindre rapidement l’aperçu, le téléchargement ou la première mission.
+- [ ] Le noyau minimal, les options et leurs cas d’usage ne sont pas distingués.
+- [ ] La navigation masque les configurations, le kit, les prompts ou le point de départ.
+- [ ] Une ressource annoncée n’est pas consultable depuis son lien public.
 
 ## Amélioration
 

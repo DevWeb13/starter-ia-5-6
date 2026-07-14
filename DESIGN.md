@@ -1,6 +1,6 @@
 # Identité visuelle
 
-Ce document est la source de vérité visuelle de Starter IA 5.6. L’interface est sobre, moderne, mobile-first et accessible. Pendant la Mission A, l’interface actuelle du MVP local en six phases reste inchangée ; les principes futurs ci-dessous orientent seulement le générateur de starters Codex non implémenté.
+Ce document est la source de vérité visuelle de Starter IA 5.6. L’interface est sobre, moderne, mobile-first et accessible. Le site de ressources constitue l’expérience principale ; le MVP local en six phases reste une démonstration historique clairement signalée.
 
 ## Principes
 
@@ -10,24 +10,22 @@ Ce document est la source de vérité visuelle de Starter IA 5.6. L’interface 
 - Aucun effet ne doit ralentir ou masquer le contenu.
 - Interface utilisable au pouce, au clavier, au zoom et avec un lecteur d’écran.
 - Parité fonctionnelle et contraste AA dans les thèmes clair et sombre.
-- Starter IA est l’unique identité produit active. Les mentions locales signalent le stockage navigateur, l’absence de synchronisation et l’absence d’appel IA automatique.
+- Starter IA est l’unique identité produit active.
+- L’accueil oriente d’abord vers les configurations, le kit, les prompts et les guides.
+- Les mentions de la démonstration locale signalent le stockage navigateur, l’absence de synchronisation et l’absence d’appel IA automatique.
 
-## Principes UX du futur générateur
+## Principes UX du site de ressources
 
-Ces principes décrivent une cible future et ne prétendent pas que le générateur existe :
-
-- rendre le résultat principal rapidement visible ;
-- poser peu de questions et uniquement celles qui changent le starter ;
-- replier les options avancées par défaut ;
-- montrer clairement l’aperçu des fichiers retenus ;
-- expliquer la raison de chaque fichier ;
-- traiter le téléchargement du dossier et la copie du premier prompt comme actions principales ;
-- distinguer explicitement l’existant vérifié, la prochaine expérimentation et la cible future ;
-- ne jamais présenter une fonction future comme disponible.
+- expliquer en une vue la différence entre ChatGPT, Work et Codex ;
+- proposer un point de départ selon le besoin, pas selon un jargon produit ;
+- rendre les fichiers du kit faciles à ouvrir et copier ;
+- séparer visuellement le noyau minimal des options ;
+- distinguer explicitement le produit actif, la démonstration historique et les idées abandonnées ;
+- ne jamais présenter une fonction absente comme disponible.
 
 ## Principes conservés du MVP local
 
-Le lancement, le Dashboard et l’espace projet actuels continuent d’appliquer leurs règles vérifiées : une phase principale visible, complexité repliée, progression, livrables, preuves, validations humaines, action principale claire et volet « Comprendre cette étape ». Cette réalisation reste secondaire et n’impose pas son parcours au futur générateur.
+Le lancement, le Dashboard et l’espace projet actuels continuent d’appliquer leurs règles vérifiées : une phase principale visible, complexité repliée, progression, livrables, preuves, validations humaines, action principale claire et volet « Comprendre cette étape ». Cette réalisation reste secondaire et n’impose pas son parcours au site de ressources.
 
 ## Couleurs claires
 

@@ -1,5 +1,7 @@
 # Mission B — Starter manuel de référence pour Social Autopilot
 
+> **Statut historique — abandonnée le 14 juillet 2026.** Cette mission et les Missions C à E associées ne font plus partie de la feuille de route active. Le contenu ci-dessous est conservé pour expliquer la direction explorée avant la décision D-031 ; il ne doit pas être exécuté ni utilisé comme prochaine priorité.
+
 ## But de la mission
 
 Valider le futur contrat de sortie de Starter IA avant de programmer le générateur.

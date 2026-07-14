@@ -27,22 +27,24 @@ async function showRecommendedWorkflow(page: Page) {
   await page.getByText("Voir la méthode conseillée", { exact: true }).click();
 }
 
-test("la landing présente le MVP complet et ses actions principales", async ({ page }) => {
+test("la landing présente les ressources, les rôles et le kit minimal", async ({ page }) => {
   const browserErrors: string[] = [];
   page.on("console", (message) => { if (message.type() === "error") browserErrors.push(message.text()); });
   page.on("pageerror", (error) => browserErrors.push(error.message));
   const response = await page.goto("/");
 
   expect(response?.status()).toBe(200);
-  await expect(page.getByRole("heading", { level: 1, name: /transforme une idée en projet guidé/i })).toBeVisible();
-  await expect(page.getByRole("link", { name: "Lancer un projet", exact: true }).first()).toHaveAttribute("href", "/demo");
-  await expect(page.getByRole("link", { name: "Comprendre le fonctionnement" })).toHaveAttribute("href", "/fonctionnalites");
-  await expect(page.getByText("Votre parcours est créé sur cet appareil, sans compte ni appel automatique à une IA.")).toBeVisible();
-  await expect(page.getByText("Méthode conseillée, si votre matériel le permet")).toBeVisible();
-  await expect(page.getByText(/Outil local pour organiser un projet en six phases/)).toBeVisible();
-  for (const phase of ["Cadrer", "Valider", "Concevoir", "Construire", "Vérifier", "Lancer et améliorer"]) {
-    await expect(page.getByRole("heading", { name: phase, exact: true })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 1, name: /mieux utiliser ChatGPT, Work et Codex/i })).toBeVisible();
+  await expect(page.getByRole("link", { name: "Choisir ma configuration" })).toHaveAttribute("href", "/docs");
+  await expect(page.getByRole("link", { name: "Voir le kit et les prompts" })).toHaveAttribute("href", "/tarifs");
+  await expect(page.getByText("Aucun compte, service IA, paiement ou stockage distant n’est intégré.")).toBeVisible();
+  await expect(page.getByText("Quatre fichiers suffisent pour démarrer.")).toBeVisible();
+  await expect(page.getByText(/Ressources et kit de démarrage pour mieux utiliser/)).toBeVisible();
+  for (const role of ["ChatGPT", "Work", "Codex"]) {
+    await expect(page.getByRole("heading", { name: role, exact: true })).toBeVisible();
   }
+  await expect(page.getByRole("heading", { name: "Réfléchir, exécuter, contrôler." })).toBeVisible();
+  await expect(page.getByRole("link", { name: "Ouvrir la démonstration" })).toHaveAttribute("href", "/demo");
   expect(browserErrors).toEqual([]);
 });
 
@@ -386,7 +388,7 @@ test("la suppression d’un projet exige une confirmation", async ({ page }) => 
 test("le parcours reste utilisable à 320 px et au clavier", async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 640 });
   await page.goto("/");
-  const primaryCta = page.getByRole("link", { name: "Lancer un projet", exact: true }).first();
+  const primaryCta = page.getByRole("link", { name: "Choisir ma configuration" }).first();
   expect((await primaryCta.boundingBox())?.height).toBeGreaterThanOrEqual(44);
   const menu = page.locator('button[aria-controls="mobile-navigation"]');
   await menu.focus();
@@ -394,7 +396,7 @@ test("le parcours reste utilisable à 320 px et au clavier", async ({ page }) =>
   await expect(menu).toHaveAttribute("aria-expanded", "true");
   await page.keyboard.press("Escape");
   await expect(menu).toBeFocused();
-  await primaryCta.click();
+  await page.goto("/demo");
   await page.getByLabel("Description du projet").focus();
   await page.keyboard.type("Une application accessible préparée entièrement au clavier.");
   await expect(page.getByLabel("Description du projet")).toHaveValue(/accessible préparée/);

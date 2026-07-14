@@ -1,4 +1,4 @@
-# Chat : réfléchir et décider
+# ChatGPT : réfléchir et décider
 
 ## Utiliser cette configuration pour
 
@@ -20,7 +20,7 @@
 
 ## Limites
 
-Chat n’est pas le choix par défaut pour une mission longue avec plusieurs fichiers, outils et vérifications. Les fonctions disponibles dépendent du compte et de l’environnement ; ne supposez pas qu’un fichier ou un service externe a été modifié sans preuve.
+ChatGPT n’est pas le choix par défaut pour une mission longue avec plusieurs fichiers, outils et vérifications. Les fonctions disponibles dépendent du compte et de l’environnement ; ne supposez pas qu’un fichier ou un service externe a été modifié sans preuve.
 
 ## Passage de relais
 

@@ -1,183 +1,110 @@
 # Direction produit
 
-## Direction active
+## Proposition active
 
-**Starter IA prépare un environnement de travail prêt pour Codex à partir de la description d’un projet, de l’environnement réel de l’utilisateur et des modules dont il a besoin.**
+**Starter IA est un site de ressources et un kit de démarrage pour mieux utiliser ChatGPT, Work et Codex.**
 
 > Projet communautaire indépendant, non officiel et non affilié à OpenAI.
 
-Le futur cœur produit est un générateur local et déterministe de **starters Codex**. Un starter est un dossier de préparation du travail, téléchargeable et versionnable ; ce n’est ni une application déjà développée, ni une intégration qui exécute Codex.
+Le produit aide à comprendre les rôles, choisir une configuration réaliste, préparer un dépôt pour Codex et copier des modèles ou prompts utiles. Il privilégie des pages lisibles et des fichiers statiques versionnés plutôt qu’un SaaS, un orchestrateur autonome ou un générateur de dossiers.
 
-Le parcours cible est :
+## À qui il sert
+
+- développeurs, freelances et petites équipes qui découvrent ou structurent leur usage de Codex ;
+- personnes qui préparent une mission dans ChatGPT ou Work avant de la confier à Codex ;
+- utilisateurs qui veulent des règles prudentes, des exemples concrets et un point de départ léger.
+
+Le contenu doit rester accessible à un débutant sans masquer les limites réelles des outils.
+
+## Résultats recherchés
+
+Starter IA doit permettre de :
+
+1. distinguer ChatGPT, Work et Codex ;
+2. choisir une configuration adaptée au matériel et aux fonctions réellement disponibles ;
+3. préparer un projet pour Codex sans multiplier les documents inutiles ;
+4. consulter et copier des guides, prompts et modèles ;
+5. appliquer une méthode simple et vérifiable ;
+6. apprendre grâce à des exemples et retours d’expérience factuels.
+
+## Rôles des outils
+
+- **ChatGPT** aide à réfléchir, cadrer, comparer, rédiger et contrôler un résultat.
+- **Work** peut prendre en charge une mission complète dans le cloud lorsque ses fichiers, outils ou plugins sont disponibles. Il reste facultatif.
+- **Codex** inspecte, modifie et vérifie un dépôt dans le périmètre autorisé.
+- **Starter IA** explique comment les utiliser et fournit le kit ; il ne les pilote pas automatiquement.
+
+Les disponibilités dépendent du compte, du client et de l’environnement. Work ne charge pas automatiquement les règles locales d’un dépôt. Codex Remote et Remote Control ne sont jamais présentés comme universellement disponibles.
+
+## Méthode conseillée
 
 ```text
-Décrire le projet
-→ indiquer l’environnement réel
-→ sélectionner les besoins facultatifs
-→ obtenir un starter Codex prêt à utiliser
-→ copier la première mission
+Réfléchir et cadrer dans ChatGPT
+→ exécuter sur le dépôt avec Codex
+→ contrôler le résultat dans ChatGPT
 ```
 
-## Problème prioritaire
+Work peut remplacer ou compléter la première et la dernière étape pour une mission cloud complète. Le passage de relais reste explicite : une réponse copiée ne prouve ni exécution, ni modification de fichiers.
 
-Préparer correctement un dépôt pour Codex demande de réunir le contexte, le résultat attendu, les limites, les règles permanentes, les décisions, les agents, les contrôles et une première mission exploitable. Cette préparation est lente, répétitive et facile à rendre inutilement complexe.
+## Kit de démarrage
 
-Starter IA doit réduire ce délai. L’utilisateur ne doit pas suivre un long parcours avant d’obtenir un résultat utilisable.
-
-## Public initial
-
-- développeurs ;
-- freelances et indépendants ;
-- petites agences ;
-- petites équipes qui utilisent ou souhaitent utiliser Codex sur de vrais dépôts.
-
-Le produit doit rester utile à son propre créateur pour produire des sites et applications clients. Les non-développeurs pourront constituer une direction future, sans imposer de complexité au premier générateur.
-
-## Contrat cible du générateur
-
-Cette section décrit une cible future, pas une fonction disponible.
-
-### Entrées nécessaires
-
-Le générateur demandera uniquement les informations qui influencent réellement le starter, par exemple :
-
-- nom ou description du projet ;
-- résultat recherché ;
-- projet nouveau ou dépôt existant ;
-- système utilisé ;
-- utilisation de Codex dans VS Code, en CLI ou à distance ;
-- disponibilité réelle de GitHub et Vercel ;
-- contraintes principales ;
-- modules facultatifs nécessaires.
-
-La liste exacte et les règles de sélection seront définies après validation du starter manuel de référence.
-
-### Sortie principale
-
-La cible future est :
-
-- un aperçu des fichiers retenus ;
-- un dossier ou ZIP téléchargeable et versionnable ;
-- une première mission fournie sous forme de prompt copiable ;
-- des instructions courtes pour démarrer ;
-- un manifeste expliquant pourquoi chaque fichier est présent.
-
-Le dossier donne à Codex le contexte, le résultat attendu, les limites, les règles permanentes, les décisions, les agents, les contrôles et la première mission fournie sous forme de prompt copiable. Il ne contient pas une application déjà développée.
-
-### Noyau provisoire à tester
-
-Le noyau suivant est une hypothèse de départ pour la Mission B, pas un contrat définitif :
+Le kit statique vit dans [`templates/starter-kit/`](templates/starter-kit/README.md). Son noyau minimal contient :
 
 ```text
-START-HERE.md
 PROJECT.md
 STATUS.md
-DECISIONS.md
 AGENTS.md
-QUALITY.md
 prompts/FIRST-MISSION.md
-.codex/config.toml
-.codex/agents/explorer.toml
-.codex/agents/reviewer.toml
 ```
 
-Il devra être utilisé sur un vrai projet afin d’identifier les fichiers utiles, inutiles ou manquants avant toute automatisation.
+- `PROJECT.md` explique le but et les limites durables ;
+- `STATUS.md` donne l’état réel et la prochaine action ;
+- `AGENTS.md` fixe les règles de travail de Codex dans le dépôt ;
+- `FIRST-MISSION.md` fournit une première mission petite et vérifiable.
 
-### Modules conditionnels
+Les fichiers `DECISIONS.md`, `QUALITY.md` et `.codex/config.toml` sont facultatifs. Ils deviennent utiles lorsque les décisions s’accumulent, que plusieurs critères doivent être contrôlés ou qu’une configuration locale prudente doit être partagée. Le kit n’impose pas treize fichiers et n’ajoute aucun manifeste automatique.
 
-Selon le projet, le starter pourra aussi retenir :
+## Ce qui existe réellement
 
-```text
-ARCHITECTURE.md
-DESIGN.md
-ROADMAP.md
-MARKETING.md
-SEO.md
-README.md
-LICENSE
-.github/workflows/ci.yml
-pull_request_template.md
-configuration Vercel
-tests adaptés à la stack
-```
+- une application Next.js publique présentant les ressources ;
+- cinq guides de configuration : ChatGPT, Work, Codex local, Codex Remote et Work + Codex ;
+- des prompts, un modèle de brief, une formation courte et le kit statique ;
+- un MVP local déterministe de six phases et 16 étapes avec stockage navigateur, missions copiables et exports Markdown/JSON.
 
-Ces éléments ne sont pas tous obligatoires. Chaque ajout doit répondre à un besoin réel et être justifié dans le manifeste ; un petit projet ne doit pas recevoir une documentation lourde par défaut.
+Le MVP local reste disponible comme démonstration historique utile. Il ne constitue plus la porte d’entrée ni la prochaine direction produit et n’appelle automatiquement aucun fournisseur IA.
 
-## Trois états à ne pas confondre
+## Direction abandonnée
 
-### Existant vérifié
+Ne font plus partie de la direction active :
 
-Le MVP local version 2 est réellement implémenté, local, déterministe et testé. Il organise un projet en six phases et 16 étapes, recommande un workflow selon l’environnement déclaré, conserve les projets dans `localStorage` et propose Dashboard, éditeur, missions copiables, statuts, preuves, validations et exports Markdown/JSON.
+- générateur complexe de starters, manifeste automatique ou ZIP comme cœur du produit ;
+- Missions B à E centrées sur Social Autopilot et ce générateur ;
+- création ou pilotage automatique de dépôts ;
+- exécution automatique de Codex ;
+- API IA, authentification, paiement ou stockage distant.
 
-Il n’appelle automatiquement ni ChatGPT ni Codex. Il est conservé comme réalisation utilisable et devient secondaire dans la direction produit. Son modèle, son stockage, ses routes et son interface ne sont pas modifiés pendant la Mission A.
+Ces idées restent dans l’historique des décisions lorsqu’elles expliquent le projet. Elles ne doivent plus être présentées comme la prochaine priorité ni comme des fonctions disponibles.
 
-### Prochaine expérimentation
+## Principes de réalisation
 
-La Mission B créera manuellement un starter complet pour un vrai projet et l’utilisera avec Codex. Son objectif est d’éprouver le noyau, les modules et les instructions avant de spécifier un générateur.
-
-### Cible future
-
-Le générateur local déterministe transformera les entrées utiles en sélection de fichiers, contenu, manifeste, aperçu, dossier téléchargeable et première mission. Cette cible n’est pas encore implémentée.
-
-## Workflow interne des missions
-
-Le parcours produit cible ne doit pas être confondu avec la méthode de réalisation d’une mission :
-
-```text
-Brief
-→ analyses en lecture seule
-→ plan
-→ écrivain unique
-→ vérification
-→ revue indépendante
-→ correction
-→ livraison
-```
-
-Les règles détaillées vivent uniquement dans [`WORKFLOW.md`](WORKFLOW.md).
-
-## Sécurité
-
-- un seul agent écrit ;
-- spécialistes et reviewers restent en lecture seule ;
-- aucune réussite n’est annoncée sans vérification ;
-- aucun secret n’est ajouté au dépôt ou au starter ;
-- fusion, production, suppression, paiement, publication, message et action irréversible exigent une autorisation humaine explicite.
-
-Les recommandations d’environnement doivent refléter les outils réellement disponibles. Work reste facultatif. Codex à distance et Remote Control ne sont jamais présentés comme universellement disponibles.
-
-## Stratégie économique
-
-La progression envisagée est :
-
-1. produire un starter open source réellement utile ;
-2. l’utiliser sur des projets réels ;
-3. publier des cas concrets ;
-4. tester un service d’installation et d’adaptation du workflow ;
-5. envisager un produit hébergé uniquement après validation réelle.
-
-Aucun prix, client, revenu, abonnement ou résultat commercial n’est revendiqué.
-
-## Limites actuelles
-
-- aucun générateur de starter ou de ZIP n’est implémenté ;
-- aucun nouveau formulaire ou schéma du générateur n’est défini ;
-- aucun SDK IA, secret, compte, paiement ou stockage distant n’est ajouté ;
-- aucune publication, fusion ou production automatique n’existe ;
-- les détails techniques du futur générateur dépendront du starter manuel de référence.
+- réutiliser les pages, composants et ressources existants ;
+- ajouter une fonction seulement après un besoin observé ;
+- préférer un fichier statique copiable à une automatisation prématurée ;
+- distinguer disponible, démonstration historique, abandonné et prochaine étape ;
+- ne jamais exposer de secret ni promettre une capacité non vérifiée.
 
 ## Sources de vérité
 
-- direction et contrat produit : [`PROJECT.md`](PROJECT.md) ;
-- processus interne : [`WORKFLOW.md`](WORKFLOW.md) ;
-- progression : [`ROADMAP.md`](ROADMAP.md) ;
+- direction : [`PROJECT.md`](PROJECT.md) ;
 - état réel : [`STATUS.md`](STATUS.md) ;
+- suite proportionnée : [`ROADMAP.md`](ROADMAP.md) ;
 - décisions : [`DECISIONS.md`](DECISIONS.md) ;
-- architectures actuelle et cible : [`ARCHITECTURE.md`](ARCHITECTURE.md) ;
+- processus interne : [`WORKFLOW.md`](WORKFLOW.md) ;
+- architecture : [`ARCHITECTURE.md`](ARCHITECTURE.md) ;
 - règles UX : [`DESIGN.md`](DESIGN.md) ;
-- critères de qualité : [`QUALITY.md`](QUALITY.md) ;
+- qualité : [`QUALITY.md`](QUALITY.md) ;
 - configurations : [`guides/configurations/README.md`](guides/configurations/README.md).
 
 ## Définition de fini
 
-Une mission est terminée lorsque ses livrables existent, que les contrôles applicables réussissent, que les limites sont explicites, que la mémoire reflète le résultat et qu’aucun problème bloquant ou important connu n’est masqué.
+Une mission est terminée lorsque les livrables existent, les contrôles applicables réussissent, les limites sont explicites, la mémoire officielle reflète le résultat et aucun problème bloquant ou important connu n’est masqué.

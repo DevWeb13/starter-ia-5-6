@@ -16,9 +16,9 @@ Le workflow de référence organise toute intervention précise :
 
 **Brief → analyses en lecture seule → plan → écrivain unique → vérification → revue indépendante → correction → livraison**
 
-Le MVP local version 2 propose aussi une méthode complète en six phases — Cadrer, Valider, Concevoir, Construire, Vérifier, Lancer et améliorer. Cette méthode reste disponible dans le produit actuel, mais elle n’est pas le parcours obligatoire du futur générateur de starters Codex.
+Le MVP local version 2 propose aussi une méthode complète en six phases — Cadrer, Valider, Concevoir, Construire, Vérifier, Lancer et améliorer. Cette méthode reste disponible dans la démonstration historique, mais elle n’est pas le parcours obligatoire du site de ressources.
 
-Le contrat du starter et le parcours produit cible vivent dans [`PROJECT.md`](PROJECT.md). Ce document ne les duplique pas.
+La proposition produit et le contenu du kit vivent dans [`PROJECT.md`](PROJECT.md). Ce document ne les duplique pas.
 
 ## La séquence
 
