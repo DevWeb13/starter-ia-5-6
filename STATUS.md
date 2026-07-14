@@ -1,18 +1,17 @@
 # État du projet
 
-**Dernière mise à jour :** 13 juillet 2026
-**Étape :** 8 — MVP local du projet complet
-**Branche active :** `work/08-complete-project-mvp`
-**Base réelle :** `aeb1e9bfaf4f6b9da1d8daadf3726069a82296d3`
-**Pull request :** nº 10 — prête pour révision
-**Statut réel :** implémentation, revue, CI et Preview automatique vérifiées
+**Dernière mise à jour :** 14 juillet 2026
+**Étape :** 8 — simplification de l’expérience du MVP local
+**Branche active :** `work/08-human-first-ux`
+**Base réelle :** `5ca3a6fdd510dc7d1a11382d086c0113c78975ee`
+**Pull request :** nº 11 — prête pour révision
+**Statut réel :** implémentation, deux cycles de revue, contrôles locaux, CI initiale et Preview automatique vérifiés
 
 ## Point de départ
 
-- l’étape 7 a été fusionnée par squash via la PR GitHub nº 9 ;
-- son commit est `aeb1e9bfaf4f6b9da1d8daadf3726069a82296d3` (`docs: define the definitive agentic product direction (#9)`) ;
-- la branche de l’étape 8 part exactement de ce commit ;
-- le dépôt distant est `DevWeb13/starter-ia-5-6`.
+- le MVP local de l’étape 8 a été fusionné dans `main` au commit `5ca3a6fdd510dc7d1a11382d086c0113c78975ee` ;
+- la branche `work/08-human-first-ux` part exactement de ce commit ;
+- le dépôt distant reste `DevWeb13/starter-ia-5-6`.
 
 ## MVP réellement implémenté
 
@@ -25,6 +24,17 @@
 - interface publique recentrée sur le projet complet ; configurations conservées comme ressources secondaires ;
 - Dashboard et éditeur `noindex` et absents du sitemap.
 
+## Simplification en cours de livraison
+
+- les six phases et les 16 étapes conservent leurs identifiants, leur ordre et leurs règles, avec des textes en français courant ;
+- chaque carte montre d’abord le titre, l’action à faire, l’état, la prochaine action et un seul bouton principal ;
+- les explications, résultats attendus, critères, notes, accords et missions complémentaires restent disponibles dans « Comprendre cette étape », fermé par défaut ;
+- le formulaire, les statuts, le Dashboard, le rapport et l’export Markdown utilisent les mêmes libellés simplifiés ;
+- les boutons affichent les curseurs actif et désactivé attendus ;
+- les liens externes de l’interface ouvrent un nouvel onglet avec une indication accessible.
+
+Le moteur n’a pas été reconstruit : le schéma 2, le stockage, la migration, les conflits, la progression, les statuts internes et les exports JSON restent inchangés. Aucune intégration distante n’a été ajoutée.
+
 ## Migration version 1
 
 - clé active : `starter-ia.projects.v2` ;
@@ -35,28 +45,29 @@
 - aucune progression, preuve ou approbation inventée ;
 - donnée v1 ou v2 illisible laissée intacte avec récupération explicite.
 
-## Contrôles observés
+## Contrôles observés sur cette branche
 
-- `git diff --check` : réussi avant la revue finale ;
-- `npm run lint` : réussi ;
-- `npm run typecheck` : réussi ;
-- `npm test` : 4 fichiers et 28 tests réussis ;
-- `npm run build` : réussi hors sandbox après l’échec attendu du port interne Turbopack dans le sandbox ;
-- `npm run test:e2e` : 17 scénarios Playwright réussis ;
-- contrôle Chromium headless : aucun débordement (`scrollWidth = clientWidth = 320`) sur l’accueil et `/demo` ;
-- contrôle Playwright à 320 px : création puis ouverture d’un espace projet avec un résultat continu de 600 caractères, sans débordement global ;
-- liens Markdown : 27 fichiers vérifiés, aucune cible relative absente ;
-- aucun fichier `.env`, appel réseau métier ou dépendance inattendue ;
-- `agent-browser` : non installé ; vérification équivalente effectuée avec Playwright et Chromium headless.
-- CI GitHub de la PR nº 10 : réussie ;
-- Preview Vercel automatique : prête et vérifiée sur les pages principales, sans déploiement manuel ni production.
+- Vitest ciblé : 2 fichiers et 16 tests réussis ;
+- ESLint ciblé sur les fichiers modifiés : réussi ;
+- Playwright ciblé : 8 scénarios initiaux réussis ; les 3 scénarios concernés par la revue puis le test de curseur isolé ont aussi réussi après correction ;
+- les contrôles ciblés couvrent les 16 étapes, les projets version 2, les garde-fous, la carte repliée, la copie, les curseurs, les liens externes, le clavier et 320 px ;
+- `agent-browser` reste non installé ; la vérification navigateur utilise Chromium avec Playwright ;
+- `git diff --check`, `npm run lint` et `npm run typecheck` : réussis ;
+- `npm test` : 4 fichiers et 31 tests réussis ;
+- `npm run build` : réussi hors sandbox avec Next.js 16.2.10 ;
+- `npm run test:e2e` : premier passage avec 18 réussites et 4 attentes obsolètes sur la méthode repliée, puis second passage avec 22 scénarios réussis ;
+- CI GitHub de la PR nº 11 sur `44d4069` : quality, GitGuardian, Vercel et Vercel Preview Comments réussis ;
+- Preview Vercel automatique `dpl_9VN5FosBFLK4oYEHBo4DNPJSDKgP` : état `READY`, source Git, branche `work/08-human-first-ux`, PR nº 11 et `target: null` ; aucune production ni commande de déploiement manuel ;
+- logs Vercel : build Next.js, TypeScript, 10 routes et déploiement terminés sans erreur ; l’accès HTTP direct reste protégé par l’authentification Vercel, donc aucune vérification visuelle distante n’est revendiquée ;
+- threads de revue GitHub : aucun lors du contrôle.
 
 ## Revue indépendante
 
-- cycle 1 : un blocage documentaire et sept défauts importants identifiés ;
-- corrections : mémoire, rôle reviewer, prérequis Remote Control/Preview, récupération brute, preuve obligatoire, responsive, promesse et contrôle des exports ;
-- cycle 2 : compteur et formulations documentaires résiduelles identifiés puis corrigés ;
-- vérification finale du cycle 2 : aucune anomalie de lint, TypeScript, Vitest, build, Playwright ou `git diff --check`.
+- cycle 1 en lecture seule : aucun bloquant, quatre défauts importants et une amélioration ;
+- corrections : méthode technique déplacée après les actions, accord humain prioritaire au lancement, messages de garde-fou harmonisés, fichier Next généré restauré et hover désactivé neutralisé ;
+- cycle 2 en lecture seule : deux défauts importants résiduels, aucun autre défaut bloquant ou important ;
+- corrections finales du cycle 2 : `next-env.d.ts` restauré après sa régénération par Next et « Parcours déterministe » remplacé par « Votre parcours » ;
+- aucun troisième passage ne sera lancé ; les corrections finales sont contrôlées directement avant livraison.
 
 ## Limites
 
@@ -68,4 +79,4 @@
 
 ## Prochaine action
 
-Revue humaine de la PR nº 10, sans fusion automatique ni création de production manuelle.
+Revue humaine de la PR nº 11, sans fusion automatique ni production manuelle.

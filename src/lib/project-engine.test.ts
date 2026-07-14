@@ -34,14 +34,37 @@ const input: CreateProjectInput = {
 describe("deterministic project engine", () => {
   it("creates a valid schema 2 project with exactly six ordered phases", () => {
     const project = createProject(input, "project-id", "2026-07-13T10:00:00.000Z");
+    const steps = project.phases.flatMap((phase) => phase.steps);
 
     expect(project.schemaVersion).toBe(PROJECT_SCHEMA_VERSION);
     expect(project.phases.map((phase) => phase.id)).toEqual(PROJECT_PHASE_IDS);
     expect(project.phases.map((phase) => phase.order)).toEqual([1, 2, 3, 4, 5, 6]);
     expect(project.phases.every((phase) => phase.steps.length >= 2 && phase.steps.length <= 3)).toBe(true);
-    expect(project.phases.flatMap((phase) => phase.steps)).toHaveLength(16);
-    expect(project.phases.flatMap((phase) => phase.steps).every((step) => step.status === "not-started")).toBe(true);
+    expect(steps).toHaveLength(16);
+    expect(steps.map((step) => step.id)).toEqual([
+      "scope-problem", "scope-constraints", "validate-market", "validate-positioning",
+      "validate-evidence", "design-mvp", "design-architecture", "build-foundation",
+      "build-core", "build-content", "verify-tests", "verify-experience",
+      "verify-review", "launch-pack", "launch-release", "launch-learn",
+    ]);
+    expect(steps.every((step) => step.status === "not-started")).toBe(true);
     expect(isProject(project)).toBe(true);
+  });
+
+  it("uses short action-first wording without changing the saved model", () => {
+    const project = createProject(input, "project-id", "2026-07-13T10:00:00.000Z");
+    const steps = project.phases.flatMap((phase) => phase.steps);
+
+    expect(steps.map((step) => step.title)).toEqual([
+      "Décrire le problème", "Définir les limites", "Comprendre les solutions existantes",
+      "Tester l’intérêt du projet", "Décider avec des résultats réels", "Choisir la première version",
+      "Organiser la construction", "Préparer le projet", "Construire le parcours principal",
+      "Ajouter les textes et les protections", "Tester le résultat", "Vérifier l’usage sur tous les écrans",
+      "Faire relire le projet", "Préparer le lancement", "Autoriser le lancement",
+      "Choisir les prochaines améliorations",
+    ]);
+    expect(steps[0].objective).toContain("ce sont encore des idées à vérifier");
+    expect(project.schemaVersion).toBe(2);
   });
 
   it("returns the same plan for the same inputs", () => {
@@ -63,13 +86,13 @@ describe("deterministic project engine", () => {
 
   it("integrates marketing during validation and launch", () => {
     const project = createProject(input, "project-id", "2026-07-13T10:00:00.000Z");
-    expect(project.phases[1].steps.some((step) => step.role === "marketing")).toBe(true);
-    expect(project.phases[5].steps.some((step) => step.role === "marketing")).toBe(true);
+    expect(project.phases[1].steps.some((step) => step.role === "personne qui aide à présenter le projet")).toBe(true);
+    expect(project.phases[5].steps.some((step) => step.role === "personne qui aide à présenter le projet")).toBe(true);
   });
 
   it("prevents a sensitive step from being completed without human approval", () => {
     const project = createProject(input, "project-id", "2026-07-13T10:00:00.000Z");
-    expect(() => updateProjectStep(project, "launch-release", { status: "done-verified" })).toThrow(/Accord humain requis/);
+    expect(() => updateProjectStep(project, "launch-release", { status: "done-verified" })).toThrow(/Votre accord est nécessaire/);
 
     const approved = updateProjectStep(project, "launch-release", {
       humanApprovalGranted: true,
@@ -81,7 +104,7 @@ describe("deterministic project engine", () => {
 
   it("requires a recorded proof before any step is done and verified", () => {
     const project = createProject(input, "project-id", "2026-07-13T10:00:00.000Z");
-    expect(() => updateProjectStep(project, "scope-problem", { status: "done-verified" })).toThrow(/preuve/);
+    expect(() => updateProjectStep(project, "scope-problem", { status: "done-verified" })).toThrow(/note ou un résultat/);
     const completed = updateProjectStep(project, "scope-problem", {
       userNotes: "Compte rendu de deux entretiens et décision consignés.",
       status: "done-verified",

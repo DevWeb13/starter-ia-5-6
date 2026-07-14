@@ -1,4 +1,4 @@
-import { Check, RefreshCw, TriangleAlert } from "lucide-react";
+import { Check, RefreshCw } from "lucide-react";
 
 import { LocalProjectNotice } from "@/components/local-project-notice";
 import type { Project } from "@/lib/project";
@@ -36,22 +36,11 @@ export function ProjectHeader({ project, saveState, disabled, onTitleChange }: P
         <div className="min-w-40 space-y-2 rounded-xl border bg-muted/35 p-4">
           <p className="text-sm font-semibold">Progression globale</p>
           <p className="text-2xl font-bold">{progress.percentage} %</p>
-          <p className="text-sm text-muted-foreground">{progress.completed}/{progress.total} étapes déclarées fait et vérifié</p>
+          <p className="text-sm text-muted-foreground">{progress.completed}/{progress.total} étapes terminées et vérifiées</p>
           <div className="h-2 overflow-hidden rounded-full bg-muted" role="progressbar" aria-label="Progression globale" aria-valuemin={0} aria-valuemax={100} aria-valuenow={progress.percentage}>
             <div className="h-full bg-primary" style={{ width: `${progress.percentage}%` }} />
           </div>
         </div>
-      </div>
-
-      <div className="rounded-xl border border-primary/40 bg-primary/10 p-4">
-        <p className="text-sm font-semibold">Workflow recommandé</p>
-        <p className="mt-1 font-semibold">{project.workflow.name}</p>
-        <p className="mt-1 text-sm text-muted-foreground">{project.workflow.summary}</p>
-        {project.workflow.warnings.length ? (
-          <ul className="mt-3 space-y-1 text-sm text-muted-foreground">
-            {project.workflow.warnings.map((warning) => <li key={warning} className="flex gap-2"><TriangleAlert aria-hidden="true" className="mt-0.5 size-4 shrink-0 text-warning" />{warning}</li>)}
-          </ul>
-        ) : null}
       </div>
 
       <div className="flex min-h-11 items-center gap-2 rounded-xl border px-3 text-sm" role="status" aria-live="polite">

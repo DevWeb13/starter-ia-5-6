@@ -105,8 +105,14 @@ export default function DocsPage() {
                     {configuration.resources.map((resource) => (
                       <li key={resource} className="flex gap-2">
                         <Check aria-hidden="true" className="mt-1 size-4 shrink-0 text-success" />
-                        <a href={`${githubRoot}/${resource}`} className="break-words underline underline-offset-4">
+                        <a
+                          href={`${githubRoot}/${resource}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="break-words underline underline-offset-4"
+                        >
                           {resource}
+                          <span className="sr-only"> (ouvre un nouvel onglet)</span>
                         </a>
                       </li>
                     ))}
@@ -124,9 +130,12 @@ export default function DocsPage() {
                 </div>
                 <a
                   href={`${githubRoot}/${configuration.guide}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex min-h-11 items-center gap-2 font-semibold text-primary underline underline-offset-4"
                 >
                   Lire le guide complet
+                  <span className="sr-only"> (ouvre un nouvel onglet)</span>
                   <ExternalLink aria-hidden="true" className="size-4" />
                 </a>
               </div>
@@ -137,13 +146,16 @@ export default function DocsPage() {
         <aside className="rounded-2xl border border-border bg-muted/35 p-5 sm:p-6" aria-labelledby="local-app-title">
           <h2 id="local-app-title" className="text-xl font-semibold">Démarrage technique du MVP local</h2>
           <p className="mt-2 text-muted-foreground">
-            L’application Next.js exécute uniquement le moteur déterministe et le stockage navigateur. Ses prérequis, commandes et limites sont documentés dans le README du dépôt.
+            L’application crée votre parcours et l’enregistre uniquement dans ce navigateur. Ses prérequis, commandes et limites sont documentés dans le README du dépôt.
           </p>
           <a
             href={`${githubRoot}/README.md`}
+            target="_blank"
+            rel="noopener noreferrer"
             className="mt-3 inline-flex min-h-11 items-center gap-2 font-semibold text-primary underline underline-offset-4"
           >
             Lire le README
+            <span className="sr-only"> (ouvre un nouvel onglet)</span>
             <ArrowRight aria-hidden="true" className="size-4" />
           </a>
         </aside>

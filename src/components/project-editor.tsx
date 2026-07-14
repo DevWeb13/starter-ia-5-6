@@ -137,7 +137,7 @@ export function ProjectEditor({ id }: { id: string }) {
       ) : null}
 
       <section aria-labelledby="phases-title" className="space-y-4">
-        <div><p className="eyebrow">Parcours déterministe</p><h2 id="phases-title" className="mt-2 text-2xl font-semibold">Les six phases</h2><p className="mt-1 text-muted-foreground">Une seule phase principale est affichée. Choisissez celle que vous voulez consulter.</p></div>
+        <div><p className="eyebrow">Votre parcours</p><h2 id="phases-title" className="mt-2 text-2xl font-semibold">Les six phases</h2><p className="mt-1 text-muted-foreground">Une seule phase principale est affichée. Choisissez celle que vous voulez consulter.</p></div>
         <PhaseNavigation phases={project.phases} activePhaseId={activePhase.id} onSelect={(phaseId) => setActivePhaseId(phaseId as ProjectPhaseId)} />
       </section>
 
@@ -149,6 +149,24 @@ export function ProjectEditor({ id }: { id: string }) {
         </div>
         {activePhase.steps.map((step) => <ProjectStepCard key={step.id} step={step} disabled={conflict} onUpdate={(update) => changeStep(step.id, update)} />)}
       </section>
+
+      <details className="rounded-2xl border bg-muted/25 p-4 sm:p-5">
+        <summary className="min-h-11 cursor-pointer py-2 font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+          Voir la méthode conseillée
+        </summary>
+        <div className="space-y-3 pt-3 text-sm">
+          <p className="font-semibold">{project.workflow.name}</p>
+          <p className="text-muted-foreground">{project.workflow.summary}</p>
+          {project.workflow.warnings.length ? (
+            <div>
+              <h3 className="font-semibold">Points à vérifier</h3>
+              <ul className="mt-2 space-y-2 text-muted-foreground">
+                {project.workflow.warnings.map((warning) => <li key={warning}>• {warning}</li>)}
+              </ul>
+            </div>
+          ) : null}
+        </div>
+      </details>
 
       <ProjectReportPanel project={project} />
 

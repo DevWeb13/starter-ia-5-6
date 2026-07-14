@@ -111,7 +111,7 @@ export function DemoLauncher() {
         <CardContent className="space-y-5">
           <div className="space-y-2">
             <label htmlFor="project-description" className="block font-semibold">Description du projet</label>
-            <p id="project-description-help" className="text-sm text-muted-foreground">Expliquez ce que vous voulez créer et pour qui.</p>
+            <p id="project-description-help" className="text-sm text-muted-foreground">Expliquez ce que vous voulez créer et à qui cela doit servir.</p>
             <Textarea
               id="project-description"
               value={description}
@@ -126,7 +126,7 @@ export function DemoLauncher() {
 
           <div className="space-y-2">
             <label htmlFor="desired-outcome" className="block font-semibold">Résultat recherché</label>
-            <p id="desired-outcome-help" className="text-sm text-muted-foreground">Décrivez ce qui devra être observable si le projet avance.</p>
+            <p id="desired-outcome-help" className="text-sm text-muted-foreground">Qu’est-ce qui devra fonctionner à la fin ?</p>
             <Textarea
               id="desired-outcome"
               className="min-h-24"
@@ -141,8 +141,8 @@ export function DemoLauncher() {
           </div>
 
           <div className="space-y-2">
-            <label htmlFor="project-constraints" className="block font-semibold">Contraintes ou contexte existant <span className="font-normal text-muted-foreground">(facultatif)</span></label>
-            <p id="project-constraints-help" className="text-sm text-muted-foreground">Budget, délai, outils, liens, données ou limites déjà connues.</p>
+            <label htmlFor="project-constraints" className="block font-semibold">Contraintes <span className="font-normal text-muted-foreground">(facultatif)</span></label>
+            <p id="project-constraints-help" className="text-sm text-muted-foreground">Y a-t-il un budget, un délai, un outil ou un site existant à prendre en compte ?</p>
             <Textarea
               id="project-constraints"
               className="min-h-24"
@@ -167,7 +167,7 @@ export function DemoLauncher() {
         <Card>
           <CardHeader>
             <div className="flex items-center gap-3"><Laptop aria-hidden="true" className="size-5 text-primary" /><h2 className="text-xl font-semibold">Mon environnement</h2></div>
-            <p className="text-sm text-muted-foreground">Ces réponses servent uniquement à recommander un chemin compatible.</p>
+            <p className="text-sm text-muted-foreground">Ces réponses permettent de vous proposer la méthode la plus simple avec votre matériel.</p>
           </CardHeader>
           <CardContent className="space-y-5">
             <div className="space-y-2">
@@ -191,7 +191,7 @@ export function DemoLauncher() {
             </div>
 
             <fieldset className="space-y-3">
-              <legend className="font-semibold">Capacités disponibles</legend>
+              <legend className="font-semibold">Outils disponibles</legend>
               {environmentOptions.map((option) => {
                 const disabled = !hardware.hasComputer && ["codexLocalAvailable", "remoteControlAvailable", "machineCanStayActive"].includes(option.key);
                 return (

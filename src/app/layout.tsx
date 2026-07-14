@@ -13,11 +13,11 @@ export const metadata: Metadata = {
     template: "%s — Starter IA 5.6",
   },
   description:
-    "Organisez localement votre projet en six phases avec des missions ChatGPT et Codex, des preuves et des validations humaines.",
+    "Organisez localement votre projet en six phases avec des missions ChatGPT et Codex et des accords clairs.",
   openGraph: {
     title: "Starter IA 5.6",
     description:
-      "Un MVP local déterministe pour organiser les missions, livrables, preuves et validations d’un projet complet.",
+      "Un outil local pour savoir quoi faire, quoi vérifier et quand donner votre accord.",
     type: "website",
     locale: "fr_FR",
   },

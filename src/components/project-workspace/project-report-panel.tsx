@@ -4,13 +4,13 @@ import { createProjectReport } from "@/lib/project-report";
 export function ProjectReportPanel({ project }: { project: Project }) {
   const report = createProjectReport(project);
   const metrics = [
-    ["Fait et vérifié", report.completed],
-    ["Partiel", report.partial],
+    ["Terminé et vérifié", report.completed],
+    ["En cours", report.partial],
     ["Bloqué", report.blocked],
-    ["Non tenté", report.notStarted],
-    ["Preuves consignées", report.evidenceCount],
-    ["Validations accordées", report.approvalsGranted],
-    ["Validations manquantes", report.approvalsMissing],
+    ["Pas commencé", report.notStarted],
+    ["Notes et résultats", report.evidenceCount],
+    ["Accords donnés", report.approvalsGranted],
+    ["Accords nécessaires", report.approvalsMissing],
   ];
   return (
     <section aria-labelledby="project-report-title" className="space-y-5 rounded-2xl border bg-card p-5 sm:p-6">
@@ -23,7 +23,7 @@ export function ProjectReportPanel({ project }: { project: Project }) {
         {metrics.map(([label, value]) => <div key={label} className="rounded-xl border bg-muted/25 p-3"><p className="text-sm text-muted-foreground">{label}</p><p className="text-2xl font-bold">{value}</p></div>)}
       </div>
       <div>
-        <h3 className="font-semibold">Rôles planifiés</h3>
+        <h3 className="font-semibold">Qui peut aider</h3>
         <p className="mt-1 text-sm text-muted-foreground">{report.plannedRoles.join(" · ")}</p>
       </div>
       <div>

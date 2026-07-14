@@ -57,7 +57,7 @@ export function createProjectReport(project: Project): ProjectReport {
         .filter((step) => step.status !== "done-verified")
         .map((step) => ({ phase: phase.name, step: step.title, status: step.status })),
     ).slice(0, 5),
-    executionNotice: "Mission préparée, exécution non vérifiée sauf lorsqu’une étape est déclarée « fait et vérifié » par l’utilisateur.",
+    executionNotice: "Les missions sont préparées ici. Vous indiquez vous-même ce qui a été réellement exécuté et vérifié.",
   };
 }
 
@@ -99,15 +99,15 @@ export function projectToMarkdown(project: Project) {
   const phaseSections = project.phases.map((phase) => {
     const steps = phase.steps.map((step) => `### ${step.order}. ${markdownText(step.title)}
 
-**Objectif**
+**Ce qu’il faut faire**
 
 ${markdownText(step.objective)}
 
-**Rôle planifié :** ${markdownText(step.role)}
+**Qui peut aider :** ${markdownText(step.role)}
 
-**Outil recommandé :** ${markdownText(step.recommendedTool)}
+**Outil conseillé :** ${markdownText(step.recommendedTool)}
 
-**Statut déclaré par l’utilisateur :** ${PROJECT_STEP_STATUS_LABELS[step.status]}
+**Où en êtes-vous ?** ${PROJECT_STEP_STATUS_LABELS[step.status]}
 
 **Mission ChatGPT**
 
@@ -117,19 +117,19 @@ ${step.chatGptMission ? markdownText(step.chatGptMission) : "Non prévue pour ce
 
 ${step.codexMission ? markdownText(step.codexMission) : "Non prévue pour cette étape."}
 
-**Livrables attendus**
+**Ce que vous devez obtenir**
 
 ${list(step.deliverables)}
 
-**Preuves attendues**
+**Comment savoir que c’est bon**
 
 ${list(step.successCriteria)}
 
-**Notes ou preuves consignées**
+**Notes et résultats**
 
 ${markdownText(step.userNotes)}
 
-**Validation humaine :** ${step.requiresHumanApproval ? (step.humanApprovalGranted ? "accordée" : "manquante") : "non requise"}${step.requiresHumanApproval ? ` — ${markdownText(step.humanApprovalReason)}` : ""}`
+**Votre accord est nécessaire :** ${step.requiresHumanApproval ? (step.humanApprovalGranted ? "accord donné" : "accord manquant") : "non"}${step.requiresHumanApproval ? ` — ${markdownText(step.humanApprovalReason)}` : ""}`
     ).join("\n\n");
     return `## Phase ${phase.order} — ${phase.name}\n\n${markdownText(phase.summary)}\n\n${steps}`;
   }).join("\n\n");
@@ -138,7 +138,7 @@ ${markdownText(step.userNotes)}
 
 > Projet local Starter IA. Les missions sont préparées ; leur exécution n’est pas vérifiée automatiquement.
 
-## Brief
+## Votre projet
 
 **Description**
 
@@ -156,27 +156,27 @@ ${markdownText(project.brief.constraints)}
 
 ${markdownText(project.brief.existingContext)}
 
-## Profil matériel déclaré
+## Matériel et outils indiqués
 
 ${list(hardwareLines(project.hardware))}
 
-## Workflow recommandé
+## Méthode conseillée
 
 **${markdownText(project.workflow.name)}** — ${markdownText(project.workflow.summary)}
 
-### Raisons
+### Pourquoi cette méthode
 
 ${list(project.workflow.reasons)}
 
-### Prérequis
+### Ce qu’il faut avant de commencer
 
 ${list(project.workflow.prerequisites)}
 
-### Avertissements
+### Points d’attention
 
 ${list(project.workflow.warnings)}
 
-### Chemin de livraison
+### Étapes conseillées
 
 ${list(project.workflow.deliveryPath)}
 
@@ -184,13 +184,13 @@ ${phaseSections}
 
 ## Rapport de progression
 
-- ${report.completed}/${report.total} étapes déclarées « fait et vérifié » par l’utilisateur (${report.percentage} %)
-- ${report.partial} étapes partielles
+- ${report.completed}/${report.total} étapes terminées et vérifiées (${report.percentage} %)
+- ${report.partial} étapes en cours
 - ${report.blocked} étapes bloquées
-- ${report.notStarted} étapes non tentées
-- ${report.evidenceCount} étapes avec notes ou preuves consignées
-- ${report.approvalsGranted} validations humaines accordées
-- ${report.approvalsMissing} validations humaines manquantes
+- ${report.notStarted} étapes pas commencées
+- ${report.evidenceCount} étapes avec des notes ou résultats
+- ${report.approvalsGranted} accords donnés
+- ${report.approvalsMissing} accords encore nécessaires
 
 ### Prochaines actions
 
