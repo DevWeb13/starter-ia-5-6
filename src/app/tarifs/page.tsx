@@ -1,104 +1,112 @@
 import type { Metadata } from "next";
-import { ExternalLink, FileText } from "lucide-react";
+import { Check, ExternalLink, FileText } from "lucide-react";
 
 import { PageIntro } from "@/components/page-intro";
+import { Card, CardContent } from "@/components/ui/card";
 
 export const metadata: Metadata = {
-  title: "Ressources",
-  description: "Guides, workflows, prompts, briefs et critères qualité complémentaires au MVP local Starter IA.",
+  title: "Kit, templates et prompts",
+  description: "Un kit minimal pour Codex, ses fichiers facultatifs, des prompts et des guides prêts à consulter et copier.",
 };
 
 const githubRoot = "https://github.com/DevWeb13/starter-ia-5-6/blob/main";
 
-const resources = [
-  {
-    path: "WORKFLOW.md",
-    purpose: "Définit le processus de référence, du brief à la livraison vérifiée.",
-    context: "À suivre pour toute mission structurée, quel que soit l’environnement.",
-  },
-  {
-    path: "QUALITY.md",
-    purpose: "Classe les défauts et fixe la décision de livraison.",
-    context: "À utiliser pendant la vérification, la revue et après chaque correction.",
-  },
-  {
-    path: "templates/BRIEF.md",
-    purpose: "Transforme une demande en résultat, contraintes et critères observables.",
-    context: "À remplir avant une mission complète ou un passage de relais.",
-  },
-  {
-    path: "prompts/MASTER-WORK.md",
-    purpose: "Cadre l’orchestration d’une mission complète dans Work.",
-    context: "À adapter lorsque Work dispose des fichiers et outils requis.",
-  },
-  {
-    path: "prompts/REVIEW.md",
-    purpose: "Demande une revue indépendante, priorisée et strictement en lecture seule.",
-    context: "À lancer après vérification du livrable réel.",
-  },
-  {
-    path: "prompts/AUTOMATION.md",
-    purpose: "Décrit un audit GitHub hebdomadaire prudent et sans bruit.",
-    context: "À utiliser seulement si GitHub et l’automatisation sont réellement disponibles.",
-  },
-  {
-    path: "course/FORMATION-EXPRESS.md",
-    purpose: "Propose un parcours de 30 minutes pour choisir l’environnement et livrer proprement.",
-    context: "À suivre pour découvrir Chat, Work, Codex, les briefs et la boucle qualité.",
-  },
-  {
-    path: "AGENTS.md",
-    purpose: "Fixe les règles permanentes des agents dans ce dépôt.",
-    context: "À lire avec Codex dans le dépôt ; Work ne le charge pas automatiquement.",
-  },
-  {
-    path: ".codex/config.toml",
-    purpose: "Enregistre le modèle, le sandbox et les limites des agents Codex.",
-    context: "À appliquer dans l’environnement local compatible, sans y placer de secret.",
-  },
-  {
-    path: "guides/configurations/README.md",
-    purpose: "Compare Chat, Work, Codex local, Codex Remote et Work + Codex.",
-    context: "À ouvrir en premier pour choisir une configuration et son passage de relais.",
-  },
+const coreFiles = [
+  ["templates/starter-kit/PROJECT.md", "But, utilisateurs, résultat et limites durables du projet."],
+  ["templates/starter-kit/STATUS.md", "État réellement disponible, limites et prochaine action."],
+  ["templates/starter-kit/AGENTS.md", "Règles prudentes que Codex doit respecter dans le dépôt."],
+  ["templates/starter-kit/prompts/FIRST-MISSION.md", "Première modification petite, bornée et vérifiable."],
 ];
+
+const optionalFiles = [
+  ["templates/starter-kit/DECISIONS.md", "Quand plusieurs choix durables doivent rester compréhensibles."],
+  ["templates/starter-kit/QUALITY.md", "Quand les critères communs dépassent ceux d’une seule mission."],
+  ["templates/starter-kit/.codex/config.toml", "Quand une configuration locale prudente doit être partagée."],
+];
+
+const resources = [
+  ["guides/configurations/README.md", "Comparer ChatGPT, Work, Codex local, Codex Remote et Work + Codex."],
+  ["templates/BRIEF.md", "Transformer une demande en livrables, contraintes et critères observables."],
+  ["prompts/MASTER-WORK.md", "Cadrer une mission complète dans Work lorsque cet environnement convient."],
+  ["prompts/REVIEW.md", "Demander une revue indépendante, priorisée et en lecture seule."],
+  ["course/FORMATION-EXPRESS.md", "Apprendre en 30 minutes à choisir, préparer, exécuter et contrôler."],
+  ["WORKFLOW.md", "Suivre le processus interne du brief à la livraison vérifiée."],
+];
+
+function FileLink({ path, description }: { path: string; description: string }) {
+  return (
+    <li className="grid gap-3 p-5 sm:p-6 lg:grid-cols-[minmax(15rem,0.8fr)_1.2fr_auto] lg:items-start">
+      <div className="flex min-w-0 gap-3">
+        <FileText aria-hidden="true" className="mt-0.5 size-5 shrink-0 text-primary" />
+        <code className="break-all font-mono text-sm font-semibold text-foreground">{path}</code>
+      </div>
+      <p className="text-muted-foreground">{description}</p>
+      <a
+        href={`${githubRoot}/${path}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex min-h-11 items-center gap-2 font-semibold text-primary underline underline-offset-4 lg:justify-self-end"
+      >
+        Ouvrir
+        <span className="sr-only"> (ouvre un nouvel onglet)</span>
+        <ExternalLink aria-hidden="true" className="size-4" />
+      </a>
+    </li>
+  );
+}
 
 export default function ResourcesPage() {
   return (
     <>
       <PageIntro
-        eyebrow="Ressources"
-        badge="Fichiers du dépôt"
-        title="Les ressources techniques de Starter IA."
-        description="Le MVP local est la porte d’entrée produit. Ces fichiers complètent son parcours avec les règles, guides, prompts et critères réellement présents dans le dépôt."
+        eyebrow="Kit et ressources"
+        badge="Prêts à copier"
+        title="Préparer un projet pour Codex, sans dossier inutile."
+        description="Commencez avec quatre fichiers. Ajoutez une option seulement lorsqu’elle répond à un besoin réel, puis utilisez les guides et prompts selon votre environnement."
       />
 
-      <section className="page-shell pb-14 sm:pb-20" aria-labelledby="resources-title">
-        <h2 id="resources-title" className="sr-only">Ressources disponibles</h2>
-        <div className="overflow-hidden rounded-2xl border border-border bg-card">
-          <ul className="divide-y divide-border">
-            {resources.map((resource) => (
-              <li key={resource.path} className="grid gap-4 p-5 sm:p-6 lg:grid-cols-[minmax(12rem,0.65fr)_1.35fr_auto] lg:items-start">
-                <div className="flex min-w-0 gap-3">
-                  <FileText aria-hidden="true" className="mt-0.5 size-5 shrink-0 text-primary" />
-                  <code className="break-all font-mono text-sm font-semibold text-foreground">{resource.path}</code>
-                </div>
-                <div className="space-y-1">
-                  <p>{resource.purpose}</p>
-                  <p className="text-sm text-muted-foreground">Contexte : {resource.context}</p>
-                </div>
-                <a
-                  href={`${githubRoot}/${resource.path}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex min-h-11 items-center gap-2 self-center font-semibold text-primary underline underline-offset-4 lg:justify-self-end"
-                >
-                  Ouvrir
-                  <span className="sr-only"> (ouvre un nouvel onglet)</span>
-                  <ExternalLink aria-hidden="true" className="size-4" />
-                </a>
-              </li>
+      <section className="page-shell space-y-10 pb-14 sm:pb-20">
+        <div className="space-y-5" aria-labelledby="core-kit-title">
+          <div className="max-w-3xl space-y-2">
+            <p className="eyebrow">Noyau minimal</p>
+            <h2 id="core-kit-title" className="section-title">Quatre fichiers pour commencer.</h2>
+            <p className="text-muted-foreground">Ils donnent à Codex le contexte durable, l’état réel, les règles et la première action. Aucun générateur ni ZIP n’est nécessaire.</p>
+          </div>
+          <ul className="divide-y divide-border overflow-hidden rounded-2xl border border-border bg-card">
+            {coreFiles.map(([path, description]) => <FileLink key={path} path={path} description={description} />)}
+          </ul>
+        </div>
+
+        <div className="space-y-5" aria-labelledby="optional-kit-title">
+          <div className="max-w-3xl space-y-2">
+            <p className="eyebrow">Selon le projet</p>
+            <h2 id="optional-kit-title" className="section-title">Trois options, jamais obligatoires par principe.</h2>
+          </div>
+          <div className="grid gap-4 lg:grid-cols-3">
+            {optionalFiles.map(([path, description]) => (
+              <Card key={path}>
+                <CardContent className="flex h-full flex-col p-5 sm:p-6">
+                  <Check aria-hidden="true" className="size-5 text-success" />
+                  <code className="mt-4 break-all font-mono text-sm font-semibold">{path}</code>
+                  <p className="mt-3 flex-1 text-muted-foreground">{description}</p>
+                  <a href={`${githubRoot}/${path}`} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex min-h-11 items-center gap-2 font-semibold text-primary underline underline-offset-4">
+                    Ouvrir le modèle
+                    <span className="sr-only"> (ouvre un nouvel onglet)</span>
+                    <ExternalLink aria-hidden="true" className="size-4" />
+                  </a>
+                </CardContent>
+              </Card>
             ))}
+          </div>
+        </div>
+
+        <div className="space-y-5" aria-labelledby="resources-title">
+          <div className="max-w-3xl space-y-2">
+            <p className="eyebrow">Pour aller plus loin</p>
+            <h2 id="resources-title" className="section-title">Guides, prompts et méthode.</h2>
+          </div>
+          <ul className="divide-y divide-border overflow-hidden rounded-2xl border border-border bg-card">
+            {resources.map(([path, description]) => <FileLink key={path} path={path} description={description} />)}
           </ul>
         </div>
       </section>

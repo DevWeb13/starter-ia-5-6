@@ -5,68 +5,58 @@ import { PageIntro } from "@/components/page-intro";
 import { Card, CardContent } from "@/components/ui/card";
 
 export const metadata: Metadata = {
-  title: "Fonctionnement",
-  description: "Les six phases de Starter IA et la façon simple de préparer, réaliser puis vérifier chaque action.",
+  title: "Méthode ChatGPT et Codex",
+  description: "Une méthode simple pour cadrer dans ChatGPT, exécuter dans Codex et contrôler le résultat dans ChatGPT.",
 };
 
 const githubRoot = "https://github.com/DevWeb13/starter-ia-5-6/blob/main";
 
 const steps = [
   {
-    title: "Cadrer",
-    text: "Décrire le problème, le résultat souhaité, les limites et les informations manquantes.",
+    title: "Réfléchir et cadrer dans ChatGPT",
+    text: "Décrivez le besoin, le résultat attendu, les contraintes et les critères de réussite. Enregistrez les décisions utiles dans les fichiers du projet.",
+    output: "Un brief court et vérifiable.",
   },
   {
-    title: "Valider",
-    text: "Vérifier le besoin auprès des personnes concernées et regarder les solutions qu’elles utilisent déjà.",
+    title: "Exécuter dans Codex",
+    text: "Ouvrez le dépôt, vérifiez les règles et l’état Git, puis réalisez une modification ciblée sur une branche dédiée avec les contrôles pertinents.",
+    output: "Un diff limité et des preuves de vérification.",
   },
   {
-    title: "Concevoir",
-    text: "Choisir une première version simple, ses textes et la façon de la construire.",
-  },
-  {
-    title: "Construire",
-    text: "Construire le résultat sur une branche séparée. Un seul agent modifie les fichiers.",
-  },
-  {
-    title: "Vérifier",
-    text: "Tester le résultat, l’accessibilité et la sécurité, puis demander une relecture indépendante.",
-  },
-  {
-    title: "Lancer et améliorer",
-    text: "Préparer le lancement avec des faits, demander les accords nécessaires et apprendre des retours.",
+    title: "Contrôler dans ChatGPT",
+    text: "Relisez le résultat réel, les tests, les limites et les affirmations. Corrigez les problèmes bloquants ou importants avant la livraison.",
+    output: "Une décision claire : valide, à corriger ou bloqué.",
   },
 ];
 
 const principles = [
-  "Décrire le besoin → préparer l’action → la réaliser.",
-  "Vérifier le résultat réel → faire relire → corriger.",
-  "Les missions ChatGPT et Codex reprennent les informations de votre projet et ses limites.",
-  "Copier une mission ne l’exécute pas.",
-  "Vous indiquez l’avancement et les résultats observés.",
-  "Les actions importantes exigent toujours votre accord clair.",
+  "Une réponse copiée n’est pas une action exécutée.",
+  "Le dépôt, ses règles et son état sont vérifiés avant d’écrire.",
+  "Un seul agent modifie les fichiers ; les reviewers restent en lecture seule.",
+  "Les contrôles sont adaptés au changement et rapportés avec leur résultat réel.",
+  "Fusion, production, suppression, paiement, secret ou publication exigent un accord explicite.",
+  "Work peut compléter le parcours, mais le passage de relais reste manuel.",
 ];
 
 export default function MethodPage() {
   return (
     <>
       <PageIntro
-        eyebrow="Fonctionnement"
-        badge="Cycle complet"
-        title="Six phases pour guider une idée jusqu’au lancement."
-        description="Chaque étape vous indique quoi faire, ce que vous devez obtenir et comment vérifier le résultat."
+        eyebrow="Méthode"
+        badge="Trois temps"
+        title="Cadrer, exécuter, contrôler."
+        description="Un parcours simple pour utiliser ChatGPT et Codex ensemble sans leur attribuer des actions qu’ils n’ont pas réalisées."
       />
 
       <section className="page-shell pb-14 sm:pb-20" aria-labelledby="method-steps-title">
-        <h2 id="method-steps-title" className="sr-only">Les six phases du projet</h2>
-        <ol className="grid gap-4 lg:grid-cols-2">
+        <h2 id="method-steps-title" className="sr-only">Les trois temps de la méthode</h2>
+        <ol className="grid gap-4 lg:grid-cols-3">
           {steps.map((step, index) => (
-            <li key={step.title} className="grid gap-3 rounded-2xl border border-border bg-card p-5 sm:grid-cols-[auto_1fr] sm:p-6">
-              <span className="font-mono text-sm font-bold text-primary">{String(index + 1).padStart(2, "0")}</span>
-              <div>
-                <h3 className="text-lg font-semibold">{step.title}</h3>
-                <p className="mt-1 text-muted-foreground">{step.text}</p>
-              </div>
+            <li key={step.title} className="rounded-2xl border border-border bg-card p-5 sm:p-6">
+              <span className="font-mono text-sm font-bold text-primary">0{index + 1}</span>
+              <h3 className="mt-3 text-xl font-semibold">{step.title}</h3>
+              <p className="mt-3 text-muted-foreground">{step.text}</p>
+              <p className="mt-5 border-t border-border pt-4 text-sm"><strong>Résultat :</strong> {step.output}</p>
             </li>
           ))}
         </ol>
@@ -75,11 +65,9 @@ export default function MethodPage() {
       <section className="border-y border-border bg-muted/35 py-14 sm:py-20" aria-labelledby="principles-title">
         <div className="page-shell grid gap-8 lg:grid-cols-[0.7fr_1.3fr]">
           <div className="max-w-xl space-y-3">
-            <p className="eyebrow">Pour chaque action</p>
-            <h2 id="principles-title" className="section-title">Une mission préparée, exécutée puis vérifiée.</h2>
-            <p className="text-muted-foreground">
-              Cette méthode simple s’applique à chaque action des six phases.
-            </p>
+            <p className="eyebrow">Garde-fous</p>
+            <h2 id="principles-title" className="section-title">Savoir ce qui a vraiment été fait.</h2>
+            <p className="text-muted-foreground">Starter IA prépare des passages de relais explicites. Il n’exécute ni ChatGPT, ni Work, ni Codex.</p>
           </div>
           <Card>
             <CardContent className="p-5 sm:p-6">
@@ -96,28 +84,29 @@ export default function MethodPage() {
         </div>
       </section>
 
-      <section className="reading-shell py-14 sm:py-20" aria-labelledby="sources-title">
-        <h2 id="sources-title" className="section-title">Lire les documents de référence</h2>
-        <p className="mt-3 text-muted-foreground">
-          WORKFLOW.md décrit le processus complet. QUALITY.md définit les défauts bloquants ou importants et la décision de livraison.
-        </p>
-        <div className="mt-5 flex flex-wrap gap-x-6 gap-y-2">
-          {[
-            ["Lire WORKFLOW.md", "WORKFLOW.md"],
-            ["Lire QUALITY.md", "QUALITY.md"],
-          ].map(([label, path]) => (
-            <a
-              key={path}
-              href={`${githubRoot}/${path}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex min-h-11 items-center gap-2 font-semibold text-primary underline underline-offset-4"
-            >
-              {label}
-              <span className="sr-only"> (ouvre un nouvel onglet)</span>
-              <ExternalLink aria-hidden="true" className="size-4" />
-            </a>
-          ))}
+      <section className="reading-shell py-14 sm:py-20" aria-labelledby="work-title">
+        <p className="eyebrow">Et Work ?</p>
+        <h2 id="work-title" className="section-title">Une option pour les missions cloud complètes.</h2>
+        <p className="mt-3 text-muted-foreground">Work peut préparer plusieurs livrables, coordonner des outils disponibles ou effectuer le contrôle final. Il ne charge pas automatiquement les règles locales du dépôt : transmettez le brief, les décisions et les limites à Codex.</p>
+      </section>
+
+      <section className="border-t border-border py-14 sm:py-20" aria-labelledby="sources-title">
+        <div className="reading-shell">
+          <h2 id="sources-title" className="section-title">Copier la méthode</h2>
+          <p className="mt-3 text-muted-foreground">Le kit fournit une première mission. WORKFLOW.md décrit le processus interne complet et REVIEW.md cadre la revue indépendante.</p>
+          <div className="mt-5 flex flex-wrap gap-x-6 gap-y-2">
+            {[
+              ["Ouvrir FIRST-MISSION.md", "templates/starter-kit/prompts/FIRST-MISSION.md"],
+              ["Lire WORKFLOW.md", "WORKFLOW.md"],
+              ["Lire REVIEW.md", "prompts/REVIEW.md"],
+            ].map(([label, path]) => (
+              <a key={path} href={`${githubRoot}/${path}`} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2 font-semibold text-primary underline underline-offset-4">
+                {label}
+                <span className="sr-only"> (ouvre un nouvel onglet)</span>
+                <ExternalLink aria-hidden="true" className="size-4" />
+              </a>
+            ))}
+          </div>
         </div>
       </section>
     </>

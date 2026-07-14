@@ -1,8 +1,53 @@
 # Architecture
 
-Ce document distingue l’architecture réellement livrée de la cible future. Il ne spécifie pas encore l’implémentation du générateur.
+Ce document distingue le site de ressources actif de la démonstration locale historique.
 
-## Architecture actuelle vérifiée
+## Architecture active
+
+```text
+Pages Next.js statiques
+        ↓
+catalogue de configurations, guides, prompts et templates versionnés
+        ↓
+consultation ou copie depuis GitHub
+```
+
+### Application et stack
+
+- Next.js `16.2.10`, App Router ;
+- React / React DOM `19.2.7` ;
+- TypeScript `5.9.3` strict ;
+- Tailwind CSS `4.3.2`, composants UI locaux et `next-themes` ;
+- Vitest `4.1.10` et Playwright `1.61.1` ;
+- Server Components par défaut, avec limites client pour le thème, la navigation, les formulaires et `localStorage`.
+
+Les routes publiques existantes sont réutilisées :
+
+- `/` : orientation et points de départ ;
+- `/docs` : choix entre ChatGPT, Work et les configurations Codex ;
+- `/tarifs` : kit, prompts, templates et guides ;
+- `/fonctionnalites` : méthode ChatGPT → Codex → ChatGPT ;
+- `/demo` : démonstration locale historique.
+
+Les ressources restent des fichiers Markdown ou TOML simples. Le site renvoie vers leur version enregistrée dans GitHub ; il n’existe ni base de données, ni API IA, ni service de génération.
+
+## Kit statique
+
+`templates/starter-kit/` contient quatre fichiers minimaux et trois options. L’utilisateur copie seulement ce qui correspond à son projet. Aucun code ne compose automatiquement un dossier, un manifeste ou un ZIP.
+
+```text
+templates/starter-kit/
+├── README.md
+├── PROJECT.md
+├── STATUS.md
+├── AGENTS.md
+├── prompts/FIRST-MISSION.md
+├── DECISIONS.md             # facultatif
+├── QUALITY.md               # facultatif
+└── .codex/config.toml       # facultatif
+```
+
+## Démonstration historique conservée
 
 ```text
 Brief + profil matériel déclarés
@@ -16,51 +61,13 @@ stockage local version 2 dans localStorage
 Dashboard ↔ éditeur ↔ exports Markdown/JSON ↔ rapport local
 ```
 
-### Application et stack
+`src/lib/project-engine.ts` produit le parcours sans appel réseau. `src/lib/project.ts` définit le modèle version 2. `/demo`, `/dashboard` et `/dashboard/[id]` conservent leurs fonctions. Les projets restent sur l’appareil, les données invalides ne sont pas écrasées automatiquement et les routes du Dashboard restent `noindex`.
 
-- Next.js `16.2.10`, App Router ;
-- React / React DOM `19.2.7` ;
-- TypeScript `5.9.3` strict ;
-- Tailwind CSS `4.3.2`, composants UI locaux et next-themes ;
-- Vitest `4.1.10` et Playwright `1.61.1` ;
-- Server Components par défaut, avec limites client pour le thème, la navigation, les formulaires et `localStorage`.
+Cette architecture est maintenue pour préserver une réalisation utile ; elle ne sert plus de fondation à un orchestrateur ou à un générateur futur.
 
-### Moteur et modèle locaux
+## Directions non implémentées et abandonnées
 
-`src/lib/project-engine.ts` transforme les déclarations de l’utilisateur en six phases et 16 étapes. Il recommande un workflow selon le système, Codex local ou distant et la disponibilité déclarée de GitHub ou Vercel. Il n’effectue aucun appel réseau, ChatGPT, Codex, OpenAI ou autre fournisseur.
-
-`src/lib/project.ts` définit le modèle version 2. Les statuts internes sont `not-started`, `partial`, `blocked` et `done-verified`. Une étape sensible ne peut pas être validée sans accord humain.
-
-### Stockage, interface et exports
-
-- clé active : `starter-ia.projects.v2` ;
-- migration de `ai-project-launcher.projects.v1` après validation, conservation de la source et sauvegarde brute ;
-- donnée illisible jamais écrasée automatiquement ;
-- `/demo` crée un projet local ;
-- `/dashboard` liste, reprend et exporte les projets ;
-- `/dashboard/[id]` affiche l’espace guidé ;
-- exports Markdown et JSON, plus rapport dérivé de l’état enregistré ;
-- Dashboard et éditeur `noindex` et absents du sitemap.
-
-Ce système est conservé comme mode secondaire. La Mission A ne modifie ni son modèle, ni son stockage, ni ses routes, ni son interface.
-
-## Architecture cible non implémentée
-
-```text
-Entrées du projet
-→ recommandation d’environnement
-→ sélection des modules
-→ manifeste des fichiers
-→ génération déterministe du contenu
-→ aperçu
-→ ZIP et première mission sous forme de prompt copiable
-```
-
-La cible produira un starter Codex, c’est-à-dire un dossier de préparation du travail et non une application développée. Les mêmes entrées devront produire le même résultat, sous réserve d’une version explicite des règles et contenus.
-
-La Mission B doit d’abord valider manuellement le noyau, les modules et l’usage réel. La Mission C décidera ensuite les champs, règles, schéma, manifeste, erreurs, format ZIP et tests.
-
-Aucune bibliothèque ZIP, aucun nouveau schéma TypeScript, aucune organisation de composants et aucune migration ne sont choisis dans ce document.
+Le générateur de starters, le manifeste automatique, le ZIP, la création de dépôt, l’exécution automatique de Codex, Social Autopilot, l’API IA, l’authentification, le paiement et le stockage distant ne font pas partie de l’architecture cible.
 
 ## Sécurité commune
 

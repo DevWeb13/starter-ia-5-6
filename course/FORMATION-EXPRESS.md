@@ -1,135 +1,108 @@
 # Formation express — 30 minutes
 
-Objectif : savoir choisir le bon espace, écrire un brief, utiliser des sous-agents et livrer un résultat vérifié depuis l’iPhone.
+Objectif : comprendre les rôles de ChatGPT, Work et Codex, préparer un dépôt léger et livrer une première mission vérifiée.
 
 Chaque partie suit la même logique : une notion, une action et un point de contrôle.
 
-## 1. Comprendre Chat, Work et Codex — 4 min
+## 1. Choisir le bon environnement — 5 min
 
 ### Notion
 
-- **Chat** répond vite à une question, aide à décider ou rédige un texte court.
-- **Work** exécute une mission complète avec plusieurs étapes, fichiers, plugins ou outils.
-- **Codex** est spécialisé dans le développement sur un environnement de code et un dépôt.
-
-Sur iPhone, le parcours de ce starter utilise Chat et Work. Codex n’y constitue pas un environnement local autonome ; un pilotage distant peut exister selon le compte et l’environnement connecté.
+- **ChatGPT** aide à réfléchir, décider, rédiger et contrôler.
+- **Work** peut conduire une mission cloud complète avec les fichiers et outils réellement disponibles.
+- **Codex** travaille sur un environnement de code et un dépôt dans le périmètre autorisé.
 
 ### Action
 
 Classez ces besoins :
 
-1. Reformuler un SMS : Chat.
-2. Produire trois documents, les vérifier et les livrer : Work.
-3. Modifier une application, lancer les tests et préparer une pull request (PR) : Codex dans un environnement compatible.
+1. clarifier le résultat attendu d’une fonctionnalité : ChatGPT ;
+2. produire et relire plusieurs documents cloud : Work si les sources y sont disponibles ;
+3. modifier une application et lancer ses tests : Codex.
 
 ### Point de contrôle
 
-Vous savez expliquer le choix en une phrase sans confondre outil, modèle et agent.
+Vous savez expliquer le choix sans confondre outil, modèle et agent.
 
-## 2. Configurer le Projet sur iPhone — 5 min
+## 2. Préparer le noyau du projet — 6 min
 
 ### Notion
 
-Un Projet regroupe le contexte et les instructions durables d’un même sujet. Il ne charge pas automatiquement `AGENTS.md` ou `.codex/`.
+Codex agit mieux avec un contexte court, un état réel, des règles permanentes et une première mission précise. Une pile de documents vides n’aide pas.
 
 ### Action
 
-1. Créez un Projet `Starter IA` dans l’app ChatGPT.
-2. Ajoutez les instructions courtes de [`START-HERE.md`](../START-HERE.md).
-3. Choisissez le modèle généraliste disponible par défaut ; adaptez seulement si la mission et les options réellement proposées le justifient.
+Copiez depuis [`templates/starter-kit/`](../templates/starter-kit/README.md) :
+
+1. `PROJECT.md` ;
+2. `STATUS.md` ;
+3. `AGENTS.md` ;
+4. `prompts/FIRST-MISSION.md`.
+
+Ajoutez une option seulement si son besoin est présent.
 
 ### Point de contrôle
 
-Relisez les instructions du Projet : elles doivent nommer un seul écrivain, trois sous-agents maximum, deux cycles maximum et les actions sensibles soumises à accord.
+Chaque fichier contient une information utile et actuelle ; aucun secret n’y apparaît.
 
-## 3. Écrire un bon brief — 5 min
+## 3. Écrire une première mission — 5 min
 
 ### Notion
 
-Un bon brief décrit un résultat observable. Il donne le contexte utile sans noyer l’agent et précise comment vérifier la réussite.
+Une bonne mission décrit un résultat observable, le contexte utile, les limites et les contrôles de réussite.
 
 ### Action
 
-Transformez :
-
-```text
-Aide-moi avec mon offre.
-```
-
-En :
-
-```text
-Compare mes deux offres dans un tableau d’une page pour des indépendants. Fais apparaître prix, contenu, limites et recommandation. N’invente aucune donnée manquante. La mission est réussie si chaque critère est renseigné ou marqué « à confirmer ». Ne publie rien.
-```
-
-Créez ensuite votre brief avec [`templates/BRIEF.md`](../templates/BRIEF.md).
+Adaptez [`templates/BRIEF.md`](../templates/BRIEF.md) ou `prompts/FIRST-MISSION.md`. Préférez une petite amélioration vérifiable à une reconstruction complète.
 
 ### Point de contrôle
 
-Une autre personne doit pouvoir répondre à trois questions : que produire, avec quelles limites et comment prouver que c’est fini ?
+Une autre personne peut répondre à trois questions : que produire, avec quelles limites et comment prouver que c’est fini ?
 
-## 4. Utiliser les sous-agents — 5 min
+## 4. Passer de ChatGPT à Codex — 5 min
 
 ### Notion
 
-Un sous-agent est un assistant chargé d’un angle précis. En lecture seule, il analyse sans modifier. Plusieurs avis sont utiles seulement s’ils sont distincts.
+Le passage de relais n’est pas automatique. ChatGPT prépare le cadre ; Codex doit relire l’état du dépôt, ses règles et la mission avant d’écrire.
 
 ### Action
 
-Pour un dossier commercial, déléguez au maximum :
-
-- un contrôle de clarté pour un débutant ;
-- un contrôle des affirmations et informations manquantes ;
-- un contrôle de cohérence et de complexité.
-
-L’orchestrateur synthétise. L’agent écrivain reste seul à modifier le dossier.
+1. Cadrez le besoin dans ChatGPT.
+2. Enregistrez les décisions utiles dans les fichiers du projet.
+3. Confiez la mission bornée à Codex sur une branche dédiée.
 
 ### Point de contrôle
 
-Chaque sous-agent a un objectif borné, aucun n’écrit, et le total ne dépasse pas trois.
+Codex dispose du résultat attendu, des exclusions et des commandes de contrôle autorisées.
 
-## 5. Appliquer la boucle qualité — 6 min
+## 5. Vérifier puis contrôler — 5 min
 
 ### Notion
 
 - **Vérifier** : confirmer que le résultat existe et fonctionne sur sa cible.
-- **Revoir** : chercher indépendamment les défauts.
-- **Corriger** : faire modifier le résultat par l’écrivain.
-
-Un cycle est : revue → correction → vérification. Deux cycles maximum. Un bloquant ou important restant interdit de déclarer la mission réussie.
+- **Contrôler** : relire le résultat avec le brief et chercher les défauts ou affirmations non prouvées.
 
 ### Action
 
-1. Ouvrez le livrable réel.
-2. Appliquez [`QUALITY.md`](../QUALITY.md).
-3. Demandez la revue avec [`prompts/REVIEW.md`](../prompts/REVIEW.md).
-4. Faites corriger par l’écrivain.
-5. Vérifiez de nouveau le fichier ou le service cible.
+1. Faites exécuter à Codex les contrôles pertinents.
+2. Relisez le diff et le résultat réel.
+3. Utilisez ChatGPT ou [`prompts/REVIEW.md`](../prompts/REVIEW.md) pour une revue indépendante.
 
 ### Point de contrôle
 
-Le rapport distingue les preuves des suppositions et indique le nombre de cycles utilisés.
+Le rapport distingue preuves, limites et suppositions. Un problème bloquant ou important est corrigé avant livraison.
 
-## 6. Créer une automatisation — 5 min
+## 6. Aller plus loin sans alourdir — 4 min
 
-### Notion
+Ajoutez :
 
-Une automatisation répète une mission à une cadence définie. Elle doit être plus prudente qu’une mission interactive : elle ne peut pas compter sur une réponse immédiate de l’utilisateur.
+- `DECISIONS.md` si plusieurs choix durables doivent être expliqués ;
+- `QUALITY.md` si les critères dépassent quelques lignes dans la mission ;
+- `.codex/config.toml` si l’équipe partage une configuration Codex prudente ;
+- Work si une mission cloud complète apporte une valeur claire.
 
-### Action
-
-1. Ouvrez la fonction d’automatisation si elle est disponible sur votre compte.
-2. Planifiez un audit hebdomadaire.
-3. Copiez [`prompts/AUTOMATION.md`](../prompts/AUTOMATION.md).
-4. Vérifiez que le prompt interdit les doublons, limite l’écriture à une issue réelle et n’autorise aucune modification du dépôt.
-5. Contrôlez les premières exécutions et désactivez la tâche si elle produit du bruit.
-
-### Point de contrôle
-
-L’automatisation ne publie rien quand aucune correction bloquante ou importante n’est nécessaire.
+Ne construisez pas une automatisation, un générateur ou un stockage distant avant d’avoir observé un besoin réel.
 
 ## Fin de la formation
 
-Vous savez maintenant choisir Chat, Work ou Codex, configurer un Projet iPhone, écrire un brief, déléguer jusqu’à trois lectures, appliquer deux cycles de qualité au maximum et planifier un audit prudent.
-
-Prochaine étape : copiez [`prompts/MASTER-WORK.md`](../prompts/MASTER-WORK.md) et remplacez les champs par une mission réelle.
+Vous savez maintenant choisir l’environnement, préparer quatre fichiers utiles, passer un brief à Codex et contrôler le résultat dans ChatGPT.
