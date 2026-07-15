@@ -3,11 +3,13 @@ import { Check, ExternalLink } from "lucide-react";
 
 import { PageIntro } from "@/components/page-intro";
 import { Card, CardContent } from "@/components/ui/card";
+import { createPublicPageMetadata } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPublicPageMetadata({
+  path: "/fonctionnalites",
   title: "Méthode ChatGPT et Codex",
   description: "Une méthode simple pour cadrer dans ChatGPT, exécuter dans Codex et contrôler le résultat dans ChatGPT.",
-};
+});
 
 const githubRoot = "https://github.com/DevWeb13/starter-ia-5-6/blob/main";
 

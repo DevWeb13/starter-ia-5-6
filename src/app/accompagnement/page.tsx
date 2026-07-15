@@ -4,6 +4,7 @@ import { ArrowRight, ArrowUpRight, Check, Minus } from "lucide-react";
 import { PageIntro } from "@/components/page-intro";
 import { buttonVariants } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { createPublicPageMetadata } from "@/lib/site";
 
 const contactUrl = "https://www.lareponsedev.fr/?besoin=starter-ia#contact";
 
@@ -12,14 +13,13 @@ const metadataDescription =
   "Une intervention humaine pour structurer votre usage de ChatGPT, Work et Codex, adapter le kit Starter IA et préparer une première mission vérifiable.";
 
 export const metadata: Metadata = {
-  title: metadataTitle,
-  description: metadataDescription,
-  openGraph: {
+  ...createPublicPageMetadata({
+    path: "/accompagnement",
     title: metadataTitle,
     description: metadataDescription,
-    url: "/accompagnement",
-    type: "website",
-  },
+    openGraphTitle: metadataTitle,
+    openGraphDescription: metadataDescription,
+  }),
   twitter: {
     card: "summary",
     title: metadataTitle,

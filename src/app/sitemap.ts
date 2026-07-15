@@ -1,14 +1,14 @@
 import type { MetadataRoute } from "next";
 
-const siteUrl = "https://starter-ia-5-6.vercel.app";
+import { absoluteSiteUrl } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
-    { url: siteUrl, changeFrequency: "weekly", priority: 1 },
-    { url: `${siteUrl}/docs`, changeFrequency: "monthly", priority: 0.9 },
-    { url: `${siteUrl}/ressources`, changeFrequency: "monthly", priority: 0.9 },
-    { url: `${siteUrl}/fonctionnalites`, changeFrequency: "monthly", priority: 0.85 },
-    { url: `${siteUrl}/accompagnement`, changeFrequency: "monthly", priority: 0.75 },
-    { url: `${siteUrl}/demo`, changeFrequency: "monthly", priority: 0.4 },
+    { url: absoluteSiteUrl("/"), changeFrequency: "weekly", priority: 1 },
+    { url: absoluteSiteUrl("/docs"), changeFrequency: "monthly", priority: 0.9 },
+    { url: absoluteSiteUrl("/ressources"), changeFrequency: "monthly", priority: 0.9 },
+    { url: absoluteSiteUrl("/fonctionnalites"), changeFrequency: "monthly", priority: 0.85 },
+    { url: absoluteSiteUrl("/accompagnement"), changeFrequency: "monthly", priority: 0.75 },
+    { url: absoluteSiteUrl("/demo"), changeFrequency: "monthly", priority: 0.4 },
   ];
 }

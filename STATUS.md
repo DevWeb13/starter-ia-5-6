@@ -1,10 +1,11 @@
 # État du projet
 
-**Dernière mise à jour :** 14 juillet 2026
+**Dernière mise à jour :** 15 juillet 2026
 
 ## État officiel
 
 - Starter IA est recentré sur les guides, configurations, prompts et templates.
+- Le domaine public canonique est `https://starter-ia.lareponsedev.fr` ; les métadonnées, canonical, sitemap et robots restent attachés à cette origine, y compris sur les Previews.
 - Le kit de démarrage statique minimal est disponible.
 - Une offre pilote facultative d’installation et d’adaptation humaine est présentée à 390 € TTC.
 - Le MVP local en six phases est conservé comme démonstration historique.

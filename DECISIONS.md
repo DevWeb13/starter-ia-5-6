@@ -76,7 +76,7 @@ La PR GitHub nº 1, documentaire, est déjà fusionnée. Cette mission reste la 
 
 ## D-013 — SEO minimal sur le domaine public
 
-**Date :** 2026-07-11 — **Statut :** acceptée
+**Date :** 2026-07-11 — **Statut :** remplacée par D-033
 
 `metadataBase`, `sitemap.ts` et `robots.ts` utilisent `https://starter-ia-5-6.vercel.app`. Les routes publiques indexables sont déclarées dans le sitemap ; la route spéciale 404 de Next.js génère une directive `noindex`, sans directive globale d’indexation contradictoire.
 
@@ -233,3 +233,11 @@ Les ressources gratuites, le kit statique minimal et la méthode ChatGPT → Cod
 Le prix pilote affiché est de **390 € TTC**. La page `/accompagnement` décrit précisément le périmètre et renvoie vers le site public LaReponseDev ; aucun paiement intégré, compte, formulaire avec stockage distant, SaaS ou exécution automatique de Codex n’est ajouté. L’ancienne route `/tarifs` redirige vers la nouvelle route `/ressources`.
 
 Cette offre n’est pas considérée comme validée avant une première vente réelle. Aucun client, revenu, gain de temps ou validation du kit sur un projet extérieur n’est revendiqué sans observation enregistrée.
+
+## D-033 — Domaine personnalisé canonique
+
+**Date :** 2026-07-15 — **Statut :** acceptée — remplace D-013
+
+Le domaine public canonique de Starter IA est `https://starter-ia.lareponsedev.fr`. `metadataBase`, les canonical propres à chaque page indexable, les URL Open Graph, le sitemap et `robots.txt` utilisent cette origine de production.
+
+L’ancien domaine Vercel peut rester accessible techniquement, mais il n’est plus une origine publique active. Les Previews Vercel conservent elles aussi les URL de production dans leurs métadonnées publiques ; aucune origine temporaire issue de la requête ou de l’environnement ne remplace le domaine canonique.

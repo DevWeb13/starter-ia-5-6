@@ -3,11 +3,13 @@ import { ArrowRight, Check, ExternalLink } from "lucide-react";
 
 import { PageIntro } from "@/components/page-intro";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { createPublicPageMetadata } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPublicPageMetadata({
+  path: "/docs",
   title: "Choisir sa configuration",
   description: "Comparer ChatGPT, Work, Codex local, Codex Remote et les passages de relais selon son besoin réel.",
-};
+});
 
 const githubRoot = "https://github.com/DevWeb13/starter-ia-5-6/blob/main";
 

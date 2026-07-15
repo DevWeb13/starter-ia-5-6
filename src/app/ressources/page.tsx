@@ -3,11 +3,13 @@ import { Check, ExternalLink, FileText } from "lucide-react";
 
 import { PageIntro } from "@/components/page-intro";
 import { Card, CardContent } from "@/components/ui/card";
+import { createPublicPageMetadata } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPublicPageMetadata({
+  path: "/ressources",
   title: "Ressources, kit, templates et prompts",
   description: "Un kit minimal pour Codex, ses fichiers facultatifs, des prompts et des guides prêts à consulter et copier.",
-};
+});
 
 const githubRoot = "https://github.com/DevWeb13/starter-ia-5-6/blob/main";
 

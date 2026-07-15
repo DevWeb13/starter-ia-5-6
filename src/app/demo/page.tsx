@@ -4,11 +4,13 @@ import Link from "next/link";
 import { DemoLauncher } from "@/components/demo-launcher";
 import { PageIntro } from "@/components/page-intro";
 import { buttonVariants } from "@/components/ui/button";
+import { createPublicPageMetadata } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPublicPageMetadata({
+  path: "/demo",
   title: "Démonstration historique",
   description: "Tester l’ancien parcours local déterministe en six phases, conservé sans appel IA ni compte.",
-};
+});
 
 export default function DemoPage() {
   return (

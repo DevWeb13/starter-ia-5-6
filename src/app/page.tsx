@@ -1,9 +1,29 @@
 import { ArrowRight, Check, Cloud, Code2, FileText, MessageSquareText } from "lucide-react";
+import type { Metadata } from "next";
 import Link from "next/link";
 
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import {
+  absoluteSiteUrl,
+  DEFAULT_OPEN_GRAPH_DESCRIPTION,
+  DEFAULT_OPEN_GRAPH_TITLE,
+} from "@/lib/site";
+
+const homeDescription =
+  "Guides, configurations, templates et prompts pour mieux utiliser ChatGPT, Work et Codex.";
+const homeUrl = absoluteSiteUrl("/");
+
+export const metadata: Metadata = {
+  description: homeDescription,
+  openGraph: {
+    title: DEFAULT_OPEN_GRAPH_TITLE,
+    description: DEFAULT_OPEN_GRAPH_DESCRIPTION,
+    type: "website",
+    locale: "fr_FR",
+  },
+};
 
 const roles = [
   {
@@ -41,6 +61,9 @@ const startingPoints = [
 export default function HomePage() {
   return (
     <>
+      {/* Next 16 réduit les URL racine de Metadata à leur origin ; React place ces balises dans head. */}
+      <link rel="canonical" href={homeUrl} />
+      <meta property="og:url" content={homeUrl} />
       <section className="relative isolate overflow-hidden border-b border-border">
         <div aria-hidden="true" className="subtle-grid absolute inset-0 -z-10" />
         <div className="page-shell grid gap-10 py-14 sm:py-20 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:py-28">

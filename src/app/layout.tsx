@@ -3,25 +3,11 @@ import type { Metadata, Viewport } from "next";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { ThemeProvider } from "@/components/theme-provider";
+import { ROOT_METADATA } from "@/lib/site";
 
 import "./globals.css";
 
-export const metadata: Metadata = {
-  metadataBase: new URL("https://starter-ia-5-6.vercel.app"),
-  title: {
-    default: "Starter IA 5.6 — Guides et kit pour ChatGPT, Work et Codex",
-    template: "%s — Starter IA 5.6",
-  },
-  description:
-    "Guides, configurations, templates et prompts pour mieux utiliser ChatGPT, Work et Codex.",
-  openGraph: {
-    title: "Starter IA 5.6",
-    description:
-      "Un site de ressources pratique et un kit minimal pour préparer vos projets avec ChatGPT, Work et Codex.",
-    type: "website",
-    locale: "fr_FR",
-  },
-};
+export const metadata: Metadata = ROOT_METADATA;
 
 export const viewport: Viewport = {
   width: "device-width",
