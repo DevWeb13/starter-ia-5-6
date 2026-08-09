@@ -1,15 +1,17 @@
 # Architecture
 
-Ce document distingue le site de ressources actif de la démonstration locale historique.
+Ce document distingue le site pédagogique actif, les templates techniques de référence et la démonstration locale historique.
 
 ## Architecture active
 
 ```text
 Pages Next.js statiques
         ↓
-catalogue de configurations, guides, prompts et templates versionnés
+parcours pédagogique, configurations, guides, prompts et ressources
         ↓
-consultation ou copie depuis GitHub
+liens vers les dépôts techniques de référence
+        ↓
+Starter IA Qwik Core puis Starter IA Qwik Advanced
 ```
 
 ### Application et stack
@@ -23,32 +25,49 @@ consultation ou copie depuis GitHub
 
 Les routes publiques existantes sont réutilisées :
 
-- `/` : orientation et points de départ ;
+- `/` : orientation et progression Fondamentaux → Core → Advanced ;
 - `/docs` : choix entre ChatGPT, Work et les configurations Codex ;
-- `/ressources` : kit, prompts, templates, guides et formation ;
-- `/fonctionnalites` : méthode ChatGPT → Codex → ChatGPT ;
+- `/ressources` : parcours pédagogique, dépôts Core/Advanced, guides, prompts et ressources ;
+- `/fonctionnalites` : méthode de choix, exécution et vérification ;
 - `/accompagnement` : présentation statique du service pilote et CTA externe vers LaReponseDev ;
 - `/demo` : démonstration locale historique.
 
 `/tarifs` reste une route de compatibilité et redirige de façon permanente vers `/ressources`.
 
-Les ressources restent des fichiers Markdown ou TOML simples. Le site renvoie vers leur version enregistrée dans GitHub. L’accompagnement est une page commerciale statique : la prise de contact quitte Starter IA vers le site public LaReponseDev. Il n’existe ni base de données, ni formulaire distant, ni paiement intégré, ni API IA, ni service de génération.
+Le site reste principalement statique. L’accompagnement est une page commerciale statique : la prise de contact quitte Starter IA vers le site public LaReponseDev. Il n’existe ni base de données, ni formulaire distant, ni paiement intégré, ni API IA, ni service de génération.
 
-## Kit statique
+## Dépôts techniques de référence
 
-`templates/starter-kit/` contient quatre fichiers minimaux et trois options. L’utilisateur copie seulement ce qui correspond à son projet. Aucun code ne compose automatiquement un dossier, un manifeste ou un ZIP.
+Starter IA ne maintient plus plusieurs Core concurrents.
 
 ```text
-templates/starter-kit/
-├── README.md
-├── PROJECT.md
-├── STATUS.md
-├── AGENTS.md
-├── prompts/FIRST-MISSION.md
-├── DECISIONS.md             # facultatif
-├── QUALITY.md               # facultatif
-└── .codex/config.toml       # facultatif
+starter-ia-5-6
+└── documentation, cours, guides et démonstration historique
+
+starter-ia-qwik
+└── source de vérité technique du Qwik Core
+
+starter-ia-qwik-advanced
+└── source de vérité technique de la variante Advanced
 ```
+
+Le site peut citer, expliquer et lier les fichiers versionnés de ces dépôts. Il ne les recopie pas par défaut dans un second template local.
+
+## Architecture pédagogique
+
+La progression détaillée vit dans [`course/README.md`](course/README.md).
+
+```text
+Fondamentaux
+        ↓
+Starter IA Qwik Core
+        ↓
+Starter IA Qwik Advanced
+```
+
+Les fondamentaux expliquent les notions essentielles sans constituer un autre template. Le Core enseigne la fondation réellement exécutable. Advanced n'est introduit qu'après le Core et seulement à partir de fonctions réellement présentes dans son dépôt.
+
+Chaque chapitre distingue mécanisme officiel, décision Starter IA, fichier réel, interactions, limites et exemple.
 
 ## Démonstration historique conservée
 
@@ -68,10 +87,12 @@ Dashboard ↔ éditeur ↔ exports Markdown/JSON ↔ rapport local
 
 Cette architecture est maintenue pour préserver une réalisation utile ; elle ne sert plus de fondation à un orchestrateur ou à un générateur futur.
 
-## Directions non implémentées et abandonnées
+## Directions non implémentées ou abandonnées
 
-Le générateur de starters, le manifeste automatique, le ZIP, la création de dépôt, l’exécution automatique de Codex, Social Autopilot, l’API IA, l’authentification, le paiement et le stockage distant ne font pas partie de l’architecture cible.
+Le site pédagogique ne crée pas automatiquement de dépôt, n'exécute pas Codex de façon autonome et n'intègre pas par défaut API IA, authentification, paiement ou stockage distant.
+
+Le générateur de starters, le manifeste automatique, le ZIP comme cœur produit et Social Autopilot ne font pas partie de l’architecture cible.
 
 ## Sécurité commune
 
-Aucun secret ne doit être demandé, généré ou commité. Un seul agent écrit ; spécialistes et reviewers restent en lecture seule. Fusion, production, suppression, paiement, publication, message et action irréversible exigent une autorisation humaine explicite.
+Aucun secret ne doit être demandé, généré ou commité. Un seul agent écrit un même périmètre ; spécialistes et reviewers restent indépendants. Fusion, production, suppression, paiement, publication, message et action irréversible exigent une autorisation humaine explicite.
