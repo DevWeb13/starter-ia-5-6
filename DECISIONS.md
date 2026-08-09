@@ -214,11 +214,11 @@ Avant toute automatisation, la Mission B doit créer manuellement un starter com
 
 ## D-031 — Site de ressources et kit statique minimal
 
-**Date :** 2026-07-14 — **Statut :** acceptée — remplace D-030 pour la direction active et recentre D-019, D-021 et D-023
+**Date :** 2026-07-14 — **Statut :** recentrée par D-034 pour la définition active du Core — remplaçait D-030 et recentrait D-019, D-021 et D-023
 
 Starter IA redevient un site de ressources et un kit de démarrage pour mieux utiliser ChatGPT, Work et Codex. L’accueil, les configurations, la méthode, les guides, les prompts et les modèles statiques constituent le produit actif. Le workflow conseillé est : cadrer dans ChatGPT, exécuter dans Codex, puis contrôler dans ChatGPT ; Work reste une option pour une mission cloud complète.
 
-Le kit repose sur quatre fichiers minimaux — `PROJECT.md`, `STATUS.md`, `AGENTS.md` et `prompts/FIRST-MISSION.md` — et trois options documentées : `DECISIONS.md`, `QUALITY.md` et `.codex/config.toml`. Aucun fichier supplémentaire n’est obligatoire par principe.
+Le kit repose historiquement sur quatre fichiers minimaux — `PROJECT.md`, `STATUS.md`, `AGENTS.md` et `prompts/FIRST-MISSION.md` — et trois options documentées : `DECISIONS.md`, `QUALITY.md` et `.codex/config.toml`. D-034 remplace cette définition comme source technique active.
 
 Le générateur complexe de starters, le ZIP comme cœur produit, le manifeste automatique, la Mission B Social Autopilot et les Missions C à E associées sont abandonnés comme direction active. La création ou le pilotage automatique de dépôts, l’exécution automatique de Codex, l’API IA, l’authentification, le paiement et le stockage distant restent hors périmètre.
 
@@ -226,7 +226,7 @@ Le MVP local en six phases, son Dashboard, son stockage navigateur et ses export
 
 ## D-032 — Offre pilote humaine sans SaaS
 
-**Date :** 2026-07-14 — **Statut :** acceptée — complète D-031
+**Date :** 2026-07-14 — **Statut :** acceptée pour l'offre ; la référence au kit est recentrée par D-034
 
 Les ressources gratuites, le kit statique minimal et la méthode ChatGPT → Codex → contrôle restent le cœur de Starter IA. Le premier modèle économique testé est un service humain facultatif d’installation et d’adaptation du kit dans un dépôt.
 
@@ -241,3 +241,19 @@ Cette offre n’est pas considérée comme validée avant une première vente r�
 Le domaine public canonique de Starter IA est `https://starter-ia.lareponsedev.fr`. `metadataBase`, les canonical propres à chaque page indexable, les URL Open Graph, le sitemap et `robots.txt` utilisent cette origine de production.
 
 L’ancien domaine Vercel peut rester accessible techniquement, mais il n’est plus une origine publique active. Les Previews Vercel conservent elles aussi les URL de production dans leurs métadonnées publiques ; aucune origine temporaire issue de la requête ou de l’environnement ne remplace le domaine canonique.
+
+## D-034 — Parcours pédagogique et templates techniques de référence
+
+**Date :** 2026-08-09 — **Statut :** acceptée — recentre D-031 et la référence au kit dans D-032
+
+Starter IA devient le site pédagogique qui explique progressivement les fondamentaux, le Starter IA Qwik Core puis Starter IA Qwik Advanced.
+
+Le niveau **Fondamentaux** enseigne `PROJECT.md`, `STATUS.md`, `AGENTS.md`, `.codex/config.toml` et le principe d'une mission petite, bornée et vérifiable. Il s'agit d'un niveau pédagogique, pas d'un second template à maintenir.
+
+Le dépôt `DevWeb13/starter-ia-qwik` devient l'unique source technique de vérité du Core. Le dépôt `DevWeb13/starter-ia-qwik-advanced` devient la source technique de vérité de la variante Advanced. Le dépôt `starter-ia-5-6` conserve la documentation, le cours, les guides, l'offre d'accompagnement et la démonstration historique.
+
+L'ancien `templates/starter-kit/` de `starter-ia-5-6` est retiré afin d'éviter deux Core concurrents. La formation express devient une introduction au parcours et non une définition technique autonome du Core.
+
+Le parcours éditorial est **Fondamentaux → Core → Advanced**. Chaque chapitre doit distinguer ce qui vient d'un mécanisme officiel OpenAI, ce qui relève d'un choix Starter IA, le fichier réel qui l'implémente, son fonctionnement, ses limites et un exemple concret.
+
+La priorité est d'abord de publier le cours Core détaillé, puis de documenter la fondation Advanced déjà construite. Le chantier technique `work/02-design-pipeline` du dépôt Advanced reste volontairement en attente pendant cette phase pédagogique.
