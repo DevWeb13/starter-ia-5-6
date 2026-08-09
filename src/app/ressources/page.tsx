@@ -7,44 +7,50 @@ import { createPublicPageMetadata } from "@/lib/site";
 
 export const metadata: Metadata = createPublicPageMetadata({
   path: "/ressources",
-  title: "Ressources, kit, templates et prompts",
-  description: "Un kit minimal pour Codex, ses fichiers facultatifs, des prompts et des guides prêts à consulter et copier.",
+  title: "Parcours, templates et ressources",
+  description: "Comprendre les fondamentaux, utiliser le Starter IA Qwik Core puis progresser vers Advanced.",
 });
 
 const githubRoot = "https://github.com/DevWeb13/starter-ia-5-6/blob/main";
+const coreRoot = "https://github.com/DevWeb13/starter-ia-qwik";
+const advancedRoot = "https://github.com/DevWeb13/starter-ia-qwik-advanced";
 
-const coreFiles = [
-  ["templates/starter-kit/PROJECT.md", "But, utilisateurs, résultat et limites durables du projet."],
-  ["templates/starter-kit/STATUS.md", "État réellement disponible, limites et prochaine action."],
-  ["templates/starter-kit/AGENTS.md", "Règles prudentes que Codex doit respecter dans le dépôt."],
-  ["templates/starter-kit/prompts/FIRST-MISSION.md", "Première modification petite, bornée et vérifiable."],
+const fundamentals = [
+  ["PROJECT.md", "Le but durable du projet et ses limites."],
+  ["STATUS.md", "L'état réel, les problèmes connus et la prochaine action."],
+  ["AGENTS.md", "Les règles permanentes que Codex doit respecter dans le dépôt."],
+  [".codex/config.toml", "Les permissions et le sandbox partagés au niveau du projet."],
 ];
 
-const optionalFiles = [
-  ["templates/starter-kit/DECISIONS.md", "Quand plusieurs choix durables doivent rester compréhensibles."],
-  ["templates/starter-kit/QUALITY.md", "Quand les critères communs dépassent ceux d’une seule mission."],
-  ["templates/starter-kit/.codex/config.toml", "Quand une configuration locale prudente doit être partagée."],
+const coreFiles = [
+  ["AGENTS.md", "Règles permanentes et ordre de lecture du dépôt."],
+  ["PROJECT.md", "Modèle d'identité, problème, utilisateurs, résultat et contraintes."],
+  ["STATUS.md", "État vérifié et prochaine action unique."],
+  ["QUALITY.md", "Définition de fini, commandes obligatoires, accessibilité et sécurité."],
+  ["prompts/INITIALIZE.md", "Point d'entrée qui transforme le template générique en projet précis."],
+  [".codex/config.toml", "Permissions prudentes et réseau désactivé par défaut."],
+  [".github/workflows/ci.yml", "Contrôle indépendant avec formatage, lint, TypeScript, tests, build et Playwright."],
 ];
 
 const resources = [
+  ["course/README.md", "Architecture du parcours Fondamentaux → Core → Advanced."],
+  ["course/FORMATION-EXPRESS.md", "Introduction rapide avant le cours Core détaillé."],
   ["guides/configurations/README.md", "Comparer ChatGPT, Work, Codex local, Codex Remote et Work + Codex."],
   ["templates/BRIEF.md", "Transformer une demande en livrables, contraintes et critères observables."],
-  ["prompts/MASTER-WORK.md", "Cadrer une mission complète dans Work lorsque cet environnement convient."],
   ["prompts/REVIEW.md", "Demander une revue indépendante, priorisée et en lecture seule."],
-  ["course/FORMATION-EXPRESS.md", "Apprendre en 30 minutes à choisir, préparer, exécuter et contrôler."],
   ["WORKFLOW.md", "Suivre le processus interne du brief à la livraison vérifiée."],
 ];
 
-function FileLink({ path, description }: { path: string; description: string }) {
+function ExternalResource({ href, label, description }: { href: string; label: string; description: string }) {
   return (
     <li className="grid gap-3 p-5 sm:p-6 lg:grid-cols-[minmax(15rem,0.8fr)_1.2fr_auto] lg:items-start">
       <div className="flex min-w-0 gap-3">
         <FileText aria-hidden="true" className="mt-0.5 size-5 shrink-0 text-primary" />
-        <code className="break-all font-mono text-sm font-semibold text-foreground">{path}</code>
+        <code className="break-all font-mono text-sm font-semibold text-foreground">{label}</code>
       </div>
       <p className="text-muted-foreground">{description}</p>
       <a
-        href={`${githubRoot}/${path}`}
+        href={href}
         target="_blank"
         rel="noopener noreferrer"
         className="inline-flex min-h-11 items-center gap-2 font-semibold text-primary underline underline-offset-4 lg:justify-self-end"
@@ -61,54 +67,82 @@ export default function ResourcesPage() {
   return (
     <>
       <PageIntro
-        eyebrow="Ressources gratuites"
-        badge="Prêts à copier"
-        title="Préparer un projet pour Codex, sans dossier inutile."
-        description="Commencez avec quatre fichiers. Ajoutez une option seulement lorsqu’elle répond à un besoin réel, puis utilisez les guides et prompts selon votre environnement."
+        eyebrow="Apprendre et utiliser"
+        badge="Fondamentaux · Core · Advanced"
+        title="Commencer simplement, puis comprendre ce que vous ajoutez."
+        description="Starter IA sépare l'apprentissage du template technique : le site explique, starter-ia-qwik fournit le Core réel et starter-ia-qwik-advanced fournit la variante Advanced."
       />
 
-      <section className="page-shell space-y-10 pb-14 sm:pb-20">
-        <div className="space-y-5" aria-labelledby="core-kit-title">
+      <section className="page-shell space-y-12 pb-14 sm:pb-20">
+        <div className="space-y-5" aria-labelledby="fundamentals-title">
           <div className="max-w-3xl space-y-2">
-            <p className="eyebrow">Noyau minimal</p>
-            <h2 id="core-kit-title" className="section-title">Quatre fichiers pour commencer.</h2>
-            <p className="text-muted-foreground">Ils donnent à Codex le contexte durable, l’état réel, les règles et la première action. Aucun générateur ni ZIP n’est nécessaire.</p>
+            <p className="eyebrow">Niveau 1</p>
+            <h2 id="fundamentals-title" className="section-title">Comprendre quatre fichiers avant de tout copier.</h2>
+            <p className="text-muted-foreground">Ces fondamentaux sont un niveau pédagogique, pas un second template. Ils expliquent le contexte, l'état, les règles et les permissions avant le Core complet.</p>
           </div>
-          <ul className="divide-y divide-border overflow-hidden rounded-2xl border border-border bg-card">
-            {coreFiles.map(([path, description]) => <FileLink key={path} path={path} description={description} />)}
-          </ul>
-        </div>
-
-        <div className="space-y-5" aria-labelledby="optional-kit-title">
-          <div className="max-w-3xl space-y-2">
-            <p className="eyebrow">Selon le projet</p>
-            <h2 id="optional-kit-title" className="section-title">Trois options, jamais obligatoires par principe.</h2>
-          </div>
-          <div className="grid gap-4 lg:grid-cols-3">
-            {optionalFiles.map(([path, description]) => (
+          <div className="grid gap-4 lg:grid-cols-2">
+            {fundamentals.map(([path, description]) => (
               <Card key={path}>
-                <CardContent className="flex h-full flex-col p-5 sm:p-6">
+                <CardContent className="p-5 sm:p-6">
                   <Check aria-hidden="true" className="size-5 text-success" />
-                  <code className="mt-4 break-all font-mono text-sm font-semibold">{path}</code>
-                  <p className="mt-3 flex-1 text-muted-foreground">{description}</p>
-                  <a href={`${githubRoot}/${path}`} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex min-h-11 items-center gap-2 font-semibold text-primary underline underline-offset-4">
-                    Ouvrir le modèle
-                    <span className="sr-only"> (ouvre un nouvel onglet)</span>
-                    <ExternalLink aria-hidden="true" className="size-4" />
-                  </a>
+                  <code className="mt-4 block break-all font-mono text-sm font-semibold">{path}</code>
+                  <p className="mt-3 text-muted-foreground">{description}</p>
                 </CardContent>
               </Card>
             ))}
           </div>
+          <a href={`${githubRoot}/course/README.md`} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2 font-semibold text-primary underline underline-offset-4">
+            Voir l'architecture du parcours
+            <span className="sr-only"> (ouvre un nouvel onglet)</span>
+            <ExternalLink aria-hidden="true" className="size-4" />
+          </a>
+        </div>
+
+        <div className="space-y-5" aria-labelledby="core-title">
+          <div className="max-w-3xl space-y-2">
+            <p className="eyebrow">Niveau 2</p>
+            <h2 id="core-title" className="section-title">Starter IA Qwik Core : le vrai template de référence.</h2>
+            <p className="text-muted-foreground">Le Core ajoute l'initialisation, la qualité, la CI, les tests et la fondation Qwik. Le site n'en maintient plus une copie concurrente.</p>
+          </div>
+          <ul className="divide-y divide-border overflow-hidden rounded-2xl border border-border bg-card">
+            {coreFiles.map(([path, description]) => (
+              <ExternalResource key={path} href={`${coreRoot}/blob/main/${path}`} label={path} description={description} />
+            ))}
+          </ul>
+          <a href={coreRoot} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2 font-semibold text-primary underline underline-offset-4">
+            Ouvrir le dépôt Core complet
+            <span className="sr-only"> (ouvre un nouvel onglet)</span>
+            <ExternalLink aria-hidden="true" className="size-4" />
+          </a>
+        </div>
+
+        <div className="space-y-5" aria-labelledby="advanced-title">
+          <div className="max-w-3xl space-y-2">
+            <p className="eyebrow">Niveau 3</p>
+            <h2 id="advanced-title" className="section-title">Advanced : comprendre avant d'orchestrer.</h2>
+            <p className="text-muted-foreground">La variante Advanced ajoute agents, skills, hooks, permissions, gates humains et artefacts. Sa documentation détaillée sera publiée après le parcours Core.</p>
+          </div>
+          <Card>
+            <CardContent className="p-5 sm:p-6">
+              <p>Le dépôt Advanced est déjà la source technique de vérité. Le chantier pédagogique expliquera d'abord les concepts, puis les 14 agents, les 14 skills et leurs interactions.</p>
+              <a href={advancedRoot} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex min-h-11 items-center gap-2 font-semibold text-primary underline underline-offset-4">
+                Ouvrir Starter IA Qwik Advanced
+                <span className="sr-only"> (ouvre un nouvel onglet)</span>
+                <ExternalLink aria-hidden="true" className="size-4" />
+              </a>
+            </CardContent>
+          </Card>
         </div>
 
         <div className="space-y-5" aria-labelledby="resources-title">
           <div className="max-w-3xl space-y-2">
-            <p className="eyebrow">Pour aller plus loin</p>
+            <p className="eyebrow">Ressources complémentaires</p>
             <h2 id="resources-title" className="section-title">Guides, prompts et méthode.</h2>
           </div>
           <ul className="divide-y divide-border overflow-hidden rounded-2xl border border-border bg-card">
-            {resources.map(([path, description]) => <FileLink key={path} path={path} description={description} />)}
+            {resources.map(([path, description]) => (
+              <ExternalResource key={path} href={`${githubRoot}/${path}`} label={path} description={description} />
+            ))}
           </ul>
         </div>
       </section>
