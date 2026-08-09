@@ -76,8 +76,8 @@ Le dépôt `DevWeb13/starter-ia-qwik-advanced` reste inchangé pendant cette mis
 
 ## Contrôles réalisés
 
-- comparaison GitHub finale `main...work/18-core-learning-foundation` : branche en avance de 26 commits, sans retard sur `main` ;
-- 24 fichiers modifiés ou supprimés dans le diff final ;
+- comparaison GitHub finale `main...work/18-core-learning-foundation` : branche en avance et sans retard sur `main` au moment du contrôle ;
+- 24 fichiers modifiés ou supprimés dans le diff contrôlé ;
 - les 8 fichiers de l'ancien `templates/starter-kit/` sont supprimés ;
 - Preview Vercel automatique déclenchée par la branche ;
 - plusieurs déploiements de branche observés `READY` ;
