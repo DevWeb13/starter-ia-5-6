@@ -12,7 +12,7 @@ import {
 } from "@/lib/site";
 
 const homeDescription =
-  "Guides, configurations, templates et prompts pour mieux utiliser ChatGPT, Work et Codex.";
+  "Guides, parcours pédagogique et templates pour mieux utiliser ChatGPT, Work et Codex.";
 const homeUrl = absoluteSiteUrl("/");
 
 export const metadata: Metadata = {
@@ -29,33 +29,33 @@ const roles = [
   {
     name: "ChatGPT",
     icon: MessageSquareText,
-    description: "Réfléchir, cadrer, comparer, rédiger et contrôler un résultat.",
-    example: "Commencez ici pour transformer une idée en mission claire.",
+    description: "Réfléchir, cadrer, comparer, rédiger, auditer et contrôler avec les outils disponibles.",
+    example: "Utile pour comprendre le problème, préparer une mission ou contrôler un résultat.",
   },
   {
     name: "Work",
     icon: Cloud,
     description: "Conduire une mission complète dans le cloud lorsque les fichiers et outils requis sont disponibles.",
-    example: "Utile pour plusieurs livrables ; facultatif pour un projet de code local.",
+    example: "Utile pour plusieurs livrables cloud ; toujours optionnel.",
   },
   {
     name: "Codex",
     icon: Code2,
-    description: "Inspecter, modifier et vérifier un dépôt dans le périmètre autorisé.",
-    example: "Utilisez-le pour agir sur les fichiers, Git et les tests.",
+    description: "Travailler directement dans un environnement de développement et un dépôt autorisé.",
+    example: "Utile pour les fichiers, Git, les commandes, les tests et les boucles d'implémentation.",
   },
 ];
 
 const workflow = [
-  ["Cadrer dans ChatGPT", "Précisez le besoin, le résultat, les limites et les critères de réussite."],
-  ["Exécuter dans Codex", "Travaillez sur une branche dédiée avec le contexte et les règles du dépôt."],
-  ["Contrôler dans ChatGPT", "Relisez le résultat réel, les preuves, les limites et les décisions restantes."],
+  ["Comprendre le besoin", "Choisissez le minimum d'outils nécessaires et vérifiez les capacités réellement disponibles."],
+  ["Travailler dans le bon environnement", "Utilisez ChatGPT, Work ou Codex selon la mission au lieu d'imposer un passage de relais par principe."],
+  ["Contrôler le résultat réel", "Relisez les fichiers, preuves, tests, limites et décisions avant d'annoncer une réussite."],
 ];
 
 const startingPoints = [
-  ["Choisir une configuration", "Comparez ChatGPT, Work, Codex local, Codex Remote et le mode hybride.", "/docs", "Comparer les configurations"],
-  ["Préparer un dépôt", "Copiez quatre fichiers minimaux, puis ajoutez seulement les options utiles.", "/ressources", "Voir le kit de démarrage"],
-  ["Appliquer la méthode", "Suivez un passage de relais simple, sans automatisation ni promesse cachée.", "/fonctionnalites", "Lire la méthode"],
+  ["Comprendre les fondamentaux", "Découvrez PROJECT.md, STATUS.md, AGENTS.md, la configuration Codex et le principe d'une mission vérifiable.", "/ressources", "Commencer simplement"],
+  ["Utiliser Starter IA Qwik Core", "Partez du vrai template Qwik Core avec initialisation, qualité, configuration Codex et CI.", "/ressources", "Voir le Core"],
+  ["Aller vers Advanced", "Comprenez ensuite agents, skills, hooks, permissions, gates et orchestration à partir du dépôt Advanced réel.", "/ressources", "Découvrir Advanced"],
 ];
 
 export default function HomePage() {
@@ -68,38 +68,38 @@ export default function HomePage() {
         <div aria-hidden="true" className="subtle-grid absolute inset-0 -z-10" />
         <div className="page-shell grid gap-10 py-14 sm:py-20 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:py-28">
           <div className="space-y-7">
-            <Badge className="w-fit border-primary/40 bg-primary/10 text-foreground">Guides · kit · prompts</Badge>
+            <Badge className="w-fit border-primary/40 bg-primary/10 text-foreground">Comprendre · Core · Advanced</Badge>
             <div className="space-y-5">
-              <h1 className="display-title text-balance">Mieux utiliser ChatGPT, Work et Codex, sans complexité inutile.</h1>
+              <h1 className="display-title text-balance">Comprendre et structurer son workflow IA, du plus simple au plus avancé.</h1>
               <p className="max-w-3xl text-lg text-muted-foreground sm:text-xl">
-                Starter IA rassemble des explications accessibles, des configurations conseillées et un petit kit de fichiers prêts à copier pour vos projets.
+                Starter IA explique comment préparer un dépôt pour Codex, pourquoi chaque fichier existe et comment progresser ensuite vers les agents, skills, hooks et workflows Advanced.
               </p>
             </div>
             <div className="grid gap-3 sm:flex sm:flex-wrap">
-              <Link href="/docs" className={buttonVariants({ size: "lg", className: "w-full sm:w-auto" })}>
-                Choisir ma configuration
+              <Link href="/ressources" className={buttonVariants({ size: "lg", className: "w-full sm:w-auto" })}>
+                Commencer le parcours
                 <ArrowRight aria-hidden="true" className="size-5" />
               </Link>
-              <Link href="/ressources" className={buttonVariants({ variant: "secondary", size: "lg", className: "w-full sm:w-auto" })}>
-                Voir le kit et les prompts
+              <Link href="/docs" className={buttonVariants({ variant: "secondary", size: "lg", className: "w-full sm:w-auto" })}>
+                Choisir mes outils
               </Link>
             </div>
-            <p className="text-sm text-muted-foreground">Aucun compte, service IA, paiement ou stockage distant n’est intégré.</p>
+            <p className="text-sm text-muted-foreground">Projet communautaire indépendant, non officiel et non affilié à OpenAI.</p>
           </div>
 
           <Card className="border-primary/40">
             <CardContent className="space-y-5 p-5 sm:p-6">
-              <p className="eyebrow"><FileText aria-hidden="true" className="size-4" /> Commencer petit</p>
-              <h2 className="text-2xl font-semibold">Quatre fichiers suffisent pour démarrer.</h2>
+              <p className="eyebrow"><FileText aria-hidden="true" className="size-4" /> Progression</p>
+              <h2 className="text-2xl font-semibold">Commencer simple, puis ajouter la complexité utile.</h2>
               <ul className="space-y-3">
-                {["PROJECT.md — le but et les limites", "STATUS.md — l’état réel", "AGENTS.md — les règles pour Codex", "FIRST-MISSION.md — la première action vérifiable"].map((item) => (
+                {["Fondamentaux — contexte, état, règles et permissions", "Core — Qwik, initialisation, qualité, tests et CI", "Advanced — agents, skills, hooks, gates et orchestration"].map((item) => (
                   <li key={item} className="flex gap-3">
                     <Check aria-hidden="true" className="mt-1 size-4 shrink-0 text-success" />
                     <span>{item}</span>
                   </li>
                 ))}
               </ul>
-              <p className="text-sm text-muted-foreground">Décisions, critères qualité et configuration Codex restent facultatifs.</p>
+              <p className="text-sm text-muted-foreground">Un seul template Core de référence est maintenu : DevWeb13/starter-ia-qwik.</p>
             </CardContent>
           </Card>
         </div>
@@ -109,8 +109,8 @@ export default function HomePage() {
         <div className="page-shell space-y-8">
           <div className="max-w-3xl space-y-3">
             <p className="eyebrow">Qui fait quoi</p>
-            <h2 id="roles-title" className="section-title">Trois outils, trois rôles simples.</h2>
-            <p className="text-muted-foreground">Starter IA vous aide à les choisir et à préparer le passage de relais. Il ne les pilote pas automatiquement.</p>
+            <h2 id="roles-title" className="section-title">Trois environnements, des capacités qui peuvent se compléter.</h2>
+            <p className="text-muted-foreground">Starter IA aide à choisir le minimum d'outils nécessaire et à vérifier ce qui est réellement disponible dans votre contexte.</p>
           </div>
           <div className="grid gap-4 lg:grid-cols-3">
             {roles.map(({ name, icon: Icon, description, example }) => (
@@ -130,9 +130,9 @@ export default function HomePage() {
       <section className="border-y bg-muted/35 py-14 sm:py-20" aria-labelledby="workflow-title">
         <div className="page-shell space-y-8">
           <div className="max-w-3xl space-y-3">
-            <p className="eyebrow">Méthode conseillée</p>
-            <h2 id="workflow-title" className="section-title">Réfléchir, exécuter, contrôler.</h2>
-            <p className="text-muted-foreground">Work peut compléter le cadrage ou le contrôle lorsque la mission cloud le justifie.</p>
+            <p className="eyebrow">Méthode</p>
+            <h2 id="workflow-title" className="section-title">Choisir, exécuter, vérifier.</h2>
+            <p className="text-muted-foreground">Le workflow dépend du besoin réel, pas d'une chaîne d'outils imposée.</p>
           </div>
           <ol className="grid gap-4 lg:grid-cols-3">
             {workflow.map(([title, description], index) => (
@@ -150,7 +150,7 @@ export default function HomePage() {
         <div className="page-shell space-y-8">
           <div className="max-w-3xl space-y-3">
             <p className="eyebrow">Par où commencer</p>
-            <h2 id="start-title" className="section-title">Choisissez votre besoin immédiat.</h2>
+            <h2 id="start-title" className="section-title">Un parcours en trois niveaux.</h2>
           </div>
           <div className="grid gap-4 lg:grid-cols-3">
             {startingPoints.map(([title, description, href, label]) => (
@@ -172,9 +172,9 @@ export default function HomePage() {
         <div className="page-shell rounded-2xl border bg-card p-5 sm:p-8 lg:flex lg:items-center lg:justify-between lg:gap-8">
           <div className="max-w-2xl space-y-3">
             <p className="eyebrow">Besoin d’un accompagnement</p>
-            <h2 id="support-title" className="section-title">Installer le workflow avec votre projet.</h2>
+            <h2 id="support-title" className="section-title">Adapter le workflow à votre projet.</h2>
             <p className="text-muted-foreground">
-              Les guides et le kit restent gratuits. Si vous préférez être accompagné, une installation personnalisée est proposée au prix pilote de 390 € TTC.
+              Les ressources restent gratuites. Une installation personnalisée existe aussi au prix pilote de 390 € TTC, sans devenir la priorité du parcours pédagogique.
             </p>
           </div>
           <Link href="/accompagnement" className={buttonVariants({ variant: "secondary", size: "lg", className: "mt-6 w-full shrink-0 lg:mt-0 lg:w-auto" })}>
