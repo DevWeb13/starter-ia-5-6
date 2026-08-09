@@ -17,15 +17,15 @@ Un seul point coché interdit la livraison, la publication ou la fusion.
 - [ ] La démonstration est présentée comme une véritable IA ou déclenche une requête externe non documentée.
 - [ ] Le produit est présenté comme intégrant un fournisseur IA, une authentification ou un paiement alors que ces capacités sont hors périmètre.
 - [ ] Un secret, fichier `.env` ou configuration locale Vercel est commité.
-- [ ] Une fonction absente, notamment un générateur, un ZIP ou une exécution automatique, est présentée comme disponible.
+- [ ] Une fonction absente est présentée comme disponible.
 - [ ] Un problème important reste après le deuxième cycle de correction.
 
-### Kit de démarrage
+### Parcours pédagogique et templates
 
-- [ ] Un fichier annoncé dans le noyau minimal manque, est vide ou illisible.
-- [ ] Un secret, jeton ou valeur locale est inclus dans un template.
-- [ ] Le kit impose un fichier facultatif sans expliquer son utilité.
-- [ ] La démonstration locale est cassée par le recentrage des pages publiques.
+- [ ] Le site maintient un second template Core divergent de `DevWeb13/starter-ia-qwik`.
+- [ ] Une page attribue à OpenAI une règle qui est seulement une convention Starter IA, ou inversement.
+- [ ] Une page décrit une capacité Core ou Advanced sans vérifier qu’elle existe réellement dans le dépôt de référence.
+- [ ] La documentation Advanced présente un agent, skill, hook, gate ou pipeline futur comme déjà implémenté.
 
 ## Important
 
@@ -47,11 +47,13 @@ Tous les points applicables doivent être résolus avant livraison ou fusion.
 - [ ] Les données fictives, l’offre future ou l’absence de sauvegarde ne sont pas clairement indiquées.
 - [ ] La mémoire officielle ne reflète pas l’architecture, les contrôles, blocages ou prochaine mission réels.
 
-### Site de ressources et kit
+### Site pédagogique
 
-- [ ] Le premier prompt ne contient pas le contexte nécessaire pour commencer la mission.
-- [ ] Le noyau minimal, les options et leurs cas d’usage ne sont pas distingués.
-- [ ] La navigation masque les configurations, le kit, les prompts ou le point de départ.
+- [ ] La progression Fondamentaux → Core → Advanced n’est pas compréhensible sans connaître le dépôt à l’avance.
+- [ ] Les fondamentaux sont présentés comme un second template au lieu d’un niveau pédagogique.
+- [ ] Le Core n’identifie pas `starter-ia-qwik` comme source de vérité technique.
+- [ ] Advanced est présenté avant que les notions Core nécessaires soient expliquées.
+- [ ] Un chapitre ne permet pas de distinguer : utilité simple, choix Starter IA, fichier réel, fonctionnement, limites et source.
 - [ ] Une ressource annoncée n’est pas consultable depuis son lien public.
 
 ## Amélioration
