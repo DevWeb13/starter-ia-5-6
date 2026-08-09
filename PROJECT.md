@@ -98,12 +98,13 @@ Elle ne comprend ni développement complet du produit, ni abonnement tiers, ni g
 - une application Next.js publique présentant les ressources ;
 - une page d’accompagnement présentant l’offre pilote et renvoyant vers LaReponseDev ;
 - cinq guides de configuration : ChatGPT, Work, Codex local, Codex Remote et Work + Codex ;
-- des prompts, un modèle de brief et une formation courte ;
+- des prompts, un modèle de brief et une formation courte désormais réalignée comme introduction ;
 - le dépôt `starter-ia-qwik`, Core Qwik réellement construit et versionné ;
 - le dépôt `starter-ia-qwik-advanced`, fondation Advanced réellement construite et versionnée ;
+- un parcours pédagogique défini dans `course/README.md` ;
 - un MVP local déterministe de six phases et 16 étapes avec stockage navigateur, missions copiables et exports Markdown/JSON.
 
-La formation courte actuelle reste utile comme introduction mais doit être réalignée sur le vrai Core. L'ancien `templates/starter-kit/` de ce dépôt est un héritage devenu concurrent du Core Qwik et doit être retiré pendant le chantier pédagogique en cours.
+L'ancien `templates/starter-kit/` a été retiré : il ne constitue plus une seconde source technique du Core.
 
 Le MVP local reste disponible comme démonstration historique utile. Il ne constitue plus la porte d’entrée ni la prochaine direction produit et n’appelle automatiquement aucun fournisseur IA.
 
