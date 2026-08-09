@@ -7,7 +7,7 @@ La feuille de route reste volontairement courte. L’historique détaillé vit d
 - **Fondation publique :** application Next.js, design accessible, tests et déploiement historique.
 - **MVP local :** parcours déterministe en six phases, Dashboard, stockage navigateur et exports.
 - **Ressources :** guides de configuration, prompts, brief, formation et règles de qualité.
-- **Ancien kit minimal :** quatre fichiers principaux et trois options dans `templates/starter-kit/`, désormais remplacés comme référence technique par le vrai template Qwik Core.
+- **Ancien kit minimal :** quatre fichiers principaux et trois options dans `templates/starter-kit/`, retirés au profit du vrai template Qwik Core comme référence technique.
 - **Directions abandonnées :** orchestrateur autonome, générateur de starters/ZIP et pilote Social Autopilot comme prochaine étape.
 
 Le MVP local et ses tests sont conservés comme démonstration historique. Ils ne définissent plus la priorité produit.
@@ -16,23 +16,19 @@ Le MVP local et ses tests sont conservés comme démonstration historique. Ils n
 
 ### 1. Poser la fondation pédagogique
 
-**Statut :** en cours sur `work/18-core-learning-foundation`.
+**Statut :** implémenté sur `work/18-core-learning-foundation`, en attente de revue et fusion.
 
-Définir une progression stable **Fondamentaux → Starter IA Qwik Core → Starter IA Qwik Advanced**, enregistrer les dépôts techniques de référence et empêcher que la continuité du projet dépende d’un chat précédent.
-
-Source pédagogique : [`course/README.md`](course/README.md).
+La progression stable est **Fondamentaux → Starter IA Qwik Core → Starter IA Qwik Advanced**. Les dépôts techniques de référence et la structure commune des futurs chapitres sont enregistrés dans [`course/README.md`](course/README.md).
 
 ### 2. Réaligner le site sur le vrai Core
 
-**Statut :** à faire immédiatement après la fondation.
+**Statut :** implémenté sur `work/18-core-learning-foundation`, en attente de revue et fusion.
 
-Prendre `DevWeb13/starter-ia-qwik` comme seule source technique du Core. Corriger les textes publics qui présentent encore l’ancien kit quatre fichiers comme produit de référence, retirer `templates/starter-kit/` et remplacer ses liens par le vrai dépôt Core ou par le nouveau parcours pédagogique.
-
-La formation express actuelle reste une introduction courte ; elle doit être mise à jour pour conduire vers le Core réel.
+`DevWeb13/starter-ia-qwik` devient l'unique source technique du Core. L'ancien `templates/starter-kit/` est supprimé de la branche, les principales entrées publiques renvoient vers le vrai Core et la formation express devient une introduction au parcours.
 
 ### 3. Publier le parcours Starter IA Qwik Core
 
-**Statut :** à faire.
+**Statut :** prochaine étape après fusion de la fondation.
 
 Expliquer progressivement :
 
