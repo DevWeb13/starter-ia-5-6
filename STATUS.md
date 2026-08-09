@@ -1,75 +1,95 @@
 # État du projet
 
-**Dernière mise à jour :** 15 juillet 2026
+**Dernière mise à jour :** 9 août 2026
 
-## État officiel
+## Branche active
 
-- Starter IA est recentré sur les guides, configurations, prompts et templates.
-- Le domaine public canonique est `https://starter-ia.lareponsedev.fr` ; les métadonnées, canonical, sitemap et robots restent attachés à cette origine, y compris sur les Previews.
-- Le kit de démarrage statique minimal est disponible.
-- Une offre pilote facultative d’installation et d’adaptation humaine est présentée à 390 € TTC.
-- Le MVP local en six phases est conservé comme démonstration historique.
-- Le générateur de starters, le ZIP, le manifeste automatique et le pilote Social Autopilot sont abandonnés comme direction active.
+`work/18-core-learning-foundation`
 
-## Disponible aujourd’hui
+Base vérifiée : `main` au commit `d794196d97918fd60a2a56a3897665e29d575f20`.
 
-### Ressources publiques
+Aucune modification directe de `main`, aucune PR, aucune fusion et aucun déploiement production manuel n'ont été effectués pendant ce chantier.
 
-- accueil et pages publiques Next.js ;
-- comparatif de ChatGPT, Work, Codex local, Codex Remote et Work + Codex ;
-- guides de configuration dans `guides/configurations/` ;
-- prompts dans `prompts/`, modèle de brief et formation express ;
-- kit statique minimal dans `templates/starter-kit/`, consultable et copiable fichier par fichier ;
-- route `/ressources` pour le kit, les options, les prompts, les modèles, les guides et la formation ;
-- route `/accompagnement` comme source détaillée de l’offre pilote : problème traité, intervention, publics, prérequis, déroulement, livrables, exclusions, passage de relais, FAQ et CTA externe vers LaReponseDev ;
-- redirection permanente de l’ancienne route `/tarifs` vers `/ressources`.
+## Direction active
 
-### Démonstration locale historique
+Starter IA devient le site pédagogique qui explique progressivement :
 
-Le MVP local version 2 reste implémenté et testé :
+```text
+Fondamentaux
+→ Starter IA Qwik Core
+→ Starter IA Qwik Advanced
+```
 
-- moteur déterministe de six phases et 16 étapes ;
-- recommandations fondées sur l’environnement déclaré ;
-- Dashboard et espace projet guidé ;
-- stockage `localStorage` versionné et migration conservatrice ;
-- missions copiables, statuts, preuves et validations humaines ;
-- exports Markdown et JSON.
+Les sources techniques de vérité sont désormais séparées clairement :
 
-Il n’appelle automatiquement ni ChatGPT, ni Codex, ni un fournisseur IA. Il est conservé comme démonstration utile, accessible depuis les ressources secondaires, sans devenir le parcours principal.
+- Core : `https://github.com/DevWeb13/starter-ia-qwik` ;
+- Advanced : `https://github.com/DevWeb13/starter-ia-qwik-advanced` ;
+- documentation, cours et ressources : ce dépôt `starter-ia-5-6`.
 
-## Kit de démarrage
+Le site ne maintient plus un second template Core concurrent.
 
-Le noyau minimal est volontairement limité à :
+## Ce qui a été réalisé sur la branche
 
-1. `PROJECT.md` ;
-2. `STATUS.md` ;
-3. `AGENTS.md` ;
-4. `prompts/FIRST-MISSION.md`.
+- création de `course/README.md` comme architecture pédagogique durable ;
+- définition d'une structure commune de chapitre : explication simple, choix Starter IA, fichier réel, fonctionnement, limites, source et exemple ;
+- réalignement de `PROJECT.md`, `ROADMAP.md`, `ARCHITECTURE.md`, `DESIGN.md` et `QUALITY.md` ;
+- transformation de `course/FORMATION-EXPRESS.md` en introduction au vrai Core ;
+- réalignement de `README.md`, `START-HERE.md` et `guides/configurations/README.md` ;
+- réalignement des pages publiques `/`, `/docs`, `/ressources` et `/fonctionnalites` ;
+- suppression complète de l'ancien `templates/starter-kit/`, y compris l'ancien `prompts/FIRST-MISSION.md` et sa copie de `.codex/config.toml` ;
+- maintien de l'offre d'accompagnement et du MVP local historique sans en faire la priorité du chantier.
 
-`DECISIONS.md`, `QUALITY.md` et `.codex/config.toml` sont fournis comme options documentées. Aucun ZIP, générateur ou manifeste automatique n’est présent.
+## État pédagogique actuel
 
-Le kit n’est pas encore déclaré validé sur un projet extérieur : aucune observation de ce type n’est enregistrée dans les sources de vérité.
+### Fondamentaux
 
-## Expérimentation commerciale
+Le niveau pédagogique introduit :
 
-L’offre pilote « Installation et adaptation Starter IA » est affichée à 390 € TTC. Elle reste un service humain ponctuel, sans paiement intégré, compte, formulaire distant ou automatisation de Codex. Aucune vente, aucun revenu et aucun gain de temps ne sont encore revendiqués ; l’offre ne sera considérée comme validée qu’après une première vente réelle.
+- `PROJECT.md` ;
+- `STATUS.md` ;
+- `AGENTS.md` ;
+- `.codex/config.toml` ;
+- le principe d'une mission petite, bornée et vérifiable.
 
-## Historique conservé
+Ce niveau n'est pas un template séparé.
 
-- les décisions et commits des phases précédentes ;
-- le moteur local et ses données navigateur ;
-- le parcours en six phases, ses exports et ses tests ;
-- les guides Remote et Work avec leurs limites ;
-- la documentation de Social Autopilot comme trace historique, sans mission active et sans dépôt pilote modifié.
+### Qwik Core
 
-## Non disponible et non prévu à court terme
+Le vrai Core est `DevWeb13/starter-ia-qwik`. Le parcours doit expliquer progressivement :
 
-- générateur de dossiers ou ZIP ;
-- manifeste automatique de fichiers ;
-- création de dépôt ou exécution autonome de Codex ;
-- API IA, compte, paiement, stockage ou synchronisation distante ;
-- pilote Social Autopilot et anciennes Missions C, D ou E du générateur.
+1. `AGENTS.md` ;
+2. `PROJECT.md` ;
+3. `STATUS.md` ;
+4. `QUALITY.md` ;
+5. `prompts/INITIALIZE.md` ;
+6. `.codex/config.toml` ;
+7. `.github/workflows/ci.yml` ;
+8. la fondation Qwik et la manière dont ces éléments travaillent ensemble.
 
-## Prochaine action
+`prompts/INITIALIZE.md` est le point d'entrée du template Core. L'ancien `FIRST-MISSION.md` de ce dépôt n'est plus une source active.
 
-Présenter l’offre pilote à des prospects pertinents avec validation humaine, recueillir les objections et rechercher une première vente réelle, tout en consolidant le kit sans prétendre qu’il a déjà été validé sur un projet extérieur.
+### Advanced
+
+Le dépôt `DevWeb13/starter-ia-qwik-advanced` reste inchangé pendant cette mission. Sa fondation actuelle — agents, skills, hooks, gates, artefacts et orchestration — sera documentée après le parcours Core. Le chantier technique `work/02-design-pipeline` reste volontairement en attente.
+
+## Contrôles réalisés
+
+- comparaison GitHub `main...work/18-core-learning-foundation` : branche en avance, sans retard sur `main` au moment du contrôle ;
+- diff GitHub vérifié : 22 fichiers changés avant les derniers ajustements de mémoire, dont les 8 fichiers de l'ancien kit supprimés ;
+- Preview Vercel automatique déclenchée par la branche ;
+- plusieurs déploiements de branche observés `READY`, notamment après les changements applicatifs et après la suppression du kit ;
+- build Vercel observé sans erreur sur le déploiement `dpl_3w6wSJoid7K4g35cFpXKzBPe6qVU` : `Build Completed` ;
+- le dernier ajustement documentaire de `PROJECT.md` avait encore un déploiement Vercel en cours lors de la rédaction de ce STATUS ; il ne modifie aucun fichier applicatif.
+
+Les suites locales `npm run lint`, `npm run typecheck`, `npm test` et `npm run test:e2e` n'ont pas été exécutées depuis cette interface. Elles devront être couvertes par la CI de la PR ou par un contrôle local avant fusion.
+
+## Points restant à vérifier avant fusion
+
+- revue du diff complet de la branche ;
+- absence de lien résiduel vers `templates/starter-kit/` dans une ressource non encore repérée ;
+- CI GitHub complète sur la future PR ;
+- contrôle visuel rapide des pages publiques modifiées sur la Preview.
+
+## Prochaine action unique
+
+Auditer cette branche `work/18-core-learning-foundation`, corriger tout bloquant ou important, puis ouvrir une PR pour la fondation pédagogique. Après fusion, la mission suivante sera de publier le cours Starter IA Qwik Core détaillé, chapitre par chapitre, avant de documenter la fondation Advanced.
