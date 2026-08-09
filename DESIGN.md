@@ -1,6 +1,6 @@
 # Identité visuelle
 
-Ce document est la source de vérité visuelle de Starter IA 5.6. L’interface est sobre, moderne, mobile-first et accessible. Le site de ressources constitue l’expérience principale ; le MVP local en six phases reste une démonstration historique clairement signalée.
+Ce document est la source de vérité visuelle de Starter IA 5.6. L’interface est sobre, moderne, mobile-first et accessible. Le site de ressources et le parcours pédagogique constituent l’expérience principale ; le MVP local en six phases reste une démonstration historique clairement signalée.
 
 ## Principes
 
@@ -11,15 +11,17 @@ Ce document est la source de vérité visuelle de Starter IA 5.6. L’interface 
 - Interface utilisable au pouce, au clavier, au zoom et avec un lecteur d’écran.
 - Parité fonctionnelle et contraste AA dans les thèmes clair et sombre.
 - Starter IA est l’unique identité produit active.
-- L’accueil oriente d’abord vers les configurations, le kit, les prompts et les guides.
+- L’accueil oriente d’abord vers les fondamentaux, le Core, Advanced et les configurations utiles.
 - Les mentions de la démonstration locale signalent le stockage navigateur, l’absence de synchronisation et l’absence d’appel IA automatique.
 
-## Principes UX du site de ressources
+## Principes UX du site pédagogique
 
 - expliquer en une vue la différence entre ChatGPT, Work et Codex ;
 - proposer un point de départ selon le besoin, pas selon un jargon produit ;
-- rendre les fichiers du kit faciles à ouvrir et copier ;
-- séparer visuellement le noyau minimal des options ;
+- rendre la progression **Fondamentaux → Core → Advanced** évidente ;
+- expliquer le rôle d'un fichier ou mécanisme avant d'afficher sa complexité technique ;
+- identifier clairement `starter-ia-qwik` et `starter-ia-qwik-advanced` comme dépôts techniques de référence ;
+- distinguer mécanisme officiel, choix Starter IA et état réellement implémenté ;
 - distinguer explicitement le produit actif, la démonstration historique et les idées abandonnées ;
 - ne jamais présenter une fonction absente comme disponible.
 
