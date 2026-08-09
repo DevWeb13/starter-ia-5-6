@@ -7,44 +7,65 @@ La feuille de route reste volontairement courte. L’historique détaillé vit d
 - **Fondation publique :** application Next.js, design accessible, tests et déploiement historique.
 - **MVP local :** parcours déterministe en six phases, Dashboard, stockage navigateur et exports.
 - **Ressources :** guides de configuration, prompts, brief, formation et règles de qualité.
+- **Ancien kit minimal :** quatre fichiers principaux et trois options dans `templates/starter-kit/`, désormais remplacés comme référence technique par le vrai template Qwik Core.
 - **Directions abandonnées :** orchestrateur autonome, générateur de starters/ZIP et pilote Social Autopilot comme prochaine étape.
 
 Le MVP local et ses tests sont conservés comme démonstration historique. Ils ne définissent plus la priorité produit.
 
 ## Direction active
 
-### 1. Inventorier et clarifier les ressources
+### 1. Poser la fondation pédagogique
 
-**Statut :** terminé.
+**Statut :** en cours sur `work/18-core-learning-foundation`.
 
-Aligner les documents de référence, distinguer le noyau minimal des fichiers facultatifs et retirer les promesses de générateur.
+Définir une progression stable **Fondamentaux → Starter IA Qwik Core → Starter IA Qwik Advanced**, enregistrer les dépôts techniques de référence et empêcher que la continuité du projet dépende d’un chat précédent.
 
-### 2. Simplifier la navigation et les textes
+Source pédagogique : [`course/README.md`](course/README.md).
 
-**Statut :** terminé.
+### 2. Réaligner le site sur le vrai Core
 
-Faire comprendre dès l’accueil le rôle de Starter IA, les différences entre ChatGPT, Work et Codex, et les points d’entrée vers configurations, guides, kit et prompts.
+**Statut :** à faire immédiatement après la fondation.
 
-### 3. Ouvrir le chemin commercial pilote
+Prendre `DevWeb13/starter-ia-qwik` comme seule source technique du Core. Corriger les textes publics qui présentent encore l’ancien kit quatre fichiers comme produit de référence, retirer `templates/starter-kit/` et remplacer ses liens par le vrai dépôt Core ou par le nouveau parcours pédagogique.
 
-**Statut :** terminé pour l’implémentation du parcours.
+La formation express actuelle reste une introduction courte ; elle doit être mise à jour pour conduire vers le Core réel.
 
-Séparer les ressources gratuites sur `/ressources`, présenter le service humain sur `/accompagnement` au prix pilote de 390 € TTC et conserver un contact externe simple sans paiement intégré.
-
-### 4. Obtenir une première vente réelle
-
-**Statut :** prochaine étape active.
-
-Présenter l’offre à des prospects pertinents, recueillir leurs objections et vérifier si une personne paie réellement pour l’installation. Tant que cette vente n’existe pas, l’offre reste une hypothèse non validée.
-
-### 5. Consolider le kit par l’usage
+### 3. Publier le parcours Starter IA Qwik Core
 
 **Statut :** à faire.
 
-Utiliser le noyau minimal sur un projet extérieur lorsque l’occasion se présente, documenter les difficultés et améliorer les exemples. Ne pas déclarer cette validation avant observation.
+Expliquer progressivement :
 
-### 6. Publier un guide ou cas d’usage concret
+1. les fondamentaux ;
+2. `AGENTS.md` ;
+3. `PROJECT.md` ;
+4. `STATUS.md` ;
+5. `QUALITY.md` ;
+6. `prompts/INITIALIZE.md` ;
+7. `.codex/config.toml` ;
+8. `.github/workflows/ci.yml` ;
+9. la fondation Qwik et la manière dont toutes ces pièces travaillent ensemble.
 
-**Statut :** à faire.
+Chaque chapitre distingue mécanisme officiel, choix Starter IA, fichier réel, limites et exemple.
 
-Documenter un passage simple : cadrage dans ChatGPT, exécution dans Codex, contrôle dans ChatGPT, avec limites et preuves. Aucun générateur, compte ou service distant n’est planifié sans validation d’un besoin réel.
+### 4. Documenter la fondation Advanced
+
+**Statut :** à faire après le Core.
+
+Prendre `DevWeb13/starter-ia-qwik-advanced` comme source de vérité. Expliquer d’abord les concepts — agents, skills, agent vs skill, permissions, sandbox, hooks, gates, artefacts et orchestration — puis documenter les 14 agents et les 14 skills réellement présents.
+
+Cette étape doit rendre le projet Advanced compréhensible et explicable, pas seulement copiable.
+
+### 5. Reprendre le pipeline design Advanced
+
+**Statut :** en attente volontaire.
+
+Revenir ensuite dans `starter-ia-qwik-advanced` sur le chantier `work/02-design-pipeline`. Le pipeline design reste nécessaire, mais il n’est pas prioritaire tant que la fondation Advanced déjà construite n’est pas comprise et documentée.
+
+### 6. Consolider par des cas réels
+
+**Statut :** à faire plus tard.
+
+Documenter des cas d’usage réels et les enseignements utiles. Le test Cars Pat peut servir d’étude de cas sur la différence entre réussite technique et validation visuelle, sans devenir le seul motif du projet Advanced.
+
+L’offre d’accompagnement existante reste disponible, mais la monétisation n’est pas la priorité du chantier pédagogique actuel.
