@@ -7,37 +7,39 @@ import { createPublicPageMetadata } from "@/lib/site";
 
 export const metadata: Metadata = createPublicPageMetadata({
   path: "/fonctionnalites",
-  title: "Méthode ChatGPT et Codex",
-  description: "Une méthode simple pour cadrer dans ChatGPT, exécuter dans Codex et contrôler le résultat dans ChatGPT.",
+  title: "Méthode Starter IA",
+  description: "Choisir le minimum d'outils nécessaire, travailler dans le bon environnement et vérifier le résultat réel.",
 });
 
 const githubRoot = "https://github.com/DevWeb13/starter-ia-5-6/blob/main";
+const coreRoot = "https://github.com/DevWeb13/starter-ia-qwik";
 
 const steps = [
   {
-    title: "Réfléchir et cadrer dans ChatGPT",
-    text: "Décrivez le besoin, le résultat attendu, les contraintes et les critères de réussite. Enregistrez les décisions utiles dans les fichiers du projet.",
-    output: "Un brief court et vérifiable.",
+    title: "Comprendre le besoin et les capacités disponibles",
+    text: "Décrivez le résultat attendu, les contraintes et les critères de réussite, puis vérifiez quels outils et connecteurs sont réellement disponibles avant d'imposer un workflow.",
+    output: "Une mission claire et un environnement choisi pour une raison explicite.",
   },
   {
-    title: "Exécuter dans Codex",
-    text: "Ouvrez le dépôt, vérifiez les règles et l’état Git, puis réalisez une modification ciblée sur une branche dédiée avec les contrôles pertinents.",
-    output: "Un diff limité et des preuves de vérification.",
+    title: "Travailler dans le bon environnement",
+    text: "Utilisez ChatGPT, Work ou Codex selon le besoin. Pour un projet Qwik préparé pour Codex, le Starter IA Qwik Core fournit une fondation vérifiable et initialisable.",
+    output: "Des livrables enregistrés dans la bonne cible avec un périmètre borné.",
   },
   {
-    title: "Contrôler dans ChatGPT",
-    text: "Relisez le résultat réel, les tests, les limites et les affirmations. Corrigez les problèmes bloquants ou importants avant la livraison.",
+    title: "Vérifier puis contrôler",
+    text: "Relisez les fichiers, les tests, la CI, les limites et les affirmations. Corrigez les problèmes bloquants ou importants avant de présenter la mission comme réussie.",
     output: "Une décision claire : valide, à corriger ou bloqué.",
   },
 ];
 
 const principles = [
   "Une réponse copiée n’est pas une action exécutée.",
-  "Le dépôt, ses règles et son état sont vérifiés avant d’écrire.",
-  "Un seul agent modifie les fichiers ; les reviewers restent en lecture seule.",
+  "Une capacité non vérifiée n'est pas présentée comme disponible.",
+  "Le dépôt, ses règles et son état sont vérifiés avant une modification importante.",
+  "Un seul écrivain modifie un même périmètre ; les reviewers restent indépendants.",
   "Les contrôles sont adaptés au changement et rapportés avec leur résultat réel.",
   "Fusion, production, suppression, paiement, secret ou publication exigent un accord explicite.",
-  "Work peut compléter le parcours, mais le passage de relais reste manuel.",
+  "La complexité Advanced n'est ajoutée que lorsqu'un besoin réel la justifie.",
 ];
 
 export default function MethodPage() {
@@ -45,9 +47,9 @@ export default function MethodPage() {
     <>
       <PageIntro
         eyebrow="Méthode"
-        badge="Trois temps"
-        title="Cadrer, exécuter, contrôler."
-        description="Un parcours simple pour utiliser ChatGPT et Codex ensemble sans leur attribuer des actions qu’ils n’ont pas réalisées."
+        badge="Choisir · travailler · vérifier"
+        title="Utiliser le minimum d'outils nécessaire, sans autonomie aveugle."
+        description="Starter IA ne force plus une chaîne d'outils unique : le workflow dépend du besoin, de l'environnement et des capacités réellement disponibles."
       />
 
       <section className="page-shell pb-14 sm:pb-20" aria-labelledby="method-steps-title">
@@ -69,7 +71,7 @@ export default function MethodPage() {
           <div className="max-w-xl space-y-3">
             <p className="eyebrow">Garde-fous</p>
             <h2 id="principles-title" className="section-title">Savoir ce qui a vraiment été fait.</h2>
-            <p className="text-muted-foreground">Starter IA prépare des passages de relais explicites. Il n’exécute ni ChatGPT, ni Work, ni Codex.</p>
+            <p className="text-muted-foreground">Starter IA distingue toujours recommandation, exécution réelle, preuve et décision humaine.</p>
           </div>
           <Card>
             <CardContent className="p-5 sm:p-6">
@@ -86,20 +88,25 @@ export default function MethodPage() {
         </div>
       </section>
 
-      <section className="reading-shell py-14 sm:py-20" aria-labelledby="work-title">
-        <p className="eyebrow">Et Work ?</p>
-        <h2 id="work-title" className="section-title">Une option pour les missions cloud complètes.</h2>
-        <p className="mt-3 text-muted-foreground">Work peut préparer plusieurs livrables, coordonner des outils disponibles ou effectuer le contrôle final. Il ne charge pas automatiquement les règles locales du dépôt : transmettez le brief, les décisions et les limites à Codex.</p>
+      <section className="reading-shell py-14 sm:py-20" aria-labelledby="core-title">
+        <p className="eyebrow">Apprendre la méthode sur un vrai template</p>
+        <h2 id="core-title" className="section-title">Starter IA Qwik Core est la référence technique.</h2>
+        <p className="mt-3 text-muted-foreground">Le Core fournit les documents projet, l'initialisation, les permissions Codex, les critères qualité, les tests et la CI. La documentation de Starter IA explique pourquoi chaque pièce existe au lieu d'en maintenir une copie divergente.</p>
+        <a href={coreRoot} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex min-h-11 items-center gap-2 font-semibold text-primary underline underline-offset-4">
+          Ouvrir le dépôt Core
+          <span className="sr-only"> (ouvre un nouvel onglet)</span>
+          <ExternalLink aria-hidden="true" className="size-4" />
+        </a>
       </section>
 
       <section className="border-t border-border py-14 sm:py-20" aria-labelledby="sources-title">
         <div className="reading-shell">
-          <h2 id="sources-title" className="section-title">Copier la méthode</h2>
-          <p className="mt-3 text-muted-foreground">Le kit fournit une première mission. WORKFLOW.md décrit le processus interne complet et REVIEW.md cadre la revue indépendante.</p>
+          <h2 id="sources-title" className="section-title">Continuer le parcours</h2>
+          <p className="mt-3 text-muted-foreground">Commencez par l'architecture pédagogique, utilisez le modèle de brief si nécessaire, puis appuyez-vous sur la revue indépendante pour contrôler un résultat.</p>
           <div className="mt-5 flex flex-wrap gap-x-6 gap-y-2">
             {[
-              ["Ouvrir FIRST-MISSION.md", "templates/starter-kit/prompts/FIRST-MISSION.md"],
-              ["Lire WORKFLOW.md", "WORKFLOW.md"],
+              ["Lire le parcours", "course/README.md"],
+              ["Utiliser le brief", "templates/BRIEF.md"],
               ["Lire REVIEW.md", "prompts/REVIEW.md"],
             ].map(([label, path]) => (
               <a key={path} href={`${githubRoot}/${path}`} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2 font-semibold text-primary underline underline-offset-4">
