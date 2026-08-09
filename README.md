@@ -1,23 +1,35 @@
 # Starter IA 5.6
 
-**Un site de ressources et un kit de démarrage pour mieux utiliser ChatGPT, Work et Codex.**
+**Un site de ressources et un parcours pédagogique pour mieux utiliser ChatGPT, Work et Codex.**
 
 > Projet communautaire indépendant, non officiel et non affilié à OpenAI.
 
-Starter IA explique les rôles des outils, aide à choisir une configuration réaliste et fournit des guides, prompts et modèles faciles à copier. La méthode conseillée est simple : cadrer dans ChatGPT, exécuter dans Codex, puis contrôler le résultat dans ChatGPT. Work reste une option pour les missions cloud compatibles.
+Starter IA explique les rôles des outils, aide à choisir une configuration réaliste et apprend progressivement à préparer puis comprendre un dépôt Codex. Le parcours va des fondamentaux au template Starter IA Qwik Core, puis à la variante Advanced.
 
 ## Commencer
 
 - orientation rapide : [`START-HERE.md`](START-HERE.md) ;
+- architecture du parcours pédagogique : [`course/README.md`](course/README.md) ;
 - comparaison des configurations : [`guides/configurations/README.md`](guides/configurations/README.md) ;
-- kit minimal pour un dépôt Codex : [`templates/starter-kit/README.md`](templates/starter-kit/README.md) ;
+- template Core de référence : [DevWeb13/starter-ia-qwik](https://github.com/DevWeb13/starter-ia-qwik) ;
+- template Advanced de référence : [DevWeb13/starter-ia-qwik-advanced](https://github.com/DevWeb13/starter-ia-qwik-advanced) ;
 - modèle de brief : [`templates/BRIEF.md`](templates/BRIEF.md) ;
 - prompts prêts à adapter : [`prompts/`](prompts/) ;
-- formation courte : [`course/FORMATION-EXPRESS.md`](course/FORMATION-EXPRESS.md).
+- introduction courte : [`course/FORMATION-EXPRESS.md`](course/FORMATION-EXPRESS.md).
 
-## Kit de démarrage
+## Trois niveaux
 
-Le noyau minimal contient `PROJECT.md`, `STATUS.md`, `AGENTS.md` et `prompts/FIRST-MISSION.md`. `DECISIONS.md`, `QUALITY.md` et `.codex/config.toml` sont facultatifs et documentés. Le kit est statique : aucun générateur, manifeste ou ZIP n’est nécessaire.
+### Fondamentaux
+
+Comprendre `PROJECT.md`, `STATUS.md`, `AGENTS.md`, `.codex/config.toml` et le principe d'une mission petite, bornée et vérifiable. Ce niveau sert à apprendre ; ce n'est pas un second template.
+
+### Starter IA Qwik Core
+
+Le dépôt [`starter-ia-qwik`](https://github.com/DevWeb13/starter-ia-qwik) est la source de vérité technique du Core. Il contient une fondation Qwik City vérifiable avec les documents projet, `QUALITY.md`, `prompts/INITIALIZE.md`, la configuration Codex et GitHub Actions.
+
+### Starter IA Qwik Advanced
+
+Le dépôt [`starter-ia-qwik-advanced`](https://github.com/DevWeb13/starter-ia-qwik-advanced) part du Core et ajoute progressivement agents, skills, hooks, permissions, gates humains, artefacts et orchestration.
 
 ## Démonstration historique
 
@@ -53,13 +65,14 @@ Playwright utilise Chromium. Avant un premier lancement local, exécutez si néc
 - feuille de route : [`ROADMAP.md`](ROADMAP.md) ;
 - décisions : [`DECISIONS.md`](DECISIONS.md) ;
 - architecture : [`ARCHITECTURE.md`](ARCHITECTURE.md) ;
+- architecture pédagogique : [`course/README.md`](course/README.md) ;
 - design : [`DESIGN.md`](DESIGN.md) ;
 - qualité : [`QUALITY.md`](QUALITY.md) ;
 - workflow interne : [`WORKFLOW.md`](WORKFLOW.md).
 
 ## Limites
 
-Aucun générateur de starter, ZIP, manifeste automatique, SDK IA, secret, fichier `.env`, compte, base distante, paiement, création de dépôt, exécution automatique, fusion automatique ou production automatique n’est inclus.
+Starter IA n’intègre aucun SDK IA, secret, fichier `.env`, compte, base distante ou paiement. Le site pédagogique ne maintient pas une copie technique concurrente des templates Core et Advanced.
 
 ## Licence
 
