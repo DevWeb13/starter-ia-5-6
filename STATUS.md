@@ -28,11 +28,13 @@ Les sources techniques de vérité sont désormais séparées clairement :
 
 Le site ne maintient plus un second template Core concurrent.
 
+La décision active correspondante est **D-034 — Parcours pédagogique et templates techniques de référence** dans `DECISIONS.md`.
+
 ## Ce qui a été réalisé sur la branche
 
 - création de `course/README.md` comme architecture pédagogique durable ;
 - définition d'une structure commune de chapitre : explication simple, choix Starter IA, fichier réel, fonctionnement, limites, source et exemple ;
-- réalignement de `PROJECT.md`, `ROADMAP.md`, `ARCHITECTURE.md`, `DESIGN.md` et `QUALITY.md` ;
+- réalignement de `PROJECT.md`, `ROADMAP.md`, `ARCHITECTURE.md`, `DECISIONS.md`, `DESIGN.md` et `QUALITY.md` ;
 - transformation de `course/FORMATION-EXPRESS.md` en introduction au vrai Core ;
 - réalignement de `README.md`, `START-HERE.md` et `guides/configurations/README.md` ;
 - réalignement des pages publiques `/`, `/docs`, `/ressources` et `/fonctionnalites` ;
@@ -74,12 +76,13 @@ Le dépôt `DevWeb13/starter-ia-qwik-advanced` reste inchangé pendant cette mis
 
 ## Contrôles réalisés
 
-- comparaison GitHub `main...work/18-core-learning-foundation` : branche en avance, sans retard sur `main` au moment du contrôle ;
-- diff GitHub vérifié : 22 fichiers changés avant les derniers ajustements de mémoire, dont les 8 fichiers de l'ancien kit supprimés ;
+- comparaison GitHub finale `main...work/18-core-learning-foundation` : branche en avance de 26 commits, sans retard sur `main` ;
+- 24 fichiers modifiés ou supprimés dans le diff final ;
+- les 8 fichiers de l'ancien `templates/starter-kit/` sont supprimés ;
 - Preview Vercel automatique déclenchée par la branche ;
-- plusieurs déploiements de branche observés `READY`, notamment après les changements applicatifs et après la suppression du kit ;
-- build Vercel observé sans erreur sur le déploiement `dpl_3w6wSJoid7K4g35cFpXKzBPe6qVU` : `Build Completed` ;
-- le dernier ajustement documentaire de `PROJECT.md` avait encore un déploiement Vercel en cours lors de la rédaction de ce STATUS ; il ne modifie aucun fichier applicatif.
+- plusieurs déploiements de branche observés `READY` ;
+- le déploiement `dpl_2K4h5kc7ZNrRbCd7WQFgMUj88UhR`, qui inclut tous les changements applicatifs et la fermeture de la migration de l'ancien Core, est `READY` ;
+- un build précédent a été vérifié sans erreur avec `Build Completed`.
 
 Les suites locales `npm run lint`, `npm run typecheck`, `npm test` et `npm run test:e2e` n'ont pas été exécutées depuis cette interface. Elles devront être couvertes par la CI de la PR ou par un contrôle local avant fusion.
 
