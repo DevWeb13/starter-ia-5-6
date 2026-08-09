@@ -1,6 +1,8 @@
-# Formation express — 30 minutes
+# Formation express — introduction
 
-Objectif : comprendre les rôles de ChatGPT, Work et Codex, préparer un dépôt léger et livrer une première mission vérifiée.
+Objectif : comprendre les rôles de ChatGPT, Work et Codex, les fondamentaux d'un dépôt préparé pour Codex et le passage vers le vrai Starter IA Qwik Core.
+
+Cette formation est une introduction. Le parcours complet est défini dans [`course/README.md`](README.md) et le template Core de référence est [`DevWeb13/starter-ia-qwik`](https://github.com/DevWeb13/starter-ia-qwik).
 
 Chaque partie suit la même logique : une notion, une action et un point de contrôle.
 
@@ -8,101 +10,109 @@ Chaque partie suit la même logique : une notion, une action et un point de cont
 
 ### Notion
 
-- **ChatGPT** aide à réfléchir, décider, rédiger et contrôler.
+- **ChatGPT** aide à réfléchir, décider, rédiger, auditer et contrôler avec les outils réellement disponibles dans la session.
 - **Work** peut conduire une mission cloud complète avec les fichiers et outils réellement disponibles.
-- **Codex** travaille sur un environnement de code et un dépôt dans le périmètre autorisé.
+- **Codex** travaille directement dans un environnement de développement et un dépôt dans le périmètre autorisé.
 
 ### Action
 
-Classez ces besoins :
-
-1. clarifier le résultat attendu d’une fonctionnalité : ChatGPT ;
-2. produire et relire plusieurs documents cloud : Work si les sources y sont disponibles ;
-3. modifier une application et lancer ses tests : Codex.
+Pour chaque mission, demandez d'abord quel est le minimum d'outils réellement nécessaire. Ne supposez pas qu'un passage de relais ou une intégration existe sans l'avoir vérifié.
 
 ### Point de contrôle
 
-Vous savez expliquer le choix sans confondre outil, modèle et agent.
+Vous savez distinguer outil, environnement, agent et capacité disponible.
 
-## 2. Préparer le noyau du projet — 6 min
+## 2. Comprendre les fondamentaux — 6 min
 
 ### Notion
 
-Codex agit mieux avec un contexte court, un état réel, des règles permanentes et une première mission précise. Une pile de documents vides n’aide pas.
+Avant de regarder tout le template Core, retenez cinq idées :
+
+1. `PROJECT.md` : où va le projet ;
+2. `STATUS.md` : où il en est réellement ;
+3. `AGENTS.md` : comment Codex doit travailler dans ce dépôt ;
+4. `.codex/config.toml` : quelles permissions le projet partage ;
+5. une mission doit être petite, bornée et vérifiable.
+
+Ces cinq idées constituent un niveau pédagogique, pas un second template à copier et maintenir.
 
 ### Action
 
-Copiez depuis [`templates/starter-kit/`](../templates/starter-kit/README.md) :
-
-1. `PROJECT.md` ;
-2. `STATUS.md` ;
-3. `AGENTS.md` ;
-4. `prompts/FIRST-MISSION.md`.
-
-Ajoutez une option seulement si son besoin est présent.
+Ouvrez le dépôt [`starter-ia-qwik`](https://github.com/DevWeb13/starter-ia-qwik) et repérez ces fichiers sans encore chercher à tout comprendre.
 
 ### Point de contrôle
 
-Chaque fichier contient une information utile et actuelle ; aucun secret n’y apparaît.
+Vous savez expliquer en une phrase le rôle de chacun et pourquoi `PROJECT.md` et `STATUS.md` ne servent pas à la même chose.
 
-## 3. Écrire une première mission — 5 min
+## 3. Comprendre le vrai Core — 5 min
 
 ### Notion
 
-Une bonne mission décrit un résultat observable, le contexte utile, les limites et les contrôles de réussite.
+Le Starter IA Qwik Core est une fondation complète, pas seulement quatre fichiers Markdown. Sa structure de référence comprend :
+
+```text
+AGENTS.md
+PROJECT.md
+STATUS.md
+QUALITY.md
+prompts/INITIALIZE.md
+.codex/config.toml
+.github/workflows/ci.yml
+```
+
+Elle inclut aussi l'application Qwik City, TypeScript strict, Vitest et Playwright.
 
 ### Action
 
-Adaptez [`templates/BRIEF.md`](../templates/BRIEF.md) ou `prompts/FIRST-MISSION.md`. Préférez une petite amélioration vérifiable à une reconstruction complète.
+Lisez le README du dépôt Core et observez comment les fichiers documentaires, la configuration Codex et les contrôles automatisés se complètent.
 
 ### Point de contrôle
 
-Une autre personne peut répondre à trois questions : que produire, avec quelles limites et comment prouver que c’est fini ?
+Vous savez distinguer les fondamentaux pédagogiques du template Core réellement exécutable.
 
-## 4. Passer de ChatGPT à Codex — 5 min
+## 4. Initialiser un projet — 5 min
 
 ### Notion
 
-Le passage de relais n’est pas automatique. ChatGPT prépare le cadre ; Codex doit relire l’état du dépôt, ses règles et la mission avant d’écrire.
+Dans le Core actuel, `prompts/INITIALIZE.md` est le point d'entrée. Il transforme le template générique en projet précis avant le premier développement métier.
+
+Il demande notamment à Codex de lire les règles et l'état du dépôt, remplir `PROJECT.md`, mettre `STATUS.md` à jour, adapter `QUALITY.md` si nécessaire et préparer ensuite une première mission limitée.
 
 ### Action
 
-1. Cadrez le besoin dans ChatGPT.
-2. Enregistrez les décisions utiles dans les fichiers du projet.
-3. Confiez la mission bornée à Codex sur une branche dédiée.
+Lisez [`prompts/INITIALIZE.md`](https://github.com/DevWeb13/starter-ia-qwik/blob/main/prompts/INITIALIZE.md) puis imaginez la description d'un petit projet Qwik que vous pourriez lui fournir.
 
 ### Point de contrôle
 
-Codex dispose du résultat attendu, des exclusions et des commandes de contrôle autorisées.
+Vous comprenez pourquoi l'ancien `FIRST-MISSION.md` n'est plus le point d'entrée du template Core.
 
 ## 5. Vérifier puis contrôler — 5 min
 
 ### Notion
 
 - **Vérifier** : confirmer que le résultat existe et fonctionne sur sa cible.
-- **Contrôler** : relire le résultat avec le brief et chercher les défauts ou affirmations non prouvées.
+- **Contrôler** : relire le résultat avec le brief et rechercher les défauts ou affirmations non prouvées.
+
+Le Core utilise `QUALITY.md` et GitHub Actions pour rendre ces contrôles reproductibles.
 
 ### Action
 
-1. Faites exécuter à Codex les contrôles pertinents.
-2. Relisez le diff et le résultat réel.
-3. Utilisez ChatGPT ou [`prompts/REVIEW.md`](../prompts/REVIEW.md) pour une revue indépendante.
+Repérez dans le Core les commandes de formatage, lint, TypeScript, tests unitaires, build et Playwright, puis ouvrez `.github/workflows/ci.yml`.
 
 ### Point de contrôle
 
-Le rapport distingue preuves, limites et suppositions. Un problème bloquant ou important est corrigé avant livraison.
+Vous savez expliquer pourquoi une réponse « c'est terminé » ne remplace pas les tests et la CI.
 
-## 6. Aller plus loin sans alourdir — 4 min
+## 6. Savoir quand passer à Advanced — 4 min
 
-Ajoutez :
+Le Core suffit tant que le projet n'a pas besoin d'une orchestration plus spécialisée.
 
-- `DECISIONS.md` si plusieurs choix durables doivent être expliqués ;
-- `QUALITY.md` si les critères dépassent quelques lignes dans la mission ;
-- `.codex/config.toml` si l’équipe partage une configuration Codex prudente ;
-- Work si une mission cloud complète apporte une valeur claire.
+La variante [`starter-ia-qwik-advanced`](https://github.com/DevWeb13/starter-ia-qwik-advanced) ajoute notamment agents, skills, hooks, gates humains et artefacts séparés. Elle doit être étudiée après le Core, pas utilisée par réflexe.
 
-Ne construisez pas une automatisation, un générateur ou un stockage distant avant d’avoir observé un besoin réel.
+Le parcours Advanced expliquera d'abord les concepts, puis les 14 agents et les 14 skills réellement présents dans le dépôt.
 
-## Fin de la formation
+## Fin de l'introduction
 
-Vous savez maintenant choisir l’environnement, préparer quatre fichiers utiles, passer un brief à Codex et contrôler le résultat dans ChatGPT.
+Vous savez maintenant distinguer les outils, comprendre les fondamentaux, identifier les briques du vrai Core et expliquer pourquoi `INITIALIZE.md`, `QUALITY.md`, `.codex/config.toml` et la CI existent.
+
+Étape suivante : suivre le parcours détaillé défini dans [`course/README.md`](README.md).
